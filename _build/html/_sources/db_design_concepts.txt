@@ -1,92 +1,22 @@
 Database Design Concepts
 ===========================================
+
 Sites, Collection Units, Analysis Units, Samples, and Datasets
-         :name: sites-collection-units-analysis-units-samples-and-datasets
 ---------------------------------------------
 
-Fossil data are site based. A `Site <#_Table:_Sites>`__ has a name,
-latitude-longitude coordinates, altitude, and areal extent. In Neotoma,
-Sites are designated geographically as boxes with north and south
-latitude coordinates and east and west longitude coordinates. If the
-areal extent is not known, the box collapses to a point, with the north
-and south latitudes equal and the east and west longitudes equal. Most
-of the legacy sites in Neotoma currently have point coordinates. The
-lat-long box can circumscribe the site, for example a lake, or it may
-circumscribe a larger area in which the site lies either because the
-exact location of the site is not known or because the exact location is
-purposely kept vague. In the case of many legacy sites, the exact
-location is not know precisely; for example, it may have been described
-as «on a gravel bar 5 miles east of town». The exact locations of some
-sites have purposely been kept vague to prevent looting and vandalism.
+Fossil data are site based. A `Site <#_Table:_Sites>`__ has a name, latitude-longitude coordinates, altitude, and areal extent. In Neotoma, Sites are designated geographically as boxes with north and south latitude coordinates and east and west longitude coordinates. If the areal extent is not known, the box collapses to a point, with the north and south latitudes equal and the east and west longitudes equal. Most of the legacy sites in Neotoma currently have point coordinates. The lat-long box can circumscribe the site, for example a lake, or it may circumscribe a larger area in which the site lies either because the exact location of the site is not known or because the exact location is purposely kept vague. In the case of many legacy sites, the exact location is not know precisely; for example, it may have been described as «on a gravel bar 5 miles east of town». The exact locations of some sites have purposely been kept vague to prevent looting and vandalism.
 
-A `Collection Unit <#_Table:_CollectionUnits>`__ is a unit from a site
-from which a collection of fossils or other data have been made. Typical
-Collection Units are cores, sections, and excavation units. A site may
-have several Collection Units. A Collection Unit is located spatially
-within a site and may have precise GPS latitude-longitude coordinates.
-Its definition is quite flexible. For pollen data, a Collection Unit is
-typically a core, a section, or surface sample. A Collection Unit can
-also be a composite core comprised of two or more adjacent cores pieced
-together to form a continuous stratigraphic sequence. A Collection Unit
-can also be an excavation unit. For faunal data, a Collection Unit could
-be as precise as an excavation square, or it could be a group of squares
-from a particular feature within a site. For example, consider a pit
-cave with three sediment cones, each with several excavation squares.
-Collection Units could be defined as the individual squares, or as three
-composite Collection Units, one from each sediment cone. Another example
-is an archaeological site, from which the reported Collection Units are
-different structures, although each structure may have had several
-excavation squares. The precision in the database depends on how data
-were entered or reported.
+A `Collection Unit <#_Table:_CollectionUnits>`__ is a unit from a site from which a collection of fossils or other data have been made. Typical Collection Units are cores, sections, and excavation units. A site may have several Collection Units. A Collection Unit is located spatially within a site and may have precise GPS latitude-longitude coordinates. Its definition is quite flexible. For pollen data, a Collection Unit is typically a core, a section, or surface sample. A Collection Unit can also be a composite core comprised of two or more adjacent cores pieced together to form a continuous stratigraphic sequence. A Collection Unit can also be an excavation unit. For faunal data, a Collection Unit could be as precise as an excavation square, or it could be a group of squares from a particular feature within a site. For example, consider a pit cave with three sediment cones, each with several excavation squares. Collection Units could be defined as the individual squares, or as three composite Collection Units, one from each sediment cone. Another example is an archaeological site, from which the reported Collection Units are different structures, although each structure may have had several excavation squares. The precision in the database depends on how data were entered or reported.
 
-For many published sites, the data are reported from composite
-Collection Units. If faunal data are reported from a site or locality
-without explicit Collection Units, then data are assigned to a single
-Collection Unit with the name «Locality». This is a «quote».
+For many published sites, the data are reported from composite Collection Units. If faunal data are reported from a site or locality without explicit Collection Units, then data are assigned to a single Collection Unit with the name «Locality». This is a «quote».
 
-Different kinds of data may have been collected from a single Collection
-Unit, for example fauna and macrobotanicals from an excavation, or
-pollen and plant macrofossils from a lake-sediment core. A composite
-Collection Unit may include data from different milieus, which,
-nevertheless, are associated with each other, for example a diatom
-sample from surficial lake sediments and an associated lake-water sample
-for water-chemistry measurements.
+Different kinds of data may have been collected from a single Collection Unit, for example fauna and macrobotanicals from an excavation, or pollen and plant macrofossils from a lake-sediment core. A composite Collection Unit may include data from different milieus, which, nevertheless, are associated with each other, for example a diatom sample from surficial lake sediments and an associated lake-water sample for water-chemistry measurements.
 
-The Collection Unit is equivalent to the Entity in the Global Pollen
-Database but was not defined in FAUNMAP. When the FAUNMAP data were
-imported into Neotoma, most localities were assigned a single «Locality»
-Collection Unit. However, for some localities, the data were assigned to
-different Collection Units that were clearly identifiable in FAUNMAP
-(see **Figure 1**).
+The Collection Unit is equivalent to the Entity in the Global Pollen Database but was not defined in FAUNMAP. When the FAUNMAP data were imported into Neotoma, most localities were assigned a single «Locality» Collection Unit. However, for some localities, the data were assigned to different Collection Units that were clearly identifiable in FAUNMAP (see **Figure 1**).
 
-An `Analysis Unit <#_Table:_AnalysisUnits>`__ is a stratigraphic unit
-within a Collection Unit and is typically defined in the vertical
-dimension. An Analysis Unit may be a natural stratigraphic unit with
-perhaps irregular depth and thickness or it may be an arbitrary unit
-defined by absolute depth and thickness. An excavation may have been dug
-in arbitrary units, for example 10 cm levels, or it may have followed
-natural stratagraphic boundaries, for example the «red zone» or a
-feature in an archaeological site. Although Analysis Units could be
-designated by an upper depth and lower depth, in Neotoma they are
-designated by their midpoint depth and thickness, which is more
-convenient for developing age models. Pollen and other microfossils are
-typically sampled at arbitrary depths, and although these samples have
-thicknesses corresponding to the thickness of the sampling device
-(usually 1 cm or less), these thicknesses are often not reported, just
-the depths. Different kinds of samples may have been taken from a single
-analysis unit, for example pollen, diatoms, and ostracodes. The Analysis
-Unit links these various samples together.
+An `Analysis Unit <#_Table:_AnalysisUnits>`__ is a stratigraphic unit within a Collection Unit and is typically defined in the vertical dimension. An Analysis Unit may be a natural stratigraphic unit with perhaps irregular depth and thickness or it may be an arbitrary unit defined by absolute depth and thickness. An excavation may have been dug in arbitrary units, for example 10 cm levels, or it may have followed natural stratagraphic boundaries, for example the «red zone» or a feature in an archaeological site. Although Analysis Units could be designated by an upper depth and lower depth, in Neotoma they are designated by their midpoint depth and thickness, which is more convenient for developing age models. Pollen and other microfossils are typically sampled at arbitrary depths, and although these samples have thicknesses corresponding to the thickness of the sampling device (usually 1 cm or less), these thicknesses are often not reported, just the depths. Different kinds of samples may have been taken from a single analysis unit, for example pollen, diatoms, and ostracodes. The Analysis Unit links these various samples together.
 
-In larger excavations, natural stratigraphic Analysis Units may cut
-across excavation squares or Collection Units, and the data are reported
-by Analysis Unit rather than by Collection Unit. In this case, the
-fossil data are assigned to a generic composite Collection Unit named
-«Locality», which has the explicitly defined Analysis Units. If the
-Analysis Units are not described or reported, then the data are assigned
-to a single Analysis Unit with the name «Assemblage». Thus, for a
-locality published with only faunal list, the fauna are assigned to a
-Collection Unit named «Locality» and to an Analysis Unit named
-«Assemblage».
+In larger excavations, natural stratigraphic Analysis Units may cut across excavation squares or Collection Units, and the data are reported by Analysis Unit rather than by Collection Unit. In this case, the fossil data are assigned to a generic composite Collection Unit named «Locality», which has the explicitly defined Analysis Units. If the Analysis Units are not described or reported, then the data are assigned to a single Analysis Unit with the name «Assemblage». Thus, for a locality published with only faunal list, the fauna are assigned to a Collection Unit named «Locality» and to an Analysis Unit named «Assemblage».
 
 In FAUNMAP, Analysis Units are the primary sample units, and fauna are
 recorded by Analysis Unit. In the GPD, Analysis Units correspond to
@@ -205,63 +135,32 @@ International Code of Zoological Nomenclature
 groups representing the different taxonomic groups included in Neotoma
 have established appropriate taxonomic authorities:
 
--  Plants – There is no worldwide authority. The International Plant
-       Names Index [3]_ lists validly published names, but a listed name
-       is not necessarily the accepted name for a given taxon. For
-       families, Neotoma follows the Angiosperm Phylogeny Group II
-       (2003) and Stevens (2007+), which follows and updates APG II. The
-       APG is an international consortium of plant taxonomists, and the
-       APG classification utilizes the great quantity of phylogenetic
-       data generated in recent years. For lower taxonomic ranks, the
-       various pollen database cooperatives follow appropriate regional
-       floras:
+-  Plants – There is no worldwide authority. The International Plant Names Index [3]_ lists validly published names, but a listed name is not necessarily the accepted name for a given taxon. For families, Neotoma follows the Angiosperm Phylogeny Group II (2003) and Stevens (2007+), which follows and updates APG II. The APG is an international consortium of plant taxonomists, and the APG classification utilizes the great quantity of phylogenetic data generated in recent years. For lower taxonomic ranks, the various pollen database cooperatives follow appropriate regional floras:
 
--  North American Pollen Database/North American Plant Macrofossil
-   Database: Insofar as possible, follows the *Flora of North America*
-   (Flora of North America Editorial Committee 1993+); about half of the
-   planned FNA volumes have been published. Otherwise, appropriate
-   regional floras are followed.
+-  North American Pollen Database/North American Plant Macrofossil Database: Insofar as possible, follows the *Flora of North America* (Flora of North America Editorial Committee 1993+); about half of the planned FNA volumes have been published. Otherwise, appropriate regional floras are followed.
 
--  European Pollen Database: The EPD has a Taxonomy Support Group. In
-   general, nomenclature follows *Flora Europaea* (Tutin 1964-1993).
+-  European Pollen Database: The EPD has a Taxonomy Support Group. In general, nomenclature follows *Flora Europaea* (Tutin 1964-1993).
 
--  African Pollen Database: The APD has a Committee for Nomenclature,
-   which has produced a list of pollen types with misspellings,
-   synonymy, and nomenclature corrected [4]_. APD nomenclature follows
-   *Enumération des plantes à fleurs d'Afrique Tropicale* (Lebrun and
-   Stork 1991-1997).
+-  African Pollen Database: The APD has a Committee for Nomenclature, which has produced a list of pollen types with misspellings, synonymy, and nomenclature corrected [4]_. APD nomenclature follows *Enumération des plantes à fleurs d'Afrique Tropicale* (Lebrun and Stork 1991-1997).
 
--  Latin American Pollen Database: has a tremendously rich and diverse
-   flora and no comprensive flora is available. Various regional floras
-   are followed.
+-  Latin American Pollen Database: has a tremendously rich and diverse flora and no comprensive flora is available. Various regional floras are followed.
 
--  Indo-Pacific Pollen Database: For Australia and adjacent areas
-   follows the *Australian Plant Name Index* (Chapman 1991). For other
-   regions, appropriate regional floras are followed.
+-  Indo-Pacific Pollen Database: For Australia and adjacent areas follows the *Australian Plant Name Index* (Chapman 1991). For other regions, appropriate regional floras are followed.
 
--  Pollen Database for Siberia and the Russian Far East Follows
-   *Vascular Plants of Russia and Adjacent States* (Czerepanov 1995).
+-  Pollen Database for Siberia and the Russian Far East Follows *Vascular Plants of Russia and Adjacent States* (Czerepanov 1995).
 
--  Mammals – For extant taxa, the authority is Wilson and Reeder’s
-   (2005) *Mammal Species of the World* . Original sources are followed
-   for extinct species, and the database is considered authoritative.
+-  Mammals – For extant taxa, the authority is Wilson and Reeder’s (2005) *Mammal Species of the World* . Original sources are followed for extinct species, and the database is considered authoritative.
 
--  Birds – For North America, the authority is the American
-   Ornithologists’ Union *Check-list of North American Birds*
-   (American Ornithologists' Union 1983).
+-  Birds – For North America, the authority is the American Ornithologists’ Union *Check-list of North American Birds* (American Ornithologists' Union 1983).
 
 -  Fish – Follows the *Catalog of Fishes* (Eschmeyer 1998).
 
--  Mollusks – For North America, follows *Common and Scientific Names of
-   Aquatic Invertebrates from the United States and Canada: Mollusks*
-   (Turgeon et al. 1998).
+-  Mollusks – For North America, follows *Common and Scientific Names of Aquatic Invertebrates from the United States and Canada: Mollusks* (Turgeon et al. 1998).
 
--  Beetles – Comprehensive manuals do not exist. Original taxonomic
-       authorities are cited, and the database is considered
-       authoritative.
+-  Beetles – Comprehensive manuals do not exist. Original taxonomic authorities are cited, and the database is considered authoritative.
 
-   1. .. rubric:: Taxa and Ecological Groups
-         :name: taxa-and-ecological-groups
+Taxa and Ecological Groups
+---------------------------------
 
 In the `Taxa <#_Table:_Taxa>`__ table, each taxon is assigned a
 TaxaGroupID, which refers to the
@@ -565,3 +464,25 @@ drawback, of course, is that these imprecise dates cannot be
 distinguished from precise dates on the first of the month. However, it
 was determined that the advantages of the date fields outweighed this
 disadvantage.
+
+.. |image1| image:: media/image5.png
+.. |image2| image:: media/image6.png
+.. |image3| image:: media/image7.png
+.. |image4| image:: media/image8.png
+.. |image5| image:: media/image9.png
+.. |image6| image:: media/image10.png
+
+.. [3]
+   http://www.ipni.org
+
+.. [4]
+   http://medias.obs-mip.fr/apd/
+
+.. [5]
+   http://calib.qub.ac.uk/calib/
+
+.. [6]
+   http://c14.arch.ox.ac.uk/embed.php?File=oxcal.html
+
+.. [7]
+   http://radiocarbon.ldeo.columbia.edu/research/radcarbcal.htm

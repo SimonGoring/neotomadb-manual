@@ -1,165 +1,25 @@
 Neotoma Tables
 =============================
-Table: AgeTypes
+
+Chronology & Age Related Tables
 -----------------------------
 
-Lookup table of Age Types or units. This table is referenced by the
-`Chronologies <#_Table:_Chronologies>`__ and
-`Geochronology <#_Table:_Geochronology>`__ tables.
+AgeTypes, AggregateChronologies, ChronControls, Chronologies, AggregateSampleAges, Geochronology, GeochronPublications, GeochronTypes, RelativeAgePublications, RelativeAges, RadiocarbonCalibration, RelativeAgeScales, RelativeAgeUnits, RelativeChronology
 
-+-----------------------+----------------+------+-----+
-| **Table: AgeTypes**   |
-+-----------------------+----------------+------+-----+
-| AgeTypeID             | int            | PK   |     |
-+-----------------------+----------------+------+-----+
-| AgeType               | nvarchar(64)   |      |     |
-+-----------------------+----------------+------+-----+
 
-**AgeTypeID (Primary Key):** An arbitrary Age Type identification
-number.
+Dataset & Collection Related Tables
+-----------------------------------
 
-**AgeType:** Age type or units. Includes the following:
+AggregateDatasets
 
--  Calendar years AD/BC
-
--  Calendar years BP
-
--  Calibrated radiocarbon years BP
-
--  Radiocarbon years BP
-
--  Varve years BP
-
-   1. .. rubric:: Table: AggregateChronologies
-         :name: table-aggregatechronologies
-
-This table stores metadata for Aggregate Chronologies. An Aggregate
-Chronology refers to an explicit chronology assigned to a sample
-Aggregate. The individual Aggregate Samples have ages assigned in the
-`AggregateSampleAges <#_Table:_AggregateSampleAges>`__ table. An
-Aggregate Chronology would be used, for example, for a set of packrat
-middens assigned to an
-`AggregateDataset <#_Table:_AggregateDatasets_1>`__. The Aggregate
-Chronology is analsgous to the Chronology assigned to samples from a
-single Collection Unit.
-
-An Aggregate may have more than one Aggregate Chronology, for example
-one in radiocarbon years and another in calibrated radiocarbon years.
-One Aggreagate Chronology per Age Type may be designated the default,
-which is the Aggregate Chronology currently preferred by the database
-stewards.
-
-+------------------------------------+-----------------+------+---------------------+
-| **Table: AggregateChronologies**   |
-+------------------------------------+-----------------+------+---------------------+
-| AggregateChronID                   | int             | PK   |                     |
-+------------------------------------+-----------------+------+---------------------+
-| AggregateDatasetID                 | int             | FK   | AggregateDatasets   |
-+------------------------------------+-----------------+------+---------------------+
-| AgeTypeID                          | int             | FK   | AgeTypes            |
-+------------------------------------+-----------------+------+---------------------+
-| IsDefault                          | bit             |      |                     |
-+------------------------------------+-----------------+------+---------------------+
-| ChronologyName                     | nvarchar(80)    |      |                     |
-+------------------------------------+-----------------+------+---------------------+
-| AgeBoundYounger                    | int             |      |                     |
-+------------------------------------+-----------------+------+---------------------+
-| AgeBoundOlder                      | int             |      |                     |
-+------------------------------------+-----------------+------+---------------------+
-| Notes                              | nvarchar(MAX)   |      |                     |
-+------------------------------------+-----------------+------+---------------------+
-
-**AggregateChronID (Primary Key):** An arbitrary Aggregate Chronology
-identification number.
-
-**AggregateDatasetID (Foreign Key):** Dataset to which the Aggregate
-Chronology applies. Field links to the
-`AggregateDatasets <#_Table:_AggregateDatasets_1>`__ table.
-
-**AgeTypeID (Foreign Key):** Age type or units. Field links to the
-`AgeTypes <#_Table:_AgeTypes>`__ table.
-
-**IsDefault:** Indicates whether the Aggregate Chronology is a default
-or not. Default status is determined by a Neotoma data steward.
-Aggregate Datasets may have more than one default Aggregate Chronology,
-but may have only one default Aggregate Chronology per Age Type.
-
-**ChronologyName:** Optional name for the Chronology.
-
-**AgeBoundYounger:** The younger reliable age bound for the Aggregate
-Chronology. Younger ages may be assigned to samples, but are not
-regarded as reliable. If the entire Chronology is considered reliable,
-AgeBoundYounger is assigned the youngest sample age rounded down to the
-nearest 10. Thus, for 72 BP, AgeBoundYounger = 70 BP; for -45 BP,
-AgeBoundYounger = -50 BP.
-
-**AgeBoundOlder:** The older reliable age bound for the Aggregate
-Chronology. Ages older than AgeOlderBound may be assigned to samples,
-but are not regarded as reliable. This situation is particularly true
-for ages extrapolated beyond the oldest Chron Control. . If the entire
-Chronology is considered reliable, AgeBoundOlder is assigned the oldest
-sample age rounded up to the nearest 10. Thus, for 12564 BP,
-AgeBoundOlder is 12570.
-
-**Notes:** Free form notes or comments about the Aggregate Chronology.
-
-Table: AggregateDatasets
-------------------------
-
-Aggregate Datasets are aggregates of samples of a particular datatype.
-Some examples:
-
--  Plant macrofossil samples from a group of packrat middens collected
-   from a particular valley, mountain range, or other similarly defined
-   geographic area. Each midden is from a different Site or Collection
-   Unit, but they are grouped into time series for that area and are
-   published as single dataset.
-
--  Samples collected from 32 cutbanks along several km of , northeast .
-   Each sample is from a different site, but they form a time series
-   from 0-12,510 :sup:`14`\ C yr BP, and pollen, plant macrofossils, and
-   beetles were published and graphed as if from a single site.
-
--  A set of pollen surface samples from particular region or study that
-   were published and analyzed as a single dataset and submitted to the
-   database as a single dataset.
-
-The examples above are datasets predefined in the database. New
-aggregate datasets could be assembled for particular studies, for
-example all the pollen samples for a given time slice for a given
-geographic region.
-
-+--------------------------------+-----------------+------+-----------------------+
-| **Table: AggregateDatasets**   |
-+--------------------------------+-----------------+------+-----------------------+
-| AggregateDatasetID             | int             | PK   |                       |
-+--------------------------------+-----------------+------+-----------------------+
-| AggregateDatasetName           | nvarchar(255)   |      |                       |
-+--------------------------------+-----------------+------+-----------------------+
-| AggregateOrderTypeID           | int             | FK   | AggregateOrderTypes   |
-+--------------------------------+-----------------+------+-----------------------+
-| Notes                          | nvarchar(MAX)   |      |                       |
-+--------------------------------+-----------------+------+-----------------------+
-
-**AggregateDatasetID (Primary Key):** An arbitrary Aggregate Dataset
-identification number.
-
-**AggregateDatasetName:** Name of Aggregate Dataset.
-
-**AggregateOrderTypeID (Foreign Key):** Aggregate Order Type
-identification number. Field links to the
-`AggregateOrderTypes <#_Table:_AggregateOrderTypes>`__ lookup table.
-
-**Notes:** Free form notes about the Aggregate Order Type.
-
-Table: AggregateOrderTypes
---------------------------
+AggregateOrderTypes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lookup table for Aggregate Order Types. Table is referenced by the
 `AggregateDatasets <#_Table:_AggregateDatasets>`__ table.
 
 +----------------------------------+----------------+------+-----+
-| **Table: AggregateOrderTypes**   |
+| **AggregateOrderTypes**                                 |
 +----------------------------------+----------------+------+-----+
 | AggregateOrderTypeID             | int            | PK   |     |
 +----------------------------------+----------------+------+-----+
@@ -168,12 +28,14 @@ Lookup table for Aggregate Order Types. Table is referenced by the
 | Notes                            | ntext          |      |     |
 +----------------------------------+----------------+------+-----+
 
-**AggregateOrderTypeID (Primary Key):** An arbitrary Aggregate Order
-Type identification number.
+**AggregateOrderTypeID (Primary Key)**
+  An arbitrary Aggregate Order Type identification number.
 
-**AggregateOrderType:** The Aggregate Order Type.
+**AggregateOrderType**
+  The Aggregate Order Type.
 
-**Notes:** Free form notes or comments about the Aggregate Order Type.
+**Notes**
+  Free form notes or comments about the Aggregate Order Type.
 
 The Aggregate Order Types are:
 
@@ -183,138 +45,61 @@ The Aggregate Order Types are:
        the mean of `Sites.LatitudeNorth <#_Table:_Sites_1>`__ and
        `Sites.LatitudeSouth <#_Table:_Sites_1>`__.
 
--  **Longitude:** AggregateDataset samples are ordered by, in order of
+-  **Longitude** AggregateDataset samples are ordered by, in order of
        priority, either (1)
        `CollectionUnits.GPSLongitude <#_Table:_CollectionUnits>`__ or
        (2) the mean of `Sites.LongitudeWest <#_Table:_Sites_1>`__ and
        `Sites.LongitudeEast <#_Table:_Sites_1>`__.
 
--  **Altitude:** AggregateDataset samples are ordered by
+-  **Altitude** AggregateDataset samples are ordered by
        `Sites.Altitude <#_Table:_Sites_1>`__.
 
--  **Age:** AggregateDataset samples are ordered by
+-  **Age** AggregateDataset samples are ordered by
        `SampleAges.Age <#_Table:_SampleAges>`__, where
        `SampleAges.SampleAgeID <#_Table:_SampleAges>`__ is from
        `AggregateSampleAges.SampleAgeID <#_Table:_AggregateSampleAges>`__.
 
--  **Alphabetical by site name:** AggregateDataset samples are ordered
+-  **Alphabetical by site name** AggregateDataset samples are ordered
        alphabetically by `Sites.SiteName <#_Table:_Sites_1>`__.
 
--  **Alphabetical by collection unit name:** AggregateDataset samples
+-  **Alphabetical by collection unit name** AggregateDataset samples
        are ordered alphabetically by
        `CollectionUnits.CollUnitName <#_Table:_CollectionUnits>`__.
 
--  **Alphabetical by collection units handle:** AggregateDataset samples
+-  **Alphabetical by collection units handle** AggregateDataset samples
        are ordered alphabetically by
        `CollectionUnits.Handle <#_Table:_CollectionUnits>`__.
 
-   1. .. rubric:: Table: AggregateSampleAges
-         :name: table-aggregatesampleages
+Sample & Sample Related Tables
+---------------------------
 
-This table stores the links to the ages of samples in an Aggregate
-Dataset. The table is necessary because samples may be from Collection
-Units with multiple chronologies, and this table stores the links to the
-sample ages desired for the Aggregate Dataset.
-
-+----------------------------------+-------+----------+-------------------------+
-| **Table: AggregateSampleAges**   |
-+----------------------------------+-------+----------+-------------------------+
-| AggregateDatasetID               | int   | PK, FK   | AggregateDatasets       |
-+----------------------------------+-------+----------+-------------------------+
-| AggregateChronID                 | int   | PK, FK   | AggregateChronologies   |
-+----------------------------------+-------+----------+-------------------------+
-| SampleAgeID                      | int   | PK, FK   | SampleAges              |
-+----------------------------------+-------+----------+-------------------------+
-
-**AggregateDatasetID (Primary Key, Foreign Key):** Aggregate Dataset
-identification number. Field links to the
-`AggregateDatasets <#_Table:_AggregateDatasets_1>`__ table.
-
-**AggregateChronID (Primary Key, Foreign Key):** Aggregate Chronology
-identification number Field links to the
-`AggregateChronologies <#_Table:_AggregateChronologies>`__ table.
-
-**SampleAgeID (Primary Key, Foreign Key):** Sample Age ID number. Field
-links to the `SampleAges <#_Table:_SampleAges>`__ table.
-
-SQL Example
-~~~~~~~~~~~
-
-The following SQL statement produces a list of Sample ID numbers and
-ages for the «» Aggregate Dataset:
-
-.. code-block:: sql
-   :linenos:
-
-   SELECT AggregateSamples.SampleID, SampleAges.Age
-
-   FROM SampleAges INNER JOIN ((AggregateDatasets INNER JOIN
-   AggregateSampleAges ON AggregateDatasets.AggregateDatasetID =
-   AggregateSampleAges.AggregateDatasetID) INNER JOIN AggregateSamples ON
-   AggregateDatasets.AggregateDatasetID =
-   AggregateSamples.AggregateDatasetID) ON (AggregateSamples.SampleID =
-   SampleAges.SampleID) AND (SampleAges.SampleAgeID =
-   AggregateSampleAges.SampleAgeID)
-
-   WHERE (((AggregateDatasets.AggregateDatasetName)=""));
-
-SQL Example
-~~~~~~~~~~~
-
-The AggregateSampleAges table may have multiple SampleAgeID’s for
-Aggregate Dataset samples, for example SampleAgeID’s for radiocarbon and
-calibrated radiocarbon chronologies. In this case, the Chronolgies table
-must be linked into a query to obtain the ages of Aggregate Samples, and
-either the AgeTypeID must be specified in the Chronolgies table or the
-`AgeTypes <#_Table:_AgeTypes>`__ table must also be linked with the
-AgeType specified. The following SQL statement produces a list of Sample
-ID numbers and «Radiocarbon years BP» ages for the «» Aggregate Dataset:
-
-.. code-block:: sql
-   :linenos:
-
-   SELECT AggregateSamples.SampleID, SampleAges.Age
-
-   FROM AgeTypes INNER JOIN (Chronologies INNER JOIN (SampleAges INNER JOIN
-   ((AggregateDatasets INNER JOIN AggregateSampleAges ON
-   AggregateDatasets.AggregateDatasetID =
-   AggregateSampleAges.AggregateDatasetID) INNER JOIN AggregateSamples ON
-   AggregateDatasets.AggregateDatasetID =
-   AggregateSamples.AggregateDatasetID) ON (AggregateSamples.SampleID =
-   SampleAges.SampleID) AND (SampleAges.SampleAgeID =
-   AggregateSampleAges.SampleAgeID)) ON Chronologies.ChronologyID =
-   SampleAges.ChronologyID) ON AgeTypes.AgeTypeId = Chronologies.AgeTypeID
-
-   WHERE (((AggregateDatasets.AggregateDatasetName)="") AND
-   ((AgeTypes.AgeType)="Radiocarbon years BP"));
-
-Table: AggregateSamples
------------------------
+AggregateSamples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This table stores the samples in Aggregate Datasets.
 
 +-------------------------------+-------+----------+---------------------+
-| **Table: AggregateSamples**   |                                        |
+| **AggregateSamples**   |                                        |
 +-------------------------------+-------+----------+---------------------+
 | AggregateDatasetID            | int   | PK, FK   | AggregateDatasets   |
 +-------------------------------+-------+----------+---------------------+
 | SampleID                      | int   | PK, FK   | Samples             |
 +-------------------------------+-------+----------+---------------------+
 
-**AggregateDatasetID (Primary Key, Foreign Key):** An arbitrary
+**AggregateDatasetID (Primary Key, Foreign Key)** An arbitrary
 Aggregate Dataset identification number. Field links to the
 `AggregateDatasets <#_Table:_AggregateDatasets>`__ table.
 
-**SampleID (Primary Key, Foreign Key):** Sample ID number. Field links
+**SampleID (Primary Key, Foreign Key)** Sample ID number. Field links
 to the `Samples <#_Table:_Samples>`__ table.
 
-Table: AnalysisUnits
---------------------
+AnalysisUnits
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This table stores the data for Analysis Units.
 
 +----------------------------+----------------+------+-------------------+
-| **Table: AnalysisUnits**   |                                           |
+| **AnalysisUnits**   |                                           |
 +----------------------------+----------------+------+-------------------+
 | AnalysisUnitID             | int            | PK   |                   |
 +----------------------------+----------------+------+-------------------+
@@ -335,17 +120,17 @@ This table stores the data for Analysis Units.
 | Notes                      | ntext          |      |                   |
 +----------------------------+----------------+------+-------------------+
 
-**AnalysisUnitID (Primary Key):** An arbitrary Analysis Unit
+**AnalysisUnitID (Primary Key)** An arbitrary Analysis Unit
 identification number.
 
-**CollectionUnitID (Foreign Key):** Collection Unit ID number. Field
+**CollectionUnitID (Foreign Key)** Collection Unit ID number. Field
 links to `CollectionUnits <#_Table:_CollectionUnits>`__ table. Every
 Analysis Unit belongs to a Collection Unit.
 
-**AnalysisUnitName:** Optional name for an Analysis Unit. Analysis Units
+**AnalysisUnitName** Optional name for an Analysis Unit. Analysis Units
 are usually designated with either a depth or a name, sometimes both.
 
-**Depth:** Optional depth of the Analysis Unit in cm. Depths are
+**Depth** Optional depth of the Analysis Unit in cm. Depths are
 typically designated for Analysis Units from cores and for Analysis
 Units excavated in arbitrary (e.g. 10 cm) levels. Depths are normally
 the midpoints of arbitrary levels. For example, for a level excavated
@@ -358,20 +143,20 @@ For many microfossil core samples, only the midpoint depths are known or
 published; the diameter or width of the sampling device is often not
 given.
 
-**Thickness:** Optional thickness of the Analysis Unit in cm. For many
+**Thickness** Optional thickness of the Analysis Unit in cm. For many
 microfossil core samples, the depths are treated as points, and the
 thicknesses are not given in the publications, although 0.5 to 1.0 cm
 would be typical.
 
-**FaciesID:** Sedimentary facies of the Analysis Unit. Field links to
+**FaciesID** Sedimentary facies of the Analysis Unit. Field links to
 the `FaciesTypes <#_Table:_FaciesTypes>`__ table.
 
-**Mixed:** Indicates whether specimens in the Analysis Unit are of mixed
+**Mixed** Indicates whether specimens in the Analysis Unit are of mixed
 ages, for example Pleistocene fossils occurring with late Holocene
 fossils. Although Analysis Units may be mixed, samples from the Analysis
 Unit may not be, for example individually radiocarbon dated specimens.
 
-**IGSN:** International Geo Sample Number. The IGSN is a unique
+**IGSN** International Geo Sample Number. The IGSN is a unique
 identifier for a Geoscience sample. They are assigned by the SESAR, the
 System for Earth Sample Registration
 (`www.geosamples.org <http://www.geosamples.org>`__), which is a
@@ -390,306 +175,10 @@ lies in their assignment to Analysis Units. IGSN’s are not yet assigned
 to Neotoma Analysis Units; however, that may change after consultation
 with SESAR.
 
-**Notes:** Free form notes or comments about the Analysis Unit.
+**Notes** Free form notes or comments about the Analysis Unit.
 
-Table: ChronControls
---------------------
 
-This table stores data for Chronology Controls, which are the age-depth
-control points used for age models. These controls may be geophysical
-controls, such as radiocarbon dates, but include many other kinds of age
-controls, such as biostratigraphic controls, archaeological cultural
-associations, and volcanic tephras. In the case of radiocarbon dates, a
-Chronology Control may not simply be the raw radiocarbon date reported
-by the laboratory, but perhaps a radiocarbon date corrected for an old
-carbon reservoir, a calibrated radiocarbon date, or an average of
-several radiocarbon dates from the same level. A common control for
-lake-sediment cores is the age of the top of the core, which may be the
-year the core was taken or perhaps an estimate of 0 BP if a few cm of
-surficial sediment were lost.
-
-+----------------------------+---------+------+---------------------+
-| **Table: ChronControls**   |                                      |
-+----------------------------+---------+------+---------------------+
-| ChronControlID             | int     | PK   |                     |
-+----------------------------+---------+------+---------------------+
-| ChronologyID               | int     | FK   | Chronologies        |
-+----------------------------+---------+------+---------------------+
-| ChronControlTypeID         | int     | FK   | ChronControlTypes   |
-+----------------------------+---------+------+---------------------+
-| Depth                      | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| Thickness                  | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| Age                        | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| AgeLimitYounger            | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| AgeLimitOlder              | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| Notes                      | ntext   |      |                     |
-+----------------------------+---------+------+---------------------+
-
-**ChronControlID (Primary Key):** An arbitrary Chronology Control
-identification number.
-
-**ChronologyID (Foreign Key):** Chronology to which the ChronControl
-belongs. Field links to the Chronolgies table.
-
-**ChronControlTypeID (Foreign Key):** The type of Chronology Control.
-Field links to the `ChronControlTypes <#_Table:_ChronControlTypes>`__
-table.
-
-**Depth:** Depth of the Chronology Control in cm.
-
-**Thickness:** Thickness of the Chronology Control in cm.
-
-**Age:** Age of the Chronology Control.
-
-**AgeLimitYounger:** The younger age limit of a Chronology Control. This
-limit may be explicitly defined, for example the younger of the 2-sigma
-range limits of a calibrated radiocarbon date, or it may be more loosely
-defined, for example the younger limit on the range of dates for a
-biostratigraphic horizon.
-
-**AgeLimitOlder:** The older age limit of a Chronology Control.
-
-**Notes:** Free form notes or comments about the Chronology Control.
-
-Table: ChronControlTypes
-------------------------
-
-Lookup table of Chronology Control Types. This table is referenced by
-the `ChronControls <#_Table:_ChronControls>`__ table.
-
-+--------------------------------+----------------+------+-----+
-| **Table: ChronControlTypes**   |                             |
-+--------------------------------+----------------+------+-----+
-| ChronControlTypeID             | int            | PK   |     |
-+--------------------------------+----------------+------+-----+
-| ChronControlType               | nvarchar(50)   |      |     |
-+--------------------------------+----------------+------+-----+
-
-**ChronControlTypeID (Primary Key):** An arbitrary Chronology Control
-Type identification number.
-
-**ChronControlType:** The Chronology Control Type. Chronology Controls
-include such geophysical controls as radiocarbon dates, calibrated
-radiocarbon dates, averages of several radiocarbon dates,
-potassium-argon dates, and thermoluminescence dates, as well as
-biostratigraphic controls, sediment stratigraphic contols, volcanic
-tephras, archaeological cultural associations, and any other types of
-age controls.
-
-Table: Chronologies
--------------------
-
-This table stores Chronology data. A Chronology refers to an explicit
-chronology assigned to a Collection Unit. A Chronology has Chronology
-Controls, the actual age-depth control points, which are stored in the
-`ChronControls <#_Table:_ChronControls>`__ table. A Chronology is also
-based on an Age Model, which may be a numerical method that fits a curve
-to a set of age-depth control points or may simply be individually dated
-Analysis Units.
-
-A Collection Unit may have more than one Chronology, for example one in
-radiocarbon years and another in calibrated radiocarbon years. There may
-be a Chronology developed by the original author and another developed
-by a later research project. Chronologies may be stored for archival
-reasons, even though they are now believed to have problems, if they
-were used for an important research project. One Chronology per Age Type
-may be designated the default Chronology, which is the Chronology
-currently preferred by the database stewards.
-
-Based upon the Chronology, which includes the Age Model and the Chron
-Controls, ages are assigned to individual samples, which are stored in
-the `SampleAges <#_Table:_SampleAges>`__ table.
-
-A younger and older age bounds are assigned to the Chronology. Within
-these bounds the Chronology is regarded as reliable. Ages may be
-assigned to samples beyond the reliable age bounds, but these are not
-considered reliable.
-
-+---------------------------+----------------+------+-------------------+
-| **Table: Chronologies**   |                                           |
-+---------------------------+----------------+------+-------------------+
-| ChronologyID              | int            | PK   |                   |
-+---------------------------+----------------+------+-------------------+
-| CollectionUnitID          | int            | FK   | CollectionUnits   |
-+---------------------------+----------------+------+-------------------+
-| AgeTypeID                 | int            | FK   | AgeTypes          |
-+---------------------------+----------------+------+-------------------+
-| ContactID                 | int            | FK   | Contacts          |
-+---------------------------+----------------+------+-------------------+
-| IsDefault                 | bit            |      |                   |
-+---------------------------+----------------+------+-------------------+
-| ChronologyName            | nvarchar(80)   |      |                   |
-+---------------------------+----------------+------+-------------------+
-| DatePrepared              | datetime       |      |                   |
-+---------------------------+----------------+------+-------------------+
-| AgeModel                  | nvarchar(80)   |      |                   |
-+---------------------------+----------------+------+-------------------+
-| AgeBoundYounger           | int            |      |                   |
-+---------------------------+----------------+------+-------------------+
-| AgeBoundOlder             | int            |      |                   |
-+---------------------------+----------------+------+-------------------+
-| Notes                     | ntext          |      |                   |
-+---------------------------+----------------+------+-------------------+
-
-**ChronologyID (Primary Key):** An arbitrary Chronology identification
-number.
-
-**CollectionUnitID (Foreign Key):** Collection Unit to which the
-Chronology applies. Field links to the
-`CollectionUnits <#_Table:_CollectionUnits>`__ table.
-
-**AgeTypeID (Foreign Key):** Age type or units. Field links to the
-`AgeTypes <#_Table:_AgeTypes>`__ table.
-
-**ContactID (Foreign Key):** Person who developed the Age Model. Field
-links to the ` <#_Table:_Contacts>`__ table.
-
-**IsDefault:** Indicates whether the Chronology is a default chronology
-or not. Default status is determined by a Neotoma data steward.
-Collection Units may have more than one default Chronology, but may have
-only one default Chronology per Age Type. Thus, there may be a default
-radiocarbon year Chronology and a default calibrated radiocarbon year
-Chronology, but only one of each. Default Chronologies may be used by
-the Neotoma web site, or other web sites, for displaying default
-diagrams or time series of data. Default Chronologies may also be of
-considerable use for actual research purposes; however, users may of
-course choose to develop their own chronologies.
-
-**ChronologyName:** Optional name for the Chronology. Some examples are:
-
-    COHMAP chron 1 A Chronology assigned by the COHMAP project.
-
-    COHMAP chron 2 An alternative Chronology assigned by the COHMAP
-    project
-
-    NAPD 1 A Chronology assigned by the North American Pollen Database.
-
-    Gajewski 1995 A Chronology assigned by Gajewski (1995).
-
-**DatePrepared:** Date that the Chronology was prepared.
-
-**AgeModel:** The age model used for the Chronology. Some examples are:
-linear interpolation, 3\ :sup:`rd` order polynomial, and individually
-dated analysis units.
-
-**AgeBoundYounger:** The younger reliable age bound for the Chronology.
-Younger ages may be assigned to samples, but are not regarded as
-reliable. If the entire Chronology is considered reliable,
-AgeBoundYounger is assigned the youngest sample age rounded down to the
-nearest 10. Thus, for 72 BP, AgeBoundYounger = 70 BP; for -45 BP,
-AgeBoundYounger = -50 BP.
-
-**AgeBoundOlder:** The older reliable age bound for the Chronology. Ages
-older than AgeOlderBound may be assigned to samples, but are not
-regarded as reliable. This situation is particularly true for ages
-extrapolated beyond the oldest Chron Control. . If the entire Chronology
-is considered reliable, AgeBoundOlder is assigned the oldest sample age
-rounded up to the nearest 10. Thus, for 12564 BP, AgeBoundOlder is
-12570.
-
-**Notes:** Free form notes or comments about the Chronology.
-
-SQL Example
-~~~~~~~~~~~
-
-The following SQL statement produces a list of Chronologies for :
-
-.. code-block:: sql
-   :linenos:
-
-   SELECT Sites.SiteName, Chronologies.ChronologyName,
-   Chronologies.IsDefault, AgeTypes.AgeType
-
-   FROM AgeTypes INNER JOIN ((Sites INNER JOIN CollectionUnits ON
-   Sites.SiteID = CollectionUnits.SiteID) INNER JOIN Chronologies ON
-   CollectionUnits.CollectionUnitID = Chronologies.CollectionUnitID) ON
-   AgeTypes.AgeTypeId = Chronologies.AgeTypeID
-
-   WHERE (((Sites.SiteName)=""));
-
-Result:
-
-+----------------+----------------------+-----------------+-----------------------------------+
-| **SiteName**   | **ChronologyName**   | **IsDefault**   | **AgeType**                       |
-+----------------+----------------------+-----------------+-----------------------------------+
-|                | COHMAP chron 1       | FALSE           | Radiocarbon years BP              |
-+----------------+----------------------+-----------------+-----------------------------------+
-|                | NAPD 1               | TRUE            | Radiocarbon years BP              |
-+----------------+----------------------+-----------------+-----------------------------------+
-|                | NAPD 2               | TRUE            | Calibrated radiocarbon years BP   |
-+----------------+----------------------+-----------------+-----------------------------------+
-
-SQL Example
-~~~~~~~~~~~
-
-The following statement produces a list of the ChronControls for the
-Default Chronology from in Calibrated radiocarbon years BP:
-
-.. code-block:: sql
-   :linenos:
-
-   SELECT ChronControls.Depth, ChronControls.Age,
-   ChronControls.AgeLimitYounger, ChronControls.AgeLimitOlder,
-   ChronControlTypes.ChronControlType
-
-   FROM ChronControlTypes INNER JOIN ((AgeTypes INNER JOIN ((Sites INNER
-   JOIN CollectionUnits ON Sites.SiteID = CollectionUnits.SiteID) INNER
-   JOIN Chronologies ON CollectionUnits.CollectionUnitID =
-   Chronologies.CollectionUnitID) ON AgeTypes.AgeTypeId =
-   Chronologies.AgeTypeID) INNER JOIN ChronControls ON
-   Chronologies.ChronologyID = ChronControls.ChronologyID) ON
-   ChronControlTypes.ChronControlTypeID = ChronControls.ChronControlTypeID
-
-   WHERE (((Sites.SiteName)="Wolsfeld Lake") AND
-   ((Chronologies.IsDefault)=True) AND ((AgeTypes.AgeType)="Calibrated
-   radiocarbon years BP"));
-
-Result:
-
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| **Depth**   | **Age**   | **AgeLimitYounger**   | **AgeLimitOlder**   | **ChronControlType**                     |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 650         | -25       | -25                   | -25                 | Core top                                 |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 662         | -13       | -8                    | -18                 | Interpolated, corrected for compaction   |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 670         | 0         | -5                    | 5                   | Interpolated, corrected for compaction   |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 680         | 22        | 17                    | 27                  | Interpolated, corrected for compaction   |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 690         | 46        | 41                    | 51                  | Interpolated, corrected for compaction   |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 702         | 72        | 67                    | 77                  | Interpolated, corrected for compaction   |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 715         | 100       | 80                    | 120                 | Biostratigraphic, pollen                 |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 750         | 335       | 120                   | 492                 | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 785         | 433       | 310                   | 517                 | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 975         | 2242      | 2063                  | 2433                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1065        | 3402      | 3261                  | 3556                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1135        | 3776      | 3585                  | 3973                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1345        | 5836      | 5662                  | 5992                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1415        | 6910      | 6730                  | 7160                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1520        | 8268      | 8022                  | 8443                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1640        | 11636     | 11264                 | 12027               | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1725        | 13864     | 13646                 | 14218               | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-
-Table: CollectionTypes
+CollectionTypes
 ----------------------
 
 This table is a lookup table of for types of Collection Units, or
@@ -697,29 +186,29 @@ Collection Types. Table is referenced by the
 `CollectionUnits <#_Table:_CollectionUnits>`__ table.
 
 +------------------------------+----------------+------+-----+
-| **Table: CollectionTypes**   |                             |
+| **CollectionTypes**   |                             |
 +------------------------------+----------------+------+-----+
 | CollTypeID                   | int            | PK   |     |
 +------------------------------+----------------+------+-----+
 | CollType                     | nvarchar(50)   |      |     |
 +------------------------------+----------------+------+-----+
 
-**CollTypeID (Primary Key):** An arbitrary Collection Type
+**CollTypeID (Primary Key)** An arbitrary Collection Type
 identification number.
 
-**Colltype:** The Collection Type. Types include cores, sections,
+**Colltype** The Collection Type. Types include cores, sections,
 excavations, and animal middens. Collection Units may be modern
 collections, surface float, or isolated specimens. Composite Collections
 Units include different kinds of Analysis Units, for example a modern
 surface sample for ostracodes and an associated water sample.
 
-Table: CollectionUnits
+CollectionUnits
 ----------------------
 
 This table stores data for Collection Units.
 
 +------------------------------+-----------------+------+-------------------+
-| **Table: CollectionUnits**   |
+| **CollectionUnits**   |
 +------------------------------+-----------------+------+-------------------+
 | CollectionUnitID             | int             | PK   |                   |
 +------------------------------+-----------------+------+-------------------+
@@ -758,16 +247,16 @@ This table stores data for Collection Units.
 | Notes                        | ntext           |      |                   |
 +------------------------------+-----------------+------+-------------------+
 
-**CollectionUnitID (Primary Key):** An arbitrary Collection Unit
+**CollectionUnitID (Primary Key)** An arbitrary Collection Unit
 identification number.
 
-**SiteID (Foreign Key):** Site where CollectionUnit was located. Field
+**SiteID (Foreign Key)** Site where CollectionUnit was located. Field
 links to `Sites <#_Table:_Sites>`__ table.
 
-**CollTypeID (Foreign Key):** Type of Collection Unit. Field links to
+**CollTypeID (Foreign Key)** Type of Collection Unit. Field links to
 the `CollectionTypes <#_Table:_Collection_Types>`__ table.
 
-**DepEnvtID (Foreign Key):** Depositional environment of the
+**DepEnvtID (Foreign Key)** Depositional environment of the
 CollectionUnit. Normally, this key refers to the modern environment. For
 example, the site may be located on a colluvial slope, in which case the
 Depositional Environment may be Colluvium or Colluvial Fan. However, an
@@ -776,59 +265,62 @@ different depositional environment. These are accounted for by the
 Facies of the AnalysisUnit. Field links to the
 `DepEnvtTypes <#_Table:_DepEnvtTypes>`__ table.
 
-**Handle:** Code name for the Collection Unit. This code may be up to 10
+**Handle** Code name for the Collection Unit. This code may be up to 10
 characters, but an effort is made to keep these to 8 characters or less.
 Data are frequently distributed by Collection Unit, and the Handle is
 used for file names.
 
-**CollUnitName:** Name of the Collection Unit. Examples: Core BPT82A,
+**CollUnitName** Name of the Collection Unit. Examples: Core BPT82A,
 Structure 9, P4A Test 57. If faunal data are reported from a site or
 locality without explicit Collection Units, then data are assigned to a
 single Collection Unit with the name «Locality».
 
-**CollDate:** Date Collection Unit was collected.
+**CollDate** Date Collection Unit was collected.
 
-**CollDevice:** Device used for obtain Collection Unit. This field
+**CollDevice** Device used for obtain Collection Unit. This field
 applies primarily to cores, for example «Wright square-rod piston corer
 (5 cm)».
 
-**GPSLatitude:** Precise latitude of the Collection Unit, typically
+**GPSLatitude** Precise latitude of the Collection Unit, typically
 taken with a GPS, although may be precisely measured from a map.
 
-**GPSLongitude:** Precise longitude of the Collection Unit, typically
+**GPSLongitude** Precise longitude of the Collection Unit, typically
 taken with a GPS, although may be precisely measured from a map.
 
-**GPSAltitude:** Precise altitude of the Collection Unit, typically
+**GPSAltitude** Precise altitude of the Collection Unit, typically
 taken with a GPS or precisely obtained from a map.
 
-**GPSError:** Error in the horizontal GPS coordinates, if known.
+**GPSError** Error in the horizontal GPS coordinates, if known.
 
-**WaterDepth:** Depth of water at the Collection Unit location. This
+**WaterDepth** Depth of water at the Collection Unit location. This
 field applies mainly to Collection Units from lakes.
 
-**SubstrateID (Foreign Key):** Substrate or rock type on which the
+**SubstrateID (Foreign Key)** Substrate or rock type on which the
 Collection Unit lies. Field links to the RockTypes table. This field is
 especially used for rodent middens.
 
-**SlopeAspect:** For Collection Units on slopes, the horizontal
+**SlopeAspect** For Collection Units on slopes, the horizontal
 direction to which a slope faces measured in degrees clockwise from
 north. This field is especially used for rodent middens.
 
-**SlopeAngle:** For Collection Units on slopes, the angle of slope from
+**SlopeAngle** For Collection Units on slopes, the angle of slope from
 horizontal. field is especially used for rodent middens.
 
-**Location:** Short description of the location of the Collection Unit
+**Location** Short description of the location of the Collection Unit
 within the site.
 
-**Notes:** Free form notes or comments about the Collection Unit.
+**Notes** Free form notes or comments about the Collection Unit.
 
-Table: Collectors
+Contact & Personal Information
 -----------------
+
+Collectors
+~~~~~~~~~~~~~~~~~~~
 
 The Collectors table lists the people who collected Collection Units.
 
 +-------------------------+----------------+------+-------------------+
-| **Table: Collectors**   |
+| **Collectors**                                               |
 +-------------------------+----------------+------+-------------------+
 | CollectorID             | Long Integer   | PK   |                   |
 +-------------------------+----------------+------+-------------------+
@@ -839,20 +331,20 @@ The Collectors table lists the people who collected Collection Units.
 | CollectorOrder          | Long Integer   |      |                   |
 +-------------------------+----------------+------+-------------------+
 
-**CollectorID (Primary Key):** An arbitrary Collector identification
-number.
+**CollectorID (Primary Key)**
+  An arbitrary Collector identification number.
 
-**CollectionUnitID (Foreign Key):** CollectionUnit collected. Field
-links to `CollectionUnits <#_Table:_CollectionUnits>`__ table.
+**CollectionUnitID (Foreign Key)**
+  CollectionUnit collected. Field links to `CollectionUnits <#_Table:_CollectionUnits>`__ table.
 
-**ContactID (Foreign Key):** Person who collected the CollectionUnit.
-Multiple individuals are listed in separate records. Field links to the
-` <#_Table:_Contacts>`__ table.
+**ContactID (Foreign Key)**
+  Person who collected the CollectionUnit. Multiple individuals are listed in separate records. Field links to the `<#_Table:_Contacts>`__ table.
 
-**CollectorOrder:** Order in which Collectors should be listed.
+**CollectorOrder**
+  Order in which Collectors should be listed.
 
-Table: Contacts
----------------
+Contacts
+~~~~~~~~~~~~~~~~~~~
 
 This table lists persons and organizations referenced by the
 `Chronologies <#_Table:_Chronologies>`__,
@@ -865,7 +357,7 @@ This table lists persons and organizations referenced by the
 `SiteImages <#_Table:_SiteImages>`__ tables.
 
 +-----------------------+----------------+------+----------------------+
-| **Table: Contacts**   |
+| **Contacts**   |
 +-----------------------+----------------+------+----------------------+
 | ContactID             | Long Integer   | PK   |                      |
 +-----------------------+----------------+------+----------------------+
@@ -898,56 +390,54 @@ This table lists persons and organizations referenced by the
 | Notes                 | Memo           |      |                      |
 +-----------------------+----------------+------+----------------------+
 
-**ContactID (Primary Key):** An arbitrary Contact identification number.
+**ContactID (Primary Key)**
+  An arbitrary Contact identification number.
 
-**AliasID (Foreign Key):** The ContactID of a person’s current name. If
-the AliasID is different from the ContactID, the ContactID refers to the
-person’s former name. For example, if J. L. Bouvier became J. B.
-Kennedy, the ContactID for J. B. Kennedy is the AliasID for J. L.
-Bouvier.
+**AliasID (Foreign Key)**
+  The ContactID of a person’s current name. If the AliasID is different from the ContactID, the ContactID refers to the person’s former name. For example, if J. L. Bouvier became J. B. Kennedy, the ContactID for J. B. Kennedy is the AliasID for J. L. Bouvier.
 
-**ContactName:** Full name of the person, last name first (e.g.
-«Simpson, George Gaylord») or name of organization or project (e.g.
-«Great Plains Flora Association»).
+**ContactName**
+  Full name of the person, last name first (e.g. «Simpson, George Gaylord») or name of organization or project (e.g. «Great Plains Flora Association»).
 
-**ContactStatusID (Foreign Key):** Current status of the person,
-organization, or project. Field links to the
-`ContactStatuses <#_Table:_ContactStatuses>`__ lookup table.
+**ContactStatusID (Foreign Key)**
+  Current status of the person, organization, or project. Field links to the `ContactStatuses <#_Table:_ContactStatuses>`__ lookup table.
 
-**FamilyName:** Family or surname name of a person.
+**FamilyName**
+  Family or surname name of a person.
 
-**LeadingInitials:** Leading initials for given or forenames without
+**LeadingInitials**
+  Leading initials for given or forenames without
 spaces (e.g. «G.G.»).
 
-**GivenNames:** Given or forenames of a person (e.g. «George Gaylord»).
+**GivenNames** Given or forenames of a person (e.g. «George Gaylord»).
 Initials with spaces are used if full given names are not known (e.g.
 «G. G»).
 
-**Suffix:** Suffix of a person’s name (e.g. «Jr.», «III»).
+**Suffix** Suffix of a person’s name (e.g. «Jr.», «III»).
 
-**Title:** A person’s title (e.g. «Dr.», «Prof.», «»).
+**Title** A person’s title (e.g. «Dr.», «Prof.», «»).
 
-**Phone:** Telephone number.
+**Phone** Telephone number.
 
-**Fax:** Fax number.
+**Fax** Fax number.
 
-**Email:** Email address.
+**Email** Email address.
 
-**URL:** Universal Resource Locator, an Internet World Wide Web address.
+**URL** Universal Resource Locator, an Internet World Wide Web address.
 
-**Address:** Full mailing address.
+**Address** Full mailing address.
 
-**Notes:** Free form notes or comments about the person, organization,
+**Notes** Free form notes or comments about the person, organization,
 or project.
 
-Table: ContactStatuses
-----------------------
+ContactStatuses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lookup table of Contact Statuses. Table is referenced by the
 `Contacts <#_Table:_Contacts>`__ table.
 
 +------------------------------+----------------+------+-----+
-| **Table: ContactStatuses**   |
+| **ContactStatuses**   |
 +------------------------------+----------------+------+-----+
 | ContactStatusID              | Long Integer   | PK   |     |
 +------------------------------+----------------+------+-----+
@@ -956,12 +446,14 @@ Lookup table of Contact Statuses. Table is referenced by the
 | StatusDescription            | Text           |      |     |
 +------------------------------+----------------+------+-----+
 
-**ContactStatusID (Primary Key):** An arbitrary Contact Status
-identification number.
+**ContactStatusID (Primary Key)** 
+  An arbitrary Contact Status identification number.
 
-**ContactStatus:** Status of person, organization, or project.
+**ContactStatus**
+  Status of person, organization, or project.
 
-**StatusDescription:** Description of the status.
+**StatusDescription**
+  Description of the status.
 
 The following statuses exist (with descriptions):
 
@@ -979,8 +471,8 @@ The following statuses exist (with descriptions):
 
 -  unknown Status is unknown
 
-   1. .. rubric:: Table: Data
-         :name: table-data
+Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The primary data table in the database. Each occurrence of a Variable in
 a sample comprises a record in the Data table.
@@ -995,16 +487,16 @@ a sample comprises a record in the Data table.
 | Value             | Double         |          |             |
 +-------------------+----------------+----------+-------------+
 
-**SampleID (Primary Key, Foreign Key):** Sample identification number.
+**SampleID (Primary Key, Foreign Key)** Sample identification number.
 Field links to `Samples <#_Table:_Samples>`__ table.
 
-**VariableID (Primary Key, Foreign Key):** Variable identification
+**VariableID (Primary Key, Foreign Key)** Variable identification
 number. Field links to `Variables <#_Table:_Variables>`__ table.
 
-**Value:** The value of the variable.
+**Value** The value of the variable.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 The following SQL example gives a list of vertebrate taxa from by
 Analysis Unit. Also listed are Variable Measurement Units and Values.
@@ -1049,13 +541,13 @@ The first few lines of the result:
 | Level 10 prov. 1-3     | Martes                  | NISP                | 2           |
 +------------------------+-------------------------+---------------------+-------------+
 
-Table: DatasetPIs
+DatasetPIs
 -----------------
 
 This table lists the Principle Investigators for Datasets.
 
 +-------------------------+----------------+----------+------------+
-| **Table: DatasetPIs**   |
+| **DatasetPIs**   |
 +-------------------------+----------------+----------+------------+
 | DatasetID               | Long Integer   | PK, FK   | Datasets   |
 +-------------------------+----------------+----------+------------+
@@ -1064,357 +556,61 @@ This table lists the Principle Investigators for Datasets.
 | PIOrder                 | Long Integer   |          |            |
 +-------------------------+----------------+----------+------------+
 
-**DatasetID (Primary Key, Foreign Key):** Dataset identification number.
+**DatasetID (Primary Key, Foreign Key)** Dataset identification number.
 Field links to Dataset table.
 
-**ContactID (Primary Key, Foreign Key):** Contact identification number.
+**ContactID (Primary Key, Foreign Key)** Contact identification number.
 Field links to `Contacts <#_Table:_Contacts>`__ table.
 
-**PIOrder:** Order in which PIs are listed.
+**PIOrder** Order in which PIs are listed.
 
-Table: DatasetPublications
---------------------------
 
-This table lists the publications for datasets.
-
-+----------------------------------+-------+----------+----------------+
-| **Table: DatasetPublications**   |
-+----------------------------------+-------+----------+----------------+
-| DatasetID                        | int   | PK, FK   | Datasets       |
-+----------------------------------+-------+----------+----------------+
-| PublicationID                    | int   | PK, FK   | Publications   |
-+----------------------------------+-------+----------+----------------+
-| PrimaryPub                       | bit   |          |                |
-+----------------------------------+-------+----------+----------------+
-
-**DatasetID (Primary Key, Foreign Key):** Dataset identification number.
-Field links to Dataset table.
-
-**PublicationID (Primary Key, Foreign Key):** Publication identification
-number. Field links to `Publications <#_Table:_Publications>`__ table.
-
-**PrimaryPub:** Is «True» if the publication is the primary publication
-for the dataset.
-
- Table: Datasets
-----------------
-
-This table stores the data for Datasets. A Dataset is the set of samples
-for a particular data type from a Collection Unit. A Collection Unit may
-have multiple Datasets for different data types, for example one dataset
-for pollen and another for plant macrofossils. Every Sample is assigned
-to a Dataset, and every Dataset is assigned to a Collection Unit.
-Samples from different Collection Units cannot be assigned to the same
-Dataset (although they may be assigned to `Aggregate
-Datasets <#_Table:_AggregateDatasets>`__).
-
-+-----------------------+----------------+------+-------------------+
-| **Table: Datasets**   |
-+-----------------------+----------------+------+-------------------+
-| DatasetID             | Long Integer   | PK   |                   |
-+-----------------------+----------------+------+-------------------+
-| CollectionUnitID      | Long Integer   | FK   | CollectionUnits   |
-+-----------------------+----------------+------+-------------------+
-| DatasetTypeID         | Long Integer   | FK   | DatasetTypes      |
-+-----------------------+----------------+------+-------------------+
-| DatasetName           | Text           |      |                   |
-+-----------------------+----------------+------+-------------------+
-| Notes                 | Memo           |      |                   |
-+-----------------------+----------------+------+-------------------+
-
-**DatasetID (Primary Key):** An arbitrary Dataset identification number.
-
-**CollectionUnitID (Foreign Key):** Collection Unit identification
-number. Field links to the
-`CollectionUnits <#_Table:_CollectionUnits>`__ table.
-
-**DatasetTypeID (Foreign Key);** Dataset Type identification number.
-Field links to the `DatasetTypes <#_Table:_DatasetTypes>`__ lookup
-table.
-
-**DatasetName:** Optional name for the Dataset.
-
-**Notes:** Free form notes or comments about the Dataset.
-
-SQL Example
-~~~~~~~~~~~
-
-The following query lists the Dataset Types for the site «».
-
-.. code-block:: sql
-   :linenos:
-
-   SELECT Sites.SiteName, DatasetTypes.DatasetType
-
-   FROM DatasetTypes INNER JOIN ((Sites INNER JOIN CollectionUnits ON
-   Sites.SiteID = CollectionUnits.SiteID) INNER JOIN Datasets ON
-   CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID) ON
-   DatasetTypes.DatasetTypeID = Datasets.DatasetTypeID
-
-   WHERE (((Sites.SiteName)=""));
-
-Result:
-
-+----------------+--------------------+
-| **SiteName**   | **DatasetType**    |
-+----------------+--------------------+
-|                | Loss-on-ignition   |
-+----------------+--------------------+
-|                | pollen             |
-+----------------+--------------------+
-|                | geochronologic     |
-+----------------+--------------------+
-
-SQL Example
-~~~~~~~~~~~
-
-This query lists the plant macrofossils identified at site «Bear River
-No. 3».
-
-.. code-block:: sql
-   :linenos:
-   SELECT Sites.SiteName, Taxa.TaxonName
-
-   FROM DatasetTypes INNER JOIN (Taxa INNER JOIN (Variables INNER JOIN
-   ((((Sites INNER JOIN CollectionUnits ON Sites.SiteID =
-   CollectionUnits.SiteID) INNER JOIN Datasets ON
-   CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID) INNER JOIN
-   Samples ON Datasets.DatasetID = Samples.DatasetID) INNER JOIN Data ON
-   Samples.SampleID = Data.SampleID) ON Variables.VariableID =
-   Data.VariableID) ON Taxa.TaxonID = Variables.TaxonID) ON
-   DatasetTypes.DatasetTypeID = Datasets.DatasetTypeID
-
-   GROUP BY Sites.SiteName, DatasetTypes.DatasetType, Taxa.TaxonName
-
-   HAVING (((Sites.SiteName)="Bear River No. 3") AND
-   ((DatasetTypes.DatasetType)="plant macrofossils"));
-
-Result:
-
-+--------------------+--------------------------------------------+
-| **SiteName**       | **TaxonName**                              |
-+--------------------+--------------------------------------------+
-| Bear River No. 3   | Bolboschoenus maritimus subsp. paludosus   |
-+--------------------+--------------------------------------------+
-| Bear River No. 3   | Zea mays                                   |
-+--------------------+--------------------------------------------+
-
-Table: DatasetSubmissions
--------------------------
-
-Submissions to the database are of Datasets. Submissions may be original
-submissions, resubmissions, compilations from other databases, or
-recompilations. See the description of the
-`DatasetSubmissionTypes <#_Table:_DatasetSubmissionTypes>`__ table.
-
-+---------------------------------+----------------+------+--------------------------+
-| **Table: DatasetSubmissions**   |
-+---------------------------------+----------------+------+--------------------------+
-| SubmissionID                    | Long Integer   | PK   |                          |
-+---------------------------------+----------------+------+--------------------------+
-| DatasetID                       | Long Integer   | FK   | Datasets                 |
-+---------------------------------+----------------+------+--------------------------+
-| ProjectID                       | Long Integer   | FK   | Projects                 |
-+---------------------------------+----------------+------+--------------------------+
-| ContactID                       | Long Integer   | FK   | Contacts                 |
-+---------------------------------+----------------+------+--------------------------+
-| SubmissionTypeID                | Long Integer   | FK   | DatasetSubmissionTypes   |
-+---------------------------------+----------------+------+--------------------------+
-| SubmissionDate                  | Date/Time      |      |                          |
-+---------------------------------+----------------+------+--------------------------+
-| Notes                           | Memo           |      |                          |
-+---------------------------------+----------------+------+--------------------------+
-
-**SubmissionID (Primary Key):** An arbitrary submission identification
-number.
-
-**DatasetID (Foreign Key):** Dataset identification number. Field links
-to the `Datasets <#table-datasets>`__ table. Datasets may occur multiple
-times in this table (e.g. once for the original compilation into a
-different database and a second time for the recompilation into
-Neotoma).
-
-**ProjectID (Foreign Key):** Database project responsible for the
-submission or compilation.
-
-**ContactID (Foreign Key):** Contact identification number. Field links
-to the `Contacts <#_Table:_Contacts>`__ table. The Contact is the person
-who submitted, resubmitted, compiled, or recompiled the data. This
-person is not necessarily the Dataset PI; it is the person who submitted
-the data or compiled the data from the literature.
-
-**SubmissionDate:** Date of the submission, resubmission, compilation,
-or recompilation.
-
-**SubmissionTypeID (Foreign Key):** Submission Type identification
-number. Field links to the DatasetSubmissionsType table.
-
-**Notes:** Free form notes or comments about the submission.
-
-Table: DatasetSubmissionTypes
------------------------------
-
-Lookup table of Dataset Submission Types. Table is referenced by the
-`DatasetSubmissions <#_Table:_DatasetSubmissions>`__ table.
-
-+-------------------------------------+----------------+------+-----+
-| **Table: DatasetSubmissionTypes**   |
-+-------------------------------------+----------------+------+-----+
-| SubmissionTypeID                    | Long Integer   | PK   |     |
-+-------------------------------------+----------------+------+-----+
-| SubmissionType                      | Text           |      |     |
-+-------------------------------------+----------------+------+-----+
-
-**SubmissionTypeID (Primary Key):** An arbitrary Submission Type
-identification number.
-
-**SubmissionType:** Type of submission. The database has the following
-types:
-
--  Original submission from data contributor
-
--  Resubmission or revision from data contributor
-
--  Compilation into a flat file database
-
--  Compilation into a another relational database
-
--  Recompilation or revisions to a another relational database
-
--  Compilation into Neotoma from another database
-
--  Recompilation into Neotoma from another database
-
--  Compilation into Neotoma from primary source
-
--  Recompilation into or revisions to Neotoma
-
-    The initial development of Neotoma involved merging the data from
-    several existing databases, including FAUNMAP, the Global Pollen
-    Database, and the North American Plant Macrofossil Database. Thus
-    original compilation of Datasets was into one of these databases,
-    which were then recompiled into Neotoma. The original compilation
-    and the recompilation into Neotoma are separate submissions.
-
-SQL Example
-~~~~~~~~~~~
-
-This query gives a list of Dataset Submissions for the site «Bear River
-No. 3» ordered by date.
-
-.. code-block:: sql
-   :linenos:
-   
-   SELECT DatasetTypes.DatasetType, Projects.ProjectName,
-   DatasetSubmissions.SubmissionDate,
-   DatasetSubmissionTypes.SubmissionType, DatasetSubmissions.Notes
-
-   FROM Sites INNER JOIN (Projects INNER JOIN (DatasetTypes INNER JOIN
-   (DatasetSubmissionTypes INNER JOIN ((CollectionUnits INNER JOIN Datasets
-   ON CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID) INNER
-   JOIN DatasetSubmissions ON Datasets.DatasetID =
-   DatasetSubmissions.DatasetID) ON DatasetSubmissionTypes.SubmissionTypeID
-   = DatasetSubmissions.SubmissionTypeID) ON DatasetTypes.DatasetTypeID =
-   Datasets.DatasetTypeID) ON Projects.ProjectID =
-   DatasetSubmissions.ProjectID) ON Sites.SiteID = CollectionUnits.SiteID
-
-   WHERE (((Sites.SiteName)="Bear River No. 3"))
-   ORDER BY DatasetSubmissions.SubmissionDate;
-
-Result:
-
-+----------------------+-------------------+----------------------+--------------------------------------------------+------------------------------------------+
-| **DatasetType**      | **ProjectName**   | **SubmissionDate**   | **SubmissionType**                               | **Notes**                                |
-+----------------------+-------------------+----------------------+--------------------------------------------------+------------------------------------------+
-| vertebrate fauna     | FAUNMAP           | 1/31/1992            | Compilation into a another relational database   |                                          |
-+----------------------+-------------------+----------------------+--------------------------------------------------+------------------------------------------+
-| vertebrate fauna     | Neotoma           | 11/24/2007           | Compilation into Neotoma from another database   | Compiled from FAUNMAP                    |
-+----------------------+-------------------+----------------------+--------------------------------------------------+------------------------------------------+
-| mollusks             | Neotoma           | 11/25/2007           | Compilation into Neotoma from primary source     |                                          |
-+----------------------+-------------------+----------------------+--------------------------------------------------+------------------------------------------+
-| plant macrofossils   | Neotoma           | 11/25/2007           | Compilation into Neotoma from primary source     |                                          |
-+----------------------+-------------------+----------------------+--------------------------------------------------+------------------------------------------+
-| vertebrate fauna     | Neotoma           | 11/25/2007           | Recompilation into or revisions to Neotoma       | Bison elements, fish, and birds added.   |
-+----------------------+-------------------+----------------------+--------------------------------------------------+------------------------------------------+
-
-Table: DatasetTypes
--------------------
-
-Lookup table for Dataset Types. Table is referenced by the
-`Datasets <#table-datasets>`__ table.
-
-+---------------------------+----------------+------+-----+
-| **Table: DatasetTypes**                                 |
-+---------------------------+----------------+------+-----+
-| DatasetTypeID             | Long Integer   | PK   |     |
-+---------------------------+----------------+------+-----+
-| DatasetType               | Text           |      |     |
-+---------------------------+----------------+------+-----+
-
-**DatasetTypeID (Primary Key):** An arbitrary Dataset Type
-identification number.
-
-**DatasetType:** The Dataset type, including the following:
-
--  geochronologic
-
--  loss-on-ignition
-
--  pollen
-
--  plant macrofossils
-
--  vertebrate fauna
-
--  mollusks
-
-   1. .. rubric:: Table: DepAgents
-         :name: table-depagents
+DepAgents
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Deposition Agents for Analysis Units. Individual Analysis Units may be
 listed multiple times with different Deposition Agents.
 
 +------------------------+----------------+----------+------------------+
-| **Table: DepAgents**                                                  |
+| **DepAgents**                                                         |
 +------------------------+----------------+----------+------------------+
 | AnalysisUnitID         | Long Integer   | PK, FK   |  AnalysisUnits   |
 +------------------------+----------------+----------+------------------+
 | DepAgentID             | Long Integer   | PK, FK   |  DepAgentTypes   |
 +------------------------+----------------+----------+------------------+
 
-**AnalysisUnitID (Primary Key):** Analysis Unit identification number.
-Field links to `AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
+**AnalysisUnitID (Primary Key)**
+  Analysis Unit identification number. Field links to `AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
 
-**DepAgentID:** Deposition Agent identification number. Field links to
-`DepAgentTypes <#_Table:_DepAgentTypes>`__ table.
+**DepAgentID**
+  Deposition Agent identification number. Field links to `DepAgentTypes <#_Table:_DepAgentTypes>`__ table.
 
-Table: DepAgentTypes
+DepAgentTypes
 --------------------
 
-Lookup table of Depositional Agents. Table is referenced by the
-`DepAgents <#_Table:_DepAgents>`__ table.
+Lookup table of Depositional Agents. Table is referenced by the `DepAgents <#_Table:_DepAgents>`__ table.
 
 +----------------------------+----------------+------+-----+
-| **Table: DepAgentTypes**                                 |
+| **DepAgentTypes**                                        |
 +----------------------------+----------------+------+-----+
 | DepAgentID                 | Long Integer   | PK   |     |
 +----------------------------+----------------+------+-----+
 | DepAgent                   | Text           |      |     |
 +----------------------------+----------------+------+-----+
 
-**DepAgentID (Primary Key):** An arbitrary Depositional Agent
+**DepAgentID (Primary Key)** An arbitrary Depositional Agent
 identification number.
 
-**DepAgent:** Depostional Agent.
+**DepAgent** Depostional Agent.
 
-Table: DepEnvtTypes
+DepEnvtTypes
 -------------------
 
 Lookup table of Depostional Environment Types. Table is referenced by
 the `CollectionUnits <#_Table:_CollectionUnits>`__ table.
 
 +---------------------------+----------------+------+--------------------------+
-| **Table: DepEnvtTypes**                                                      |
+| **DepEnvtTypes**                                                             |
 +---------------------------+----------------+------+--------------------------+
 | DepEnvtID                 | Long Integer   | PK   |                          |
 +---------------------------+----------------+------+--------------------------+
@@ -1423,12 +619,12 @@ the `CollectionUnits <#_Table:_CollectionUnits>`__ table.
 | DepEnvtHigherID           | Long Integer   | FK   | DepEnvtTypes:DepEnvtID   |
 +---------------------------+----------------+------+--------------------------+
 
-**DepEnvtID (Primary Key):** An arbitrary Depositional Environment Type
+**DepEnvtID (Primary Key)** An arbitrary Depositional Environment Type
 identification number.
 
-**DepEnvt:** Depositional Environment.
+**DepEnvt** Depositional Environment.
 
-**DepEnvtHigherID:** The Depositional Environment Types are
+**DepEnvtHigherID** The Depositional Environment Types are
 hierarchical. DepEnvtHigherID is the DepEnvtID of the higher ranked
 Depositional Environment. See following table gives some examples.
 
@@ -1457,12 +653,13 @@ Depositional Environment. See following table gives some examples.
 +---------------------+---------------+-----------------------+
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This query gives a list of the top level Depostional Environment Types.
 
 .. code-block:: sql
    :linenos:
+
    SELECT DepEnvtTypes.DepEnvtID, DepEnvtTypes.DepEnvt,
    DepEnvtTypes.DepEnvtHigherID
 
@@ -1501,7 +698,7 @@ Result:
 +-----------------+------------------+-----------------------+
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This following query gives a list of the second level «Terrestrial»
 Depositional Environment Types.
@@ -1536,7 +733,7 @@ Result:
 | 131             | Volcanic      | 103                   |
 +-----------------+---------------+-----------------------+
 
-Table: EcolGroups
+EcolGroups
 -----------------
 
 Taxa are assigned to Sets of Ecological Groups. A taxon may be assigned
@@ -1544,7 +741,7 @@ to more than one Set of Ecological Groups, representing different
 schemes for organizing taxa.
 
 +-------------------------+----------------+----------+------------------+
-| **Table: EcolGroups**                                                  |
+| **EcolGroups**                                                  |
 +-------------------------+----------------+----------+------------------+
 | TaxonID                 | Long Integer   | PK, FK   | Taxa             |
 +-------------------------+----------------+----------+------------------+
@@ -1553,19 +750,19 @@ schemes for organizing taxa.
 | EcolGroupID             | Text           | FK       | EcolGroupTypes   |
 +-------------------------+----------------+----------+------------------+
 
-**TaxonID (Primary Key, Foreign Key):** Taxon identification number.
+**TaxonID (Primary Key, Foreign Key)** Taxon identification number.
 Field links to the `Taxa <#_Table:_Taxa>`__ table.
 
-**EcolSetID (Primary Key, Foreign Key):** Ecological Set identification
+**EcolSetID (Primary Key, Foreign Key)** Ecological Set identification
 number. Field links to the `EcolSetTypes <#_Table:_EcolSetTypes>`__
 table.
 
-**EcolGroupID (Foreign Key):** A four-letter Ecological Group
+**EcolGroupID (Foreign Key)** A four-letter Ecological Group
 identification code. Field links to the
 `EcolGroupTypes <#table-ecolgrouptypes>`__ table.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 The following query produces a list of Ecological Groups for vascular
 plants (VPL).
@@ -1605,7 +802,7 @@ Result:
 +-------------------+-------------------+-------------------+-----------------------------------+
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This query lists all the taxa in the Ecological Group «Sirenia».
 
@@ -1640,227 +837,61 @@ Result:
 | Sirenia         | Trichechus           |
 +-----------------+----------------------+
 
- Table: EcolGroupTypes
+ EcolGroupTypes
 ----------------------
 
 Lookup table of Ecological Group Types. Table is referenced by the
 `EcolGroups <#_Table:_EcolGroups>`__ table.
 
 +-----------------------------+--------+------+-----+
-| **Table: EcolGroupTypes**                         |
+| **EcolGroupTypes**                         |
 +-----------------------------+--------+------+-----+
 | EcolGroupID                 | Text   | PK   |     |
 +-----------------------------+--------+------+-----+
 | EcolGroup                   | Text   |      |     |
 +-----------------------------+--------+------+-----+
 
-**EcolGroupID (Primary Key):** An arbitrary Ecological Group
+**EcolGroupID (Primary Key)** An arbitrary Ecological Group
 identification number.
 
 **EcolGroup**: Ecological Group.
 
-Table: EcolSetTypes
+EcolSetTypes
 -------------------
 
 Lookup table of Ecological Set Types. Table is referenced by the
 `EcolGroups <#_Table:_EcolGroups>`__ table.
 
 +---------------------------+----------------+------+-----+
-| **Table: EcolSetTypes**                                 |
+| **EcolSetTypes**                                 |
 +---------------------------+----------------+------+-----+
 | EcolSetID                 | Long Integer   | PK   |     |
 +---------------------------+----------------+------+-----+
 | EcolSetName               | Text           |      |     |
 +---------------------------+----------------+------+-----+
 
-**EcolSetID (Primary Key):** An arbitrary Ecological Set identification
+**EcolSetID (Primary Key)** An arbitrary Ecological Set identification
 number.
 
-**EcolSetName:** Ecological Set name.
+**EcolSetName** Ecological Set name.
 
-Table: FaciesTypes
+FaciesTypes
 ------------------
 
 Lookup table of Facies Types. Table is referenced by the
 `AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
 
 +--------------------------+----------------+------+-----+
-| **Table: FaciesTypes**                                 |
+| **FaciesTypes**                                 |
 +--------------------------+----------------+------+-----+
 | FaciesID                 | Long Integer   | PK   |     |
 +--------------------------+----------------+------+-----+
 | Facies                   | Text           |      |     |
 +--------------------------+----------------+------+-----+
 
-**FaciesID (Primary Key):** An arbitrary Facies identification number.
+**FaciesID (Primary Key)** An arbitrary Facies identification number.
 
-**Facies:** Short Facies description.
-
-Table: Geochronology
---------------------
-
-This table stores geochronologic data. Geochronologic measurements are
-from geochronologic samples, which are from Analysis Units, which may
-have a depth and thickness. Geochronologic measurments may be from the
-same or different Analysis Units as fossils. In the case of faunal
-excavations, geochronologic samples are typically from the same Analysis
-Units as the fossils, and there may be multiple geochronologic samples
-from a single Analysis Unit. In the case of cores used for microfossil
-analyses, geochronologic samples are often from separate Analysis Units;
-dated core sections are often thicker than microfossil Analysis Units.
-
-+----------------------------+----------------+------+-----------------+
-| **Table: Geochronology**                                             |
-+----------------------------+----------------+------+-----------------+
-| GeochronID                 | Long Integer   | PK   |                 |
-+----------------------------+----------------+------+-----------------+
-| SampleID                   | Long Integer   | FK   | Samples         |
-+----------------------------+----------------+------+-----------------+
-| GeochronTypeID             | Long Integer   | FK   | GeochronTypes   |
-+----------------------------+----------------+------+-----------------+
-| AgeTypeID                  | Long Integer   | FK   | AgeTypes        |
-+----------------------------+----------------+------+-----------------+
-| Age                        | Double         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| ErrorOlder                 | Double         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| ErrorYounger               | Double         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| Infinite                   | Yes/No         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| Delta13C                   | Double         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| LabNumber                  | Text           |      |                 |
-+----------------------------+----------------+------+-----------------+
-| MaterialDated              | Text           |      |                 |
-+----------------------------+----------------+------+-----------------+
-| Notes                      | Memo           |      |                 |
-+----------------------------+----------------+------+-----------------+
-
-**GeochronID (Primary Key):** An arbitrary Geochronologic
-identificantion number.
-
-**SampleID (Foreign Key):** Sample identification number. Field links to
-`Samples <#_Table:_Samples>`__ table.
-
-**GeochronTypeID (Foreign Key):** Identification number for the type of
-Geochronologic analysis, e.g. «Carbon-14», «Thermoluminescence». Field
-links to the `GeochronTypes <#_Table:_GeochronTypes>`__ table.
-
-**AgeTypeID (Foreign Key):** Identification number for the age units,
-e.g. «Radiocarbon years BP», «Calaibrated radiocarbon years BP».
-
-**Age:** Reported **a**\ ge value of the geochronologic measurement.
-
-**ErrorOlder:** The older error limit of the age value. For a date
-reported with ±1 SD or σ, the ErrorOlder and ErrorYounger values are
-this value.
-
-**ErrorYounger:** The younger error limit of the age value.
-
-**Infinite:** Is «True» for and infinite or “greater than”
-geochronologic measurement, otherwise is «False».
-
-**Delta13C:** The measured or assumed δ\ :sup:`13`\ C value for
-radiocarbon dates, if provided. Radiocarbon dates are assumed to be
-normalized to δ\ :sup:`13`\ C, and if uncorrected and normalized ages
-are reported, the normalized age should be entered in the database.
-
-**LabNumber:** Lab number for the geochronologic measurement.
-
-**Material Dated:** Material analyzed for a geochronologic measurement.
-
-**Notes:** Free form notes or comments about the geochronologic
-measurement.
-
-SQL Example
-~~~~~~~~~~~
-
-This query lists the geochronologic data for Montezuma Well.
-
-.. code-block:: sql
-   :linenos:
-
-   SELECT AnalysisUnits.Depth, AnalysisUnits.Thickness, 
-   GeochronTypes.GeochronType, Geochronology.Age, Geochronology.ErrorOlder,
-   Geochronology.ErrorYounger, Geochronology.Delta13C,
-   Geochronology.LabNumber, Geochronology.MaterialDated,
-   Geochronology.Notes
-
-   FROM GeochronTypes INNER JOIN ((((Sites INNER JOIN CollectionUnits ON
-   Sites.SiteID = CollectionUnits.SiteID) INNER JOIN AnalysisUnits ON
-   CollectionUnits.CollectionUnitID = AnalysisUnits.CollectionUnitID) INNER
-   JOIN Samples ON AnalysisUnits.AnalysisUnitID = Samples.AnalysisUnitID)
-   INNER JOIN Geochronology ON Samples.SampleID = Geochronology.SampleID)
-   ON GeochronTypes.GeochronTypeID = Geochronology.GeochronTypeID
-
-   WHERE (((Sites.SiteName)="Montezuma Well"));
-
-Result:
-
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-| **Depth**   | **Thick..**   | **GeochronType**                           | **Age**   | **Error Older**   | **Error Younger**   | **Delta13C**   | **Lab Number**   | **MaterialDated**   | **Notes**                                    |
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-| 1015        | 1             | Carbon-14: accelerator mass spectrometry   | 10975     | 95                | 95                  |                | AA-4694          | Juniperus twig      |                                              |
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-| 225         | 10            | Carbon-14: accelerator mass spectrometry   | 1526      | 50                | 50                  |                | AA-2450          | charcoal, wood      |                                              |
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-| 330         | 10            | Carbon-14: accelerator mass spectrometry   | 2885      | 60                | 60                  |                | AA-2451          | charcoal, wood      |                                              |
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-| 395         | 10            | Carbon-14: accelerator mass spectrometry   | 5540      | 60                | 60                  |                | AA-4693          | charcoal, wood      |                                              |
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-| 465         | 10            | Carbon-14: accelerator mass spectrometry   | 8003      | 70                | 70                  |                | AA-2452          | Scirpus achenes     |                                              |
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-| 535         | 10            | Carbon-14: proportional gas counting       | 14950     | 350               | 320                 | -26.7          | A-4732           | bark                | Davis and Shafer (1992) reject as too old.   |
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-| 887         | 1             | Carbon-14: proportional gas counting       | 9520      | 200               | 200                 | -25.3          | A-4733           | wood                |                                              |
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-| 887         | 1             | Carbon-14: accelerator mass spectrometry   | 24910     | 370               | 370                 |                | AA-5053          | wood                | Davis and Shafer (1992) reject as too old.   |
-+-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
-
-Table: GeochronPublications
----------------------------
-
-Publications in which Geochronologic measurements are reported. Many
-older radiocarbon dates are reported in the journal *Radiocarbon*. Dates
-may be reported in multiple publications. The “publication” could be a
-database such as the online Canadian Archaeological Radiocarbon
-Database.
-
-+-----------------------------------+----------------+----------+-----------------+
-| **Table: GeochronPublications**                                                 |
-+-----------------------------------+----------------+----------+-----------------+
-| GeochronID                        | Long Integer   | PK, FK   | Geochronology   |
-+-----------------------------------+----------------+----------+-----------------+
-| PublicationID                     | Long Integer   | PK, FK   | Publications    |
-+-----------------------------------+----------------+----------+-----------------+
-
-**GeochronID (Primary Key, Foreign Key):** Geochronologic identification
-number. Field links to the `Geochronology <#_Table:_Geochronology>`__
-table.
-
-**PublicationID (Primary Key, Foreign Key):** Publication identification
-number. Field links to the `Publications <#_Table:_Publications>`__
-table.
-
-Table: GeochronTypes
---------------------
-
-Lookup table for Geochronology Types. Table is referenced by the
-`Geochronology <#_Table:_Geochronology>`__ table.
-
-+----------------------------+----------------+------+-----+
-| **Table: GeochronTypes**                                 |
-+----------------------------+----------------+------+-----+
-| GeochronTypeID             | Long Integer   | PK   |     |
-+----------------------------+----------------+------+-----+
-| GeochronType               | Text           |      |     |
-+----------------------------+----------------+------+-----+
-
-**GeochronTypeID (Primary Key):** Geochronology Type identification
-number.
-
-**GeochronType:** Type of Geochronologic measurement.
+**Facies** Short Facies description.
 
 Table: GeoPoliticalUnits
 ------------------------
@@ -1903,21 +934,21 @@ can be added to the database as warranted.
 | HigherGeoPoliticalID           | Long Integer   | FK   | GeoPoliticalUnits:GeoPoliticalID   |
 +--------------------------------+----------------+------+------------------------------------+
 
-**GeoPoliticalID (Primary Key):** An arbitrary GeoPolitical
+**GeoPoliticalID (Primary Key)** An arbitrary GeoPolitical
 identification number.
 
-**GeoPoliticalName:** Name of the GeoPolitical Unit, e.g. , .
+**GeoPoliticalName** Name of the GeoPolitical Unit, e.g. , .
 
-**GeoPoliticalUnit:** The name of the unit, e.g. country, state, county,
+**GeoPoliticalUnit** The name of the unit, e.g. country, state, county,
 island, governorate, oblast.
 
-**Rank:** The rank of the unit.
+**Rank** The rank of the unit.
 
-**HigherGeoPoliticalID:** The GeoPoliticalUnit with higher rank, e.g.
+**HigherGeoPoliticalID** The GeoPoliticalUnit with higher rank, e.g.
 the country in which a state lies.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 The following query lists all the political subdivisions of in the .
 
@@ -1998,9 +1029,9 @@ would be a means to identify samples just predating European settlement.
 | Keyword               | Text           |      |     |
 +-----------------------+----------------+------+-----+
 
-**KeywordID (Primary Key):** An arbitrary Keyword identification number.
+**KeywordID (Primary Key)** An arbitrary Keyword identification number.
 
-**Keyword:** A keyword for identifying samples sharing a common
+**Keyword** A keyword for identifying samples sharing a common
 attribute.
 
 Table: Lithology
@@ -2024,21 +1055,21 @@ This table stores the lithologic descriptions of Collection Units.
 | Description            | Memo           |      |                    |
 +------------------------+----------------+------+--------------------+
 
-**LithologyID (Primary Key):** An arbitrary identification number for a
+**LithologyID (Primary Key)** An arbitrary identification number for a
 lithologic unit.
 
-**CollectionUnitID (Foreign Key):** Collection Unit identification
+**CollectionUnitID (Foreign Key)** Collection Unit identification
 number. Field links to the
 `CollectionUnits <#_Table:_CollectionUnits>`__ table.
 
-**DepthTop:** Depth of the top of the lithologic unit in cm.
+**DepthTop** Depth of the top of the lithologic unit in cm.
 
-**DepthBottom:** Depth of the bottom of the lithologic unit in cm.
+**DepthBottom** Depth of the bottom of the lithologic unit in cm.
 
-**LowerBoundary:** Description of the nature of the lower boundary of
+**LowerBoundary** Description of the nature of the lower boundary of
 the lithologic unit, e.g. «gradual, over ca. 10 cm».
 
-**Description:** Description of the lithologic unit. These can be quite
+**Description** Description of the lithologic unit. These can be quite
 detailed, with Munsell color or Troels-Smith descriptions. Some
 examples:
 
@@ -2083,15 +1114,15 @@ DatabaseSubmissions table.
 | URL                   | Text           |      |            |
 +-----------------------+----------------+------+------------+
 
-**ProjectID (Primary Key):** An arbitrary Project identification number.
+**ProjectID (Primary Key)** An arbitrary Project identification number.
 
-**ProjectName:** Name of the Project, e.g. «Cooperative Holocene Mapping
+**ProjectName** Name of the Project, e.g. «Cooperative Holocene Mapping
 Project», «North American Pollen Database», «FAUNMAP».
 
-**ContactID (Foreign Key):** Contact person for the project. Field links
+**ContactID (Foreign Key)** Contact person for the project. Field links
 to the `Contacts <#_Table:_Contacts>`__ table.
 
-**URL:** Web site address for the project.
+**URL** Web site address for the project.
 
 Table: PublicationAuthors
 -------------------------
@@ -2139,25 +1170,25 @@ PublicationAuthors table, and G. C. Frison is listed in the
 | ContactID                       | Long Integer   | FK   | Contacts       |
 +---------------------------------+----------------+------+----------------+
 
-**AuthorID (Primary Key):** An arbitrary Author identification number.
+**AuthorID (Primary Key)** An arbitrary Author identification number.
 
-**PublicationID (Foreign Key):** Publication identification number.
+**PublicationID (Foreign Key)** Publication identification number.
 Field links to the `Publications <#_Table:_Publications>`__ table.
 
-**AuthorOrder:** Ordinal number for the position in which the author’s
+**AuthorOrder** Ordinal number for the position in which the author’s
 name appears in the publication’s author list.
 
-**FamilyName:** Family name of author
+**FamilyName** Family name of author
 
-**Initials:** Initials of author’s given names
+**Initials** Initials of author’s given names
 
-**Suffix:** Authors suffix (e.g. «Jr.»)
+**Suffix** Authors suffix (e.g. «Jr.»)
 
-**ContactID (Foreign Key):** Contact identification number. Field links
+**ContactID (Foreign Key)** Contact identification number. Field links
 to the `Contacts <#_Table:_Contacts>`__ table.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 The following query lists the PublicationID and complete author names
 for the publication of . Note that because is a name likely to be
@@ -2231,19 +1262,19 @@ because chapter authors are the principal citation.
 | Suffix                          | Text           |      |                |
 +---------------------------------+----------------+------+----------------+
 
-**EditorID (Primary Key):** An arbitrary Editor identification number.
+**EditorID (Primary Key)** An arbitrary Editor identification number.
 
-**PublicationID (Foreign Key):** Publication identification number.
+**PublicationID (Foreign Key)** Publication identification number.
 Field links to the `Publications <#_Table:_Publications>`__ table.
 
-**EditorOrder:** Ordinal number for the position in which the editor’s
+**EditorOrder** Ordinal number for the position in which the editor’s
 name appears in the publication’s author list.
 
-**FamilyName:** Family name of editor
+**FamilyName** Family name of editor
 
-**Initials:** Initials of editor’s given names
+**Initials** Initials of editor’s given names
 
-**Suffix:** Authors suffix (e.g. «Jr.»)
+**Suffix** Authors suffix (e.g. «Jr.»)
 
 Table: Publications
 -------------------
@@ -2340,23 +1371,23 @@ not have a ContactID field.
 | Notes                     | Memo           |      |                    |
 +---------------------------+----------------+------+--------------------+
 
-**PublicationID (Primary Key):** An arbitrary Publication identification
+**PublicationID (Primary Key)** An arbitrary Publication identification
 number.
 
-**PubTypeID (Foreign Key):** Publication type. Field links to the
+**PubTypeID (Foreign Key)** Publication type. Field links to the
 `PublicationTypes <#_Table:_PublicationTypes>`__ lookup table.
 
-**Year:** Year of publication.
+**Year** Year of publication.
 
-**Citation:** The complete citation in a standard style. For Legacy
+**Citation** The complete citation in a standard style. For Legacy
 citations inherited from other databases, this field holds the citation
 as ingested from the other databases.
 
-**ArticleTitle:** The title of a journal or book chapter article.
+**ArticleTitle** The title of a journal or book chapter article.
 
-**BookTitle:** The title of a book or journal
+**BookTitle** The title of a book or journal
 
-**Volume:** The volume number of a journal or the volume number of a
+**Volume** The volume number of a journal or the volume number of a
 book in a set. A set of books is comprised of a fixed number of volumes
 and normally have ISBN numbers, not ISSN numbers. Book sets are often
 published simultaneously, but not necessarily. For instance, many
@@ -2364,19 +1395,19 @@ floras, such as *The* *Flora of North America north of* and *Flora
 Europaea*, consist of a set number of volumes planned in advance but
 published over a period of years.
 
-**Issue:** Journal issue number, normally included only if issues are
+**Issue** Journal issue number, normally included only if issues are
 independently paginated.
 
-**Pages:** Page numbers for journal or book chapter articles, or the
+**Pages** Page numbers for journal or book chapter articles, or the
 number of pages in theses, dissertations, and reports.
 
-**CitationNumber:** A citation or article number used in lieu of page
+**CitationNumber** A citation or article number used in lieu of page
 numbers for digital or online publications, typically used in
 conjunction with the DOI. For example, journals published by the
 American Geophysical Union since 1999 use citation numbers rather than
 page numbers.
 
-**DOI:** Digital Object Identifier. A unique identifier assigned to
+**DOI** Digital Object Identifier. A unique identifier assigned to
 digital publications. The DOI consists of a prefix and suffix separated
 by a slash. The portion before the slash stands for the publisher and is
 assigned by the International DOI Foundation. For example, 10.1029 is
@@ -2391,16 +1422,16 @@ installed. An example of CitationNumber and DOI:
     past 16,000 years, Paleoceanography 18(1):\ **1020.
     DOI:10.1029/2002PA000768.**
 
-**NumVolumes:** Number of volumes in a set of books. Used when the
+**NumVolumes** Number of volumes in a set of books. Used when the
 entire set is referenced. An example of NumVolumes and Edition:
 
     Wilson, D. E., and D. M. Reeder. 2005. Mammal species of the world:
     a taxonomic and geographic reference. **Third edition. 2 volumes**.
     The Johns Hopkins University Press, Baltimore, Maryland, USA.
 
-**Edition:** Edition of a publication.
+**Edition** Edition of a publication.
 
-**VolumeTitle:** Title of a book volume in a set. Used if the individual
+**VolumeTitle** Title of a book volume in a set. Used if the individual
 volume is referenced. Example of Volume and VolumeTitle:
 
     Flora of North America Editorial Committee. 2002. Flora of North
@@ -2408,7 +1439,7 @@ volume is referenced. Example of Volume and VolumeTitle:
     Liliales and Orchidales**. Oxford University Press, New York, New
     York, USA.
 
-**SeriesTitle:** Title of a book series. Book series consist of a series
+**SeriesTitle** Title of a book series. Book series consist of a series
 of books, typically published at irregular intervals on sometimes
 related but different topics. The number of volumes in a series is
 typically open ended. Book series are often assigned ISSN numbers as
@@ -2425,22 +1456,22 @@ example of SeriesTitle and SeriesVolume:
     continental isotopic records. **Geophysical Monograph 78**. American
     Geophysical Union, Washington, D.C., USA.
 
-**SeriesVolume:** Volume number in a series.
+**SeriesVolume** Volume number in a series.
 
-**Publisher:** Publisher, including commercial publishing houses,
+**Publisher** Publisher, including commercial publishing houses,
 university presses, government agencies, and non-governmental
 organizations, generally the owner of the copyright.
 
-**City:** City in which the publication was published. The first city if
+**City** City in which the publication was published. The first city if
 a list is given.
 
-**State:** State or province in which the publication was published.
+**State** State or province in which the publication was published.
 Used for the and , not used for many countries.
 
-**Country:** Country in which the publication was published, generally
+**Country** Country in which the publication was published, generally
 the complete country name, but «» for the .
 
-**OriginalLanguage:** The original language if the publication or
+**OriginalLanguage** The original language if the publication or
 bibliographic citation is translated from another language or
 transliterated from a non-Latin character set. Field not needed for
 non-translated publications in languages using the Latin character set.
@@ -2451,7 +1482,7 @@ English and the BookTitle (journal name) is transliterated from Russian:
     Highland. Vestnik Moskovskogo Universiteta. Series 5. Geography
     6:54-60 [in **Russian**].
 
-**Notes:** Free form notes or comments about the publication, which may
+**Notes** Free form notes or comments about the publication, which may
 be added parenthetically to the citation.
 
 Table: PublicationTypes
@@ -2468,9 +1499,9 @@ Lookup table of Publication Types. This table is referenced by the
 | PubType                       | Text           |      |     |
 +-------------------------------+----------------+------+-----+
 
-**PubTypeID:** An arbitrary Publication Type identification number.
+**PubTypeID** An arbitrary Publication Type identification number.
 
-**PubType:** Publication Type. The database has the following types:
+**PubType** Publication Type. The database has the following types:
 
 -  Legacy Legacy citation ingested from another database and not parsed
        into separate fields
@@ -3401,255 +2432,6 @@ Other Edited Publication
 | ArticleTitle                   | Rest of citation                                                                         |
 +--------------------------------+------------------------------------------------------------------------------------------+
 
-Table: RelativeAgePublications
-------------------------------
-
-This table stores Publications in which Relative Ages are reported for
-CollectionUnits.
-
-+--------------------------------------+----------------+----------+----------------+
-| **Table: RelativeAgePublications**   |
-+--------------------------------------+----------------+----------+----------------+
-| RelativeAgeID                        | Long Integer   | PK, FK   | RelativeAges   |
-+--------------------------------------+----------------+----------+----------------+
-| PublicationID                        | Long Integer   | PK, FK   | Publications   |
-+--------------------------------------+----------------+----------+----------------+
-
-**RelativeAgeID (Primary Key, Foreign Key):** Relative Ages
-identification number. Field links to the
-`RelativeAges <#_Table:_RelativeAges>`__ table.
-
-**PublicationID (Primary Key, Foreign Key):** Publication identification
-number. Field links to `Publications <#_Table:_Publications>`__ table.
-
-Table: RelativeAges
--------------------
-
-Lookup table of RelativeAges. Table is referenced by the
-`RelativeChronology <#_Table:_RelativeChronology>`__ table.
-
-+---------------------------+----------------+------+---------------------+
-| **Table: RelativeAges**   |
-+---------------------------+----------------+------+---------------------+
-| RelativeAgeID             | Long Integer   | PK   |                     |
-+---------------------------+----------------+------+---------------------+
-| RelativeAgeUnitID         | Long Integer   | FK   | RelativeAgeUnits    |
-+---------------------------+----------------+------+---------------------+
-| RelativeAgeScaleID        | Long Integer   | FK   | RelativeAgeScales   |
-+---------------------------+----------------+------+---------------------+
-| RelativeAge               | Text           |      |                     |
-+---------------------------+----------------+------+---------------------+
-| C14AgeYounger             | Double         |      |                     |
-+---------------------------+----------------+------+---------------------+
-| C14AgeOlder               | Double         |      |                     |
-+---------------------------+----------------+------+---------------------+
-| CalAgeYounger             | Double         |      |                     |
-+---------------------------+----------------+------+---------------------+
-| CalAgeOlder               | Double         |      |                     |
-+---------------------------+----------------+------+---------------------+
-| Notes                     | Memo           |      |                     |
-+---------------------------+----------------+------+---------------------+
-
-**RelativeAgeID (Primary Key):** An arbitrary Relative Age
-identification number.
-
-**RelativeAgeUnitID (Foreign Key):** Relative Age Unit (e.g. «Marine
-isotope stage», «Land mammal age»). Field links to the
-`RelativeAgeUnits <#_Table:_RelativeAgeUnits>`__ lookup table.
-
-**RelativeAgeScaleID (Foreign Key):** Relative Age Scale (e.g. «Geologic
-time scale», «Marine isotope stages»). Field links to the
-`RelativeAgeScales <#_Table:_RelativeAgeScales>`__ lookup table.
-
-**RelativeAge:** Relative Age (e.g. «Rancholabrean», a land mammal age;
-«MIS 11», marine isotope stage 11).
-
-**C14AgeYounger:** Younger age of the Relative Age unit in :sup:`14`\ C
-yr B.P. Applies only to Relative Age units within the radiocarbon time
-scale.
-
-**C14AgeOlder:** Older age of the Relative Age unit in :sup:`14`\ C yr
-B.P. Applies only to Relative Age units within the radiocarbon time
-scale.
-
-**CalAgeYounger:** Younger age of the Relative Age unit in calendar
-years.
-
-**CalAgeOlder:** Older age of the Relative age unit in calendar years.
-
-**Notes:** Free form notes or comments about Relative Age unit.
-
-SQL Example
-~~~~~~~~~~~
-
-The following query gives the Relative Ages for the «North American land
-mammal ages». The Relative Age Unit for each of these is «Land mammal
-age». Commas were added to the ages in the query result to make them
-more readable.
-
-.. code-block:: sql
-   :linenos:
-
-   SELECT RelativeAges.RelativeAge, RelativeAges.CalAgeYounger,
-   RelativeAges.CalAgeOlder
-
-   FROM RelativeAgeScales INNER JOIN RelativeAges ON
-   RelativeAgeScales.RelativeAgeScaleID = RelativeAges.RelativeAgeScaleID
-
-   WHERE (((RelativeAgeScales.RelativeAgeScale)="North American land mammal ages"));
-
-Result:
-
-+--------------------+---------------------+-------------------+
-| **RelativeAge**    | **CalAgeYounger**   | **CalAgeOlder**   |
-+--------------------+---------------------+-------------------+
-| Rancholabrean      | 11,800              | 150,000           |
-+--------------------+---------------------+-------------------+
-| Irvingtonian       | 150,000             | 1,900,000         |
-+--------------------+---------------------+-------------------+
-| Irvingtonian I     | 850,000             | 1,900,000         |
-+--------------------+---------------------+-------------------+
-| Irvingtonian II    | 400,000             | 850,000           |
-+--------------------+---------------------+-------------------+
-| Irvingtonian III   | 150,000             | 400,000           |
-+--------------------+---------------------+-------------------+
-| Blancan            | 1,900,000           | 4,900,000         |
-+--------------------+---------------------+-------------------+
-| Blancan I          | 4,620,000           | 4,900,000         |
-+--------------------+---------------------+-------------------+
-| Blancan II         | 4,100,000           | 4,620,000         |
-+--------------------+---------------------+-------------------+
-| Blancan III        | 3,000,000           | 4,100,000         |
-+--------------------+---------------------+-------------------+
-| Blancan IV         | 2,500,000           | 3,000,000         |
-+--------------------+---------------------+-------------------+
-| Blancan V          | 1,900,000           | 2,500,000         |
-+--------------------+---------------------+-------------------+
-
-Table: RadiocarbonCalibration
------------------------------
-
-Radiocarbon calibraton table. This table is intended for quick
-calibraton of age-model radiocarbon dates. These calibrated dates are
-for perusal and data exploration only. Please see Section *2.5* for a
-full discussion.
-
-+-------------------------------------+----------------+------+-----+
-| **Table: RadiocarbonCalibration**                                 |
-+-------------------------------------+----------------+------+-----+
-| C14yrBP                             | Long Integer   | PK   |     |
-+-------------------------------------+----------------+------+-----+
-| CalyrBP                             | Long Integer   |      |     |
-+-------------------------------------+----------------+------+-----+
-
-**C14yrBP:** Age in radiocarbon years BP. The range is -100 to 45,000 by
-1-year increments.
-
-**CalyrBP:** Age in calibrated radiocarbon years BP.
-
-Table: RelativeAgeScales
-------------------------
-
-Lookup table of Relative Age Scales. Table is referenced by the
-`RelativeAges <#_Table:_RelativeAges>`__ table.
-
-+--------------------------------+----------------+------+-----+
-| **Table: RelativeAgeScales**                                 |
-+--------------------------------+----------------+------+-----+
-| RelativeAgeScaleID             | Long Integer   | PK   |     |
-+--------------------------------+----------------+------+-----+
-| RelativeAgeScale               | Text           |      |     |
-+--------------------------------+----------------+------+-----+
-
-**RelativeAgeScaleID (Primary Key):** An arbitrary Relative Age Scale
-identification number.
-
-**RelativeAgeScale:** Relative Age Scale. The table stores the following
-Relative Age Scales:
-
--  Archaeological time scale
-
--  Geologic time scale
-
--  Geomagnetic polarity time scale
-
--  Marine isotope stages
-
--  North American land mammal ages
-
--  Quaternary event classification
-
-   1. .. rubric:: Table: RelativeAgeUnits
-         :name: table-relativeageunits
-
-Lookup table of RelativeAgeUnits. Table is referenced by the
-`RelativeAges <#_Table:_RelativeAges>`__ table.
-
-+-------------------------------+----------------+------+-----+
-| **Table: RelativeAgeUnits**                                 |
-+-------------------------------+----------------+------+-----+
-| RelativeAgeUnitID             | Long Integer   | PK   |     |
-+-------------------------------+----------------+------+-----+
-| RelativeAgeUnit               | Text           |      |     |
-+-------------------------------+----------------+------+-----+
-
-**RelativeAgeUnitID (Primary Key):** An arbitrary Relative Age Unit
-identification number.
-
-**RelativeAgeUnit:** Relative Age Unit. Below are the Relative Age Units
-for the «Geologic time scale» with an example Relative Age.
-
-+---------------------------+---------------------------+
-| **Geologic time scale**                               |
-+---------------------------+---------------------------+
-| **RelativeAgeUnit**       | **RelativeAge Example**   |
-+---------------------------+---------------------------+
-| Period                    | Quaternary                |
-+---------------------------+---------------------------+
-| Epoch                     | Pleistocene               |
-+---------------------------+---------------------------+
-| Stage                     | Middle Pleistocene        |
-+---------------------------+---------------------------+
-| Informal stage            | Middle Holocene           |
-+---------------------------+---------------------------+
-
-    «Period», «Epoch», and «Stage» are defined by the International
-    Commission on Statigraphy. An «Informal stage» is defined in
-    Neotoma.
-
-Table: RelativeChronology
--------------------------
-
-This table stores relative chronologic data. Relative Ages are assigned
-to Analysis Units, The Relative Age data along with any possible
-`Geochronology <#_Table:_Geochronology>`__ and
-`Tephrachronology <#_Table:_Tephrachronology>`__ data are used to create
-a chronology.
-
-+---------------------------------+----------------+------+-----------------+
-| **Table: RelativeChronology**                                             |
-+---------------------------------+----------------+------+-----------------+
-| RelativeChronID                 | Long Integer   | PK   |                 |
-+---------------------------------+----------------+------+-----------------+
-| AnalysisUnitID                  | Long Integer   | FK   | AnalysisUnits   |
-+---------------------------------+----------------+------+-----------------+
-| RelativeAgeID                   | Long Integer   | FK   | RelativeAges    |
-+---------------------------------+----------------+------+-----------------+
-| Notes                           | Memo           |      |                 |
-+---------------------------------+----------------+------+-----------------+
-
-**RelativeChronID (Primary Key):** An arbitrary Relative Chronology
-identification number.
-
-**AnalysisUnitID (Foreign Key):** Analysis Unit identification number.
-Field links to the `AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
-
-**RelativeAgeID (Foreign Key):** Relative Age identification number.
-Field links to the `RelativeAges <#_Table:_RelativeAges>`__ lookup
-table.
-
-**Notes:** Free form notes or comments.
-
 Table: RepositoryInstitutions
 -----------------------------
 
@@ -3669,11 +2451,11 @@ specimens. Table is referenced by the
 | Notes                               | Memo           |      |     |
 +-------------------------------------+----------------+------+-----+
 
-**RepositoryID (PrimaryKey):** An arbitrary Repository identification
+**RepositoryID (PrimaryKey)** An arbitrary Repository identification
 number. Repositories include museums, university departments, and
 various governmental agencies.
 
-**Acronym:** A unique acronym for the repository. Many repositories have
+**Acronym** A unique acronym for the repository. Many repositories have
 well-established acronyms (e.g. AMNH = of Natural History); however,
 there is no official list. Various acronyms have been used for some
 institutions, and in some cases the same acronym has been used for
@@ -3685,9 +2467,9 @@ Neotoma, two of these institutions were assigned different acronyms,
 ones that have been used for them in other publications: CM – Carnegie
 Museum of Natural History, CLM – Cleveland Museum of Natural History.
 
-**Repository:** The full name of the repository.
+**Repository** The full name of the repository.
 
-**Notes:** Free form notes or comments about the repository, especially
+**Notes** Free form notes or comments about the repository, especially
 notes about name changes, closures, and specimen transfers. In some
 cases, it is known that the specimens were transferred, but their
 current disposition may be uncertain.
@@ -3712,24 +2494,25 @@ the table.
 | Notes                            | Memo           |          |                           |
 +----------------------------------+----------------+----------+---------------------------+
 
-**DatasetID (Primary Key, Foreign Key):** Dataset identification number.
+**DatasetID (Primary Key, Foreign Key)** Dataset identification number.
 Field links to the `Datasets <#table-datasets>`__ table.
 
-**RepositoryID (Primary Key, Foreign Key):** Repository identification
+**RepositoryID (Primary Key, Foreign Key)** Repository identification
 number. Field links to the
 `RepositoryInstitutions <#_Table:_RepositoryInstitutions>`__ lookup
 table.
 
-**Notes:** Free form notes or comments about the disposition of the
+**Notes** Free form notes or comments about the disposition of the
 specimens.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This query lists the repositories for specimens from the Kimmswick site.
 
 .. code-block:: sql
    :linenos:
+
    SELECT Sites.SiteName, CollectionUnits.CollUnitName,
    RepositoryInstitutions.Repository
 
@@ -3778,25 +2561,25 @@ Chronology.
 | AgeOlder                | Double         |      |                |
 +-------------------------+----------------+------+----------------+
 
-**SampleAgeID (Primary Key):** An arbitrary Sample Age identification
+**SampleAgeID (Primary Key)** An arbitrary Sample Age identification
 number.
 
-**SampleID (Foreign Key):** Sample identification number. Field links to
+**SampleID (Foreign Key)** Sample identification number. Field links to
 the `Samples <#_Table:_Samples>`__ table.
 
-**ChronologyID (Foreign Key):** Chronology identification number. Field
+**ChronologyID (Foreign Key)** Chronology identification number. Field
 links to the `Chronologies <#_Table:_Chronologies>`__ table.
 
-**Age:** Age of the sample
+**Age** Age of the sample
 
-**AgeYounger:** Younger error estimate of the age. The definition of
+**AgeYounger** Younger error estimate of the age. The definition of
 this estimate is an attribute of the Chronology. Many ages do not have
 explicit error estimates assigned.
 
-**AgeOlder:** Older error estimate of the age.
+**AgeOlder** Older error estimate of the age.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This query lists the Sample Ages for the default Chronologies for «».
 The CollectionUnit.Handle indicates that there is only one Collection
@@ -3806,6 +2589,7 @@ BP».
 
 .. code-block:: sql
    :linenos:
+
    SELECT Sites.SiteName, CollectionUnits.Handle, SampleAges.Age,
    AgeTypes.AgeType
 
@@ -3861,16 +2645,16 @@ This table lists the Sample Analysts.
 | AnalystOrder                | Long Integer   |      |            |
 +-----------------------------+----------------+------+------------+
 
-**AnalystID (Primary Key):** An arbitrary Sample Analyst identification
+**AnalystID (Primary Key)** An arbitrary Sample Analyst identification
 number.
 
-**SampleID (Foreign Key):** Sample identification number. Field links to
+**SampleID (Foreign Key)** Sample identification number. Field links to
 the `Samples <#_Table:_Samples>`__ table.
 
-**ContactID (Foreign Key):** Contact identification number. Field links
+**ContactID (Foreign Key)** Contact identification number. Field links
 to the `Contacts <#_Table:_Contacts>`__ table.
 
-**AnalystOrder:** Order in which Sample Analysts are listed if more than
+**AnalystOrder** Order in which Sample Analysts are listed if more than
 one (rare).
 
 Table: SampleKeywords
@@ -3887,14 +2671,14 @@ pollen surface samples.
 | KeywordID                   | Long Integer   | PK, FK   | Keywords   |
 +-----------------------------+----------------+----------+------------+
 
-**SampleID (Primary Key, Foreign Key):** Sample identification number.
+**SampleID (Primary Key, Foreign Key)** Sample identification number.
 Field links to the `Samples <#_Table:_Samples>`__ table.
 
-**KeywordID (Primary Key, Foreign Key):** Keyword identification number.
+**KeywordID (Primary Key, Foreign Key)** Keyword identification number.
 Field links to the `Keywords <#table-keywords>`__ lookup table.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This query provides a list of modern pollen surface samples from «».
 Listed are the Site Name, Collection Type, Contact person, and
@@ -4007,32 +2791,32 @@ belonging to a pollen dataset, the other to a plant macrofossil dataset.
 | Notes                | Memo           |      |                 |
 +----------------------+----------------+------+-----------------+
 
-**SampleID (Primary Key):** An arbitrary Sample identification number.
+**SampleID (Primary Key)** An arbitrary Sample identification number.
 
-**AnalysisUnitID (Foreign Key):** Analysis Unit identification number.
+**AnalysisUnitID (Foreign Key)** Analysis Unit identification number.
 Field links to the `AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
 
-**DatasetID (Foreign Key):** Dataset identification number. Field links
+**DatasetID (Foreign Key)** Dataset identification number. Field links
 to the `Datasets <#table-datasets>`__ table.
 
-**SampleName:** Sample name if any.
+**SampleName** Sample name if any.
 
-**AnalysisDate:** Date of analysis.
+**AnalysisDate** Date of analysis.
 
-**LabNumber:** Laboratory number for the sample. A special case regards
+**LabNumber** Laboratory number for the sample. A special case regards
 geochronologic samples, for which the LabNumber is the number, if any,
 assigned by the submitter, not the number assigned by the radiocarbon
 laboratory, which is in the `Geochronology <#_Table:_Geochronology>`__
 table.
 
-**PreparationMethod:** Description, notes, or comments on preparation
+**PreparationMethod** Description, notes, or comments on preparation
 methods. For faunal samples, notes on screening methods or screen size
 are stored here.
 
-**Notes:** Free form note or comments about the sample.
+**Notes** Free form note or comments about the sample.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This query provides a list of samples from «». The Collection Unit Name,
 Analysis Unit Name, Dataset Type, and Preparation Methods are listed.
@@ -4126,23 +2910,23 @@ This table stores hyperlinks to jpeg images of sites.
 | SiteImage               | Hyperlink      |      |            |
 +-------------------------+----------------+------+------------+
 
-**SiteImageID (Primary Key):** An arbitrary Site Image identification
+**SiteImageID (Primary Key)** An arbitrary Site Image identification
 number.
 
-**SiteID (Foreign Key):** Site identification number. Field links to the
+**SiteID (Foreign Key)** Site identification number. Field links to the
 `Sites <#_Table:_Sites_1>`__ table.
 
-**ContactID (Foreign Key):** Contact identification number for image
+**ContactID (Foreign Key)** Contact identification number for image
 attribution.
 
-**Caption:** Caption for the image.
+**Caption** Caption for the image.
 
-**Credit:** Credit for the image. If null, the credit is formed from the
+**Credit** Credit for the image. If null, the credit is formed from the
 ContactID.
 
-**Date:** Date of photograph or image.
+**Date** Date of photograph or image.
 
-**SiteImage:** Hyperlink to a URL for the image.
+**SiteImage** Hyperlink to a URL for the image.
 
 Table: Sites
 ------------
@@ -4185,9 +2969,9 @@ exact location.
 | Notes              | Memo           |      |     |
 +--------------------+----------------+------+-----+
 
-**SiteID (Primary Key):** An arbitrary Site identification number.
+**SiteID (Primary Key)** An arbitrary Site identification number.
 
-**SiteName:** Name of the site. Alternative names, including
+**SiteName** Name of the site. Alternative names, including
 archaeological site numbers, are placed in square brackets, for example:
 
 -  New #4 [Lloyd's Rock Hole]
@@ -4222,22 +3006,22 @@ archaeological site numbers, are placed in square brackets, for example:
 
 -  (US:)
 
-**LongitudeEast:** East bounding longitude for a site.
+**LongitudeEast** East bounding longitude for a site.
 
-**LatitudeNorth:** North bounding latitude for a site.
+**LatitudeNorth** North bounding latitude for a site.
 
 **LongitudeWest**: West bounding longitude for a site.
 
-**LatitudeSouth:** South bounding latitude for a site.
+**LatitudeSouth** South bounding latitude for a site.
 
-**Altitude:** Altitude of a site in meters.
+**Altitude** Altitude of a site in meters.
 
-**Area:** Area of a site in hectares.
+**Area** Area of a site in hectares.
 
-**SiteDescription:** Free form description of a site, including such
+**SiteDescription** Free form description of a site, including such
 information as physiography and vegetation around the site.
 
-**Notes:** Free form notes or comments about the site.
+**Notes** Free form notes or comments about the site.
 
 Table: SiteGeoPolitical
 -----------------------
@@ -4254,18 +3038,18 @@ This table lists the GeoPolitical units in which sites occur.
 | GeoPoliticalID                | Long Integer   | FK   | GeoPoliticalUnits   |
 +-------------------------------+----------------+------+---------------------+
 
-**SiteGeoPoliticalID (Primary Key):** An arbitrary Site GeoPolitical
+**SiteGeoPoliticalID (Primary Key)** An arbitrary Site GeoPolitical
 identification number.
 
-**SiteID (Foreign Key):** Site identification number. Field links to the
+**SiteID (Foreign Key)** Site identification number. Field links to the
 `Sites <#_Table:_Sites_1>`__ table.
 
-**GeoPoliticalID (Foreign Key):** GeoPolitical identification number.
+**GeoPoliticalID (Foreign Key)** GeoPolitical identification number.
 Field links to the `GeoPoliticalUnits <#_Table:_GeoPoliticalUnits>`__
 lookup table.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 The query in Example 2.8.1 lists the GeoPoliticalUnits for «», one unit
 to a record. This query lists them in a single record.
@@ -4301,7 +3085,7 @@ Result:
 +----------------+------------------------------------------+---------------------------------------------+---------------------------------------------+
 
  SQL Example
-~~~~~~~~~~~~
+`````````````````````````````
 
 The problem with the query above is that if a site has less than three
 GeoPolitical Names, the result will return empty. For example, «» has no
@@ -4310,6 +3094,7 @@ above query. A solution to this problem is to create and save separate
 queries for the three ranks:
 
 Query GeoPol1:
+
 .. code-block:: sql
    :linenos:
 
@@ -4322,6 +3107,7 @@ Query GeoPol1:
    WHERE (((GeoPoliticalUnits.Rank)=1));
 
 Query GeoPol2:
+
 .. code-block:: sql
    :linenos:
 
@@ -4334,6 +3120,7 @@ Query GeoPol2:
    WHERE (((GeoPoliticalUnits.Rank)=2));
 
 Query GeoPol3:
+
 .. code-block:: sql
    :linenos:
 
@@ -4369,7 +3156,7 @@ Result:
 +----------------+--------------------------------+--------------------------------+--------------------------------+
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 The saved queries from the example above can be linked with tables in a
 more complicated query. This query lists all the pollen sites in the
@@ -4430,7 +3217,7 @@ taxa dated, this protocol is not enforced, and the field is not linked
 to the taxa table.
 
 +-----------------------+---------+------+--------------------+
-| **Table: Synonyms**   |
+| **Table: Synonyms**                                         |
 +-----------------------+---------+------+--------------------+
 | SpecimenDateID        | int     | PK   |                    |
 +-----------------------+---------+------+--------------------+
@@ -4445,23 +3232,23 @@ to the taxa table.
 | Notes                 | ntext   |      |                    |
 +-----------------------+---------+------+--------------------+
 
-**SpecimenDateID (Primary Key):** An arbitrary specicimen date
+**SpecimenDateID (Primary Key)** An arbitrary specicimen date
 ID
 
-**GeochronID (Foreign Key):** Geochronologic identification number.
+**GeochronID (Foreign Key)** Geochronologic identification number.
 Field links to the `Geochronology <#_Table:_Geochronology>`__ table.
 
-**TaxonID (Foreign Key):** Accepted name in Neotoma. Field links to
+**TaxonID (Foreign Key)** Accepted name in Neotoma. Field links to
 `Taxa <#_Table:_Taxa>`__ table.
 
-**VariableElementID (Foreign Key):** Variable Element identification
+**VariableElementID (Foreign Key)** Variable Element identification
 number. Field links to the
 `VariableElements <#_Table:_VariableElements>`__ lookup table.
 
-**SampleID (Primary Key, Foreign Key):** Sample ID number. Field links
+**SampleID (Primary Key, Foreign Key)** Sample ID number. Field links
 to the `Samples <#_Table:_Samples>`__ table.
 
-**Notes:** Free form notes or comments about dated specimen.
+**Notes** Free form notes or comments about dated specimen.
 
 Table: Synonyms
 ---------------
@@ -4472,7 +3259,7 @@ complete taxonomic synonymy, but rather to list synonyms commonly used
 in recent literature.
 
 +-----------------------+----------------+------+----------------+
-| **Table: Synonyms**   |
+| **Table: Synonyms**                                            |
 +-----------------------+----------------+------+----------------+
 | SynonymID             | Long Integer   | PK   |                |
 +-----------------------+----------------+------+----------------+
@@ -4487,20 +3274,20 @@ in recent literature.
 | Notes                 | Memo           |      |                |
 +-----------------------+----------------+------+----------------+
 
-**SynonymID (Primary Key):** An arbitrary synonym identification number.
+**SynonymID (Primary Key)** An arbitrary synonym identification number.
 
-**SynonymName:** Name of the synonym.
+**SynonymName** Name of the synonym.
 
-**TaxonID (Foreign Key):** Accepted name in Neotoma. Field links to
+**TaxonID (Foreign Key)** Accepted name in Neotoma. Field links to
 `Taxa <#_Table:_Taxa>`__ table.
 
-**PublicationID (Foreign Key):** Published authority for synonymy. Field
+**PublicationID (Foreign Key)** Published authority for synonymy. Field
 links to `Publications <#_Table:_Publications>`__ table.
 
-**SynonymTypeID (Foreign Key):** Type of synonym. Field links to the
+**SynonymTypeID (Foreign Key)** Type of synonym. Field links to the
 `SynonymTypes <#_Table:_SynonymTypes>`__ lookup table.
 
-**Notes:** Free form notes or comments about the synonymy.
+**Notes** Free form notes or comments about the synonymy.
 
 Table: SynonymTypes
 -------------------
@@ -4509,17 +3296,17 @@ Lookup table of Synonym Types. Table is referenced by the
 `Synonyms <#_Table:_Synonyms>`__ table.
 
 +---------------------------+----------------+------+-----+
-| **Table: SynonymTypes**   |
+| **Table: SynonymTypes**                                 |
 +---------------------------+----------------+------+-----+
 | SynonymTypeID             | Long Integer   | PK   |     |
 +---------------------------+----------------+------+-----+
 | SynonymType               | Text           |      |     |
 +---------------------------+----------------+------+-----+
 
-**SynonymTypeID (Primary Key):** An arbitrary Synonym Type
+**SynonymTypeID (Primary Key)** An arbitrary Synonym Type
 identification number.
 
-**SynonymType:** Synonym type. Below are some examples:
+**SynonymType** Synonym type. Below are some examples:
 
 -  **nomenclatural, homotypic, or objective synonym** – a synonym that
    unambiguously refers to the same taxon, particularly one with the
@@ -4629,21 +3416,24 @@ identification number.
    level, specimens assigned to this family can be further assigned to
    the genus level because the family is monogeneric.
 
-   1. .. rubric:: SQL Example
-         :name: sql-example-24
+SQL Example
+`````````````````````````````
 
 This query provides the preferred synonym in the database for «Bison
 alleni» along with the published authority for the synonymy and the
 notes in the database on the rationale for the synonymy. The notes
 indicate some potential problems with this synonymy.
 
-SELECT Synonyms.SynonymName, Taxa.TaxonName, Publications.Citation,
-Synonyms.Notes
+.. code-block:: sql
+   :linenos:
 
-FROM Publications INNER JOIN (Taxa INNER JOIN Synonyms ON Taxa.TaxonID =
-Synonyms.TaxonID) ON Publications.PublicationID = Synonyms.PublicationID
+   SELECT Synonyms.SynonymName, Taxa.TaxonName, Publications.Citation,
+   Synonyms.Notes
 
-WHERE (((Synonyms.SynonymName)="Bison alleni"));
+   FROM Publications INNER JOIN (Taxa INNER JOIN Synonyms ON Taxa.TaxonID =
+   Synonyms.TaxonID) ON Publications.PublicationID = Synonyms.PublicationID
+
+   WHERE (((Synonyms.SynonymName)="Bison alleni"));
 
 Result:
 
@@ -4661,7 +3451,7 @@ taxa; however, some are biometric measures and some are physical
 parameters.
 
 +-------------------+----------------+------+------------------+
-| **Table: Taxa**   |
+| **Table: Taxa**                                              |
 +-------------------+----------------+------+------------------+
 | TaxonID           | Long Integer   | PK   |                  |
 +-------------------+----------------+------+------------------+
@@ -4682,9 +3472,9 @@ parameters.
 | Notes             | Memo           |      |                  |
 +-------------------+----------------+------+------------------+
 
-**TaxonID (Primary Key):** An arbitrary Taxon identification number.
+**TaxonID (Primary Key)** An arbitrary Taxon identification number.
 
-**TaxonCode:** A code for the Taxon. These codes are useful for other
+**TaxonCode** A code for the Taxon. These codes are useful for other
 software or output for which the complete name is too long. Because of
 the very large number of taxa, codes can be duplicated for different
 Taxa Groups. In general, these various Taxa Groups are analyzed
@@ -4837,7 +3627,7 @@ with the TaxaGroupID, For example:
 
 -  Bet.pol.diam *Betula* mean pollen-grain diameter
 
-**TaxonName:** Name of the taxon. Most TaxonNames are biological taxa;
+**TaxonName** Name of the taxon. Most TaxonNames are biological taxa;
 however, some are biometric measures and some are physical parameters.
 In addition, some biological taxa may have parenthetic non-Latin
 modifers, e.g. «\ *Betula* (>20 µm)» for *Betula* pollen grains >20 µm
@@ -4996,7 +3786,7 @@ two different taxa.
     applied to fauanl datasets, although it should probably be
     considered.
 
-**Author:** Author(s) of the name. Niether the pollen database nor
+**Author** Author(s) of the name. Niether the pollen database nor
 FAUNMAP stored author names, so these do not currently exist in Neotoma
 for plant and mammal names. These databases follow standard taxonomic
 references (e.g. *Flora of North America*, *Flora Europaea*, Wilson and
@@ -5004,16 +3794,16 @@ Reeder's *Mammal Species of the World*), which, of course, do cite the
 original authors. However, for beetles, the standard practice is to cite
 original author names; therefore, this field was added to Neotoma.
 
-**HigherTaxonID:** The TaxonID of the next higher taxonomic rank, for
+**HigherTaxonID** The TaxonID of the next higher taxonomic rank, for
 example, the HigherTaxonID for «\ *Bison*\ » is the TaxonID for
 «Bovidae». For «cf.'s» and «-types», the next higher rank may be much
 higher owing to the uncertainty of the identification; the HigherTaxonID
 for «cf. *Bison bison*\ » is the TaxonId for «Mammalia». The
 HigherTaxonID implements the taxonomic hierarchy in Neotoma.
 
-**Extinct:** True if the taxon is extinct, False if extant.
+**Extinct** True if the taxon is extinct, False if extant.
 
-**TaxaGroupID (Foreign Key):** The TaxaGroupID facilitates rapid
+**TaxaGroupID (Foreign Key)** The TaxaGroupID facilitates rapid
 extraction of taxa groups that are typically grouped together for
 analysis. Some of these groups contain taxa in different classes or
 phyla. For example, vascular plants include the Spermatophyta and
@@ -5021,10 +3811,10 @@ Pteridophyta; the herps include Reptilia and Amphibia; the testate
 amoebae include taxa from different phyla. Field links to the
 `TaxaGroupTypes <#_Table:_TaxaGroupTypes>`__ table.
 
-**PublicationID (Foreign Key):** Publication identification number.
+**PublicationID (Foreign Key)** Publication identification number.
 Field links to the ` <#_Table:_Publications>`__ table.
 
-**Notes:** Free form notes or comments about the Taxon.
+**Notes** Free form notes or comments about the Taxon.
 
 Table: TaxaGroupTypes
 ---------------------
@@ -5040,9 +3830,9 @@ Lookup table for Taxa Group Types. This table is referenced by the
 | TaxaGroup                   | Text   |      |     |
 +-----------------------------+--------+------+-----+
 
-**TaxaGroupID (Primary Key):** A three-letter Taxa Group code.
+**TaxaGroupID (Primary Key)** A three-letter Taxa Group code.
 
-**TaxaGroup:** The taxa group. Below are some examples:
+**TaxaGroup** The taxa group. Below are some examples:
 
 +---------------+---------------------------+
 | TaxaGroupID   | TaxaGroup                 |
@@ -5095,19 +3885,19 @@ an argon-argon date, belongs in the
 | Notes                         | Memo           |      |                 |
 +-------------------------------+----------------+------+-----------------+
 
-**TephrachronID (Primary Key):** An arbitrary Tephrachronology
+**TephrachronID (Primary Key)** An arbitrary Tephrachronology
 identification number.
 
-**AnalysisUnitID (Foreign Key):** Analysis Unit identification number.
+**AnalysisUnitID (Foreign Key)** Analysis Unit identification number.
 Field links to the ` <#_Table:_AnalysisUnits>`__ table. The tephra may
 be contained within the AnalysisUnit, especially in excavations, or the
 AnalysisUnit may be assigned specifically to the tephra, particulary
 with cores.
 
-**TephraID (Foreign Key):** Tephra identification number. Field links to
+**TephraID (Foreign Key)** Tephra identification number. Field links to
 the `Tephras <#_Table:_Tephras>`__ table.
 
-**Notes:** Free form notes or comments about the tephra.
+**Notes** Free form notes or comments about the tephra.
 
 Table: Tephras
 --------------
@@ -5138,31 +3928,31 @@ established ages. Referenced by the
 | Notes                | Memo           |      |     |
 +----------------------+----------------+------+-----+
 
-**TephraID (Primary Key):** An arbitrary Tephra identification number.
+**TephraID (Primary Key)** An arbitrary Tephra identification number.
 
-**TephraName:** Name of the tephra, e.g. «Mazama».
+**TephraName** Name of the tephra, e.g. «Mazama».
 
-**C14Age:** Age of the tephra in :sup:`14`\ C yr BP. For example,
+**C14Age** Age of the tephra in :sup:`14`\ C yr BP. For example,
 Hallett et al. (1997) provide an estimate of the age of the Mazama
 tephra based on radiocarbon dating of plant macrofossils in lake
 sediments encasing the tephra.
 
-**C14AgeYounger:** Younger age estimate of the tephra in :sup:`14`\ C yr
+**C14AgeYounger** Younger age estimate of the tephra in :sup:`14`\ C yr
 BP.
 
-**C14AgeOlder:** Older age estimate of the tephra in :sup:`14`\ C yr BP.
+**C14AgeOlder** Older age estimate of the tephra in :sup:`14`\ C yr BP.
 
-**CalAge:** Age of the tephra in cal yr BP, either calibrated
+**CalAge** Age of the tephra in cal yr BP, either calibrated
 radiocarbon years or estimated calendar years derived from another
 dating method. For example, Zdanowicz et al. (1999) identified the
 Mazama tephra in the GISP2 ice core and estimated the age from layer
 counts.
 
-**CalAgeYounger:** Younger age estimate of the tephra in cal yr BP.
+**CalAgeYounger** Younger age estimate of the tephra in cal yr BP.
 
-**CalAgeOlder:** Older age estimate of the tephra in cal yr BP.
+**CalAgeOlder** Older age estimate of the tephra in cal yr BP.
 
-**Notes:** Free form notes or comments about the tephra.
+**Notes** Free form notes or comments about the tephra.
 
 Table: Variables
 ----------------
@@ -5188,46 +3978,49 @@ Modifications. Thus, the same taxon with different measurement units
 | VariableModificationID   | Long Integer   | FK   | VariableModifications   |
 +--------------------------+----------------+------+-------------------------+
 
-**VariableID (Primary Key):** An arbitrary Variable identification
+**VariableID (Primary Key)** An arbitrary Variable identification
 number.
 
-**TaxonID (Foreign Key):** Taxon identification number. Field links to
+**TaxonID (Foreign Key)** Taxon identification number. Field links to
 the ` <#_Table:_Taxa>`__ table.
 
-**VariableElementID (Foreign Key):** Variable Element identification
+**VariableElementID (Foreign Key)** Variable Element identification
 number. Field links to the
 `VariableElements <#_Table:_VariableElements>`__ lookup table.
 
-**VariableUnitsID (Foreign Key):** Variable Units identification number.
+**VariableUnitsID (Foreign Key)** Variable Units identification number.
 Field links to the `VariableUnits <#_Table:_VariableUnits>`__ lookup
 table.
 
-**VariableContextID (Foreign Key):** Variable Context identification
+**VariableContextID (Foreign Key)** Variable Context identification
 number. Field links to the
 `VariableContexts <#_Table:_VariableContexts>`__ lookup table.
 
-**VarialbeModificationID (Foreign Key):** Variable Modification
+**VarialbeModificationID (Foreign Key)** Variable Modification
 identification number. Field links to the
 `VariableModifications <#_Table:_VariableModifications>`__ lookup table.
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This query lists the Variables for «\ *Zea mays*\ » with elements and
 measurement units.
 
-SELECT Taxa.TaxonName, VariableElements.VariableElement,
-VariableUnits.VariableUnits
+.. code-block:: sql
+   :linenos:
 
-FROM VariableUnits INNER JOIN (VariableElements INNER JOIN (Taxa INNER
-JOIN Variables ON Taxa.TaxonID = Variables.TaxonID) ON
-VariableElements.VariableElementID = Variables.VariableElementID) ON
-VariableUnits.VariableUnitsID = Variables.VariableUnitsID
+   SELECT Taxa.TaxonName, VariableElements.VariableElement,
+   VariableUnits.VariableUnits
 
-GROUP BY Taxa.TaxonName, VariableElements.VariableElement,
-VariableUnits.VariableUnits
+   FROM VariableUnits INNER JOIN (VariableElements INNER JOIN (Taxa INNER
+   JOIN Variables ON Taxa.TaxonID = Variables.TaxonID) ON
+   VariableElements.VariableElementID = Variables.VariableElementID) ON
+   VariableUnits.VariableUnitsID = Variables.VariableUnitsID
 
-HAVING (((Taxa.TaxonName)="Zea mays"));
+   GROUP BY Taxa.TaxonName, VariableElements.VariableElement,
+   VariableUnits.VariableUnits
+
+   HAVING (((Taxa.TaxonName)="Zea mays"));
 
 Result:
 
@@ -5246,27 +4039,30 @@ Result:
 +-----------------+-----------------------+---------------------+
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This query lists all sites with *Zea mays* pollen by designating the
 VariableElement as «pollen».
 
-SELECT Taxa.TaxonName, VariableElements.VariableElement, Sites.SiteName
+.. code-block:: sql
+   :linenos:
 
-FROM VariableElements INNER JOIN (Sites INNER JOIN (CollectionUnits
-INNER JOIN (Datasets INNER JOIN (Samples INNER JOIN ((Taxa INNER JOIN
-Variables ON Taxa.TaxonID = Variables.TaxonID) INNER JOIN Data ON
-Variables.VariableID = Data.VariableID) ON Samples.SampleID =
-Data.SampleID) ON Datasets.DatasetID = Samples.DatasetID) ON
-CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID) ON
-Sites.SiteID = CollectionUnits.SiteID) ON
-VariableElements.VariableElementID = Variables.VariableElementID
+   SELECT Taxa.TaxonName, VariableElements.VariableElement, Sites.SiteName
 
-GROUP BY Taxa.TaxonName, VariableElements.VariableElement,
-Sites.SiteName
+   FROM VariableElements INNER JOIN (Sites INNER JOIN (CollectionUnits
+   INNER JOIN (Datasets INNER JOIN (Samples INNER JOIN ((Taxa INNER JOIN
+   Variables ON Taxa.TaxonID = Variables.TaxonID) INNER JOIN Data ON
+   Variables.VariableID = Data.VariableID) ON Samples.SampleID =
+   Data.SampleID) ON Datasets.DatasetID = Samples.DatasetID) ON
+   CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID) ON
+   Sites.SiteID = CollectionUnits.SiteID) ON
+   VariableElements.VariableElementID = Variables.VariableElementID
 
-HAVING (((Taxa.TaxonName)="Zea mays") AND
-((VariableElements.VariableElement)="pollen"));
+   GROUP BY Taxa.TaxonName, VariableElements.VariableElement,
+   Sites.SiteName
+
+   HAVING (((Taxa.TaxonName)="Zea mays") AND
+   ((VariableElements.VariableElement)="pollen"));
 
 The first few lines of the result:
 
@@ -5295,45 +4091,50 @@ The first few lines of the result:
 The same result can be obtained by designating the DatasetType as
 «pollen»:
 
-SELECT Taxa.TaxonName, DatasetTypes.DatasetType, Sites.SiteName
+.. code-block:: sql
+   :linenos:
 
-FROM DatasetTypes INNER JOIN ((Taxa INNER JOIN Variables ON Taxa.TaxonID
-= Variables.TaxonID) INNER JOIN (Sites INNER JOIN (((CollectionUnits
-INNER JOIN Datasets ON CollectionUnits.CollectionUnitID =
-Datasets.CollectionUnitID) INNER JOIN Samples ON Datasets.DatasetID =
-Samples.DatasetID) INNER JOIN Data ON Samples.SampleID = Data.SampleID)
-ON Sites.SiteID = CollectionUnits.SiteID) ON Variables.VariableID =
-Data.VariableID) ON DatasetTypes.DatasetTypeID = Datasets.DatasetTypeID
+   SELECT Taxa.TaxonName, DatasetTypes.DatasetType, Sites.SiteName
 
-GROUP BY Taxa.TaxonName, DatasetTypes.DatasetType, Sites.SiteName
+   FROM DatasetTypes INNER JOIN ((Taxa INNER JOIN Variables ON Taxa.TaxonID
+   = Variables.TaxonID) INNER JOIN (Sites INNER JOIN (((CollectionUnits
+   INNER JOIN Datasets ON CollectionUnits.CollectionUnitID =
+   Datasets.CollectionUnitID) INNER JOIN Samples ON Datasets.DatasetID =
+   Samples.DatasetID) INNER JOIN Data ON Samples.SampleID = Data.SampleID)
+   ON Sites.SiteID = CollectionUnits.SiteID) ON Variables.VariableID =
+   Data.VariableID) ON DatasetTypes.DatasetTypeID = Datasets.DatasetTypeID
 
-HAVING (((Taxa.TaxonName)="Zea mays") AND
-((DatasetTypes.DatasetType)="pollen"));
+   GROUP BY Taxa.TaxonName, DatasetTypes.DatasetType, Sites.SiteName
+   HAVING (((Taxa.TaxonName)="Zea mays") AND
+   ((DatasetTypes.DatasetType)="pollen"));
 
 SQL Example
-~~~~~~~~~~~
+`````````````````````````````
 
 This example gives a list of all sites with *Bison bison antiquus* bones
 with human butchering.
 
-SELECT Taxa.TaxonName, VariableModifications.VariableModification,
-Sites.SiteName
+.. code-block:: sql
+   :linenos:
 
-FROM Sites INNER JOIN (CollectionUnits INNER JOIN (Datasets INNER JOIN
-(Samples INNER JOIN ((VariableModifications INNER JOIN (Taxa INNER JOIN
-Variables ON Taxa.TaxonID = Variables.TaxonID) ON
-VariableModifications.VariableModificationID =
-Variables.VariableModificationID) INNER JOIN Data ON
-Variables.VariableID = Data.VariableID) ON Samples.SampleID =
-Data.SampleID) ON Datasets.DatasetID = Samples.DatasetID) ON
-CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID) ON
-Sites.SiteID = CollectionUnits.SiteID
+   SELECT Taxa.TaxonName, VariableModifications.VariableModification,
+   Sites.SiteName
 
-GROUP BY Taxa.TaxonName, VariableModifications.VariableModification,
-Sites.SiteName
+   FROM Sites INNER JOIN (CollectionUnits INNER JOIN (Datasets INNER JOIN
+   (Samples INNER JOIN ((VariableModifications INNER JOIN (Taxa INNER JOIN
+   Variables ON Taxa.TaxonID = Variables.TaxonID) ON
+   VariableModifications.VariableModificationID =
+   Variables.VariableModificationID) INNER JOIN Data ON
+   Variables.VariableID = Data.VariableID) ON Samples.SampleID =
+   Data.SampleID) ON Datasets.DatasetID = Samples.DatasetID) ON
+   CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID) ON
+   Sites.SiteID = CollectionUnits.SiteID
 
-HAVING (((Taxa.TaxonName)="Bison bison antiquus") AND
-((VariableModifications.VariableModification)="human butchering"));
+   GROUP BY Taxa.TaxonName, VariableModifications.VariableModification,
+   Sites.SiteName
+
+   HAVING (((Taxa.TaxonName)="Bison bison antiquus") AND
+   ((VariableModifications.VariableModification)="human butchering"));
 
 Result:
 
@@ -5356,17 +4157,17 @@ Variable Contexts lookup table. Table is referenced by the
 `Variables <#_Table:_Variables>`__ table.
 
 +-------------------------------+----------------+------+-----+
-| **Table: VariableContexts**   |
+| **Table: VariableContexts**                                 |
 +-------------------------------+----------------+------+-----+
 | VariableContextID             | Long Integer   | PK   |     |
 +-------------------------------+----------------+------+-----+
 | VariableContext               | Text           |      |     |
 +-------------------------------+----------------+------+-----+
 
-**VariableContextID (Primary Key):** An arbitrary Variable Context
+**VariableContextID (Primary Key)** An arbitrary Variable Context
 identification number.
 
-**VariableContext:** Depositional context. Examples are:
+**VariableContext** Depositional context. Examples are:
 
 -  **anachronic** – specimen older than the primary deposit, e.g. a
    Paleozoic spore in a Holocene deposit; may be redeposited from the
@@ -5393,17 +4194,17 @@ Lookup table of Variable Elements. Table is referenced by the
 `Variables <#_Table:_Variables>`__ table.
 
 +-------------------------------+----------------+------+-----+
-| **Table: VariableElements**   |
+| **Table: VariableElements**                                 |
 +-------------------------------+----------------+------+-----+
 | VariableElementID             | Long Integer   | PK   |     |
 +-------------------------------+----------------+------+-----+
 | VariableElement               | Text           |      |     |
 +-------------------------------+----------------+------+-----+
 
-**VariableElementID (Primary Key):** An arbitrary Variable Element
+**VariableElementID (Primary Key)** An arbitrary Variable Element
 identification number.
 
-**VariableElement:** The element, part, or organ of the taxon
+**VariableElement** The element, part, or organ of the taxon
 identified. For plants, these include pollen, spores, and various
 macrofossil organs, such as «seed», «twig», «cone», and «cone bract».
 Thus, *Betula* pollen and *Betula* seeds are two different Variables.
@@ -5426,17 +4227,17 @@ Lookup table of Variable Modifications. Table is referenced by the
 `Variables <#_Table:_Variables>`__ table.
 
 +------------------------------------+----------------+------+-----+
-| **Table: VariableModifications**   |
+| **Table: VariableModifications**                                 |
 +------------------------------------+----------------+------+-----+
 | VariableModificationID             | Long Integer   | PK   |     |
 +------------------------------------+----------------+------+-----+
 | VariableModification               | Text           |      |     |
 +------------------------------------+----------------+------+-----+
 
-**VariableModificationID (Primary Key):** An arbitrary Variable
+**VariableModificationID (Primary Key)** An arbitrary Variable
 Modification identification number.
 
-**VariableModification:** Modification to a specimen. Examples of
+**VariableModification** Modification to a specimen. Examples of
 modifications to bones include «carnivore gnawed», «rodent gnawed»,
 «burned», «human butchering». Modifications to pollen grains include
 various preservation states, e.g. «1/2 grains», «degraded», «corroded»,
@@ -5456,10 +4257,10 @@ Lookup table of Variable Units. Table is referenced by the
 | VariableUnit               | Text           |      |     |
 +----------------------------+----------------+------+-----+
 
-**VariableUnitsID (Primary Key):** An arbitrary Variable Units
+**VariableUnitsID (Primary Key)** An arbitrary Variable Units
 identification number.
 
-**VariableUnit:** The units of measurement. For fauna, these are
+**VariableUnit** The units of measurement. For fauna, these are
 «present/absent», «NISP» (Number of Individual Specimens), and «MNI»
 (Minimum Number of Individals). For pollen, these are «NISP» (pollen
 counts) and «percent». Units for plant macrofossils include

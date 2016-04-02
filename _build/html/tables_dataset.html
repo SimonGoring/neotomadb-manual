@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dataset &amp; Collection Related Tables &mdash; neotoma 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html" />
+    <link rel="next" title="References Cited" href="references_cited.html" />
+    <link rel="prev" title="Chronology &amp; Age Related Tables" href="tables_chron.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dataset-collection-related-tables">
+<h1>Dataset &amp; Collection Related Tables<a class="headerlink" href="#dataset-collection-related-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aggregatedatasets">
+<h2>AggregateDatasets<a class="headerlink" href="#aggregatedatasets" title="Permalink to this headline">¶</a></h2>
+<p>Aggregate Datasets are aggregates of samples of a particular datatype.
+Some examples:</p>
+<ul class="simple">
+<li>Plant macrofossil samples from a group of packrat middens collected
+from a particular valley, mountain range, or other similarly defined
+geographic area. Each midden is from a different Site or Collection
+Unit, but they are grouped into time series for that area and are
+published as single dataset.</li>
+<li>Samples collected from 32 cutbanks along several km of , northeast .
+Each sample is from a different site, but they form a time series
+from 0-12,510 <sup>14</sup>C yr BP, and pollen, plant macrofossils, and
+beetles were published and graphed as if from a single site.</li>
+<li>A set of pollen surface samples from particular region or study that
+were published and analyzed as a single dataset and submitted to the
+database as a single dataset.</li>
+</ul>
+<p>The examples above are datasets predefined in the database. New
+aggregate datasets could be assembled for particular studies, for
+example all the pollen samples for a given time slice for a given
+geographic region.</p>
+<dl class="docutils">
+<dt><strong>AggregateDatasetID (Primary Key)</strong></dt>
+<dd>An arbitrary Aggregate Dataset identification number.</dd>
+<dt><strong>AggregateDatasetName</strong></dt>
+<dd>Name of Aggregate Dataset.</dd>
+<dt><strong>AggregateOrderTypeID (Foreign Key)</strong></dt>
+<dd>Aggregate Order Type identification number. Field links to the <a class="reference external" href="#_Table:_AggregateOrderTypes">AggregateOrderTypes</a> lookup table.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes about the Aggregate Order Type.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="datasetpublications">
+<h1>DatasetPublications<a class="headerlink" href="#datasetpublications" title="Permalink to this headline">¶</a></h1>
+<p>This table lists the publications for datasets.</p>
+<p><strong>DatasetID (Primary Key, Foreign Key)</strong> Dataset identification number.
+Field links to Dataset table.</p>
+<p><strong>PublicationID (Primary Key, Foreign Key)</strong> Publication identification
+number. Field links to <a class="reference external" href="#_Table:_Publications">Publications</a> table.</p>
+<p><strong>PrimaryPub</strong> Is «True» if the publication is the primary publication
+for the dataset.</p>
+<blockquote>
+<div>Datasets</div></blockquote>
+<hr class="docutils" />
+<p>This table stores the data for Datasets. A Dataset is the set of samples
+for a particular data type from a Collection Unit. A Collection Unit may
+have multiple Datasets for different data types, for example one dataset
+for pollen and another for plant macrofossils. Every Sample is assigned
+to a Dataset, and every Dataset is assigned to a Collection Unit.
+Samples from different Collection Units cannot be assigned to the same
+Dataset (although they may be assigned to <a class="reference external" href="#_Table:_AggregateDatasets">Aggregate
+Datasets</a>).</p>
+<p><strong>DatasetID (Primary Key)</strong> An arbitrary Dataset identification number.</p>
+<p><strong>CollectionUnitID (Foreign Key)</strong> Collection Unit identification
+number. Field links to the
+<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits</a> table.</p>
+<p><strong>DatasetTypeID (Foreign Key);</strong> Dataset Type identification number.
+Field links to the <a class="reference external" href="#_Table:_DatasetTypes">DatasetTypes</a> lookup
+table.</p>
+<p><strong>DatasetName</strong> Optional name for the Dataset.</p>
+<p><strong>Notes</strong> Free form notes or comments about the Dataset.</p>
+<p>The following query lists the Dataset Types for the site «».</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">,</span> <span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetType</span>
+
+<span class="k">FROM</span> <span class="n">DatasetTypes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">CollectionUnits</span> <span class="k">ON</span>
+<span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Datasets</span> <span class="k">ON</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetTypeID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetTypeID</span>
+
+<span class="k">WHERE</span> <span class="p">(((</span><span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>SiteName</strong></td>
+<td><strong>DatasetType</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Loss-on-ignition</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>pollen</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>geochronologic</td>
+</tr>
+</tbody>
+</table>
+<p>This query lists the plant macrofossils identified at site «Bear River
+No. 3».</p>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>SiteName</strong></td>
+<td><strong>TaxonName</strong></td>
+</tr>
+<tr class="row-even"><td>Bear River No. 3</td>
+<td>Bolboschoenus maritimus subsp. paludosus</td>
+</tr>
+<tr class="row-odd"><td>Bear River No. 3</td>
+<td>Zea mays</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="datasetsubmissions">
+<h1>DatasetSubmissions<a class="headerlink" href="#datasetsubmissions" title="Permalink to this headline">¶</a></h1>
+<p>Submissions to the database are of Datasets. Submissions may be original
+submissions, resubmissions, compilations from other databases, or
+recompilations. See the description of the
+<a class="reference external" href="#_Table:_DatasetSubmissionTypes">DatasetSubmissionTypes</a> table.</p>
+<dl class="docutils">
+<dt><strong>SubmissionID (Primary Key)</strong></dt>
+<dd>An arbitrary submission identification number.</dd>
+<dt><strong>DatasetID (Foreign Key)</strong></dt>
+<dd>Dataset identification number. Field links to the <a class="reference external" href="#table-datasets">Datasets</a> table. Datasets may occur multiple times in this table (e.g. once for the original compilation into a different database and a second time for the recompilation into Neotoma).</dd>
+<dt><strong>ProjectID (Foreign Key)</strong></dt>
+<dd>Database project responsible for the submission or compilation.</dd>
+<dt><strong>ContactID (Foreign Key)</strong></dt>
+<dd>Contact identification number. Field links to the <a class="reference external" href="#_Table:_Contacts">Contacts</a> table. The Contact is the person who submitted, resubmitted, compiled, or recompiled the data. This person is not necessarily the Dataset PI; it is the person who submitted the data or compiled the data from the literature.</dd>
+<dt><strong>SubmissionDate</strong></dt>
+<dd>Date of the submission, resubmission, compilation, or recompilation.</dd>
+<dt><strong>SubmissionTypeID (Foreign Key)</strong></dt>
+<dd>Submission Type identification number. Field links to the DatasetSubmissionsType table.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the submission.</dd>
+</dl>
+<div class="section" id="datasetsubmissiontypes">
+<h2>DatasetSubmissionTypes<a class="headerlink" href="#datasetsubmissiontypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Dataset Submission Types. Table is referenced by the
+<a class="reference external" href="#_Table:_DatasetSubmissions">DatasetSubmissions</a> table.</p>
+<dl class="docutils">
+<dt><strong>SubmissionTypeID (Primary Key)</strong></dt>
+<dd>An arbitrary Submission Type identification number.</dd>
+<dt><strong>SubmissionType</strong></dt>
+<dd><p class="first">Type of submission. The database has the following types:</p>
+<ul class="simple">
+<li>Original submission from data contributor</li>
+<li>Resubmission or revision from data contributor</li>
+<li>Compilation into a flat file database</li>
+<li>Compilation into a another relational database</li>
+<li>Recompilation or revisions to a another relational database</li>
+<li>Compilation into Neotoma from another database</li>
+<li>Recompilation into Neotoma from another database</li>
+<li>Compilation into Neotoma from primary source</li>
+<li>Recompilation into or revisions to Neotoma</li>
+</ul>
+<blockquote class="last">
+<div>The initial development of Neotoma involved merging the data from several existing databases, including FAUNMAP, the Global Pollen Database, and the North American Plant Macrofossil Database. Thus original compilation of Datasets was into one of these databases, which were then recompiled into Neotoma. The original compilation and the recompilation into Neotoma are separate submissions.</div></blockquote>
+</dd>
+</dl>
+<div class="section" id="sql-example">
+<h3>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h3>
+<p>This query gives a list of Dataset Submissions for the site «Bear River
+No. 3» ordered by date.</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetType</span><span class="p">,</span> <span class="n">Projects</span><span class="p">.</span><span class="n">ProjectName</span><span class="p">,</span>
+<span class="n">DatasetSubmissions</span><span class="p">.</span><span class="n">SubmissionDate</span><span class="p">,</span>
+<span class="n">DatasetSubmissionTypes</span><span class="p">.</span><span class="n">SubmissionType</span><span class="p">,</span> <span class="n">DatasetSubmissions</span><span class="p">.</span><span class="n">Notes</span>
+
+<span class="k">FROM</span> <span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Projects</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">DatasetTypes</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="p">(</span><span class="n">DatasetSubmissionTypes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">CollectionUnits</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Datasets</span>
+<span class="k">ON</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">INNER</span>
+<span class="k">JOIN</span> <span class="n">DatasetSubmissions</span> <span class="k">ON</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span>
+<span class="n">DatasetSubmissions</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DatasetSubmissionTypes</span><span class="p">.</span><span class="n">SubmissionTypeID</span>
+<span class="o">=</span> <span class="n">DatasetSubmissions</span><span class="p">.</span><span class="n">SubmissionTypeID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetTypeID</span> <span class="o">=</span>
+<span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetTypeID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Projects</span><span class="p">.</span><span class="n">ProjectID</span> <span class="o">=</span>
+<span class="n">DatasetSubmissions</span><span class="p">.</span><span class="n">ProjectID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span>
+
+<span class="k">WHERE</span> <span class="p">(((</span><span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;Bear River No. 3&quot;</span><span class="p">))</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">DatasetSubmissions</span><span class="p">.</span><span class="n">SubmissionDate</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="12%" />
+<col width="14%" />
+<col width="32%" />
+<col width="27%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>DatasetType</strong></td>
+<td><strong>ProjectName</strong></td>
+<td><strong>SubmissionDate</strong></td>
+<td><strong>SubmissionType</strong></td>
+<td><strong>Notes</strong></td>
+</tr>
+<tr class="row-even"><td>vertebrate fauna</td>
+<td>FAUNMAP</td>
+<td>1/31/1992</td>
+<td>Compilation into a another relational database</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>vertebrate fauna</td>
+<td>Neotoma</td>
+<td>11/24/2007</td>
+<td>Compilation into Neotoma from another database</td>
+<td>Compiled from FAUNMAP</td>
+</tr>
+<tr class="row-even"><td>mollusks</td>
+<td>Neotoma</td>
+<td>11/25/2007</td>
+<td>Compilation into Neotoma from primary source</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>plant macrofossils</td>
+<td>Neotoma</td>
+<td>11/25/2007</td>
+<td>Compilation into Neotoma from primary source</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>vertebrate fauna</td>
+<td>Neotoma</td>
+<td>11/25/2007</td>
+<td>Recompilation into or revisions to Neotoma</td>
+<td>Bison elements, fish, and birds added.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="datasettypes">
+<h2>DatasetTypes<a class="headerlink" href="#datasettypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table for Dataset Types. Table is referenced by the <a class="reference external" href="#table-datasets">Datasets</a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="30%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>DatasetTypes</strong></td>
+</tr>
+<tr class="row-even"><td>DatasetTypeID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>DatasetType</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>DatasetTypeID (Primary Key)</strong></dt>
+<dd>An arbitrary Dataset Type identification number.</dd>
+<dt><strong>DatasetType</strong></dt>
+<dd><p class="first">The Dataset type, including the following:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>geochronologic</li>
+<li>loss-on-ignition</li>
+<li>pollen</li>
+<li>plant macrofossils</li>
+<li>vertebrate fauna</li>
+<li>mollusks</li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Dataset &amp; Collection Related Tables</a><ul>
+<li><a class="reference internal" href="#aggregatedatasets">AggregateDatasets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datasetpublications">DatasetPublications</a></li>
+<li><a class="reference internal" href="#datasetsubmissions">DatasetSubmissions</a><ul>
+<li><a class="reference internal" href="#datasetsubmissiontypes">DatasetSubmissionTypes</a><ul>
+<li><a class="reference internal" href="#sql-example">SQL Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datasettypes">DatasetTypes</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="tables_chron.html" title="previous chapter">Chronology &amp; Age Related Tables</a></li>
+      <li>Next: <a href="references_cited.html" title="next chapter">References Cited</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tables_dataset.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Eric Grimm, Simon Goring.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/tables_dataset.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
