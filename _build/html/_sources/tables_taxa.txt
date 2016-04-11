@@ -20,11 +20,14 @@ schemes for organizing taxa.
 | EcolGroupID             | Text           | FK       | EcolGroupTypes   |
 +-------------------------+----------------+----------+------------------+
 
-**TaxonID (Primary Key, Foreign Key)** Taxon identification number.  The field links to the :ref:`Taxa` table.
+**TaxonID (Primary Key, Foreign Key)** 
+   Taxon identification number.  The field links to the :ref:`Taxa` table.
 
-**EcolSetID (Primary Key, Foreign Key)** Ecological Set identification number. Field links to the :ref:`EcolSetTypes` table.
+**EcolSetID (Primary Key, Foreign Key)** 
+   Ecological Set identification number. Field links to the :ref:`EcolSetTypes` table.
 
-**EcolGroupID (Foreign Key)** A four-letter Ecological Group identification code. Field links to the :ref:`EcolGroupTypes` table.
+**EcolGroupID (Foreign Key)**
+   A four-letter Ecological Group identification code. Field links to the :ref:`EcolGroupTypes` table.
 
 SQL Example
 `````````````````````````````

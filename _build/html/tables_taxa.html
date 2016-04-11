@@ -198,9 +198,14 @@ schemes for organizing taxa.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>TaxonID (Primary Key, Foreign Key)</strong> Taxon identification number.  The field links to the <a class="reference internal" href="#taxa"><span>Taxa</span></a> table.</p>
-<p><strong>EcolSetID (Primary Key, Foreign Key)</strong> Ecological Set identification number. Field links to the <a class="reference internal" href="#ecolsettypes"><span>EcolSetTypes</span></a> table.</p>
-<p><strong>EcolGroupID (Foreign Key)</strong> A four-letter Ecological Group identification code. Field links to the <a class="reference internal" href="#ecolgrouptypes"><span>EcolGroupTypes</span></a> table.</p>
+<dl class="docutils">
+<dt><strong>TaxonID (Primary Key, Foreign Key)</strong></dt>
+<dd>Taxon identification number.  The field links to the <a class="reference internal" href="#taxa"><span>Taxa</span></a> table.</dd>
+<dt><strong>EcolSetID (Primary Key, Foreign Key)</strong></dt>
+<dd>Ecological Set identification number. Field links to the <a class="reference internal" href="#ecolsettypes"><span>EcolSetTypes</span></a> table.</dd>
+<dt><strong>EcolGroupID (Foreign Key)</strong></dt>
+<dd>A four-letter Ecological Group identification code. Field links to the <a class="reference internal" href="#ecolgrouptypes"><span>EcolGroupTypes</span></a> table.</dd>
+</dl>
 <div class="section" id="sql-example">
 <h3>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h3>
 <p>The following query produces a list of Ecological Groups for vascular plants (VPL).</p>
