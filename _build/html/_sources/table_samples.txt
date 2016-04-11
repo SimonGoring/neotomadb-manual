@@ -1,0 +1,362 @@
+Sample Related Tables
+-------------------------------
+
+SampleAges
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table stores sample ages. Ages are assigned to a Chronology.
+Because there may be more than one Chronology for a Collection Unit,
+samples may be assigned different ages for different Chronologies. A
+simple example is one sample age in radiocarbon years and another in
+calibrated radiocarbon years. The age units are an attribute of the
+Chronology.
+
++-------------------------+----------------+------+----------------+
+| **Table: SampleAges**                                            |
++-------------------------+----------------+------+----------------+
+| SampleAgeID             | Long Integer   | PK   |                |
++-------------------------+----------------+------+----------------+
+| SampleID                | Long Integer   | FK   | Samples        |
++-------------------------+----------------+------+----------------+
+| ChronologyID            | Long Integer   | FK   | Chronologies   |
++-------------------------+----------------+------+----------------+
+| Age                     | Double         |      |                |
++-------------------------+----------------+------+----------------+
+| AgeYounger              | Double         |      |                |
++-------------------------+----------------+------+----------------+
+| AgeOlder                | Double         |      |                |
++-------------------------+----------------+------+----------------+
+
+**SampleAgeID (Primary Key)** An arbitrary Sample Age identification
+number.
+
+**SampleID (Foreign Key)** Sample identification number. Field links to
+the `Samples <#_Table:_Samples>`__ table.
+
+**ChronologyID (Foreign Key)** Chronology identification number. Field
+links to the `Chronologies <#_Table:_Chronologies>`__ table.
+
+**Age** Age of the sample
+
+**AgeYounger** Younger error estimate of the age. The definition of
+this estimate is an attribute of the Chronology. Many ages do not have
+explicit error estimates assigned.
+
+**AgeOlder** Older error estimate of the age.
+
+SQL Example
+`````````````````````````````
+
+This query lists the Sample Ages for the default Chronologies for «».
+The CollectionUnit.Handle indicates that there is only one Collection
+Unit from this site. There are two default Chronologies, one in
+«Radiocarbon years BP» and the other in «Calibrated radiocarbon years
+BP».
+
+.. code-block:: sql
+   :linenos:
+
+   SELECT
+      s.SiteName,
+      -- From the Sites table
+      c.Handle,
+      -- From the CollectionUnits table
+      sa.Age,
+      -- From the SampleAges table
+      a.AgeType -- From the AgeTypes table
+   FROM
+      AgeTypes AS a
+   INNER JOIN (
+      (
+         (
+            Sites AS s
+            INNER JOIN CollectionUnits AS c ON s.SiteID = c.SiteID
+         )
+         INNER JOIN Chronologies AS ch ON c.CollectionUnitID = ch.CollectionUnitID
+      )
+      INNER JOIN SampleAges AS sa ON ch.ChronologyID = sa.ChronologyID
+   ) ON a.AgeTypeId = ch.AgeTypeID
+   WHERE
+      (s.SiteName) = "Muskox Lake"
+   AND (ch.IsDefault) = TRUE;
+
+The first five lines of the result for each Age Type:
+
++----------------+--------------+-----------+-----------------------------------+
+| **SiteName**   | **Handle**   | **Age**   | **AgeType**                       |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | -50       | Radiocarbon years BP              |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | 538       | Radiocarbon years BP              |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | 1125      | Radiocarbon years BP              |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | 1712      | Radiocarbon years BP              |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | 2300      | Radiocarbon years BP              |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | -50       | Calibrated radiocarbon years BP   |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | 604       | Calibrated radiocarbon years BP   |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | 1258      | Calibrated radiocarbon years BP   |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | 1912      | Calibrated radiocarbon years BP   |
++----------------+--------------+-----------+-----------------------------------+
+|                | MUSKOX       | 2567      | Calibrated radiocarbon years BP   |
++----------------+--------------+-----------+-----------------------------------+
+
+SampleAnalysts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table lists the Sample Analysts.
+
++-----------------------------+----------------+------+------------+
+| **Table: SampleAnalysts**                                        |
++-----------------------------+----------------+------+------------+
+| AnalystID                   | Long Integer   | PK   |            |
++-----------------------------+----------------+------+------------+
+| SampleID                    | Long Integer   | FK   | Samples    |
++-----------------------------+----------------+------+------------+
+| ContactID                   | Long Integer   | FK   | Contacts   |
++-----------------------------+----------------+------+------------+
+| AnalystOrder                | Long Integer   |      |            |
++-----------------------------+----------------+------+------------+
+
+**AnalystID (Primary Key)** An arbitrary Sample Analyst identification
+number.
+
+**SampleID (Foreign Key)** Sample identification number. Field links to
+the `Samples <#_Table:_Samples>`__ table.
+
+**ContactID (Foreign Key)** Contact identification number. Field links
+to the `Contacts <#_Table:_Contacts>`__ table.
+
+**AnalystOrder** Order in which Sample Analysts are listed if more than
+one (rare).
+
+SampleKeywords
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table links keywords to samples. For example, it identifies modern
+pollen surface samples.
+
++-----------------------------+----------------+----------+------------+
+| **Table: SampleKeywords**   |
++-----------------------------+----------------+----------+------------+
+| SampleID                    | Long Integer   | PK, FK   | Samples    |
++-----------------------------+----------------+----------+------------+
+| KeywordID                   | Long Integer   | PK, FK   | Keywords   |
++-----------------------------+----------------+----------+------------+
+
+**SampleID (Primary Key, Foreign Key)** Sample identification number.
+Field links to the `Samples <#_Table:_Samples>`__ table.
+
+**KeywordID (Primary Key, Foreign Key)** Keyword identification number.
+Field links to the `Keywords <#table-keywords>`__ lookup table.
+
+SQL Example
+`````````````````````````````
+
+This query provides a list of modern pollen surface samples from «».
+Listed are the Site Name, Collection Type, Contact person, and
+Depositional Environment.
+
+.. code-block:: sql
+   :linenos:
+
+   SELECT Samples.SampleID, Sites.SiteName, CollectionTypes.CollType,
+   Contacts.ContactName, DepEnvtTypes.DepEnvt
+
+   FROM DepEnvtTypes INNER JOIN (Contacts INNER JOIN ((CollectionTypes
+   INNER JOIN (GeoPoliticalUnits INNER JOIN ((Sites INNER JOIN
+   (CollectionUnits INNER JOIN (DatasetTypes INNER JOIN (Datasets INNER
+   JOIN (Samples INNER JOIN (Keywords INNER JOIN SampleKeywords ON
+   Keywords.KeywordID = SampleKeywords.KeywordID) ON Samples.SampleID =
+   SampleKeywords.SampleID) ON Datasets.DatasetID = Samples.DatasetID) ON
+   DatasetTypes.DatasetTypeID = Datasets.DatasetTypeID) ON
+   CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID) ON
+   Sites.SiteID = CollectionUnits.SiteID) INNER JOIN SiteGeoPolitical ON
+   Sites.SiteID = SiteGeoPolitical.SiteID) ON
+   GeoPoliticalUnits.GeoPoliticalID = SiteGeoPolitical.GeoPoliticalID) ON
+   CollectionTypes.CollTypeID = CollectionUnits.CollTypeID) INNER JOIN
+   DatasetPIs ON Datasets.DatasetID = DatasetPIs.DatasetID) ON
+   Contacts.ContactID = DatasetPIs.ContactID) ON DepEnvtTypes.DepEnvtID =
+   CollectionUnits.DepEnvtID
+
+   WHERE (((Keywords.Keyword)="modern sample") AND
+   ((DatasetTypes.DatasetType)="pollen") AND
+   ((GeoPoliticalUnits.GeoPoliticalName)=""))
+
+   ORDER BY CollectionTypes.CollType;
+
+Result:
+
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| **SampleID**   | **SiteName**                         | **CollType**   | **ContactName**           | **DepEnvt**        |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 60536          |                                      | Core           | Radle, Nancy Jean         | Glacial            |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 11153          | (US:)                                | Core           | Grimm, Eric Christopher   | Glacial            |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 61194          | (US:)                                | Core           | Watts, William A.         | Glacial            |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24780          | JHMS31 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24771          | JHMS23 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24772          | JHMS24 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24773          | JHMS25 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24774          | JHMS26 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24775          | JHMS27 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24776          | JHMS28 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24777          | JHMS28 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Cattle Tank        |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 3173           | Site 1 (Hansen unpublished)          | Modern         | Hansen, Barbara C. S.     | Unknown            |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24779          | JHMS30 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24781          | JHMS32 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24782          | JHMS32 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Cattle Tank        |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24783          | JHMS33 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 45068          | K11 (Kapp 1965]                      | Modern         | Kapp, Ronald O.           | Stock Pond         |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 55819          | Rose 1a (Watts and Wright 1966)      | Modern         | Watts, William A.         | Stock Pond         |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 55819          | Rose 1a (Watts and Wright 1966)      | Modern         | Wright, Herbert E., Jr.   | Stock Pond         |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 55820          | Rose 1b (Watts and Wright 1966)      | Modern         | Watts, William A.         | Stock Pond         |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 55820          | Rose 1b (Watts and Wright 1966)      | Modern         | Wright, Herbert E., Jr.   | Stock Pond         |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+| 24778          | JHMS29 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
++----------------+--------------------------------------+----------------+---------------------------+--------------------+
+
+Samples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table stores sample data. Samples belong to Analysis Units, which belong to Collection Units, which belong to Sites. Samples also belong to a Dataset, and the Dataset determines the type of sample. Thus, there could be two different samples from the same Analysis Unit, one belonging to a pollen dataset, the other to a plant macrofossil dataset.
+
++----------------------+----------------+------+-----------------+
+| **Table: Samples**                                             |
++----------------------+----------------+------+-----------------+
+| SampleID             | Long Integer   | PK   |                 |
++----------------------+----------------+------+-----------------+
+| AnalysisUnitID       | Long Integer   | FK   | AnalysisUnits   |
++----------------------+----------------+------+-----------------+
+| DatasetID            | Long Integer   | FK   | Datasets        |
++----------------------+----------------+------+-----------------+
+| SampleName           | Text           |      |                 |
++----------------------+----------------+------+-----------------+
+| AnalysisDate         | Date/Time      |      |                 |
++----------------------+----------------+------+-----------------+
+| LabNumber            | Text           |      |                 |
++----------------------+----------------+------+-----------------+
+| PreparationMethod    | Memo           |      |                 |
++----------------------+----------------+------+-----------------+
+| Notes                | Memo           |      |                 |
++----------------------+----------------+------+-----------------+
+
+**SampleID (Primary Key)**
+   An arbitrary Sample identification number.
+
+**AnalysisUnitID (Foreign Key)**
+   Analysis Unit identification number. Field links to the `AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
+
+**DatasetID (Foreign Key)** 
+   Dataset identification number. Field links to the `Datasets <#table-datasets>`__ table.
+
+**SampleName**
+   Sample name if any.
+
+**AnalysisDate**
+   Date of analysis.
+
+**LabNumber**
+   Laboratory number for the sample. A special case regards geochronologic samples, for which the LabNumber is the number, if any, assigned by the submitter, not the number assigned by the radiocarbon laboratory, which is in the `Geochronology <#_Table:_Geochronology>`__ table.
+
+**PreparationMethod** 
+   Description, notes, or comments on preparation methods. For faunal samples, notes on screening methods or screen size are stored here.
+
+**Notes**
+   Free form note or comments about the sample.
+
+SQL Example
+`````````````````````````````
+
+This query provides a list of samples from «». The Collection Unit Name,
+Analysis Unit Name, Dataset Type, and Preparation Methods are listed.
+
+.. code-block:: sql
+   :linenos:
+
+   SELECT CollectionUnits.CollUnitName, AnalysisUnits.AnalysisUnitName,
+   DatasetTypes.DatasetType, Samples.PreparationMethod
+
+   FROM DatasetTypes INNER JOIN ((((Sites INNER JOIN CollectionUnits ON
+   Sites.SiteID = CollectionUnits.SiteID) INNER JOIN AnalysisUnits ON
+   CollectionUnits.CollectionUnitID = AnalysisUnits.CollectionUnitID) INNER
+   JOIN Samples ON AnalysisUnits.AnalysisUnitID = Samples.AnalysisUnitID)
+   INNER JOIN (Datasets.DatasetID = Samples.DatasetID) AND
+   (CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID)) ON
+   DatasetTypes.DatasetTypeID = Datasets.DatasetTypeID
+
+   WHERE (((Sites.SiteName)=""))
+
+   ORDER BY CollectionUnits.CollUnitName, AnalysisUnits.AnalysisUnitName;
+
+Result:
+
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| **CollUnitName**   | **AnalysisUnitName**      | **DatasetType**    | **PreparationMethod**                                                   |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Locality           | Assemblage                | vertebrate fauna   |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Locality           | Large Mammal Assemblage   | vertebrate fauna   |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 1                   | vertebrate fauna   | All excavated material was fine screened (<1/16-inch or 1.6-mm mesh).   |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 1                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 1                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 1                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 1                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 2                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 2                   | vertebrate fauna   | All excavated material was fine screened (<1/16-inch or 1.6-mm mesh).   |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 2                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 2                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A             | Level 2                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit A/B           | Assemblage                | vertebrate fauna   | All excavated material was fine screened (<1/16-inch or 1.6-mm mesh).   |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit B             | Level 4                   | vertebrate fauna   | All excavated material was fine screened (<1/16-inch or 1.6-mm mesh).   |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit B             | Level 5                   | vertebrate fauna   | All excavated material was fine screened (<1/16-inch or 1.6-mm mesh).   |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit C             | Level 1                   | vertebrate fauna   | All excavated material was fine screened (<1/16-inch or 1.6-mm mesh).   |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit C             | Level 1                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit C             | Level 2                   | vertebrate fauna   | All excavated material was fine screened (<1/16-inch or 1.6-mm mesh).   |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit C             | Level 2                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit C             | Level 2                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
+| Unit C             | Level 2                   | geochronologic     |                                                                         |
++--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+

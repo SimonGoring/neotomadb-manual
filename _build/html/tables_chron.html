@@ -1,42 +1,175 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Chronology &amp; Age Related Tables &mdash; neotoma 1.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="neotoma 1.0 documentation" href="index.html" />
-    <link rel="next" title="Dataset &amp; Collection Related Tables" href="tables_dataset.html" />
-    <link rel="prev" title="Neotoma Tables" href="neotoma_tables.html" />
-   
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chronology &amp; Age Related Tables &mdash; neotoma 1.0 documentation</title>
+  
 
-  </head>
-  <body role="document">  
+  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Dataset &amp; Collection Related Tables" href="tables_dataset.html"/>
+        <link rel="prev" title="Neotoma Tables" href="neotoma_tables.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> neotoma
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Chronology &amp; Age Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agetypes">AgeTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregatechronologies">AggregateChronologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chroncontrols">ChronControls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chroncontroltypes">ChronControlTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chronologies">Chronologies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregatesampleages">AggregateSampleAges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#geochronology">Geochronology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#geochronpublications">GeochronPublications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geochrontypes">GeochronTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativeagepublications">RelativeAgePublications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativeages">RelativeAges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#radiocarboncalibration">RadiocarbonCalibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativeagescales">RelativeAgeScales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativeageunits">RelativeAgeUnits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativechronology">RelativeChronology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tephrachronology">Tephrachronology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#table-tephras">Table: Tephras</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="table_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="table_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">neotoma</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Chronology &amp; Age Related Tables</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tables_chron.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="chronology-age-related-tables">
 <h1>Chronology &amp; Age Related Tables<a class="headerlink" href="#chronology-age-related-tables" title="Permalink to this headline">¶</a></h1>
@@ -1296,96 +1429,117 @@ more readable.</p>
 <dd>Free form notes or comments.</dd>
 </dl>
 </div>
+<div class="section" id="tephrachronology">
+<h2>Tephrachronology<a class="headerlink" href="#tephrachronology" title="Permalink to this headline">¶</a></h2>
+<p>This table stores tephrachronologic data. The table relates Analysis
+Units with dated tephras in the <a class="reference external" href="#_Table:_Tephras">Tephras</a> table.
+These are tephras with established ages that are used form a chronology.
+The tephras are typically not directly dated at the Site of the Analysis
+Unit, but have been dated at other sites. A directly dated tephra, e.g.
+an argon-argon date, belongs in the
+<a class="reference external" href="#_Table:_Geochronology">Geochronology</a> table.</p>
+<p><strong>TephrachronID (Primary Key)</strong> An arbitrary Tephrachronology
+identification number.</p>
+<p><strong>AnalysisUnitID (Foreign Key)</strong> Analysis Unit identification number.
+Field links to the ` &lt;#_Table:_AnalysisUnits&gt;`__ table. The tephra may
+be contained within the AnalysisUnit, especially in excavations, or the
+AnalysisUnit may be assigned specifically to the tephra, particulary
+with cores.</p>
+<p><strong>TephraID (Foreign Key)</strong> Tephra identification number. Field links to
+the <a class="reference external" href="#_Table:_Tephras">Tephras</a> table.</p>
+<p><strong>Notes</strong> Free form notes or comments about the tephra.</p>
+</div>
+<div class="section" id="table-tephras">
+<h2>Table: Tephras<a class="headerlink" href="#table-tephras" title="Permalink to this headline">¶</a></h2>
+<p>Tephras lookup table. This table stores recognized tephras with
+established ages. Referenced by the
+<a class="reference external" href="#_Table:_Tephrachronology">Tephrachronology</a> table.</p>
+<p><strong>TephraID (Primary Key)</strong> An arbitrary Tephra identification number.</p>
+<p><strong>TephraName</strong> Name of the tephra, e.g. «Mazama».</p>
+<p><strong>C14Age</strong> Age of the tephra in <sup>14</sup>C yr BP. For example,
+Hallett et al. (1997) provide an estimate of the age of the Mazama
+tephra based on radiocarbon dating of plant macrofossils in lake
+sediments encasing the tephra.</p>
+<p><strong>C14AgeYounger</strong> Younger age estimate of the tephra in <sup>14</sup>C yr
+BP.</p>
+<p><strong>C14AgeOlder</strong> Older age estimate of the tephra in <sup>14</sup>C yr BP.</p>
+<p><strong>CalAge</strong> Age of the tephra in cal yr BP, either calibrated
+radiocarbon years or estimated calendar years derived from another
+dating method. For example, Zdanowicz et al. (1999) identified the
+Mazama tephra in the GISP2 ice core and estimated the age from layer
+counts.</p>
+<p><strong>CalAgeYounger</strong> Younger age estimate of the tephra in cal yr BP.</p>
+<p><strong>CalAgeOlder</strong> Older age estimate of the tephra in cal yr BP.</p>
+<p><strong>Notes</strong> Free form notes or comments about the tephra.</p>
+</div>
 </div>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Chronology &amp; Age Related Tables</a><ul>
-<li><a class="reference internal" href="#agetypes">AgeTypes</a></li>
-<li><a class="reference internal" href="#aggregatechronologies">AggregateChronologies</a></li>
-<li><a class="reference internal" href="#chroncontrols">ChronControls</a></li>
-<li><a class="reference internal" href="#chroncontroltypes">ChronControlTypes</a></li>
-<li><a class="reference internal" href="#chronologies">Chronologies</a><ul>
-<li><a class="reference internal" href="#sql-example">SQL Example</a></li>
-<li><a class="reference internal" href="#id1">SQL Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#aggregatesampleages">AggregateSampleAges</a><ul>
-<li><a class="reference internal" href="#id2">SQL Example</a></li>
-<li><a class="reference internal" href="#id3">SQL Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#geochronology">Geochronology</a><ul>
-<li><a class="reference internal" href="#id4">SQL Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#geochronpublications">GeochronPublications</a></li>
-<li><a class="reference internal" href="#geochrontypes">GeochronTypes</a></li>
-<li><a class="reference internal" href="#relativeagepublications">RelativeAgePublications</a></li>
-<li><a class="reference internal" href="#relativeages">RelativeAges</a><ul>
-<li><a class="reference internal" href="#id5">SQL Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#radiocarboncalibration">RadiocarbonCalibration</a></li>
-<li><a class="reference internal" href="#relativeagescales">RelativeAgeScales</a></li>
-<li><a class="reference internal" href="#relativeageunits">RelativeAgeUnits</a></li>
-<li><a class="reference internal" href="#relativechronology">RelativeChronology</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="neotoma_tables.html" title="previous chapter">Neotoma Tables</a></li>
-      <li>Next: <a href="tables_dataset.html" title="next chapter">Dataset &amp; Collection Related Tables</a></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/tables_chron.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tables_dataset.html" class="btn btn-neutral float-right" title="Dataset &amp; Collection Related Tables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="neotoma_tables.html" class="btn btn-neutral" title="Neotoma Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2016, Eric Grimm, Simon Goring.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
-      
-      |
-      <a href="_sources/tables_chron.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

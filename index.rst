@@ -13,7 +13,7 @@ This documentation would not be possible without the extrordinary work of Eric C
 Contents:
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: -1
 
    neotoma_introduction
    db_design_concepts
@@ -21,8 +21,12 @@ Contents:
    neotoma_tables
    tables_chron
    tables_dataset
+   tables_samples
+   tables_site
    tables_taxa
    tables_publications
+   table_contacts
+   table_publications
    references_cited
 
 Indices and tables

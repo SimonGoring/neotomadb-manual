@@ -781,3 +781,96 @@ This table stores relative chronologic data. Relative Ages are assigned to Analy
 
 **Notes**
   Free form notes or comments.
+
+Tephrachronology
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table stores tephrachronologic data. The table relates Analysis
+Units with dated tephras in the `Tephras <#_Table:_Tephras>`__ table.
+These are tephras with established ages that are used form a chronology.
+The tephras are typically not directly dated at the Site of the Analysis
+Unit, but have been dated at other sites. A directly dated tephra, e.g.
+an argon-argon date, belongs in the
+`Geochronology <#_Table:_Geochronology>`__ table.
+
++-------------------------------+----------------+------+-----------------+
+| **Table: Tephrachronology**   |
++-------------------------------+----------------+------+-----------------+
+| TephrachronID                 | Long Integer   | PK   |                 |
++-------------------------------+----------------+------+-----------------+
+| AnalysisUnitID                | Long Integer   | FK   | AnalysisUnits   |
++-------------------------------+----------------+------+-----------------+
+| TephraID                      | Long Integer   | FK   | Tephras         |
++-------------------------------+----------------+------+-----------------+
+| Notes                         | Memo           |      |                 |
++-------------------------------+----------------+------+-----------------+
+
+**TephrachronID (Primary Key)** An arbitrary Tephrachronology
+identification number.
+
+**AnalysisUnitID (Foreign Key)** Analysis Unit identification number.
+Field links to the ` <#_Table:_AnalysisUnits>`__ table. The tephra may
+be contained within the AnalysisUnit, especially in excavations, or the
+AnalysisUnit may be assigned specifically to the tephra, particulary
+with cores.
+
+**TephraID (Foreign Key)** Tephra identification number. Field links to
+the `Tephras <#_Table:_Tephras>`__ table.
+
+**Notes** Free form notes or comments about the tephra.
+
+Table: Tephras
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tephras lookup table. This table stores recognized tephras with
+established ages. Referenced by the
+`Tephrachronology <#_Table:_Tephrachronology>`__ table.
+
++----------------------+----------------+------+-----+
+| **Table: Tephras**   |
++----------------------+----------------+------+-----+
+| TephraID             | Long Integer   | PK   |     |
++----------------------+----------------+------+-----+
+| TephraName           | Text           |      |     |
++----------------------+----------------+------+-----+
+| C14Age               | Double         |      |     |
++----------------------+----------------+------+-----+
+| C14AgeYounger        | Double         |      |     |
++----------------------+----------------+------+-----+
+| C14AgeOlder          | Double         |      |     |
++----------------------+----------------+------+-----+
+| CalAge               | Double         |      |     |
++----------------------+----------------+------+-----+
+| CalAgeYounger        | Double         |      |     |
++----------------------+----------------+------+-----+
+| CalAgeOlder          | Double         |      |     |
++----------------------+----------------+------+-----+
+| Notes                | Memo           |      |     |
++----------------------+----------------+------+-----+
+
+**TephraID (Primary Key)** An arbitrary Tephra identification number.
+
+**TephraName** Name of the tephra, e.g. «Mazama».
+
+**C14Age** Age of the tephra in :sup:`14`\ C yr BP. For example,
+Hallett et al. (1997) provide an estimate of the age of the Mazama
+tephra based on radiocarbon dating of plant macrofossils in lake
+sediments encasing the tephra.
+
+**C14AgeYounger** Younger age estimate of the tephra in :sup:`14`\ C yr
+BP.
+
+**C14AgeOlder** Older age estimate of the tephra in :sup:`14`\ C yr BP.
+
+**CalAge** Age of the tephra in cal yr BP, either calibrated
+radiocarbon years or estimated calendar years derived from another
+dating method. For example, Zdanowicz et al. (1999) identified the
+Mazama tephra in the GISP2 ice core and estimated the age from layer
+counts.
+
+**CalAgeYounger** Younger age estimate of the tephra in cal yr BP.
+
+**CalAgeOlder** Older age estimate of the tephra in cal yr BP.
+
+**Notes** Free form notes or comments about the tephra.
+

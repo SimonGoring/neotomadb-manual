@@ -51,8 +51,184 @@ geographic region.
 **Notes**
   Free form notes about the Aggregate Order Type.
 
+AggregateOrderTypes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Lookup table for Aggregate Order Types. Table is referenced by the
+`AggregateDatasets <#_Table:_AggregateDatasets>`__ table.
+
++----------------------------------+----------------+------+-----+
+| **AggregateOrderTypes**                                        |
++----------------------------------+----------------+------+-----+
+| AggregateOrderTypeID             | int            | PK   |     |
++----------------------------------+----------------+------+-----+
+| AggregateOrderType               | nvarchar(60)   |      |     |
++----------------------------------+----------------+------+-----+
+| Notes                            | ntext          |      |     |
++----------------------------------+----------------+------+-----+
+
+**AggregateOrderTypeID (Primary Key)**
+  An arbitrary Aggregate Order Type identification number.
+
+**AggregateOrderType**
+  The Aggregate Order Type.
+
+**Notes**
+  Free form notes or comments about the Aggregate Order Type.
+
+The Aggregate Order Types are:
+
+-  **Latitude**: AggregateDataset samples are ordered by, in order of
+       priority, either (1)
+       `CollectionUnits.GPSLatitude <#_Table:_CollectionUnits>`__ or (2)
+       the mean of `Sites.LatitudeNorth <#_Table:_Sites_1>`__ and
+       `Sites.LatitudeSouth <#_Table:_Sites_1>`__.
+
+-  **Longitude** AggregateDataset samples are ordered by, in order of
+       priority, either (1)
+       `CollectionUnits.GPSLongitude <#_Table:_CollectionUnits>`__ or
+       (2) the mean of `Sites.LongitudeWest <#_Table:_Sites_1>`__ and
+       `Sites.LongitudeEast <#_Table:_Sites_1>`__.
+
+-  **Altitude** AggregateDataset samples are ordered by
+       `Sites.Altitude <#_Table:_Sites_1>`__.
+
+-  **Age** AggregateDataset samples are ordered by
+       `SampleAges.Age <#_Table:_SampleAges>`__, where
+       `SampleAges.SampleAgeID <#_Table:_SampleAges>`__ is from
+       `AggregateSampleAges.SampleAgeID <#_Table:_AggregateSampleAges>`__.
+
+-  **Alphabetical by site name** AggregateDataset samples are ordered
+       alphabetically by `Sites.SiteName <#_Table:_Sites_1>`__.
+
+-  **Alphabetical by collection unit name** AggregateDataset samples
+       are ordered alphabetically by
+       `CollectionUnits.CollUnitName <#_Table:_CollectionUnits>`__.
+
+-  **Alphabetical by collection units handle** AggregateDataset samples
+       are ordered alphabetically by
+       `CollectionUnits.Handle <#_Table:_CollectionUnits>`__.
+
+CollectionTypes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table is a lookup table of for types of Collection Units, or Collection Types. Table is referenced by the `CollectionUnits <#_Table:_CollectionUnits>`__ table.
+
++------------------------------+----------------+------+-----+
+| **CollectionTypes**          | Variable Type  | Key  |     |
++------------------------------+----------------+------+-----+
+| CollTypeID                   | int            | PK   |     |
++------------------------------+----------------+------+-----+
+| CollType                     | nvarchar(50)   |      |     |
++------------------------------+----------------+------+-----+
+
+**CollTypeID (Primary Key)** 
+  An arbitrary Collection Type identification number.
+
+**Colltype**
+  The Collection Type. Types include cores, sections, excavations, and animal middens. Collection Units may be modern collections, surface float, or isolated specimens. Composite Collections Units include different kinds of Analysis Units, for example a modern surface sample for ostracodes and an associated water sample.
+
+CollectionUnits
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table stores data for Collection Units.
+
++------------------------------+-----------------+------+-------------------+
+| **CollectionUnits**          | Variable Type   | Key  | Table Reference   |
++------------------------------+-----------------+------+-------------------+
+| CollectionUnitID             | int             | PK   |                   |
++------------------------------+-----------------+------+-------------------+
+| Handle                       | nvarchar(10)    |      |                   |
++------------------------------+-----------------+------+-------------------+
+| SiteID                       | int             | FK   | Sites             |
++------------------------------+-----------------+------+-------------------+
+| CollTypeID                   | int             | FK   | CollectionTypes   |
++------------------------------+-----------------+------+-------------------+
+| DepEnvtID                    | int             | FK   | DepEnvtTypes      |
++------------------------------+-----------------+------+-------------------+
+| CollUnitName                 | nvarchar(255)   |      |                   |
++------------------------------+-----------------+------+-------------------+
+| CollDate                     | datetime        |      |                   |
++------------------------------+-----------------+------+-------------------+
+| CollDevice                   | nvarchar(255)   |      |                   |
++------------------------------+-----------------+------+-------------------+
+| GPSLatitude                  | float           |      |                   |
++------------------------------+-----------------+------+-------------------+
+| GPSLongitude                 | float           |      |                   |
++------------------------------+-----------------+------+-------------------+
+| GPSAltitude                  | float           |      |                   |
++------------------------------+-----------------+------+-------------------+
+| GPSError                     | float           |      |                   |
++------------------------------+-----------------+------+-------------------+
+| WaterDepth                   | float           |      |                   |
++------------------------------+-----------------+------+-------------------+
+| SubstrateID                  | int             | FK   | Substrates        |
++------------------------------+-----------------+------+-------------------+
+| SlopeAspect                  | int             |      |                   |
++------------------------------+-----------------+------+-------------------+
+| SlopeAngle                   | int             |      |                   |
++------------------------------+-----------------+------+-------------------+
+| Location                     | nvarchar(255)   |      |                   |
++------------------------------+-----------------+------+-------------------+
+| Notes                        | ntext           |      |                   |
++------------------------------+-----------------+------+-------------------+
+
+**CollectionUnitID (Primary Key)** 
+  An arbitrary Collection Unit identification number.
+
+**SiteID (Foreign Key)** 
+  Site where CollectionUnit was located. Field links to `Sites <#_Table:_Sites>`__ table.
+
+**CollTypeID (Foreign Key)** 
+  Type of Collection Unit. Field links to the `CollectionTypes <#_Table:_Collection_Types>`__ table.
+
+**DepEnvtID (Foreign Key)** 
+  Depositional environment of the CollectionUnit. Normally, this key refers to the modern environment. For example, the site may be located on a colluvial slope, in which case the Depositional Environment may be Colluvium or Colluvial Fan. However, an excavation may extend into alluvial sediments, which represent a different depositional environment. These are accounted for by the Facies of the AnalysisUnit. Field links to the `DepEnvtTypes <#_Table:_DepEnvtTypes>`__ table.
+
+**Handle**
+  Code name for the Collection Unit. This code may be up to 10 characters, but an effort is made to keep these to 8 characters or less. Data are frequently distributed by Collection Unit, and the Handle is used for file names.
+
+**CollUnitName** 
+  Name of the Collection Unit. Examples: Core BPT82A, Structure 9, P4A Test 57. If faunal data are reported from a site or locality without explicit Collection Units, then data are assigned to a single Collection Unit with the name «Locality».
+
+**CollDate**
+  Date Collection Unit was collected.
+
+**CollDevice**
+  Device used for obtain Collection Unit. This field applies primarily to cores, for example «Wright square-rod piston corer (5 cm)».
+
+**GPSLatitude**
+  Precise latitude of the Collection Unit, typically taken with a GPS, although may be precisely measured from a map.
+
+**GPSLongitude**
+  Precise longitude of the Collection Unit, typically taken with a GPS, although may be precisely measured from a map.
+
+**GPSAltitude**
+  Precise altitude of the Collection Unit, typically taken with a GPS or precisely obtained from a map.
+
+**GPSError**
+  Error in the horizontal GPS coordinates, if known.
+
+**WaterDepth**
+  Depth of water at the Collection Unit location. This field applies mainly to Collection Units from lakes.
+
+**SubstrateID (Foreign Key)**
+  Substrate or rock type on which the Collection Unit lies. Field links to the RockTypes table. This field is especially used for rodent middens.
+
+**SlopeAspect**
+  For Collection Units on slopes, the horizontal direction to which a slope faces measured in degrees clockwise from north. This field is especially used for rodent middens.
+
+**SlopeAngle**
+  For Collection Units on slopes, the angle of slope from horizontal. field is especially used for rodent middens.
+
+**Location** 
+  Short description of the location of the Collection Unit within the site.
+
+**Notes**
+  Free form notes or comments about the Collection Unit.
+
 DatasetPublications
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This table lists the publications for datasets.
 
@@ -76,7 +252,7 @@ number. Field links to `Publications <#_Table:_Publications>`__ table.
 for the dataset.
 
  Datasets
-----------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This table stores the data for Datasets. A Dataset is the set of samples
 for a particular data type from a Collection Unit. A Collection Unit may
@@ -152,6 +328,7 @@ No. 3».
 
 .. code-block:: sql
    :linenos:
+
    SELECT Sites.SiteName, Taxa.TaxonName
 
    FROM DatasetTypes INNER JOIN (Taxa INNER JOIN (Variables INNER JOIN
@@ -179,7 +356,7 @@ Result:
 +--------------------+--------------------------------------------+
 
 DatasetSubmissions
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Submissions to the database are of Datasets. Submissions may be original
 submissions, resubmissions, compilations from other databases, or
@@ -330,3 +507,246 @@ Lookup table for Dataset Types. Table is referenced by the `Datasets <#table-dat
     -  plant macrofossils
     -  vertebrate fauna
     -  mollusks
+
+DatasetPIs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table lists the Principle Investigators for Datasets.
+
++-------------------------+----------------+----------+------------+
+| **DatasetPIs**                                                   |
++-------------------------+----------------+----------+------------+
+| DatasetID               | Long Integer   | PK, FK   | Datasets   |
++-------------------------+----------------+----------+------------+
+| ContactID               | Long Integer   | PK, FK   | Contacts   |
++-------------------------+----------------+----------+------------+
+| PIOrder                 | Long Integer   |          |            |
++-------------------------+----------------+----------+------------+
+
+**DatasetID (Primary Key, Foreign Key)** Dataset identification number.
+Field links to Dataset table.
+
+**ContactID (Primary Key, Foreign Key)** Contact identification number.
+Field links to `Contacts <#_Table:_Contacts>`__ table.
+
+**PIOrder** Order in which PIs are listed.
+
+DepEnvtTypes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Lookup table of Depostional Environment Types. Table is referenced by
+the `CollectionUnits`__ table.
+
++---------------------------+----------------+------+--------------------------+
+| **DepEnvtTypes**                                                             |
++---------------------------+----------------+------+--------------------------+
+| DepEnvtID                 | Long Integer   | PK   |                          |
++---------------------------+----------------+------+--------------------------+
+| DepEnvt                   | Text           |      |                          |
++---------------------------+----------------+------+--------------------------+
+| DepEnvtHigherID           | Long Integer   | FK   | DepEnvtTypes:DepEnvtID   |
++---------------------------+----------------+------+--------------------------+
+
+**DepEnvtID (Primary Key)** An arbitrary Depositional Environment Type
+identification number.
+
+**DepEnvt** Depositional Environment.
+
+**DepEnvtHigherID** The Depositional Environment Types are
+hierarchical. DepEnvtHigherID is the DepEnvtID of the higher ranked
+Depositional Environment. See following table gives some examples.
+
++---------------------+---------------+-----------------------+
+|     **DepEnvtID**   | **DepEnvt**   | **DepEnvtHigherID**   |
++---------------------+---------------+-----------------------+
+|     19              | Lacustrine    | 19                    |
++---------------------+---------------+-----------------------+
+|     24              |               | 19                    |
++---------------------+---------------+-----------------------+
+|     29              | Glacial       | 24                    |
++---------------------+---------------+-----------------------+
+|     30              |               | 29                    |
++---------------------+---------------+-----------------------+
+|     33              |               | 29                    |
++---------------------+---------------+-----------------------+
+|     59              | Palustrine    | 59                    |
++---------------------+---------------+-----------------------+
+|     61              | Mire          | 59                    |
++---------------------+---------------+-----------------------+
+|     62              | Bog           | 61                    |
++---------------------+---------------+-----------------------+
+|     63              | Blanket Bog   | 62                    |
++---------------------+---------------+-----------------------+
+|     64              | Raised Bog    | 62                    |
++---------------------+---------------+-----------------------+
+
+SQL Example
+`````````````````````````````
+
+This query gives a list of the top level Depostional Environment Types.
+
+.. code-block:: sql
+   :linenos:
+
+   SELECT DepEnvtTypes.DepEnvtID, DepEnvtTypes.DepEnvt,
+   DepEnvtTypes.DepEnvtHigherID
+
+   FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes\_1 ON
+   (DepEnvtTypes.DepEnvt = DepEnvtTypes\_1.DepEnvt) AND
+   (DepEnvtTypes.DepEnvtHigherID = DepEnvtTypes\_1.DepEnvtID);
+
+Result:
+
++-----------------+------------------+-----------------------+
+| **DepEnvtID**   | **DepEnvt**      | **DepEnvtHigherID**   |
++-----------------+------------------+-----------------------+
+| 1               | Archaeological   | 1                     |
++-----------------+------------------+-----------------------+
+| 6               | Biological       | 6                     |
++-----------------+------------------+-----------------------+
+| 16              | Estuarine        | 16                    |
++-----------------+------------------+-----------------------+
+| 19              | Lacustrine       | 19                    |
++-----------------+------------------+-----------------------+
+| 51              | Marine           | 51                    |
++-----------------+------------------+-----------------------+
+| 59              | Palustrine       | 59                    |
++-----------------+------------------+-----------------------+
+| 76              | Riverine         | 76                    |
++-----------------+------------------+-----------------------+
+| 93              | Sampler          | 93                    |
++-----------------+------------------+-----------------------+
+| 99              | Spring           | 99                    |
++-----------------+------------------+-----------------------+
+| 103             | Terrestrial      | 103                   |
++-----------------+------------------+-----------------------+
+| 136             | Other            | 136                   |
++-----------------+------------------+-----------------------+
+| 137             | Unknown          | 137                   |
++-----------------+------------------+-----------------------+
+
+SQL Example
+`````````````````````````````
+
+This following query gives a list of the second level «Terrestrial»
+Depositional Environment Types.
+.. code-block:: sql
+   :linenos:
+
+   SELECT DepEnvtTypes\_1.DepEnvtID, DepEnvtTypes\_1.DepEnvt,
+   DepEnvtTypes\_1.DepEnvtHigherID
+
+   FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes\_1 ON
+   DepEnvtTypes.DepEnvtID = DepEnvtTypes\_1.DepEnvtHigherID
+
+   WHERE (((DepEnvtTypes.DepEnvt)="Terrestrial"));
+
+Result:
+
++-----------------+---------------+-----------------------+
+| **DepEnvtID**   | **DepEnvt**   | **DepEnvtHigherID**   |
++-----------------+---------------+-----------------------+
+| 103             | Terrestrial   | 103                   |
++-----------------+---------------+-----------------------+
+| 104             | Aeolian       | 103                   |
++-----------------+---------------+-----------------------+
+| 109             | Cave          | 103                   |
++-----------------+---------------+-----------------------+
+| 117             | Glacial       | 103                   |
++-----------------+---------------+-----------------------+
+| 122             | Gravity       | 103                   |
++-----------------+---------------+-----------------------+
+| 127             | Soil          | 103                   |
++-----------------+---------------+-----------------------+
+| 131             | Volcanic      | 103                   |
++-----------------+---------------+-----------------------+
+
+Lithology
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table stores the lithologic descriptions of Collection Units.
+
++------------------------+----------------+------+--------------------+
+| **Table: Lithology**   |
++------------------------+----------------+------+--------------------+
+| LithologyID            | Long Integer   | PK   |                    |
++------------------------+----------------+------+--------------------+
+| CollectionUnitID       | Long Integer   | FK   |  CollectionUnits   |
++------------------------+----------------+------+--------------------+
+| DepthTop               | Double         |      |                    |
++------------------------+----------------+------+--------------------+
+| DepthBottom            | Double         |      |                    |
++------------------------+----------------+------+--------------------+
+| LowerBoundary          | Text           |      |                    |
++------------------------+----------------+------+--------------------+
+| Description            | Memo           |      |                    |
++------------------------+----------------+------+--------------------+
+
+**LithologyID (Primary Key)** An arbitrary identification number for a
+lithologic unit.
+
+**CollectionUnitID (Foreign Key)** Collection Unit identification
+number. Field links to the
+`CollectionUnits <#_Table:_CollectionUnits>`__ table.
+
+**DepthTop** Depth of the top of the lithologic unit in cm.
+
+**DepthBottom** Depth of the bottom of the lithologic unit in cm.
+
+**LowerBoundary** Description of the nature of the lower boundary of
+the lithologic unit, e.g. «gradual, over ca. 10 cm».
+
+**Description** Description of the lithologic unit. These can be quite
+detailed, with Munsell color or Troels-Smith descriptions. Some
+examples:
+
+-  interbedded gray silt and peat
+
+-  marly fine-detritus copropel
+
+-  humified sedge and Sphagnum peat
+
+-  sedge peat 5YR 5/4
+
+-  gray sandy loam with mammoth and other animal bones
+
+-  grey-green gyttja, oxidizing to gray-brown
+
+-  Ag 3, Ga 1, medium gray, firm, elastic
+
+-  nig3, strf0, elas2, sicc0; Th2 T12 Tb+
+
+-  Ld°4, , Dg+, Dh+
+
+   1. .. rubric:: Table: Projects
+         :name: table-projects
+
+This table stores a list of database projects that have supplied data to
+Neotoma. These include the databases that were merged in the initial
+development of Neotoma as well as other independent projects that
+continue to assemble data for a particular region or data type. Some of
+these projects have developed relational databases, whereas others have
+compiled data in flat files. This table is referenced by the
+DatabaseSubmissions table.
+
++-----------------------+----------------+------+------------+
+| **Table: Projects**   |
++-----------------------+----------------+------+------------+
+| ProjectID             | Long Integer   | PK   |            |
++-----------------------+----------------+------+------------+
+| ProjectName           | Text           |      |            |
++-----------------------+----------------+------+------------+
+| ContactID             | Long Integer   | FK   | Contacts   |
++-----------------------+----------------+------+------------+
+| URL                   | Text           |      |            |
++-----------------------+----------------+------+------------+
+
+**ProjectID (Primary Key)** An arbitrary Project identification number.
+
+**ProjectName** Name of the Project, e.g. «Cooperative Holocene Mapping
+Project», «North American Pollen Database», «FAUNMAP».
+
+**ContactID (Foreign Key)** Contact person for the project. Field links
+to the `Contacts`__ table.
+
+**URL** Web site address for the project.

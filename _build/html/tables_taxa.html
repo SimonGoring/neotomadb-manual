@@ -1,0 +1,1329 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Taxonomy Related Tables &mdash; neotoma 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Contact and Individual Related Tables" href="table_contacts.html"/>
+        <link rel="prev" title="Site Related Tables" href="tables_site.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> neotoma
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Taxonomy Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ecolgroups">EcolGroups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ecolgrouptypes">EcolGroupTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecolsettypes">EcolSetTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synonyms">Synonyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synonymtypes">SynonymTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#taxa">Taxa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#taxagrouptypes">TaxaGroupTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#variablecontexts">VariableContexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variableelements">VariableElements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variablemodifications">VariableModifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variableunits">VariableUnits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="table_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="table_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">neotoma</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Taxonomy Related Tables</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tables_taxa.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="taxonomy-related-tables">
+<h1>Taxonomy Related Tables<a class="headerlink" href="#taxonomy-related-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ecolgroups">
+<span id="id1"></span><h2>EcolGroups<a class="headerlink" href="#ecolgroups" title="Permalink to this headline">¶</a></h2>
+<p>Taxa are assigned to Sets of Ecological Groups. A taxon may be assigned
+to more than one Set of Ecological Groups, representing different
+schemes for organizing taxa.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="23%" />
+<col width="14%" />
+<col width="26%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>EcolGroups</strong></td>
+</tr>
+<tr class="row-even"><td>TaxonID</td>
+<td>Long Integer</td>
+<td>PK, FK</td>
+<td>Taxa</td>
+</tr>
+<tr class="row-odd"><td>EcolSetID</td>
+<td>Long Integer</td>
+<td>PK, FK</td>
+<td>EcolSetTypes</td>
+</tr>
+<tr class="row-even"><td>EcolGroupID</td>
+<td>Text</td>
+<td>FK</td>
+<td>EcolGroupTypes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TaxonID (Primary Key, Foreign Key)</strong> Taxon identification number.  The field links to the <a class="reference internal" href="#taxa"><span>Taxa</span></a> table.</p>
+<p><strong>EcolSetID (Primary Key, Foreign Key)</strong> Ecological Set identification number. Field links to the <a class="reference internal" href="#ecolsettypes"><span>EcolSetTypes</span></a> table.</p>
+<p><strong>EcolGroupID (Foreign Key)</strong> A four-letter Ecological Group identification code. Field links to the <a class="reference internal" href="#ecolgrouptypes"><span>EcolGroupTypes</span></a> table.</p>
+<div class="section" id="sql-example">
+<h3>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h3>
+<p>The following query produces a list of Ecological Groups for vascular plants (VPL).</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+   <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxaGroupID</span><span class="p">,</span>
+   <span class="n">EcolGroups</span><span class="p">.</span><span class="n">EcolGroupID</span><span class="p">,</span>
+   <span class="n">EcolSetTypes</span><span class="p">.</span><span class="n">EcolSetName</span><span class="p">,</span>
+   <span class="n">EcolGroupTypes</span><span class="p">.</span><span class="n">EcolGroup</span>
+<span class="k">FROM</span>
+   <span class="n">EcolSetTypes</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
+   <span class="n">EcolGroupTypes</span>
+   <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
+      <span class="n">Taxa</span>
+      <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">EcolGroups</span> <span class="k">ON</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonID</span> <span class="o">=</span> <span class="n">EcolGroups</span><span class="p">.</span><span class="n">TaxonID</span>
+   <span class="p">)</span> <span class="k">ON</span> <span class="n">EcolGroupTypes</span><span class="p">.</span><span class="n">EcolGroupID</span> <span class="o">=</span> <span class="n">EcolGroups</span><span class="p">.</span><span class="n">EcolGroupID</span>
+<span class="p">)</span> <span class="k">ON</span> <span class="n">EcolSetTypes</span><span class="p">.</span><span class="n">EcolSetID</span> <span class="o">=</span> <span class="n">EcolGroups</span><span class="p">.</span><span class="n">EcolSetID</span>
+<span class="k">GROUP</span> <span class="k">BY</span>
+   <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxaGroupID</span><span class="p">,</span>
+   <span class="n">EcolGroups</span><span class="p">.</span><span class="n">EcolGroupID</span><span class="p">,</span>
+   <span class="n">EcolSetTypes</span><span class="p">.</span><span class="n">EcolSetName</span><span class="p">,</span>
+   <span class="n">EcolGroupTypes</span><span class="p">.</span><span class="n">EcolGroup</span>
+<span class="k">HAVING</span>
+   <span class="p">(((</span><span class="n">Taxa</span><span class="p">.</span><span class="n">TaxaGroupID</span><span class="p">)</span> <span class="o">=</span> <span class="ss">&quot;VPL&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>TaxaGroupID</strong></td>
+<td><strong>EcolGroupID</strong></td>
+<td><strong>EcolSetName</strong></td>
+<td><strong>EcolGroup</strong></td>
+</tr>
+<tr class="row-even"><td>VPL</td>
+<td>ANAC</td>
+<td>Default plant</td>
+<td>Anachronic</td>
+</tr>
+<tr class="row-odd"><td>VPL</td>
+<td>AQVP</td>
+<td>Default plant</td>
+<td>Aquatic Vascular Plants</td>
+</tr>
+<tr class="row-even"><td>VPL</td>
+<td>TRSH</td>
+<td>Default plant</td>
+<td>Trees and Shrubs</td>
+</tr>
+<tr class="row-odd"><td>VPL</td>
+<td>UNID</td>
+<td>Default plant</td>
+<td>Unknown and Indeterminable</td>
+</tr>
+<tr class="row-even"><td>VPL</td>
+<td>UPHE</td>
+<td>Default plant</td>
+<td>Upland Herbs</td>
+</tr>
+<tr class="row-odd"><td>VPL</td>
+<td>VACR</td>
+<td>Default plant</td>
+<td>Terrestrial Vascular Cryptogams</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>SQL Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>This query lists all the taxa in the Ecological Group «Sirenia».</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+   <span class="n">EcolGroupTypes</span><span class="p">.</span><span class="n">EcolGroup</span><span class="p">,</span>
+   <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span>
+<span class="k">FROM</span>
+   <span class="n">EcolGroupTypes</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
+   <span class="n">Taxa</span>
+   <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">EcolGroups</span> <span class="k">ON</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonID</span> <span class="o">=</span> <span class="n">EcolGroups</span><span class="p">.</span><span class="n">TaxonID</span>
+<span class="p">)</span> <span class="k">ON</span> <span class="n">EcolGroupTypes</span><span class="p">.</span><span class="n">EcolGroupID</span> <span class="o">=</span> <span class="n">EcolGroups</span><span class="p">.</span><span class="n">EcolGroupID</span>
+<span class="k">WHERE</span>
+   <span class="p">(</span>
+      <span class="p">(</span>
+         <span class="p">(</span><span class="n">EcolGroupTypes</span><span class="p">.</span><span class="n">EcolGroup</span><span class="p">)</span> <span class="o">=</span> <span class="ss">&quot;Sirenia&quot;</span>
+      <span class="p">)</span>
+   <span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>EcolGroup</strong></td>
+<td><strong>TaxonName</strong></td>
+</tr>
+<tr class="row-even"><td>Sirenia</td>
+<td>Dugongidae</td>
+</tr>
+<tr class="row-odd"><td>Sirenia</td>
+<td>Hydrodamalis gigas</td>
+</tr>
+<tr class="row-even"><td>Sirenia</td>
+<td>Sirenia</td>
+</tr>
+<tr class="row-odd"><td>Sirenia</td>
+<td>Trichechidae</td>
+</tr>
+<tr class="row-even"><td>Sirenia</td>
+<td>Trichechus manatus</td>
+</tr>
+<tr class="row-odd"><td>Sirenia</td>
+<td>Hydrodamalis</td>
+</tr>
+<tr class="row-even"><td>Sirenia</td>
+<td>Trichechus</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ecolgrouptypes">
+<span id="id3"></span><h2>EcolGroupTypes<a class="headerlink" href="#ecolgrouptypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Ecological Group Types. The table is referenced by the <a class="reference internal" href="#ecolgroups"><span>EcolGroups</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="17%" />
+<col width="13%" />
+<col width="10%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>EcolGroupTypes</strong></td>
+</tr>
+<tr class="row-even"><td>EcolGroupID</td>
+<td>Text</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>EcolGroup</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>EcolGroupID (Primary Key)</strong></dt>
+<dd>An arbitrary Ecological Group identification number.</dd>
+<dt><strong>EcolGroup</strong></dt>
+<dd>Ecological Group.</dd>
+</dl>
+</div>
+<div class="section" id="ecolsettypes">
+<span id="id4"></span><h2>EcolSetTypes<a class="headerlink" href="#ecolsettypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Ecological Set Types. The table is referenced by the <a class="reference internal" href="#ecolgroups"><span>EcolGroups</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="30%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>EcolSetTypes</strong></td>
+</tr>
+<tr class="row-even"><td>EcolSetID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>EcolSetName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>EcolSetID (Primary Key)</strong></dt>
+<dd>An arbitrary Ecological Set identification number.</dd>
+</dl>
+<p><strong>EcolSetName</strong> The Ecological Set name.</p>
+</div>
+<div class="section" id="synonyms">
+<span id="id5"></span><h2>Synonyms<a class="headerlink" href="#synonyms" title="Permalink to this headline">¶</a></h2>
+<p>This table lists common synonyms for taxa in the <a class="reference internal" href="#taxa"><span>Taxa</span></a> table. No effort has been made to provide a complete taxonomic synonymy, but rather to list synonyms commonly used in recent literature.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="26%" />
+<col width="10%" />
+<col width="26%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Synonyms</strong></td>
+</tr>
+<tr class="row-even"><td>SynonymID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SynonymName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>TaxonID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Taxa</td>
+</tr>
+<tr class="row-odd"><td>PublicationID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Publications</td>
+</tr>
+<tr class="row-even"><td>SynonymTypeID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>SynonymTypes</td>
+</tr>
+<tr class="row-odd"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>SynonymID (Primary Key)</strong></dt>
+<dd>An arbitrary synonym identification number.</dd>
+<dt><strong>SynonymName</strong></dt>
+<dd>Name of the synonym.</dd>
+<dt><strong>TaxonID (Foreign Key)</strong></dt>
+<dd>The accepted taxon name in Neotoma. This field links to <a class="reference internal" href="#taxa"><span>Taxa</span></a> table.</dd>
+<dt><strong>PublicationID (Foreign Key)</strong></dt>
+<dd>Published authority for synonymy. Field links to <span class="xref std std-ref">Publications</span> table.</dd>
+<dt><strong>SynonymTypeID (Foreign Key)</strong></dt>
+<dd>Type of synonym. Field links to the <cite>SynonymTypes</cite> lookup table.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the synonymy.</dd>
+</dl>
+</div>
+<div class="section" id="synonymtypes">
+<span id="id6"></span><h2>SynonymTypes<a class="headerlink" href="#synonymtypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Synonym Types. Table is referenced by the <a class="reference internal" href="#synonyms"><span>Synonyms</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="30%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: SynonymTypes</strong></td>
+</tr>
+<tr class="row-even"><td>SynonymTypeID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SynonymType</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>SynonymTypeID (Primary Key)</strong></dt>
+<dd>An arbitrary Synonym Type identification number.</dd>
+<dt><strong>SynonymType</strong></dt>
+<dd><p class="first">Synonym type. Below are some examples:</p>
+<dl class="last docutils">
+<dt><strong>nomenclatural, homotypic, or objective synonym</strong></dt>
+<dd>a synonym that unambiguously refers to the same taxon, particularly one with the same description or type specimen.  These synonyms are particularly common above the species level. For example, Gramineae = Poaceae, <em>Clethrionomys gapperi</em> = <em>Myodes gapperi</em>. The term «objective» is used in zoology, whereas «nomenclatural» or «homotypic» is used in botany.</dd>
+<dt><strong>taxonomic, heterotypic, or subjective synonym</strong></dt>
+<dd>a synonym typically based on a different type specimen, but which is now regarded as the same taxon as the senior synonym. For example, <em>Iva ciliata</em> = <em>Iva annua</em>. The term «subjective» is used in zoology, whereas «taxonomic» or «heterotypic» is used in botany.</dd>
+<dt><strong>genus merged into another genus</strong></dt>
+<dd>heterotypic or subjective synonym; a genus has been merged into another genus and has not been retained at a subgeneric rank. This synonymy may apply to either the generic or specific level, for example: <em>Petalostemon</em> = <em>Dalea</em>, <em>Petalostemon purpureus</em> = <em>Dalea purpurea</em>.</dd>
+<dt><strong>family merged into another family</strong></dt>
+<dd>Heterotypic or subjective synonym; a family has been merged into another family and has not been retained at a subfamilial rank. For example, the Taxodiaceae has been merged with the Cupressaceae. This synonymy creates issues for data entry, because palynologically the Taxodiaceae <em>sensu stricto</em> is sometimes distinguishable from the Cupressaceae sensu stricto. If a pollen type was identified as «Cupressaceae/Taxodiaceae», then synonymizing to «Cupressaceae» results in no loss of information.  However, synonymizing «Taxodiaceae» to «Cupressaceae» potentially does. In this case, consultation with the original literature or knowledge of the local biogeography may point to a logical name change that will retain the precision of the original identification. For example, in the southeastern , «Taxodiaceae» can be changed to «<em>Taxodium</em>» or «<em>Taxodium</em>-type» in most situations. If «Cupressaceae» was also identified, then it should be changed to «Cupressaceae undiff.» or possibly «Juniperus-type» if other Cupressaceae such as Chamaecyperus are unlikely.</dd>
+<dt><strong>rank change: species reduced to subspecific rank</strong></dt>
+<dd>heterotypic or subjective synonym; a species has been reduced to a subspecies or variety of another species. These synonyms may be treated in two different ways, depending on the situation or protocols of the contributing data cooperative: (1) The taxon is reduced to the subspecific rank (e.g. <em>Alnus</em> <em>fruticosa</em> = <em>Alnus viridis</em> subsp. <em>fruticosa</em>, <em>Canis familiaris</em> = <em>Canis lupus familiaris</em>), either because the fossils can be assigned to the subspecies based on morphology, as is likely the case with the domestic dog, <em>Canis lupus familiaris</em>, or because the subspecies can be assigned confidently based on biogeography. (2) The taxon is changed to the new taxon and the subspecific rank is dropped because the fossil is not distinguishable at the subspecific level. For example, <em>Alnus rugosa</em> = <em>Alnus incana</em> subsp. <em>rugosa</em>, but may simply be changed to <em>Alnus incana</em> because the pollen of <em>A. incana</em> subsp. <em>rugosa</em> and <em>A. incana</em> subsp. <em>incana</em> are indistinguishable morphologically.</dd>
+<dt><strong>rank change: genus reduced to subgenus</strong></dt>
+<dd>heterotypic or subjective synonym; a genus has been reduced to subgeneric rank in another family. At the generic level, this synonymy is clear from the naming conventions, e.g. <em>Mictomys</em> = <em>Synaptomys (Mictomys)</em>; however, at the species level it is not, e.g. <em>Mictomys borealis</em> = <em>Synaptomys borealis</em>.</dd>
+<dt><strong>rank change: family reduced to subfamily</strong></dt>
+<dd>heterotypic or subjective synonym; a family has been reduced to subfamily rank in another family. By botanical convention the family name is retained, e.g. Pyrolaceae = Ericaceae subf. Monotropoideae; whereas by zoological convention it is not, e.g. Desmodontidae = Desmodontinae.</dd>
+<dt><strong>rank change: subspecific rank elevated to species</strong></dt>
+<dd>heterotypic or subjective synonym; a subspecies or variety has been raised to the species rank, e.g. <em>Ephedra fragilis</em> subsp. <em>campylopoda</em> = <em>Ephedra foeminea</em>.</dd>
+<dt><strong>rank change: subgeneric rank elevated to genus</strong></dt>
+<dd>heterotypic or subjective synonym; a subgenus or other subgeneric rank has been raised to the generic rank. At the subgeneric level, this synonymy is clear from the naming conventions, e.g. <em>Potamogeton</em> subg. <em>Coleogeton</em> = <em>Stuckenia</em>; however, at the species level it is not, e.g. <em>Potamogeton pectinatus</em> = <em>Stuckenia pectinata</em>.</dd>
+<dt><strong>rank change: subfamily elevated to family</strong></dt>
+<dd>heterotypic or subjective synonym; a subfamily has been raised to the family rank, e.g. Liliaceae subf. Amaryllidoideae = Amaryllidaceae, Pampatheriinae = Pampatheriidae.</dd>
+<dt><strong>rank elevated because of taxonomic uncertainty</strong></dt>
+<dd>because the precise taxonomic identification is uncertain, the rank has been raised to a level that includes the universe of possible taxa. A common cause of such uncertainty is taxonomic splitting subsequent to the original identification, in which case the originally identified taxon is now a much smaller group. For example, the genus <em>Psoralea</em> has been divided into several genera; the genus <em>Psoralea</em> still exists, but now includes a much smaller number of species. Consequently, in the database <em>Psoralea</em> has been synonymized with Fabaceae tribe Psoraleeae, which includes the former <em>Psoralea</em> sensu lato. A zoological example is <em>Mustela</em> sp. The genus <em>Mustela</em> formerly included the minks, which have now been separated into the genus <em>Neovison</em>. Consequently, <em>Mustela</em> sp. = <em>Mustela/Neovison</em> sp.</dd>
+<dt><strong>globally monospecific genus</strong></dt>
+<dd>Although identified at the genus level, specimens assigned to this genus can be further assigned to the species level because the genus is monospecific.</dd>
+<dt><strong>globally monogeneric family</strong></dt>
+<dd>although identified at the family level, specimens assigned to this family can be further assigned to the genus level because the family is monogeneric.</dd>
+</dl>
+</dd>
+</dl>
+<div class="section" id="id7">
+<h3>SQL Example<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>This query provides the preferred synonym in the database for «Bison
+alleni» along with the published authority for the synonymy and the
+notes in the database on the rationale for the synonymy. The notes
+indicate some potential problems with this synonymy.</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Synonyms</span><span class="p">.</span><span class="n">SynonymName</span><span class="p">,</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">,</span> <span class="n">Publications</span><span class="p">.</span><span class="n">Citation</span><span class="p">,</span>
+<span class="n">Synonyms</span><span class="p">.</span><span class="n">Notes</span>
+
+<span class="k">FROM</span> <span class="n">Publications</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Taxa</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Synonyms</span> <span class="k">ON</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonID</span> <span class="o">=</span>
+<span class="n">Synonyms</span><span class="p">.</span><span class="n">TaxonID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Publications</span><span class="p">.</span><span class="n">PublicationID</span> <span class="o">=</span> <span class="n">Synonyms</span><span class="p">.</span><span class="n">PublicationID</span>
+
+<span class="k">WHERE</span> <span class="p">(((</span><span class="n">Synonyms</span><span class="p">.</span><span class="n">SynonymName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;Bison alleni&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="3%" />
+<col width="17%" />
+<col width="76%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>SynonymName</strong></td>
+<td><strong>TaxonName</strong></td>
+<td><strong>Citation</strong></td>
+<td><strong>Notes</strong></td>
+</tr>
+<tr class="row-even"><td>Bison alleni</td>
+<td>Bison latifrons</td>
+<td>McDonald, J. N. 1981. North American bison: their classification and evolution. of Press, .</td>
+<td>According to MacDonald (1981, p. 73), the holotype of B. alleni is clearly consistent with B. latifrons; however, he notes that many specimens identified as B. alleni have been confused with B. alaskensis (=priscus), a situation which may relegate B. alleni to a nomen dubium. (1974) synonymized B. alleni with B. priscus. He also considered B. latifrons and B. alaskensis to be subspecies of B. priscus. [ECG, 3 Aug 2007].</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="taxa">
+<span id="id8"></span><h2>Taxa<a class="headerlink" href="#taxa" title="Permalink to this headline">¶</a></h2>
+<p>This table lists all taxa in the database. Most taxa are biological taxa; however, some are biometric measures and some are physical parameters.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="27%" />
+<col width="10%" />
+<col width="31%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Taxa</strong></td>
+</tr>
+<tr class="row-even"><td>TaxonID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>TaxonCode</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>TaxonName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Author</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>HigherTaxonID</td>
+<td>Long Integer</td>
+<td>&nbsp;</td>
+<td>Taxa:TaxonID</td>
+</tr>
+<tr class="row-odd"><td>Extinct</td>
+<td>Yes/No</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>TaxaGroupID</td>
+<td>Text</td>
+<td>FK</td>
+<td>TaxaGroupTypes</td>
+</tr>
+<tr class="row-odd"><td>PublicationID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Publications</td>
+</tr>
+<tr class="row-even"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>TaxonID (Primary Key)</strong></dt>
+<dd>An arbitrary Taxon identification number.</dd>
+<dt><strong>TaxonCode</strong></dt>
+<dd><p class="first">A code for the Taxon. These codes are useful for other software or output for which the complete name is too long. Because of the very large number of taxa, codes can be duplicated for different Taxa Groups. In general, these various Taxa Groups are analyzed separately, and no duplication will occur within a dataset. However, if Taxa Groups are combined, unique codes can be generated by prefixing with the TaxaGroupID, For example, VPL:Cle (<em>Clethra</em>) and MAM:Cle (<em>Clethrionomys</em>)</p>
+<p>A set of conventions has been established for codes. In some cases conventions differ depending on whether the organism is covered by rules of botanical nomenclature (BN) or zoological nomenclature (ZN).</p>
+<dl class="last docutils">
+<dt><strong>Genus</strong></dt>
+<dd>Three-letter code, first letter capitalized, generally the first three unless already used: <strong>Ace</strong> (<em>Acer</em>) or <strong>Cle</strong> (<em>Clethrionomys</em>).</dd>
+<dt><strong>Subgenus</strong></dt>
+<dd>The genus code plus a two-letter subgenus code, first letter capitalized, separated by a period: <strong>Pin.Pi</strong> (<em>Pinus</em> subg. <em>Pinus</em>) or <strong>Syn.Mi</strong> (<em>Synaptomys (Mictomys)</em>).</dd>
+<dt><strong>Species</strong></dt>
+<dd>The genus code plus a two-letter, lower-case species code, separated by a period: <strong>Ace.sa</strong> (<em>Acer saccharum</em>), <strong>Ace.sc</strong> (<em>Acer saccharinum</em>), or <strong>Cle.ga</strong> (<em>Clethrionomys gapperi</em>)</dd>
+<dt><strong>Subspecies or variety</strong></dt>
+<dd>The species code a two-letter, lower-case subspecies code, separated by a period: <strong>Aln.vi.si</strong> (<em>Alnus viridis</em> subsp. <em>sinuata</em>), or <strong>Bis.bi.an</strong> (<em>Bison bison antiquus</em>)</dd>
+<dt><strong>Family</strong></dt>
+<dd>Six-letter code, first letter capitalized, consisting of three letters followed by «eae» (BN) or «dae» (ZN): <strong>Roseae</strong> (Rosaceae), or <strong>Bovdae</strong> (Bovidae)</dd>
+<dt><strong>Subfamily or tribe</strong></dt>
+<dd>(BN) Family code plus two-letter subfamily code, first letter capitalized, separated by a period. (ZN) Six-letter code, first letter capitalized, consisting of three letters followed by «nae»: <strong>Asteae.As</strong> (Asteraceae subf. Asteroideae),  <strong>Asteae.Cy</strong> (Asteraceae tribe Cynarea), or <strong>Arvnae</strong> Arvicolinae.</dd>
+<dt><strong>Order</strong></dt>
+<dd>(BN) Six-letter code, first letter capitalized, consisting of three letters followed by «les». (ZN) Six-letter code, first letter capitalized, consisting of three letters, followed by the last three letters of the order name, unless the order name is ≤6 letters long, in which case the code = the order name. Zoological orders do not have a common ending:  <strong>Ercles</strong> (Ericales), <strong>Artyla</strong> (Artiodactyla), or <strong>Rodtia</strong> (Rodentia).</dd>
+<dt><strong>Taxonomic levels higher than order</strong></dt>
+<dd>Six-letter code, first letter capitalized, consisting of three letters, followed by the last three letters of the order name, unless the order name is ≤6 letters long, in which case the code = the order name: <strong>Magida</strong> (Magnoliopsida), <strong>Magyta</strong> (Magnoliophyta), or <strong>Mamlia</strong> (Mammalia).</dd>
+<dt><strong>Types</strong></dt>
+<dd>The conventional taxon code followed by «-type»: <strong>Aln.in-t</strong> (<em>Alnus incana</em>-type), <strong>Amb-t</strong> (<em>Ambrosia</em>-type)</dd>
+<dt><strong>cf.</strong></dt>
+<dd>«cf. » is placed in the proper position: <strong>Odc.cf.he</strong> (<em>Odocoileus</em> cf. <em>O. hemionus</em>), <strong>cf.Odc.he</strong> (cf. <em>Odocoileus hemionus</em>), or <strong>cf.Odc</strong> (cf. <em>Odocoileus</em>).</dd>
+<dt><strong>aff.</strong></dt>
+<dd>«aff. » is abbreviated to «af. »: <strong>af.Can.di</strong> (aff. <em>Canis dirus</em>)</dd>
+<dt><strong>?</strong></dt>
+<dd>«?» is placed in the proper position. <strong>?Pro.lo</strong> (?*Procyon lotor*)</dd>
+<dt><strong>Alternative names</strong></dt>
+<dd>A slash is placed between the conventional abbreviations for the alternative taxa: <strong>Ost/Cpn</strong> (<em>Ostrya/Carpinus</em>), or <strong>Mstdae/Mepdae</strong> (Mustelidae/Mephitidae)</dd>
+<dt><strong>Undifferentiated taxa</strong></dt>
+<dd>(BN) «.ud» is added to the code. (ZN) «.sp » is added to the code: <strong>Aln.ud</strong> (<em>Alnus</em> undiff.), <strong>Roseae.ud</strong> (Rosaceae undiff.), <strong>Mms.sp</strong> (<em>Mammuthus</em> sp.), or <strong>Taydae.sp</strong> (<em>Tayassuidae</em> sp.).</dd>
+<dt><strong>Parenthetic modifiers</strong></dt>
+<dd>The conventional taxon code with an appropriate abbreviation for the modifier separated by periods. Multiple modifiers also separated by periods. Abbreviations for pollen morphological modifiers follow Iversen and Troels-Smith (1950): <strong>Raneae.C3</strong> (Ranunculaceae (tricolpate)), <strong>Raneae.Cperi</strong> (Ranunculaceae (pericolpate)), <strong>Pineae.ves.ud</strong> (Pinaceae (vesiculate) undiff.), <strong>Myteae.Csyn.psi</strong> (Myrtaceae (syncolpate, psilate)), <strong>Bet.&gt;20µ</strong> (<em>Betula</em> (&gt;20 µm))</dd>
+<dt><strong>Non-biological taxa</strong></dt>
+<dd>Use appropriate abbreviations: <strong>bulk.dens</strong> (Bulk density), <strong>LOI</strong> Loss-on-ignition, <strong>Bet.pol.diam</strong> (<em>Betula</em> mean pollen-grain diameter).</dd>
+</dl>
+</dd>
+<dt><strong>TaxonName</strong></dt>
+<dd><p class="first">Name of the taxon. Most TaxonNames are biological taxa; however, some are biometric measures and some are physical parameters. In addition, some biological taxa may have parenthetic non-Latin modifers, e.g. «<em>Betula</em> (&gt;20 µm)» for <em>Betula</em> pollen grains &gt;20 µm in diameter. In general, the names used in Neotoma are those used by the original investigator. In particular, identifications are not changed, although Dataset notes can be added to the database regarding particular identifications. However, some corrections and synonymizations are made.</p>
+<p>These include:</p>
+<ul class="simple">
+<li>Misspellings are corrected.</li>
+<li>Nomenclatural, homotypic, or objective synonyms may be applied.  Because these synonyms unambiguously refer to the same taxon, no change in identification is implied. For example, the old family name for the grasses «Gramineae» is changed to «Poaceae».</li>
+<li>Taxonomic, heterotypic, or subjective synonyms may be applied if the change does not effectively assign the specimen to a different taxon. Although two names may have been based on different type specimens, if further research has shown that these are in fact the same taxon, the name is changed to the accepted name. These synonymizations should not cause confusion. However, uncritical synonymization, although taxonomically correct, can result in loss of information, and should be avoided. For example, although a number of recent studies have shown that the Taxodiaceae should be merged with the Cupressaceae, simply synonymizing Taxodiaceae with Cupressaceae may expand the universe of taxa beyond that implied by the original investigator. For example, a palynologist in the southeastern United States may have used «Taxodiaceae» to imply «<em>Taxodium</em>», which is the only genus of the family that has occurred in the region since the Pliocene, but used the the family name because, palynologically, <em>Taxodiuim</em> cannot be differentiated from other Taxodiaceae. However, well preserved <em>Taxodium</em> pollen grains can be differentiated from the other Cupressaceous genera in the regin, <em>Juniperus</em> and <em>Chamaecyperus</em>. Thus, the appropriate synonymization for «Taxodiaceae» in this region would be «<em>Taxodium</em>» or «<em>Taxodium</em>-type», which would retain the original taxonomic precision. On the other hand, the old «TCT» shorthand for «Taxodiaceae/Cupressaceae/Taxaceae» now becomes «Cupressaceae/Taxaceae» with no loss of information.</li>
+<li>For alternative taxonomic desginations, the order may be changed. For example, «<em>Ostrya/Carpinus</em>» would be substituted for «<em>Carpinus/Ostrya</em>».</li>
+</ul>
+<p>The database has a number of conventions for uncertainty in identification. The uncertainty is included in the taxon name. Thus, «<em>Acer</em> <em>pensylvanicum</em>» and «<em>Acer</em> cf. <em>A. pensylvanicum</em>» are two different taxa.</p>
+<dl class="docutils">
+<dt><strong>cf.</strong></dt>
+<dd><blockquote class="first">
+<div>Latin <em>confer</em>, which means compare. In taxonomy «cf. » generally means that the specimen compares well to or is similar to the type referred, but the identification is uncertain. Uncertainty may arise for a number of reasons. The specimen may not be well preserved. It may be nondescript. There may be other similar taxa that can not be ruled out. The analyst may not have access to a complete reference or comparative collection for the group, so other related taxa cannot be excluded with certainty.</div></blockquote>
+<p>For uncertainty at the species level, the convention in Neotoma is, for example, «<em>Odocoileus</em> cf. <em>O. hemionus</em>», not
+«<em>Odocoileus</em> cf. <em>hemionus</em>». Placement of «cf. » is important, because it indicates the taxonomic level of uncertaintly. For example, «<em>Odocoileus</em> cf. <em>O. hemionus</em>» implies that the identification of <em>Odocoileus</em> is secure, but that the species identification is not; whereas «cf. <em>Odocoileus hemionus</em>» implies that not even the genus identification is certain. A further implication in the latter example is that if the genus identification is correct, then the the specimen must also be that species, perhaps because of biogeographic considerations. Although commonly overlooked, it is also important to indicate the proper level of uncertainly in family-genus identifications. For example, «Brassicaceae cf. <em>Brassica</em>» implies that assignment to the Brassicaceae is secure; whereas simply «cf. <em>Brassica</em>» does not indicate that even the family identification is certain.</p>
+<p class="last">In FAUNMAP, the uncertainty is recorded in a separate field from the taxon name, and for species it is not discernable whether the uncertainty is at the genus or species level. When data were imported from FAUNMAP, the «cf. » uncertainty was conservatively assigned to the genus level. Thus, if «<em>Bison bison</em>» was indicated to have «cf. » uncertainty, this record was imported as «cf. <em>Bison bison</em>» rather than «<em>Bison</em> cf. <em>B. bison</em>». However, in many cases, the uncertainty in the original data was probably at the species level.</p>
+</dd>
+<dt><strong>aff.</strong></dt>
+<dd>«aff. » Latin <em>affinis</em>, which means having affinity with, but distinct from, the referred taxon. This desgination is often applied to a taxon thought to be undescribed. Thus, «aff. <em>Canis dirus</em>» implies an affinity to <em>Canus dirus</em>, but the specimen is likely from another species.</dd>
+<dt><strong>?</strong></dt>
+<dd>«?» is used to designate a questionable identification. It may indicate even less certainty than «cf. ». An example is «?Procyon lotor».</dd>
+<dt><strong>Types</strong></dt>
+<dd>Many pollen taxa are designated as types, e.g. «<em>Ambrosia</em>-type». A type denotes a morphological type that is consistent with the referred taxon, but also includes other taxa that are palynologically indistinguishable. For example, «<em>Ambrosia</em>-type» includes <em>Ambrosia</em> and <em>Iva</em> <em>axillaris</em>. The referred name commonly indicates the sporophyte taxon thought to be the most probable source of the pollen. An analyst may choose a «-type» designation referring to a lower taxonomic rank rather than an inclusive higher taxonomic rank because the referred taxon is thought to be the source taxon with very high probability. For example, in eastern , <em>Pinus strobus</em> is the only species of <em>Pinus</em> subg. <em>Strobus</em>, although several other species of this subgenus occur in western . Consequently, some analysts refer to «<em>Pinus strobus</em>-type» rather than «<em>Pinus</em> subg. <em>Strobus</em>». Ideally, a type would comprise a well defined universe of taxa, but in practice types are often vaguely defined. For example, in eastern «<em>Populus balsamifera</em>-type» includes a large proportion of <em>P. balsamifera</em> and probably smaller proportions of <em>P. tremuloides, P. grandidentata,</em> and <em>P. deltoides</em>; whereas «<em>Populus tremuloides</em>-type» includes larger proportions of these latter three species and a smaller proportion of <em>P. balsamifera</em>. However, these proportions are ill-defined.</dd>
+<dt><strong>Alternative taxonomic designations</strong></dt>
+<dd>In some cases, fossil specimens of two taxa are indistinguishable and are more-or-less equally likely. The names can then be separated by a slash, e.g. «<em>Ostrya/Carpinus</em>», «Mustelidae/Mephitidae». If one taxon is more likely, the analyst may choose to use a «-type» designation instead, e.g. «<em>Ostrya</em>-type». Although the order of alternative names may be changed by the database, a «-type» designation is not substituted for alternatives. However, the use of more two alternatives is discouraged. In cases in which taxonomic revisions have reduced the number of speices within a taxon, the original universe of species may be retained with the slash designation. An example is «Mustelidae», which in older literature included the skunks, which have now been placed in their own family the Mephitidae; thus «Mustelidae/Mephitidae» retains the original set of possible taxa.</dd>
+<dt><strong>Undifferentiated taxa</strong></dt>
+<dd>Lower taxonomic ranks may not be differentiated. The convention among palynologists is to specify these by the suffix «undiff. ». Thus, «Rosaceae undiff.» designates undifferentiated Rosaceae. However, palynologists have inconsistently applied the «undiff.» appellation, and the pollen databases established a convention that taxa must be mutually exclusive within a dataset. Thus, if a higher-rank taxon is present in a dataset, the «undiff.» suffix is applied only if lower-rank taxa are also present. For example, if «<em>Spiraea</em>» occurs in a dataset, «Rosaceae» would be changed to «Rosaceae undiff.», because <em>Spiraea</em> is a genus in the family Rosaceae. On the other hand, if «Rosaceae undiff.» occurs with no other Rosaceae, then «Rosaceae undiff.» is changed to simply «Rosaceae»; it is implicit that the family is not differentiated.</dd>
+</dl>
+<p class="last">Faunal analysts customarily use the appellation «sp.» to designate undifferentiated taxa. Thus, «<em>Microtus</em> sp.» indicates undifferentiated <em>Microtus</em>. In addition, faunal analysts regularly use the «sp.» designation even when no lower-rank taxa are identified. The «sp.» appellation is most frequently used with genera. The principle of taxonomic mutual exclusivity has not been applied to fauanl datasets, although it should probably be considered.</p>
+</dd>
+<dt><strong>Author</strong></dt>
+<dd>Author(s) of the name. Neither the pollen database nor FAUNMAP stored author names, so these do not currently exist in Neotoma for plant and mammal names. These databases follow standard taxonomic references (e.g. <em>Flora of North America</em>, <em>Flora Europaea</em>, Wilson and Reeder&#8217;s <em>Mammal Species of the World</em>), which, of course, do cite the original authors. However, for beetles, the standard practice is to cite original author names; therefore, this field was added to Neotoma.</dd>
+<dt><strong>HigherTaxonID</strong></dt>
+<dd>The TaxonID of the next higher taxonomic rank, for example, the HigherTaxonID for «<em>Bison</em>» is the TaxonID for «Bovidae». For «cf.&#8217;s» and «-types», the next higher rank may be much higher owing to the uncertainty of the identification; the HigherTaxonID for «cf. <em>Bison bison</em>» is the TaxonId for «Mammalia». The HigherTaxonID implements the taxonomic hierarchy in Neotoma.</dd>
+<dt><strong>Extinct</strong></dt>
+<dd>Boolean (True/False) variable. The value is True if the taxon is extinct, False if extant.</dd>
+<dt><strong>TaxaGroupID (Foreign Key)</strong></dt>
+<dd>The TaxaGroupID facilitates rapid extraction of taxa groups that are typically grouped together for analysis. Some of these groups contain taxa in different classes or phyla. For example, vascular plants include the Spermatophyta and Pteridophyta; the herps include Reptilia and Amphibia; the testate amoebae include taxa from different phyla. Field links to the <span class="xref std std-ref">TaxaGroupTypes</span> table.</dd>
+<dt><strong>PublicationID (Foreign Key)</strong></dt>
+<dd>Publication identification number. Field links to the <span class="xref std std-ref">Publications</span> table.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the Taxon.</dd>
+</dl>
+</div>
+<div class="section" id="taxagrouptypes">
+<span id="taxagrouptype"></span><h2>TaxaGroupTypes<a class="headerlink" href="#taxagrouptypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table for Taxa Group Types. This table is referenced by the
+<a class="reference internal" href="#taxa"><span>Taxa</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="17%" />
+<col width="13%" />
+<col width="10%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>TaxaGroupTypes</strong></td>
+</tr>
+<tr class="row-even"><td>TaxaGroupID</td>
+<td>Text</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>TaxaGroup</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>TaxaGroupID (Primary Key)</strong></dt>
+<dd>A three-letter Taxa Group code.</dd>
+<dt><strong>TaxaGroup</strong></dt>
+<dd><p class="first">The taxa group. Below are some examples:</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>TaxaGroupID</td>
+<td>TaxaGroup</td>
+</tr>
+<tr class="row-even"><td>AVE</td>
+<td>Birds</td>
+</tr>
+<tr class="row-odd"><td>BIM</td>
+<td>Biometric variables</td>
+</tr>
+<tr class="row-even"><td>BRY</td>
+<td>Bryophytes</td>
+</tr>
+<tr class="row-odd"><td>BTL</td>
+<td>Beetles</td>
+</tr>
+<tr class="row-even"><td>...</td>
+<td>...</td>
+</tr>
+<tr class="row-odd"><td>FSH</td>
+<td>Fish</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="section" id="variables">
+<span id="id9"></span><h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<p>This table lists Variables, which always consist of a Taxon and Units of measurement. Variables can also have Elements, Contexts, and Modifications. Thus, the same taxon with different measurement units (e.g. present/absent, NISP, MNI) are different Variables.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="22%" />
+<col width="8%" />
+<col width="34%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Variables</strong></td>
+</tr>
+<tr class="row-even"><td>VariableID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>TaxonID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Taxa</td>
+</tr>
+<tr class="row-even"><td>VariableElementID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>VariableElements</td>
+</tr>
+<tr class="row-odd"><td>VaribleUnitsID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>VariableUnits</td>
+</tr>
+<tr class="row-even"><td>VariableContextID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>VariableContexts</td>
+</tr>
+<tr class="row-odd"><td>VariableModificationID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>VariableModifications</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>VariableID (Primary Key)</strong></dt>
+<dd>An arbitrary Variable identification number.</dd>
+<dt><strong>TaxonID (Foreign Key)</strong></dt>
+<dd>Taxon identification number. Field links to the <a class="reference internal" href="#taxa"><span>Taxa</span></a> table.</dd>
+<dt><strong>VariableElementID (Foreign Key)</strong></dt>
+<dd>Variable Element identification number. Field links to the <a class="reference internal" href="#variableelements"><span>VariableElements</span></a> lookup table.</dd>
+<dt><strong>VariableUnitsID (Foreign Key)</strong></dt>
+<dd>Variable Units identification number. Field links to the <a class="reference internal" href="#variableunits"><span>VariableUnits</span></a> lookup table.</dd>
+<dt><strong>VariableContextID (Foreign Key)</strong></dt>
+<dd>Variable Context identification number. Field links to the <span class="xref std std-ref">VariableContexts</span> lookup table.</dd>
+<dt><strong>VarialbeModificationID (Foreign Key)</strong></dt>
+<dd>Variable Modification identification number. Field links to the <span class="xref std std-ref">VariableModifications</span> lookup table.</dd>
+</dl>
+<div class="section" id="id10">
+<h3>SQL Example<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>This query lists the Variables for «<em>Zea mays</em>» with elements and
+measurement units.</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">,</span> <span class="n">VariableElements</span><span class="p">.</span><span class="n">VariableElement</span><span class="p">,</span>
+<span class="n">VariableUnits</span><span class="p">.</span><span class="n">VariableUnits</span>
+
+<span class="k">FROM</span> <span class="n">VariableUnits</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">VariableElements</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Taxa</span> <span class="k">INNER</span>
+<span class="k">JOIN</span> <span class="n">Variables</span> <span class="k">ON</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonID</span> <span class="o">=</span> <span class="n">Variables</span><span class="p">.</span><span class="n">TaxonID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">VariableElements</span><span class="p">.</span><span class="n">VariableElementID</span> <span class="o">=</span> <span class="n">Variables</span><span class="p">.</span><span class="n">VariableElementID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">VariableUnits</span><span class="p">.</span><span class="n">VariableUnitsID</span> <span class="o">=</span> <span class="n">Variables</span><span class="p">.</span><span class="n">VariableUnitsID</span>
+
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">,</span> <span class="n">VariableElements</span><span class="p">.</span><span class="n">VariableElement</span><span class="p">,</span>
+<span class="n">VariableUnits</span><span class="p">.</span><span class="n">VariableUnits</span>
+
+<span class="k">HAVING</span> <span class="p">(((</span><span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;Zea mays&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="38%" />
+<col width="34%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>TaxonName</strong></td>
+<td><strong>VariableElement</strong></td>
+<td><strong>VariableUnits</strong></td>
+</tr>
+<tr class="row-even"><td>Zea mays</td>
+<td>cob</td>
+<td>NISP</td>
+</tr>
+<tr class="row-odd"><td>Zea mays</td>
+<td>glume</td>
+<td>NISP</td>
+</tr>
+<tr class="row-even"><td>Zea mays</td>
+<td>kernel</td>
+<td>NISP</td>
+</tr>
+<tr class="row-odd"><td>Zea mays</td>
+<td>pollen</td>
+<td>NISP</td>
+</tr>
+<tr class="row-even"><td>Zea mays</td>
+<td>stalk fiber</td>
+<td>present/absent</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h3>SQL Example<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>This query lists all sites with <em>Zea mays</em> pollen by designating the
+VariableElement as «pollen».</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">,</span> <span class="n">VariableElements</span><span class="p">.</span><span class="n">VariableElement</span><span class="p">,</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span>
+
+<span class="k">FROM</span> <span class="n">VariableElements</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">CollectionUnits</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Datasets</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Samples</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">Taxa</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="n">Variables</span> <span class="k">ON</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonID</span> <span class="o">=</span> <span class="n">Variables</span><span class="p">.</span><span class="n">TaxonID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="k">Data</span> <span class="k">ON</span>
+<span class="n">Variables</span><span class="p">.</span><span class="n">VariableID</span> <span class="o">=</span> <span class="k">Data</span><span class="p">.</span><span class="n">VariableID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Samples</span><span class="p">.</span><span class="n">SampleID</span> <span class="o">=</span>
+<span class="k">Data</span><span class="p">.</span><span class="n">SampleID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span> <span class="n">Samples</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">VariableElements</span><span class="p">.</span><span class="n">VariableElementID</span> <span class="o">=</span> <span class="n">Variables</span><span class="p">.</span><span class="n">VariableElementID</span>
+
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">,</span> <span class="n">VariableElements</span><span class="p">.</span><span class="n">VariableElement</span><span class="p">,</span>
+<span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span>
+
+<span class="k">HAVING</span> <span class="p">(((</span><span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;Zea mays&quot;</span><span class="p">)</span> <span class="k">AND</span>
+<span class="p">((</span><span class="n">VariableElements</span><span class="p">.</span><span class="n">VariableElement</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;pollen&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>The first few lines of the result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="40%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>TaxonName</strong></td>
+<td><strong>VariableElement</strong></td>
+<td><strong>SiteName</strong></td>
+</tr>
+<tr class="row-even"><td>Zea mays</td>
+<td>pollen</td>
+<td>Almanac Pond</td>
+</tr>
+<tr class="row-odd"><td>Zea mays</td>
+<td>pollen</td>
+<td>Balikh</td>
+</tr>
+<tr class="row-even"><td>Zea mays</td>
+<td>pollen</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Zea mays</td>
+<td>pollen</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Zea mays</td>
+<td>pollen</td>
+<td>Big John Pond</td>
+</tr>
+<tr class="row-odd"><td>Zea mays</td>
+<td>pollen</td>
+<td>Black Pond</td>
+</tr>
+<tr class="row-even"><td>Zea mays</td>
+<td>pollen</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Zea mays</td>
+<td>pollen</td>
+<td>Bouara</td>
+</tr>
+<tr class="row-even"><td>Zea mays</td>
+<td>pollen</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>The same result can be obtained by designating the DatasetType as
+«pollen»:</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">,</span> <span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetType</span><span class="p">,</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span>
+
+<span class="k">FROM</span> <span class="n">DatasetTypes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">Taxa</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Variables</span> <span class="k">ON</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonID</span>
+<span class="o">=</span> <span class="n">Variables</span><span class="p">.</span><span class="n">TaxonID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(((</span><span class="n">CollectionUnits</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Datasets</span> <span class="k">ON</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span>
+<span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Samples</span> <span class="k">ON</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span>
+<span class="n">Samples</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="k">Data</span> <span class="k">ON</span> <span class="n">Samples</span><span class="p">.</span><span class="n">SampleID</span> <span class="o">=</span> <span class="k">Data</span><span class="p">.</span><span class="n">SampleID</span><span class="p">)</span>
+<span class="k">ON</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Variables</span><span class="p">.</span><span class="n">VariableID</span> <span class="o">=</span>
+<span class="k">Data</span><span class="p">.</span><span class="n">VariableID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetTypeID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetTypeID</span>
+
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">,</span> <span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetType</span><span class="p">,</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span>
+<span class="k">HAVING</span> <span class="p">(((</span><span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;Zea mays&quot;</span><span class="p">)</span> <span class="k">AND</span>
+<span class="p">((</span><span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetType</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;pollen&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id12">
+<h3>SQL Example<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>This example gives a list of all sites with <em>Bison bison antiquus</em> bones
+with human butchering.</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">,</span> <span class="n">VariableModifications</span><span class="p">.</span><span class="n">VariableModification</span><span class="p">,</span>
+<span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span>
+
+<span class="k">FROM</span> <span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">CollectionUnits</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Datasets</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="p">(</span><span class="n">Samples</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">VariableModifications</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Taxa</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="n">Variables</span> <span class="k">ON</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonID</span> <span class="o">=</span> <span class="n">Variables</span><span class="p">.</span><span class="n">TaxonID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">VariableModifications</span><span class="p">.</span><span class="n">VariableModificationID</span> <span class="o">=</span>
+<span class="n">Variables</span><span class="p">.</span><span class="n">VariableModificationID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="k">Data</span> <span class="k">ON</span>
+<span class="n">Variables</span><span class="p">.</span><span class="n">VariableID</span> <span class="o">=</span> <span class="k">Data</span><span class="p">.</span><span class="n">VariableID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Samples</span><span class="p">.</span><span class="n">SampleID</span> <span class="o">=</span>
+<span class="k">Data</span><span class="p">.</span><span class="n">SampleID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span> <span class="n">Samples</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span>
+
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">,</span> <span class="n">VariableModifications</span><span class="p">.</span><span class="n">VariableModification</span><span class="p">,</span>
+<span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span>
+
+<span class="k">HAVING</span> <span class="p">(((</span><span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;Bison bison antiquus&quot;</span><span class="p">)</span> <span class="k">AND</span>
+<span class="p">((</span><span class="n">VariableModifications</span><span class="p">.</span><span class="n">VariableModification</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;human butchering&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="35%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>TaxonName</strong></td>
+<td><strong>VariableModification</strong></td>
+<td><strong>SiteName</strong></td>
+</tr>
+<tr class="row-even"><td>Bison bison antiquus</td>
+<td>human butchering</td>
+<td>Folsom</td>
+</tr>
+<tr class="row-odd"><td>Bison bison antiquus</td>
+<td>human butchering</td>
+<td>[41LU1]</td>
+</tr>
+<tr class="row-even"><td>Bison bison antiquus</td>
+<td>human butchering</td>
+<td>Murray Springs [EE:8:25]</td>
+</tr>
+<tr class="row-odd"><td>Bison bison antiquus</td>
+<td>human butchering</td>
+<td>San Jon</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="variablecontexts">
+<h2>VariableContexts<a class="headerlink" href="#variablecontexts" title="Permalink to this headline">¶</a></h2>
+<p>Variable Contexts lookup table. Table is referenced by the
+<a class="reference internal" href="#variables"><span>Variables</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="28%" />
+<col width="10%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: VariableContexts</strong></td>
+</tr>
+<tr class="row-even"><td>VariableContextID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VariableContext</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>VariableContextID (Primary Key)</strong></dt>
+<dd>An arbitrary Variable Context identification number.</dd>
+<dt><strong>VariableContext</strong></dt>
+<dd><p class="first">Depositional context. Examples are:</p>
+<dl class="last docutils">
+<dt><strong>anachronic</strong></dt>
+<dd>A specimen older than the primary deposit, e.g. a Paleozoic spore in a Holocene deposit. The specimen may be redeposited from the catchment, or may be derived from long distance, e.g. Tertiary pollen grains in Quaternary sediments with no local Tertiary source. A Pleistocene specimen in a Holocene archaeological deposit, possibly resulting from aboriginal fossil collecting, would also be anachronic.</dd>
+<dt><strong>intrusive</strong></dt>
+<dd>A specimen, generally younger than the primary deposit, <em>e.g</em>. a domestic pig in an otherwise Pleistocene deposit.</dd>
+<dt><strong>redeposited</strong></dt>
+<dd>A specimen older than the primary deposit and assumed to have been redeposited from a local source by natural causes.</dd>
+<dt><strong>articulated</strong></dt>
+<dd>An articulated skeleton</dd>
+<dt><strong>clump</strong></dt>
+<dd>A clump, esp. of pollen grains</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="variableelements">
+<span id="id13"></span><h2>VariableElements<a class="headerlink" href="#variableelements" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Variable Elements. Table is referenced by the <a class="reference internal" href="#variables"><span>Variables</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="28%" />
+<col width="10%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: VariableElements</strong></td>
+</tr>
+<tr class="row-even"><td>VariableElementID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VariableElement</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VariableElementID (Primary Key)</strong> An arbitrary Variable Element identification number.</p>
+<dl class="docutils">
+<dt><strong>VariableElement</strong></dt>
+<dd>The element, part, or organ of the taxon identified. For plants, these include pollen, spores, and various macrofossil organs, such as «seed», «twig», «cone», and «cone bract». Thus, <em>Betula</em> pollen and <em>Betula</em> seeds are two different Variables. For mammals, Elements include the bone or tooth identified, e.g. «tibia». «tibia, distal, left», «M2, lower, left». Some more unusual elements are <em>Neotoma</em> fecal pellets and <em>Erethizon dorsata</em> quills. If no element is indicated for mammalian fauna, then the genric element «bone/tooth» is assigned. Elements were not assigned in FAUNMAP, so all Variables ingested from FAUNMAP were assigned the «bone/tooth» element. Physical Variables may also have elements. For example, the Loss-on-ignition Variables have «Loss-on-ignition» as a Taxon, and temperature of analysis as an element, e.g. «500°C», «900°C». Charcoal Variables have the size fragments as elements, e.g. «75-100 µm», «100-125 µm».</dd>
+</dl>
+</div>
+<div class="section" id="variablemodifications">
+<span id="variablemodification"></span><h2>VariableModifications<a class="headerlink" href="#variablemodifications" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Variable Modifications. Table is referenced by the
+<a class="reference internal" href="#variables"><span>Variables</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="25%" />
+<col width="10%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: VariableModifications</strong></td>
+</tr>
+<tr class="row-even"><td>VariableModificationID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VariableModification</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>VariableModificationID (Primary Key)</strong></dt>
+<dd>An arbitrary Variable Modification identification number.</dd>
+<dt><strong>VariableModification</strong></dt>
+<dd>Modification to a specimen. Examples of modifications to bones include «carnivore gnawed», «rodent gnawed», «burned», «human butchering». Modifications to pollen grains include various preservation states, e.g. «1/2 grains», «degraded», «corroded», «broken». Most Variables do not have a modification assigned.</dd>
+</dl>
+</div>
+<div class="section" id="variableunits">
+<span id="id14"></span><h2>VariableUnits<a class="headerlink" href="#variableunits" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Variable Units. Table is referenced by the
+<a class="reference internal" href="#variables"><span>Variables</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="29%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Table: VariableUnits</strong></td>
+<td colspan="3">&nbsp;</td>
+</tr>
+<tr class="row-even"><td>VariableUnitsID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VariableUnit</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>VariableUnitsID (Primary Key)</strong></dt>
+<dd>An arbitrary Variable Units identification number.</dd>
+<dt><strong>VariableUnit</strong></dt>
+<dd>The units of measurement. For fauna, these are «present/absent», «NISP» (Number of Individual Specimens), and «MNI» (Minimum Number of Individals). For pollen, these are «NISP» (pollen counts) and «percent». Units for plant macrofossils include «present/abesnt» and «NISP», as well as a number of quantitative concentration measurements and semi-quantitative abundance measurements such as «1-5 scale». Examples of charcoal measurement units are «fragments/ml» and «µm^2/ml».</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="table_contacts.html" class="btn btn-neutral float-right" title="Contact and Individual Related Tables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tables_site.html" class="btn btn-neutral" title="Site Related Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

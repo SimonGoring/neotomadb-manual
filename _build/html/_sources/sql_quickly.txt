@@ -17,31 +17,40 @@ rather than %.
 SQL Example
 ~~~~~~~~~~~
 
-The following SQL example lists the Geopolitical units for . The Design
-View and results of this query are shown in **Figure 7** and **Figure
-8**.
+The following SQL example lists the number of sites by GeoPoliticalID (the name of the country) for and GeoPoliticalID that is defined as a country.
 
-SELECT Sites.SiteName, GeoPoliticalUnits.GeoPoliticalName,
-GeoPoliticalUnits.GeoPoliticalUnit
+.. code-block:: sql
+	:linenos:
 
-FROM GeoPoliticalUnits INNER JOIN (Sites INNER JOIN SiteGeoPolitical ON
-Sites.SiteID = SiteGeoPolitical.SiteID) ON
-GeoPoliticalUnits.GeoPoliticalID = SiteGeoPolitical.GeoPoliticalID
+	SELECT
+		COUNT(sites.SiteName),
+		gpu.GeoPoliticalName,
+		gpu.GeoPoliticalUnit
+	FROM
+		(
+			SELECT
+				*
+			FROM
+				GeoPoliticalUnits
+			WHERE
+				geopoliticalunits.GeoPoliticalUnit = "country"
+		) AS gpu
+	INNER JOIN (
+		Sites
+		INNER JOIN SiteGeoPolitical ON Sites.SiteID = SiteGeoPolitical.SiteID
+	) ON gpu.GeoPoliticalID = SiteGeoPolitical.GeoPoliticalID
+	GROUP BY
+		gpu.GeoPoliticalID,
+		gpu.GeoPoliticalUnit;
 
-WHERE (((Sites.SiteName)=""));
 
-|image7|
+Table Keys
+~~~~~~~~~~~
 
-Figure 7. Design view an Access query listing the GeoPoliticalUnits for
-.
-
-|image8|
-
-Figure 8. Results of the query listing the GeoPoliticalUnits for
-Wolsfeld Lake.
+Within tables there are often Keys.  A Key may be a **Primary Key** (PK), which acts as a unique identifier for individual records within a table, or they may be a **Foreign Key** (FK) which refers to a unique identifier in another table.  Primary Keys and Foreign Keys are critical to join tables in a SQL query.  In the above example we can see that the 
 
 Data Types
-------------------------------
+~~~~~~~~~~~
 
 In the table descriptions in the following section, the SQL Server data
 types are given for field descriptions. The equivalent Access data types
@@ -62,6 +71,3 @@ are given in the following table.
 +------------------------------------+------------------------+
 | nvarchar(MAX)                      | Memo                   |
 +------------------------------------+------------------------+
-
-.. |image7| image:: media/image11.png
-.. |image8| image:: media/image12.png

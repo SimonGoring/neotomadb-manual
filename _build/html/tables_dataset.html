@@ -1,42 +1,166 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Dataset &amp; Collection Related Tables &mdash; neotoma 1.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="neotoma 1.0 documentation" href="index.html" />
-    <link rel="next" title="References Cited" href="references_cited.html" />
-    <link rel="prev" title="Chronology &amp; Age Related Tables" href="tables_chron.html" />
-   
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dataset &amp; Collection Related Tables &mdash; neotoma 1.0 documentation</title>
+  
 
-  </head>
-  <body role="document">  
+  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Sample Related Tables" href="tables_samples.html"/>
+        <link rel="prev" title="Chronology &amp; Age Related Tables" href="tables_chron.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> neotoma
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Dataset &amp; Collection Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#aggregatedatasets">AggregateDatasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregateordertypes">AggregateOrderTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collectiontypes">CollectionTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collectionunits">CollectionUnits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datasetpublications">DatasetPublications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#datasetsubmissions">DatasetSubmissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datasetsubmissiontypes">DatasetSubmissionTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#datasettypes">DatasetTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datasetpis">DatasetPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#depenvttypes">DepEnvtTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lithology">Lithology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="table_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="table_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">neotoma</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Dataset &amp; Collection Related Tables</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tables_dataset.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="dataset-collection-related-tables">
 <h1>Dataset &amp; Collection Related Tables<a class="headerlink" href="#dataset-collection-related-tables" title="Permalink to this headline">¶</a></h1>
@@ -73,9 +197,285 @@ geographic region.</p>
 <dd>Free form notes about the Aggregate Order Type.</dd>
 </dl>
 </div>
+<div class="section" id="aggregateordertypes">
+<h2>AggregateOrderTypes<a class="headerlink" href="#aggregateordertypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table for Aggregate Order Types. Table is referenced by the
+<a class="reference external" href="#_Table:_AggregateDatasets">AggregateDatasets</a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="26%" />
+<col width="10%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>AggregateOrderTypes</strong></td>
+</tr>
+<tr class="row-even"><td>AggregateOrderTypeID</td>
+<td>int</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>AggregateOrderType</td>
+<td>nvarchar(60)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Notes</td>
+<td>ntext</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>AggregateOrderTypeID (Primary Key)</strong></dt>
+<dd>An arbitrary Aggregate Order Type identification number.</dd>
+<dt><strong>AggregateOrderType</strong></dt>
+<dd>The Aggregate Order Type.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the Aggregate Order Type.</dd>
+</dl>
+<p>The Aggregate Order Types are:</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Latitude</strong>: AggregateDataset samples are ordered by, in order of</dt>
+<dd><p class="first last">priority, either (1)
+<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits.GPSLatitude</a> or (2)
+the mean of <a class="reference external" href="#_Table:_Sites_1">Sites.LatitudeNorth</a> and
+<a class="reference external" href="#_Table:_Sites_1">Sites.LatitudeSouth</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Longitude</strong> AggregateDataset samples are ordered by, in order of</dt>
+<dd><p class="first last">priority, either (1)
+<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits.GPSLongitude</a> or
+(2) the mean of <a class="reference external" href="#_Table:_Sites_1">Sites.LongitudeWest</a> and
+<a class="reference external" href="#_Table:_Sites_1">Sites.LongitudeEast</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Altitude</strong> AggregateDataset samples are ordered by</dt>
+<dd><p class="first last"><a class="reference external" href="#_Table:_Sites_1">Sites.Altitude</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Age</strong> AggregateDataset samples are ordered by</dt>
+<dd><p class="first last"><a class="reference external" href="#_Table:_SampleAges">SampleAges.Age</a>, where
+<a class="reference external" href="#_Table:_SampleAges">SampleAges.SampleAgeID</a> is from
+<a class="reference external" href="#_Table:_AggregateSampleAges">AggregateSampleAges.SampleAgeID</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Alphabetical by site name</strong> AggregateDataset samples are ordered</dt>
+<dd><p class="first last">alphabetically by <a class="reference external" href="#_Table:_Sites_1">Sites.SiteName</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Alphabetical by collection unit name</strong> AggregateDataset samples</dt>
+<dd><p class="first last">are ordered alphabetically by
+<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits.CollUnitName</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Alphabetical by collection units handle</strong> AggregateDataset samples</dt>
+<dd><p class="first last">are ordered alphabetically by
+<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits.Handle</a>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="collectiontypes">
+<h2>CollectionTypes<a class="headerlink" href="#collectiontypes" title="Permalink to this headline">¶</a></h2>
+<p>This table is a lookup table of for types of Collection Units, or Collection Types. Table is referenced by the <a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits</a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="28%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>CollectionTypes</strong></td>
+<td>Variable Type</td>
+<td>Key</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>CollTypeID</td>
+<td>int</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CollType</td>
+<td>nvarchar(50)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>CollTypeID (Primary Key)</strong></dt>
+<dd>An arbitrary Collection Type identification number.</dd>
+<dt><strong>Colltype</strong></dt>
+<dd>The Collection Type. Types include cores, sections, excavations, and animal middens. Collection Units may be modern collections, surface float, or isolated specimens. Composite Collections Units include different kinds of Analysis Units, for example a modern surface sample for ostracodes and an associated water sample.</dd>
+</dl>
+</div>
+<div class="section" id="collectionunits">
+<h2>CollectionUnits<a class="headerlink" href="#collectionunits" title="Permalink to this headline">¶</a></h2>
+<p>This table stores data for Collection Units.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="24%" />
+<col width="8%" />
+<col width="26%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>CollectionUnits</strong></td>
+<td>Variable Type</td>
+<td>Key</td>
+<td>Table Reference</td>
+</tr>
+<tr class="row-even"><td>CollectionUnitID</td>
+<td>int</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Handle</td>
+<td>nvarchar(10)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>SiteID</td>
+<td>int</td>
+<td>FK</td>
+<td>Sites</td>
+</tr>
+<tr class="row-odd"><td>CollTypeID</td>
+<td>int</td>
+<td>FK</td>
+<td>CollectionTypes</td>
+</tr>
+<tr class="row-even"><td>DepEnvtID</td>
+<td>int</td>
+<td>FK</td>
+<td>DepEnvtTypes</td>
+</tr>
+<tr class="row-odd"><td>CollUnitName</td>
+<td>nvarchar(255)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>CollDate</td>
+<td>datetime</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CollDevice</td>
+<td>nvarchar(255)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>GPSLatitude</td>
+<td>float</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>GPSLongitude</td>
+<td>float</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>GPSAltitude</td>
+<td>float</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>GPSError</td>
+<td>float</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>WaterDepth</td>
+<td>float</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SubstrateID</td>
+<td>int</td>
+<td>FK</td>
+<td>Substrates</td>
+</tr>
+<tr class="row-even"><td>SlopeAspect</td>
+<td>int</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SlopeAngle</td>
+<td>int</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Location</td>
+<td>nvarchar(255)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Notes</td>
+<td>ntext</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>CollectionUnitID (Primary Key)</strong></dt>
+<dd>An arbitrary Collection Unit identification number.</dd>
+<dt><strong>SiteID (Foreign Key)</strong></dt>
+<dd>Site where CollectionUnit was located. Field links to <a class="reference external" href="#_Table:_Sites">Sites</a> table.</dd>
+<dt><strong>CollTypeID (Foreign Key)</strong></dt>
+<dd>Type of Collection Unit. Field links to the <a class="reference external" href="#_Table:_Collection_Types">CollectionTypes</a> table.</dd>
+<dt><strong>DepEnvtID (Foreign Key)</strong></dt>
+<dd>Depositional environment of the CollectionUnit. Normally, this key refers to the modern environment. For example, the site may be located on a colluvial slope, in which case the Depositional Environment may be Colluvium or Colluvial Fan. However, an excavation may extend into alluvial sediments, which represent a different depositional environment. These are accounted for by the Facies of the AnalysisUnit. Field links to the <a class="reference external" href="#_Table:_DepEnvtTypes">DepEnvtTypes</a> table.</dd>
+<dt><strong>Handle</strong></dt>
+<dd>Code name for the Collection Unit. This code may be up to 10 characters, but an effort is made to keep these to 8 characters or less. Data are frequently distributed by Collection Unit, and the Handle is used for file names.</dd>
+<dt><strong>CollUnitName</strong></dt>
+<dd>Name of the Collection Unit. Examples: Core BPT82A, Structure 9, P4A Test 57. If faunal data are reported from a site or locality without explicit Collection Units, then data are assigned to a single Collection Unit with the name «Locality».</dd>
+<dt><strong>CollDate</strong></dt>
+<dd>Date Collection Unit was collected.</dd>
+<dt><strong>CollDevice</strong></dt>
+<dd>Device used for obtain Collection Unit. This field applies primarily to cores, for example «Wright square-rod piston corer (5 cm)».</dd>
+<dt><strong>GPSLatitude</strong></dt>
+<dd>Precise latitude of the Collection Unit, typically taken with a GPS, although may be precisely measured from a map.</dd>
+<dt><strong>GPSLongitude</strong></dt>
+<dd>Precise longitude of the Collection Unit, typically taken with a GPS, although may be precisely measured from a map.</dd>
+<dt><strong>GPSAltitude</strong></dt>
+<dd>Precise altitude of the Collection Unit, typically taken with a GPS or precisely obtained from a map.</dd>
+<dt><strong>GPSError</strong></dt>
+<dd>Error in the horizontal GPS coordinates, if known.</dd>
+<dt><strong>WaterDepth</strong></dt>
+<dd>Depth of water at the Collection Unit location. This field applies mainly to Collection Units from lakes.</dd>
+<dt><strong>SubstrateID (Foreign Key)</strong></dt>
+<dd>Substrate or rock type on which the Collection Unit lies. Field links to the RockTypes table. This field is especially used for rodent middens.</dd>
+<dt><strong>SlopeAspect</strong></dt>
+<dd>For Collection Units on slopes, the horizontal direction to which a slope faces measured in degrees clockwise from north. This field is especially used for rodent middens.</dd>
+<dt><strong>SlopeAngle</strong></dt>
+<dd>For Collection Units on slopes, the angle of slope from horizontal. field is especially used for rodent middens.</dd>
+<dt><strong>Location</strong></dt>
+<dd>Short description of the location of the Collection Unit within the site.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the Collection Unit.</dd>
+</dl>
 </div>
 <div class="section" id="datasetpublications">
-<h1>DatasetPublications<a class="headerlink" href="#datasetpublications" title="Permalink to this headline">¶</a></h1>
+<h2>DatasetPublications<a class="headerlink" href="#datasetpublications" title="Permalink to this headline">¶</a></h2>
 <p>This table lists the publications for datasets.</p>
 <p><strong>DatasetID (Primary Key, Foreign Key)</strong> Dataset identification number.
 Field links to Dataset table.</p>
@@ -103,6 +503,8 @@ Field links to the <a class="reference external" href="#_Table:_DatasetTypes">Da
 table.</p>
 <p><strong>DatasetName</strong> Optional name for the Dataset.</p>
 <p><strong>Notes</strong> Free form notes or comments about the Dataset.</p>
+<div class="section" id="sql-example">
+<h3>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h3>
 <p>The following query lists the Dataset Types for the site «».</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -142,8 +544,42 @@ table.</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="id1">
+<h3>SQL Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>This query lists the plant macrofossils identified at site «Bear River
 No. 3».</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">,</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span>
+
+<span class="k">FROM</span> <span class="n">DatasetTypes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Taxa</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Variables</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="p">((((</span><span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">CollectionUnits</span> <span class="k">ON</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Datasets</span> <span class="k">ON</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="n">Samples</span> <span class="k">ON</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span> <span class="n">Samples</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="k">Data</span> <span class="k">ON</span>
+<span class="n">Samples</span><span class="p">.</span><span class="n">SampleID</span> <span class="o">=</span> <span class="k">Data</span><span class="p">.</span><span class="n">SampleID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Variables</span><span class="p">.</span><span class="n">VariableID</span> <span class="o">=</span>
+<span class="k">Data</span><span class="p">.</span><span class="n">VariableID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonID</span> <span class="o">=</span> <span class="n">Variables</span><span class="p">.</span><span class="n">TaxonID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetTypeID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetTypeID</span>
+
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">,</span> <span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetType</span><span class="p">,</span> <span class="n">Taxa</span><span class="p">.</span><span class="n">TaxonName</span>
+
+<span class="k">HAVING</span> <span class="p">(((</span><span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;Bear River No. 3&quot;</span><span class="p">)</span> <span class="k">AND</span>
+<span class="p">((</span><span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetType</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;plant macrofossils&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
 <p>Result:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -163,8 +599,9 @@ No. 3».</p>
 </tbody>
 </table>
 </div>
+</div>
 <div class="section" id="datasetsubmissions">
-<h1>DatasetSubmissions<a class="headerlink" href="#datasetsubmissions" title="Permalink to this headline">¶</a></h1>
+<h2>DatasetSubmissions<a class="headerlink" href="#datasetsubmissions" title="Permalink to this headline">¶</a></h2>
 <p>Submissions to the database are of Datasets. Submissions may be original
 submissions, resubmissions, compilations from other databases, or
 recompilations. See the description of the
@@ -185,6 +622,7 @@ recompilations. See the description of the
 <dt><strong>Notes</strong></dt>
 <dd>Free form notes or comments about the submission.</dd>
 </dl>
+</div>
 <div class="section" id="datasetsubmissiontypes">
 <h2>DatasetSubmissionTypes<a class="headerlink" href="#datasetsubmissiontypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Dataset Submission Types. Table is referenced by the
@@ -209,8 +647,8 @@ recompilations. See the description of the
 <div>The initial development of Neotoma involved merging the data from several existing databases, including FAUNMAP, the Global Pollen Database, and the North American Plant Macrofossil Database. Thus original compilation of Datasets was into one of these databases, which were then recompiled into Neotoma. The original compilation and the recompilation into Neotoma are separate submissions.</div></blockquote>
 </dd>
 </dl>
-<div class="section" id="sql-example">
-<h3>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>SQL Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>This query gives a list of Dataset Submissions for the site «Bear River
 No. 3» ordered by date.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -337,77 +775,396 @@ No. 3» ordered by date.</p>
 </dd>
 </dl>
 </div>
+<div class="section" id="datasetpis">
+<h2>DatasetPIs<a class="headerlink" href="#datasetpis" title="Permalink to this headline">¶</a></h2>
+<p>This table lists the Principle Investigators for Datasets.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="25%" />
+<col width="16%" />
+<col width="19%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>DatasetPIs</strong></td>
+</tr>
+<tr class="row-even"><td>DatasetID</td>
+<td>Long Integer</td>
+<td>PK, FK</td>
+<td>Datasets</td>
+</tr>
+<tr class="row-odd"><td>ContactID</td>
+<td>Long Integer</td>
+<td>PK, FK</td>
+<td>Contacts</td>
+</tr>
+<tr class="row-even"><td>PIOrder</td>
+<td>Long Integer</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DatasetID (Primary Key, Foreign Key)</strong> Dataset identification number.
+Field links to Dataset table.</p>
+<p><strong>ContactID (Primary Key, Foreign Key)</strong> Contact identification number.
+Field links to <a class="reference external" href="#_Table:_Contacts">Contacts</a> table.</p>
+<p><strong>PIOrder</strong> Order in which PIs are listed.</p>
 </div>
+<div class="section" id="depenvttypes">
+<h2>DepEnvtTypes<a class="headerlink" href="#depenvttypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Depostional Environment Types. Table is referenced by
+the <a href="#id5"><span class="problematic" id="id6">`CollectionUnits`__</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="21%" />
+<col width="8%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>DepEnvtTypes</strong></td>
+</tr>
+<tr class="row-even"><td>DepEnvtID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>DepEnvt</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>DepEnvtHigherID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>DepEnvtTypes:DepEnvtID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DepEnvtID (Primary Key)</strong> An arbitrary Depositional Environment Type
+identification number.</p>
+<p><strong>DepEnvt</strong> Depositional Environment.</p>
+<p><strong>DepEnvtHigherID</strong> The Depositional Environment Types are
+hierarchical. DepEnvtHigherID is the DepEnvtID of the higher ranked
+Depositional Environment. See following table gives some examples.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="25%" />
+<col width="39%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>DepEnvtID</strong></td>
+<td><strong>DepEnvt</strong></td>
+<td><strong>DepEnvtHigherID</strong></td>
+</tr>
+<tr class="row-even"><td>19</td>
+<td>Lacustrine</td>
+<td>19</td>
+</tr>
+<tr class="row-odd"><td>24</td>
+<td>&nbsp;</td>
+<td>19</td>
+</tr>
+<tr class="row-even"><td>29</td>
+<td>Glacial</td>
+<td>24</td>
+</tr>
+<tr class="row-odd"><td>30</td>
+<td>&nbsp;</td>
+<td>29</td>
+</tr>
+<tr class="row-even"><td>33</td>
+<td>&nbsp;</td>
+<td>29</td>
+</tr>
+<tr class="row-odd"><td>59</td>
+<td>Palustrine</td>
+<td>59</td>
+</tr>
+<tr class="row-even"><td>61</td>
+<td>Mire</td>
+<td>59</td>
+</tr>
+<tr class="row-odd"><td>62</td>
+<td>Bog</td>
+<td>61</td>
+</tr>
+<tr class="row-even"><td>63</td>
+<td>Blanket Bog</td>
+<td>62</td>
+</tr>
+<tr class="row-odd"><td>64</td>
+<td>Raised Bog</td>
+<td>62</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id3">
+<h3>SQL Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>This query gives a list of the top level Depostional Environment Types.</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>SELECT DepEnvtTypes.DepEnvtID, DepEnvtTypes.DepEnvt,
+DepEnvtTypes.DepEnvtHigherID
 
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Dataset &amp; Collection Related Tables</a><ul>
-<li><a class="reference internal" href="#aggregatedatasets">AggregateDatasets</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#datasetpublications">DatasetPublications</a></li>
-<li><a class="reference internal" href="#datasetsubmissions">DatasetSubmissions</a><ul>
-<li><a class="reference internal" href="#datasetsubmissiontypes">DatasetSubmissionTypes</a><ul>
-<li><a class="reference internal" href="#sql-example">SQL Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#datasettypes">DatasetTypes</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
+FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes\_1 ON
+(DepEnvtTypes.DepEnvt = DepEnvtTypes\_1.DepEnvt) AND
+(DepEnvtTypes.DepEnvtHigherID = DepEnvtTypes\_1.DepEnvtID);
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="31%" />
+<col width="40%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>DepEnvtID</strong></td>
+<td><strong>DepEnvt</strong></td>
+<td><strong>DepEnvtHigherID</strong></td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>Archaeological</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Biological</td>
+<td>6</td>
+</tr>
+<tr class="row-even"><td>16</td>
+<td>Estuarine</td>
+<td>16</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>Lacustrine</td>
+<td>19</td>
+</tr>
+<tr class="row-even"><td>51</td>
+<td>Marine</td>
+<td>51</td>
+</tr>
+<tr class="row-odd"><td>59</td>
+<td>Palustrine</td>
+<td>59</td>
+</tr>
+<tr class="row-even"><td>76</td>
+<td>Riverine</td>
+<td>76</td>
+</tr>
+<tr class="row-odd"><td>93</td>
+<td>Sampler</td>
+<td>93</td>
+</tr>
+<tr class="row-even"><td>99</td>
+<td>Spring</td>
+<td>99</td>
+</tr>
+<tr class="row-odd"><td>103</td>
+<td>Terrestrial</td>
+<td>103</td>
+</tr>
+<tr class="row-even"><td>136</td>
+<td>Other</td>
+<td>136</td>
+</tr>
+<tr class="row-odd"><td>137</td>
+<td>Unknown</td>
+<td>137</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>SQL Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>This following query gives a list of the second level «Terrestrial»
+Depositional Environment Types.
+.. code-block:: sql</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">linenos:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>SELECT DepEnvtTypes_1.DepEnvtID, DepEnvtTypes_1.DepEnvt,
+DepEnvtTypes_1.DepEnvtHigherID</p>
+<p>FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes_1 ON
+DepEnvtTypes.DepEnvtID = DepEnvtTypes_1.DepEnvtHigherID</p>
+<p>WHERE (((DepEnvtTypes.DepEnvt)=&#8221;Terrestrial&#8221;));</p>
+</div></blockquote>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="27%" />
+<col width="42%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>DepEnvtID</strong></td>
+<td><strong>DepEnvt</strong></td>
+<td><strong>DepEnvtHigherID</strong></td>
+</tr>
+<tr class="row-even"><td>103</td>
+<td>Terrestrial</td>
+<td>103</td>
+</tr>
+<tr class="row-odd"><td>104</td>
+<td>Aeolian</td>
+<td>103</td>
+</tr>
+<tr class="row-even"><td>109</td>
+<td>Cave</td>
+<td>103</td>
+</tr>
+<tr class="row-odd"><td>117</td>
+<td>Glacial</td>
+<td>103</td>
+</tr>
+<tr class="row-even"><td>122</td>
+<td>Gravity</td>
+<td>103</td>
+</tr>
+<tr class="row-odd"><td>127</td>
+<td>Soil</td>
+<td>103</td>
+</tr>
+<tr class="row-even"><td>131</td>
+<td>Volcanic</td>
+<td>103</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="lithology">
+<h2>Lithology<a class="headerlink" href="#lithology" title="Permalink to this headline">¶</a></h2>
+<p>This table stores the lithologic descriptions of Collection Units.</p>
+<p><strong>LithologyID (Primary Key)</strong> An arbitrary identification number for a
+lithologic unit.</p>
+<p><strong>CollectionUnitID (Foreign Key)</strong> Collection Unit identification
+number. Field links to the
+<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits</a> table.</p>
+<p><strong>DepthTop</strong> Depth of the top of the lithologic unit in cm.</p>
+<p><strong>DepthBottom</strong> Depth of the bottom of the lithologic unit in cm.</p>
+<p><strong>LowerBoundary</strong> Description of the nature of the lower boundary of
+the lithologic unit, e.g. «gradual, over ca. 10 cm».</p>
+<p><strong>Description</strong> Description of the lithologic unit. These can be quite
+detailed, with Munsell color or Troels-Smith descriptions. Some
+examples:</p>
 <ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="tables_chron.html" title="previous chapter">Chronology &amp; Age Related Tables</a></li>
-      <li>Next: <a href="references_cited.html" title="next chapter">References Cited</a></li>
-  </ul></li>
+<li><p class="first">interbedded gray silt and peat</p>
+</li>
+<li><p class="first">marly fine-detritus copropel</p>
+</li>
+<li><p class="first">humified sedge and Sphagnum peat</p>
+</li>
+<li><p class="first">sedge peat 5YR 5/4</p>
+</li>
+<li><p class="first">gray sandy loam with mammoth and other animal bones</p>
+</li>
+<li><p class="first">grey-green gyttja, oxidizing to gray-brown</p>
+</li>
+<li><p class="first">Ag 3, Ga 1, medium gray, firm, elastic</p>
+</li>
+<li><p class="first">nig3, strf0, elas2, sicc0; Th2 T12 Tb+</p>
+</li>
+<li><p class="first">Ld°4, , Dg+, Dh+</p>
+<ol class="arabic">
+<li><p class="first rubric" id="table-projects">Table: Projects</p>
+</li>
+</ol>
+</li>
 </ul>
+<p>This table stores a list of database projects that have supplied data to
+Neotoma. These include the databases that were merged in the initial
+development of Neotoma as well as other independent projects that
+continue to assemble data for a particular region or data type. Some of
+these projects have developed relational databases, whereas others have
+compiled data in flat files. This table is referenced by the
+DatabaseSubmissions table.</p>
+<p><strong>ProjectID (Primary Key)</strong> An arbitrary Project identification number.</p>
+<p><strong>ProjectName</strong> Name of the Project, e.g. «Cooperative Holocene Mapping
+Project», «North American Pollen Database», «FAUNMAP».</p>
+<p><strong>ContactID (Foreign Key)</strong> Contact person for the project. Field links
+to the <a href="#id5"><span class="problematic" id="id7">`Contacts`__</span></a> table.</p>
+<p><strong>URL</strong> Web site address for the project.</p>
 </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/tables_dataset.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tables_samples.html" class="btn btn-neutral float-right" title="Sample Related Tables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tables_chron.html" class="btn btn-neutral" title="Chronology &amp; Age Related Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2016, Eric Grimm, Simon Goring.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
-      
-      |
-      <a href="_sources/tables_dataset.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

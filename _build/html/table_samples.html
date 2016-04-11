@@ -1,0 +1,785 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sample Related Tables &mdash; neotoma 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sample-related-tables">
+<h1>Sample Related Tables<a class="headerlink" href="#sample-related-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sampleages">
+<h2>SampleAges<a class="headerlink" href="#sampleages" title="Permalink to this headline">¶</a></h2>
+<p>This table stores sample ages. Ages are assigned to a Chronology.
+Because there may be more than one Chronology for a Collection Unit,
+samples may be assigned different ages for different Chronologies. A
+simple example is one sample age in radiocarbon years and another in
+calibrated radiocarbon years. The age units are an attribute of the
+Chronology.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="25%" />
+<col width="10%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: SampleAges</strong></td>
+</tr>
+<tr class="row-even"><td>SampleAgeID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SampleID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Samples</td>
+</tr>
+<tr class="row-even"><td>ChronologyID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Chronologies</td>
+</tr>
+<tr class="row-odd"><td>Age</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>AgeYounger</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>AgeOlder</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SampleAgeID (Primary Key)</strong> An arbitrary Sample Age identification
+number.</p>
+<p><strong>SampleID (Foreign Key)</strong> Sample identification number. Field links to
+the <a class="reference external" href="#_Table:_Samples">Samples</a> table.</p>
+<p><strong>ChronologyID (Foreign Key)</strong> Chronology identification number. Field
+links to the <a class="reference external" href="#_Table:_Chronologies">Chronologies</a> table.</p>
+<p><strong>Age</strong> Age of the sample</p>
+<p><strong>AgeYounger</strong> Younger error estimate of the age. The definition of
+this estimate is an attribute of the Chronology. Many ages do not have
+explicit error estimates assigned.</p>
+<p><strong>AgeOlder</strong> Older error estimate of the age.</p>
+<div class="section" id="sql-example">
+<h3>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h3>
+<p>This query lists the Sample Ages for the default Chronologies for «».
+The CollectionUnit.Handle indicates that there is only one Collection
+Unit from this site. There are two default Chronologies, one in
+«Radiocarbon years BP» and the other in «Calibrated radiocarbon years
+BP».</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+   <span class="n">s</span><span class="p">.</span><span class="n">SiteName</span><span class="p">,</span>
+   <span class="c1">-- From the Sites table</span>
+   <span class="k">c</span><span class="p">.</span><span class="n">Handle</span><span class="p">,</span>
+   <span class="c1">-- From the CollectionUnits table</span>
+   <span class="n">sa</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span>
+   <span class="c1">-- From the SampleAges table</span>
+   <span class="n">a</span><span class="p">.</span><span class="n">AgeType</span> <span class="c1">-- From the AgeTypes table</span>
+<span class="k">FROM</span>
+   <span class="n">AgeTypes</span> <span class="k">AS</span> <span class="n">a</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
+   <span class="p">(</span>
+      <span class="p">(</span>
+         <span class="n">Sites</span> <span class="k">AS</span> <span class="n">s</span>
+         <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">CollectionUnits</span> <span class="k">AS</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">SiteID</span>
+      <span class="p">)</span>
+      <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Chronologies</span> <span class="k">AS</span> <span class="n">ch</span> <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">ch</span><span class="p">.</span><span class="n">CollectionUnitID</span>
+   <span class="p">)</span>
+   <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">SampleAges</span> <span class="k">AS</span> <span class="n">sa</span> <span class="k">ON</span> <span class="n">ch</span><span class="p">.</span><span class="n">ChronologyID</span> <span class="o">=</span> <span class="n">sa</span><span class="p">.</span><span class="n">ChronologyID</span>
+<span class="p">)</span> <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">AgeTypeId</span> <span class="o">=</span> <span class="n">ch</span><span class="p">.</span><span class="n">AgeTypeID</span>
+<span class="k">WHERE</span>
+   <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">SiteName</span><span class="p">)</span> <span class="o">=</span> <span class="ss">&quot;Muskox Lake&quot;</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">ch</span><span class="p">.</span><span class="n">IsDefault</span><span class="p">)</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The first five lines of the result for each Age Type:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="18%" />
+<col width="14%" />
+<col width="46%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>SiteName</strong></td>
+<td><strong>Handle</strong></td>
+<td><strong>Age</strong></td>
+<td><strong>AgeType</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>-50</td>
+<td>Radiocarbon years BP</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>538</td>
+<td>Radiocarbon years BP</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>1125</td>
+<td>Radiocarbon years BP</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>1712</td>
+<td>Radiocarbon years BP</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>2300</td>
+<td>Radiocarbon years BP</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>-50</td>
+<td>Calibrated radiocarbon years BP</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>604</td>
+<td>Calibrated radiocarbon years BP</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>1258</td>
+<td>Calibrated radiocarbon years BP</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>1912</td>
+<td>Calibrated radiocarbon years BP</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>MUSKOX</td>
+<td>2567</td>
+<td>Calibrated radiocarbon years BP</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="sampleanalysts">
+<h2>SampleAnalysts<a class="headerlink" href="#sampleanalysts" title="Permalink to this headline">¶</a></h2>
+<p>This table lists the Sample Analysts.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="25%" />
+<col width="10%" />
+<col width="19%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: SampleAnalysts</strong></td>
+</tr>
+<tr class="row-even"><td>AnalystID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SampleID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Samples</td>
+</tr>
+<tr class="row-even"><td>ContactID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Contacts</td>
+</tr>
+<tr class="row-odd"><td>AnalystOrder</td>
+<td>Long Integer</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AnalystID (Primary Key)</strong> An arbitrary Sample Analyst identification
+number.</p>
+<p><strong>SampleID (Foreign Key)</strong> Sample identification number. Field links to
+the <a class="reference external" href="#_Table:_Samples">Samples</a> table.</p>
+<p><strong>ContactID (Foreign Key)</strong> Contact identification number. Field links
+to the <a class="reference external" href="#_Table:_Contacts">Contacts</a> table.</p>
+<p><strong>AnalystOrder</strong> Order in which Sample Analysts are listed if more than
+one (rare).</p>
+</div>
+<div class="section" id="samplekeywords">
+<h2>SampleKeywords<a class="headerlink" href="#samplekeywords" title="Permalink to this headline">¶</a></h2>
+<p>This table links keywords to samples. For example, it identifies modern
+pollen surface samples.</p>
+<p><strong>SampleID (Primary Key, Foreign Key)</strong> Sample identification number.
+Field links to the <a class="reference external" href="#_Table:_Samples">Samples</a> table.</p>
+<p><strong>KeywordID (Primary Key, Foreign Key)</strong> Keyword identification number.
+Field links to the <a class="reference external" href="#table-keywords">Keywords</a> lookup table.</p>
+<div class="section" id="id1">
+<h3>SQL Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>This query provides a list of modern pollen surface samples from «».
+Listed are the Site Name, Collection Type, Contact person, and
+Depositional Environment.</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Samples</span><span class="p">.</span><span class="n">SampleID</span><span class="p">,</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">,</span> <span class="n">CollectionTypes</span><span class="p">.</span><span class="n">CollType</span><span class="p">,</span>
+<span class="n">Contacts</span><span class="p">.</span><span class="n">ContactName</span><span class="p">,</span> <span class="n">DepEnvtTypes</span><span class="p">.</span><span class="n">DepEnvt</span>
+
+<span class="k">FROM</span> <span class="n">DepEnvtTypes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Contacts</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">CollectionTypes</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">GeoPoliticalUnits</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="p">(</span><span class="n">CollectionUnits</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">DatasetTypes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Datasets</span> <span class="k">INNER</span>
+<span class="k">JOIN</span> <span class="p">(</span><span class="n">Samples</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Keywords</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">SampleKeywords</span> <span class="k">ON</span>
+<span class="n">Keywords</span><span class="p">.</span><span class="n">KeywordID</span> <span class="o">=</span> <span class="n">SampleKeywords</span><span class="p">.</span><span class="n">KeywordID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Samples</span><span class="p">.</span><span class="n">SampleID</span> <span class="o">=</span>
+<span class="n">SampleKeywords</span><span class="p">.</span><span class="n">SampleID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span> <span class="n">Samples</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetTypeID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetTypeID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">SiteGeoPolitical</span> <span class="k">ON</span>
+<span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">SiteGeoPolitical</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">GeoPoliticalUnits</span><span class="p">.</span><span class="n">GeoPoliticalID</span> <span class="o">=</span> <span class="n">SiteGeoPolitical</span><span class="p">.</span><span class="n">GeoPoliticalID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">CollectionTypes</span><span class="p">.</span><span class="n">CollTypeID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollTypeID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="n">DatasetPIs</span> <span class="k">ON</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span> <span class="n">DatasetPIs</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">Contacts</span><span class="p">.</span><span class="n">ContactID</span> <span class="o">=</span> <span class="n">DatasetPIs</span><span class="p">.</span><span class="n">ContactID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">DepEnvtTypes</span><span class="p">.</span><span class="n">DepEnvtID</span> <span class="o">=</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">DepEnvtID</span>
+
+<span class="k">WHERE</span> <span class="p">(((</span><span class="n">Keywords</span><span class="p">.</span><span class="n">Keyword</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;modern sample&quot;</span><span class="p">)</span> <span class="k">AND</span>
+<span class="p">((</span><span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetType</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;pollen&quot;</span><span class="p">)</span> <span class="k">AND</span>
+<span class="p">((</span><span class="n">GeoPoliticalUnits</span><span class="p">.</span><span class="n">GeoPoliticalName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;&quot;</span><span class="p">))</span>
+
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">CollectionTypes</span><span class="p">.</span><span class="n">CollType</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="32%" />
+<col width="14%" />
+<col width="23%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>SampleID</strong></td>
+<td><strong>SiteName</strong></td>
+<td><strong>CollType</strong></td>
+<td><strong>ContactName</strong></td>
+<td><strong>DepEnvt</strong></td>
+</tr>
+<tr class="row-even"><td>60536</td>
+<td>&nbsp;</td>
+<td>Core</td>
+<td>Radle, Nancy Jean</td>
+<td>Glacial</td>
+</tr>
+<tr class="row-odd"><td>11153</td>
+<td>(US:)</td>
+<td>Core</td>
+<td>Grimm, Eric Christopher</td>
+<td>Glacial</td>
+</tr>
+<tr class="row-even"><td>61194</td>
+<td>(US:)</td>
+<td>Core</td>
+<td>Watts, William A.</td>
+<td>Glacial</td>
+</tr>
+<tr class="row-odd"><td>24780</td>
+<td>JHMS31 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-even"><td>24771</td>
+<td>JHMS23 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-odd"><td>24772</td>
+<td>JHMS24 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-even"><td>24773</td>
+<td>JHMS25 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-odd"><td>24774</td>
+<td>JHMS26 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-even"><td>24775</td>
+<td>JHMS27 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-odd"><td>24776</td>
+<td>JHMS28 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-even"><td>24777</td>
+<td>JHMS28 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Cattle Tank</td>
+</tr>
+<tr class="row-odd"><td>3173</td>
+<td>Site 1 (Hansen unpublished)</td>
+<td>Modern</td>
+<td>Hansen, Barbara C. S.</td>
+<td>Unknown</td>
+</tr>
+<tr class="row-even"><td>24779</td>
+<td>JHMS30 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-odd"><td>24781</td>
+<td>JHMS32 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-even"><td>24782</td>
+<td>JHMS32 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Cattle Tank</td>
+</tr>
+<tr class="row-odd"><td>24783</td>
+<td>JHMS33 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+<tr class="row-even"><td>45068</td>
+<td>K11 (Kapp 1965]</td>
+<td>Modern</td>
+<td>Kapp, Ronald O.</td>
+<td>Stock Pond</td>
+</tr>
+<tr class="row-odd"><td>55819</td>
+<td>Rose 1a (Watts and Wright 1966)</td>
+<td>Modern</td>
+<td>Watts, William A.</td>
+<td>Stock Pond</td>
+</tr>
+<tr class="row-even"><td>55819</td>
+<td>Rose 1a (Watts and Wright 1966)</td>
+<td>Modern</td>
+<td>Wright, Herbert E., Jr.</td>
+<td>Stock Pond</td>
+</tr>
+<tr class="row-odd"><td>55820</td>
+<td>Rose 1b (Watts and Wright 1966)</td>
+<td>Modern</td>
+<td>Watts, William A.</td>
+<td>Stock Pond</td>
+</tr>
+<tr class="row-even"><td>55820</td>
+<td>Rose 1b (Watts and Wright 1966)</td>
+<td>Modern</td>
+<td>Wright, Herbert E., Jr.</td>
+<td>Stock Pond</td>
+</tr>
+<tr class="row-odd"><td>24778</td>
+<td>JHMS29 (McAndrews and Wright 1969)</td>
+<td>Modern</td>
+<td>McAndrews, John H.</td>
+<td>Organic Detritus</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="samples">
+<h2>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h2>
+<p>This table stores sample data. Samples belong to Analysis Units, which belong to Collection Units, which belong to Sites. Samples also belong to a Dataset, and the Dataset determines the type of sample. Thus, there could be two different samples from the same Analysis Unit, one belonging to a pollen dataset, the other to a plant macrofossil dataset.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="26%" />
+<col width="10%" />
+<col width="28%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Samples</strong></td>
+</tr>
+<tr class="row-even"><td>SampleID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>AnalysisUnitID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>AnalysisUnits</td>
+</tr>
+<tr class="row-even"><td>DatasetID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Datasets</td>
+</tr>
+<tr class="row-odd"><td>SampleName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>AnalysisDate</td>
+<td>Date/Time</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>LabNumber</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>PreparationMethod</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>SampleID (Primary Key)</strong></dt>
+<dd>An arbitrary Sample identification number.</dd>
+<dt><strong>AnalysisUnitID (Foreign Key)</strong></dt>
+<dd>Analysis Unit identification number. Field links to the <a class="reference external" href="#_Table:_AnalysisUnits">AnalysisUnits</a> table.</dd>
+<dt><strong>DatasetID (Foreign Key)</strong></dt>
+<dd>Dataset identification number. Field links to the <a class="reference external" href="#table-datasets">Datasets</a> table.</dd>
+<dt><strong>SampleName</strong></dt>
+<dd>Sample name if any.</dd>
+<dt><strong>AnalysisDate</strong></dt>
+<dd>Date of analysis.</dd>
+<dt><strong>LabNumber</strong></dt>
+<dd>Laboratory number for the sample. A special case regards geochronologic samples, for which the LabNumber is the number, if any, assigned by the submitter, not the number assigned by the radiocarbon laboratory, which is in the <a class="reference external" href="#_Table:_Geochronology">Geochronology</a> table.</dd>
+<dt><strong>PreparationMethod</strong></dt>
+<dd>Description, notes, or comments on preparation methods. For faunal samples, notes on screening methods or screen size are stored here.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form note or comments about the sample.</dd>
+</dl>
+<div class="section" id="id2">
+<h3>SQL Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>This query provides a list of samples from «». The Collection Unit Name,
+Analysis Unit Name, Dataset Type, and Preparation Methods are listed.</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollUnitName</span><span class="p">,</span> <span class="n">AnalysisUnits</span><span class="p">.</span><span class="n">AnalysisUnitName</span><span class="p">,</span>
+<span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetType</span><span class="p">,</span> <span class="n">Samples</span><span class="p">.</span><span class="n">PreparationMethod</span>
+
+<span class="k">FROM</span> <span class="n">DatasetTypes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((((</span><span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">CollectionUnits</span> <span class="k">ON</span>
+<span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">AnalysisUnits</span> <span class="k">ON</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">AnalysisUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">INNER</span>
+<span class="k">JOIN</span> <span class="n">Samples</span> <span class="k">ON</span> <span class="n">AnalysisUnits</span><span class="p">.</span><span class="n">AnalysisUnitID</span> <span class="o">=</span> <span class="n">Samples</span><span class="p">.</span><span class="n">AnalysisUnitID</span><span class="p">)</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span> <span class="n">Samples</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">AND</span>
+<span class="p">(</span><span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">))</span> <span class="k">ON</span>
+<span class="n">DatasetTypes</span><span class="p">.</span><span class="n">DatasetTypeID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetTypeID</span>
+
+<span class="k">WHERE</span> <span class="p">(((</span><span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;&quot;</span><span class="p">))</span>
+
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollUnitName</span><span class="p">,</span> <span class="n">AnalysisUnits</span><span class="p">.</span><span class="n">AnalysisUnitName</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="19%" />
+<col width="14%" />
+<col width="52%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>CollUnitName</strong></td>
+<td><strong>AnalysisUnitName</strong></td>
+<td><strong>DatasetType</strong></td>
+<td><strong>PreparationMethod</strong></td>
+</tr>
+<tr class="row-even"><td>Locality</td>
+<td>Assemblage</td>
+<td>vertebrate fauna</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Locality</td>
+<td>Large Mammal Assemblage</td>
+<td>vertebrate fauna</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Unit A</td>
+<td>Level 1</td>
+<td>vertebrate fauna</td>
+<td>All excavated material was fine screened (&lt;1/16-inch or 1.6-mm mesh).</td>
+</tr>
+<tr class="row-odd"><td>Unit A</td>
+<td>Level 1</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Unit A</td>
+<td>Level 1</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Unit A</td>
+<td>Level 1</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Unit A</td>
+<td>Level 1</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Unit A</td>
+<td>Level 2</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Unit A</td>
+<td>Level 2</td>
+<td>vertebrate fauna</td>
+<td>All excavated material was fine screened (&lt;1/16-inch or 1.6-mm mesh).</td>
+</tr>
+<tr class="row-odd"><td>Unit A</td>
+<td>Level 2</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Unit A</td>
+<td>Level 2</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Unit A</td>
+<td>Level 2</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Unit A/B</td>
+<td>Assemblage</td>
+<td>vertebrate fauna</td>
+<td>All excavated material was fine screened (&lt;1/16-inch or 1.6-mm mesh).</td>
+</tr>
+<tr class="row-odd"><td>Unit B</td>
+<td>Level 4</td>
+<td>vertebrate fauna</td>
+<td>All excavated material was fine screened (&lt;1/16-inch or 1.6-mm mesh).</td>
+</tr>
+<tr class="row-even"><td>Unit B</td>
+<td>Level 5</td>
+<td>vertebrate fauna</td>
+<td>All excavated material was fine screened (&lt;1/16-inch or 1.6-mm mesh).</td>
+</tr>
+<tr class="row-odd"><td>Unit C</td>
+<td>Level 1</td>
+<td>vertebrate fauna</td>
+<td>All excavated material was fine screened (&lt;1/16-inch or 1.6-mm mesh).</td>
+</tr>
+<tr class="row-even"><td>Unit C</td>
+<td>Level 1</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Unit C</td>
+<td>Level 2</td>
+<td>vertebrate fauna</td>
+<td>All excavated material was fine screened (&lt;1/16-inch or 1.6-mm mesh).</td>
+</tr>
+<tr class="row-even"><td>Unit C</td>
+<td>Level 2</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Unit C</td>
+<td>Level 2</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Unit C</td>
+<td>Level 2</td>
+<td>geochronologic</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sample Related Tables</a><ul>
+<li><a class="reference internal" href="#sampleages">SampleAges</a><ul>
+<li><a class="reference internal" href="#sql-example">SQL Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sampleanalysts">SampleAnalysts</a></li>
+<li><a class="reference internal" href="#samplekeywords">SampleKeywords</a><ul>
+<li><a class="reference internal" href="#id1">SQL Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#samples">Samples</a><ul>
+<li><a class="reference internal" href="#id2">SQL Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/table_samples.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Eric Grimm, Simon Goring.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/table_samples.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
