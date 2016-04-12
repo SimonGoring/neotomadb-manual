@@ -106,9 +106,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#taxa">Taxa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#taxagrouptypes">TaxaGroupTypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id10">SQL Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">SQL Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">SQL Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#variablecontexts">VariableContexts</a></li>
@@ -734,7 +734,7 @@ indicate some potential problems with this synonymy.</p>
 <dt><strong>Extinct</strong></dt>
 <dd>Boolean (True/False) variable. The value is True if the taxon is extinct, False if extant.</dd>
 <dt><strong>TaxaGroupID (Foreign Key)</strong></dt>
-<dd>The TaxaGroupID facilitates rapid extraction of taxa groups that are typically grouped together for analysis. Some of these groups contain taxa in different classes or phyla. For example, vascular plants include the Spermatophyta and Pteridophyta; the herps include Reptilia and Amphibia; the testate amoebae include taxa from different phyla. Field links to the <span class="xref std std-ref">TaxaGroupTypes</span> table.</dd>
+<dd>The TaxaGroupID facilitates rapid extraction of taxa groups that are typically grouped together for analysis. Some of these groups contain taxa in different classes or phyla. For example, vascular plants include the Spermatophyta and Pteridophyta; the herps include Reptilia and Amphibia; the testate amoebae include taxa from different phyla. Field links to the <a class="reference internal" href="#taxagrouptypes"><span>TaxaGroupTypes</span></a> table.</dd>
 <dt><strong>PublicationID (Foreign Key)</strong></dt>
 <dd>Publication identification number. Field links to the <span class="xref std std-ref">Publications</span> table.</dd>
 <dt><strong>Notes</strong></dt>
@@ -742,7 +742,7 @@ indicate some potential problems with this synonymy.</p>
 </dl>
 </div>
 <div class="section" id="taxagrouptypes">
-<span id="taxagrouptype"></span><h2>TaxaGroupTypes<a class="headerlink" href="#taxagrouptypes" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>TaxaGroupTypes<a class="headerlink" href="#taxagrouptypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table for Taxa Group Types. This table is referenced by the
 <a class="reference internal" href="#taxa"><span>Taxa</span></a> table.</p>
 <table border="1" class="docutils">
@@ -805,7 +805,7 @@ indicate some potential problems with this synonymy.</p>
 </dl>
 </div>
 <div class="section" id="variables">
-<span id="id9"></span><h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
 <p>This table lists Variables, which always consist of a Taxon and Units of measurement. Variables can also have Elements, Contexts, and Modifications. Thus, the same taxon with different measurement units (e.g. present/absent, NISP, MNI) are different Variables.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -859,12 +859,12 @@ indicate some potential problems with this synonymy.</p>
 <dt><strong>VariableUnitsID (Foreign Key)</strong></dt>
 <dd>Variable Units identification number. Field links to the <a class="reference internal" href="#variableunits"><span>VariableUnits</span></a> lookup table.</dd>
 <dt><strong>VariableContextID (Foreign Key)</strong></dt>
-<dd>Variable Context identification number. Field links to the <span class="xref std std-ref">VariableContexts</span> lookup table.</dd>
+<dd>Variable Context identification number. Field links to the <a class="reference internal" href="#variablecontexts"><span>VariableContexts</span></a> lookup table.</dd>
 <dt><strong>VarialbeModificationID (Foreign Key)</strong></dt>
-<dd>Variable Modification identification number. Field links to the <span class="xref std std-ref">VariableModifications</span> lookup table.</dd>
+<dd>Variable Modification identification number. Field links to the <a class="reference internal" href="#variablemodifications"><span>VariableModifications</span></a> lookup table.</dd>
 </dl>
-<div class="section" id="id10">
-<h3>SQL Example<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>SQL Example<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>This query lists the Variables for «<em>Zea mays</em>» with elements and
 measurement units.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -927,8 +927,8 @@ measurement units.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id11">
-<h3>SQL Example<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>SQL Example<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>This query lists all sites with <em>Zea mays</em> pollen by designating the
 VariableElement as «pollen».</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -1044,8 +1044,8 @@ VariableElement as «pollen».</p>
 </pre></div>
 </td></tr></table></div>
 </div>
-<div class="section" id="id12">
-<h3>SQL Example<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>SQL Example<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>This example gives a list of all sites with <em>Bison bison antiquus</em> bones
 with human butchering.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -1118,7 +1118,7 @@ with human butchering.</p>
 </div>
 </div>
 <div class="section" id="variablecontexts">
-<h2>VariableContexts<a class="headerlink" href="#variablecontexts" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>VariableContexts<a class="headerlink" href="#variablecontexts" title="Permalink to this headline">¶</a></h2>
 <p>Variable Contexts lookup table. Table is referenced by the
 <a class="reference internal" href="#variables"><span>Variables</span></a> table.</p>
 <table border="1" class="docutils">
@@ -1164,7 +1164,7 @@ with human butchering.</p>
 </dl>
 </div>
 <div class="section" id="variableelements">
-<span id="id13"></span><h2>VariableElements<a class="headerlink" href="#variableelements" title="Permalink to this headline">¶</a></h2>
+<span id="id15"></span><h2>VariableElements<a class="headerlink" href="#variableelements" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Variable Elements. Table is referenced by the <a class="reference internal" href="#variables"><span>Variables</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1195,7 +1195,7 @@ with human butchering.</p>
 </dl>
 </div>
 <div class="section" id="variablemodifications">
-<span id="variablemodification"></span><h2>VariableModifications<a class="headerlink" href="#variablemodifications" title="Permalink to this headline">¶</a></h2>
+<span id="id16"></span><h2>VariableModifications<a class="headerlink" href="#variablemodifications" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Variable Modifications. Table is referenced by the
 <a class="reference internal" href="#variables"><span>Variables</span></a> table.</p>
 <table border="1" class="docutils">
@@ -1228,7 +1228,7 @@ with human butchering.</p>
 </dl>
 </div>
 <div class="section" id="variableunits">
-<span id="id14"></span><h2>VariableUnits<a class="headerlink" href="#variableunits" title="Permalink to this headline">¶</a></h2>
+<span id="id17"></span><h2>VariableUnits<a class="headerlink" href="#variableunits" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Variable Units. Table is referenced by the
 <a class="reference internal" href="#variables"><span>Variables</span></a> table.</p>
 <table border="1" class="docutils">

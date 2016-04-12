@@ -1,18 +1,7 @@
 SQL Quickly
 ------------------------------
 
-SQL (Sturctured Query Language) is a standard language for querying and
-modifying relational databases. It is an ANSI and ISO standard, although
-various vendors have added proprietary extensions. It is beyond the
-scope of this document to describe SQL or the differences between
-Microsoft Access SQL and ANSI SQL. However, examples of SQL queries are
-provided in this document as a tutorial. Most users of Access probably
-use the graphical design view for queries, but SQL queries are better
-suited for examples. These queries can by typed or copied and pasted
-into the Access query SQL view. The query can then be executed or opened
-in design view to show the graphical representation. One difference
-between Access SQL and other flavors is the wildcard; Access uses \*
-rather than %.
+SQL (Sturctured Query Language) is a standard language for querying and modifying relational databases. It is an ANSI and ISO standard, although various vendors have added proprietary extensions. It is beyond the scope of this document to describe SQL or the differences between Microsoft Access SQL and ANSI SQL. However, examples of SQL queries are provided in this document as a tutorial. Most users of Access probably use the graphical design view for queries, but SQL queries are better suited for examples. These queries can by typed or copied and pasted into the Access query SQL view. The query can then be executed or opened in design view to show the graphical representation. One difference between Access SQL and other flavors is the wildcard; Access uses \* rather than %.
 
 SQL Example
 ~~~~~~~~~~~
@@ -52,9 +41,7 @@ Within tables there are often Keys.  A Key may be a **Primary Key** (PK), which 
 Data Types
 ~~~~~~~~~~~
 
-In the table descriptions in the following section, the SQL Server data
-types are given for field descriptions. The equivalent Access data types
-are given in the following table.
+In the table descriptions in the following section, the SQL Server data types are given for field descriptions. The equivalent Access data types are given in the following table.
 
 +------------------------------------+------------------------+
 | **SQL Server data type**           | **Access data type**   |

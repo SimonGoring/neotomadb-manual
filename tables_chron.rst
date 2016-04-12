@@ -1,12 +1,14 @@
 Chronology & Age Related Tables
 -----------------------------
 
+.. _AgeTypes:
+
 AgeTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lookup table of Age Types or units. This table is referenced by the
-`Chronologies <#_Table:_Chronologies>`__ and
-`Geochronology <#_Table:_Geochronology>`__ tables.
+:ref:`Chronologies` and
+:ref:`Geochronology` tables.
 
 +-----------------------+----------------+------+-----+
 | **AgeTypes**                                        |
@@ -32,10 +34,12 @@ Lookup table of Age Types or units. This table is referenced by the
 
   * Varve years BP
 
+.. _AggregateChronologies:
+
 AggregateChronologies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores metadata for Aggregate Chronologies. An Aggregate Chronology refers to an explicit chronology assigned to a sample Aggregate. The individual Aggregate Samples have ages assigned in the `AggregateSampleAges <#_Table:_AggregateSampleAges>`__ table. An Aggregate Chronology would be used, for example, for a set of packrat middens assigned to an `AggregateDataset <#_Table:_AggregateDatasets_1>`__. The Aggregate Chronology is analsgous to the Chronology assigned to samples from a single Collection Unit.
+This table stores metadata for Aggregate Chronologies. An Aggregate Chronology refers to an explicit chronology assigned to a sample Aggregate. The individual Aggregate Samples have ages assigned in the :ref:`AggregateSampleAges` table. An Aggregate Chronology would be used, for example, for a set of packrat middens assigned to an :ref:`AggregateDataset`. The Aggregate Chronology is analsgous to the Chronology assigned to samples from a single Collection Unit.
 
 An Aggregate may have more than one Aggregate Chronology, for example one in radiocarbon years and another in calibrated radiocarbon years. One Aggreagate Chronology per Age Type may be designated the default, which is the Aggregate Chronology currently preferred by the database stewards.
 
@@ -63,10 +67,10 @@ An Aggregate may have more than one Aggregate Chronology, for example one in rad
   An arbitrary Aggregate Chronology identification number.
 
 **AggregateDatasetID (Foreign Key)**
-  Dataset to which the Aggregate Chronology applies. Field links to the `AggregateDatasets <#_Table:_AggregateDatasets_1>`__ table.
+  Dataset to which the Aggregate Chronology applies. Field links to the :ref:`AggregateDatasets` table.
 
 **AgeTypeID (Foreign Key)**
-  Age type or units. Field links to the `AgeTypes <#_Table:_AgeTypes>`__ table.
+  Age type or units. Field links to the :ref:`AgeTypes` table.
 
 **IsDefault**
   Indicates whether the Aggregate Chronology is a default or not. Default status is determined by a Neotoma data steward.  Aggregate Datasets may have more than one default Aggregate Chronology, but may have only one default Aggregate Chronology per Age Type.
@@ -82,6 +86,8 @@ An Aggregate may have more than one Aggregate Chronology, for example one in rad
 
 **Notes**
   Free form notes or comments about the Aggregate Chronology.
+
+.. _ChronControls:
 
 ChronControls
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -117,7 +123,7 @@ This table stores data for Chronology Controls, which are the age-depth control 
   Chronology to which the ChronControl belongs. Field links to the Chronolgies table.
 
 **ChronControlTypeID (Foreign Key)** 
-  The type of Chronology Control. Field links to the `ChronControlTypes <#_Table:_ChronControlTypes>`__ table.
+  The type of Chronology Control. Field links to the :ref:`ChronControlTypes` table.
 
 **Depth**
   Depth of the Chronology Control in cm.
@@ -137,11 +143,13 @@ This table stores data for Chronology Controls, which are the age-depth control 
 **Notes**
   Free form notes or comments about the Chronology Control.
 
+.. _ChronControlTypes:
+
 ChronControlTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lookup table of Chronology Control Types. This table is referenced by
-the `ChronControls <#_Table:_ChronControls>`__ table.
+the :ref:`ChronControls` table.
 
 +--------------------------------+----------------+------+-----+
 | **ChronControlTypes**          |                             |
@@ -157,14 +165,16 @@ the `ChronControls <#_Table:_ChronControls>`__ table.
 **ChronControlType**
   The Chronology Control Type. Chronology Controls include such geophysical controls as radiocarbon dates, calibrated radiocarbon dates, averages of several radiocarbon dates, potassium-argon dates, and thermoluminescence dates, as well as biostratigraphic controls, sediment stratigraphic contols, volcanic tephras, archaeological cultural associations, and any other types of age controls.
 
+.. _Chronologies:
+
 Chronologies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores Chronology data. A Chronology refers to an explicit chronology assigned to a Collection Unit. A Chronology has Chronology Controls, the actual age-depth control points, which are stored in the `ChronControls <#_Table:_ChronControls>`__ table. A Chronology is also based on an Age Model, which may be a numerical method that fits a curve to a set of age-depth control points or may simply be individually dated Analysis Units.
+This table stores Chronology data. A Chronology refers to an explicit chronology assigned to a Collection Unit. A Chronology has Chronology Controls, the actual age-depth control points, which are stored in the `ChronControls` table. A Chronology is also based on an Age Model, which may be a numerical method that fits a curve to a set of age-depth control points or may simply be individually dated Analysis Units.
 
 A Collection Unit may have more than one Chronology, for example one in radiocarbon years and another in calibrated radiocarbon years. There may be a Chronology developed by the original author and another developed by a later research project. Chronologies may be stored for archival reasons, even though they are now believed to have problems, if they were used for an important research project. One Chronology per Age Type may be designated the default Chronology, which is the Chronology currently preferred by the database stewards.
 
-Based upon the Chronology, which includes the Age Model and the Chron Controls, ages are assigned to individual samples, which are stored in the `SampleAges <#_Table:_SampleAges>`__ table. 
+Based upon the Chronology, which includes the Age Model and the Chron Controls, ages are assigned to individual samples, which are stored in the :ref:`SampleAges` table. 
 
 A younger and older age bounds are assigned to the Chronology. Within these bounds the Chronology is regarded as reliable. Ages may be assigned to samples beyond the reliable age bounds, but these are not considered reliable.
 
@@ -198,13 +208,13 @@ A younger and older age bounds are assigned to the Chronology. Within these boun
   An arbitrary Chronology identification number.
 
 **CollectionUnitID (Foreign Key)**
-  Collection Unit to which the Chronology applies. Field links to the `CollectionUnits <#_Table:_CollectionUnits>`__ table.
+  Collection Unit to which the Chronology applies. Field links to the :ref:`CollectionUnits` table.
 
 **AgeTypeID (Foreign Key)**
-  Age type or units. Field links to the `AgeTypes <#_Table:_AgeTypes>`__ table.
+  Age type or units. Field links to the :ref:`AgeTypes` table.
 
 **ContactID (Foreign Key)** 
-  Person who developed the Age Model. Field links to the ` <#_Table:_Contacts>`__ table.
+  Person who developed the Age Model. Field links to the :ref:`Contacts` table.
 
 **IsDefault**
   Indicates whether the Chronology is a default chronology or not. Default status is determined by a Neotoma data steward. Collection Units may have more than one default Chronology, but may have only one default Chronology per Age Type. Thus, there may be a default radiocarbon year Chronology and a default calibrated radiocarbon year Chronology, but only one of each. Default Chronologies may be used by the Neotoma web site, or other web sites, for displaying default diagrams or time series of data. Default Chronologies may also be of considerable use for actual research purposes; however, users may of course choose to develop their own chronologies.
@@ -327,16 +337,15 @@ Result:
 | 1725        | 13864     | 13646                 | 14218               | Radiocarbon, calibrated                  |
 +-------------+-----------+-----------------------+---------------------+------------------------------------------+
 
+.. _AggregateSampleAges:
+
 AggregateSampleAges
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores the links to the ages of samples in an Aggregate
-Dataset. The table is necessary because samples may be from Collection
-Units with multiple chronologies, and this table stores the links to the
-sample ages desired for the Aggregate Dataset.
+This table stores the links to the ages of samples in an Aggregate Dataset. The table is necessary because samples may be from Collection Units with multiple chronologies, and this table stores the links to the sample ages desired for the Aggregate Dataset.
 
 +----------------------------------+-------+----------+-------------------------+
-| **AggregateSampleAges**                                                |
+| **AggregateSampleAges**                                                       |
 +----------------------------------+-------+----------+-------------------------+
 | AggregateDatasetID               | int   | PK, FK   | AggregateDatasets       |
 +----------------------------------+-------+----------+-------------------------+
@@ -346,23 +355,21 @@ sample ages desired for the Aggregate Dataset.
 +----------------------------------+-------+----------+-------------------------+
 
 **AggregateDatasetID (Primary Key, Foreign Key)**
-  Aggregate Dataset identification number. Field links to the `AggregateDatasets <#_Table:_AggregateDatasets_1>`__ table.
+  Aggregate Dataset identification number. Field links to the :ref:`AggregateDatasets` table.
 
 **AggregateChronID (Primary Key, Foreign Key)**
-  Aggregate Chronology identification number Field links to the `AggregateChronologies <#_Table:_AggregateChronologies>`__ table.
+  Aggregate Chronology identification number Field links to the :ref:`AggregateChronologies` table.
 
 **SampleAgeID (Primary Key, Foreign Key)**
-  Sample Age ID number. Field links to the `SampleAges <#_Table:_SampleAges>`__ table.
+  Sample Age ID number. Field links to the :ref:`SampleAges` table.
 
 SQL Example
 ``````````````````````````````````````
 
-The following SQL statement produces a list of Sample ID numbers and
-ages for the «» Aggregate Dataset:
+The following SQL statement produces a list of Sample ID numbers and ages for the Aggregate Dataset:
 
 .. code-block:: sql
    :linenos:
-
    SELECT AggregateSamples.SampleID, SampleAges.Age
 
    FROM SampleAges INNER JOIN ((AggregateDatasets INNER JOIN
@@ -375,10 +382,11 @@ ages for the «» Aggregate Dataset:
 
    WHERE (((AggregateDatasets.AggregateDatasetName)=""));
 
+
 SQL Example
 `````````````````````````````
 
-The AggregateSampleAges table may have multiple SampleAgeID’s for Aggregate Dataset samples, for example SampleAgeID’s for radiocarbon and calibrated radiocarbon chronologies. In this case, the Chronolgies table must be linked into a query to obtain the ages of Aggregate Samples, and either the AgeTypeID must be specified in the Chronolgies table or the `AgeTypes <#_Table:_AgeTypes>`__ table must also be linked with the AgeType specified. The following SQL statement produces a list of Sample ID numbers and «Radiocarbon years BP» ages for the «» Aggregate Dataset:
+The AggregateSampleAges table may have multiple SampleAgeID's for Aggregate Dataset samples, for example SampleAgeID's for radiocarbon and calibrated radiocarbon chronologies. In this case, the Chronolgies table must be linked into a query to obtain the ages of Aggregate Samples, and either the AgeTypeID must be specified in the Chronolgies table or the :ref:`AgeTypes` table must also be linked with the AgeType specified. The following SQL statement produces a list of Sample ID numbers and «Radiocarbon years BP» ages for the «» Aggregate Dataset: :ref:`Samples`
 
 .. code-block:: sql
    :linenos:
@@ -397,6 +405,8 @@ The AggregateSampleAges table may have multiple SampleAgeID’s for Aggregate Da
 
    WHERE (((AggregateDatasets.AggregateDatasetName)="") AND
    ((AgeTypes.AgeType)="Radiocarbon years BP"));
+
+.. _Geochronology:
 
 Geochronology
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -435,13 +445,13 @@ This table stores geochronologic data. Geochronologic measurements are from geoc
   An arbitrary Geochronologic identificantion number.
 
 **SampleID (Foreign Key)**
-  Sample identification number. Field links to `Samples <#_Table:_Samples>`__ table.
+  Sample identification number. Field links to :ref:`Samples` table.
 
 **GeochronTypeID (Foreign Key)**
-  Identification number for the type of Geochronologic analysis, e.g. «Carbon-14», «Thermoluminescence». Field links to the `GeochronTypes <#_Table:_GeochronTypes>`__ table.
+  Identification number for the type of Geochronologic analysis, e.g. «Carbon-14», «Thermoluminescence». Field links to the :ref:`GeochronTypes` table.
 
 **AgeTypeID (Foreign Key)**
-  Identification number for the age units, e.g. «Radiocarbon years BP», «Calaibrated radiocarbon years BP».
+  Identification number for the age units, e.g. «Radiocarbon years BP», «Calibrated radiocarbon years BP».
 
 **Age** 
   Reported age value of the geochronologic measurement.
@@ -512,6 +522,8 @@ Result:
 | 887         | 1             | Carbon-14: accelerator mass spectrometry   | 24910     | 370               | 370                 |                | AA-5053          | wood                | Davis and Shafer (1992) reject as too old.   |
 +-------------+---------------+--------------------------------------------+-----------+-------------------+---------------------+----------------+------------------+---------------------+----------------------------------------------+
 
+.. _GeochronPublications:
+
 GeochronPublications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -526,16 +538,18 @@ Publications in which Geochronologic measurements are reported. Many older radio
 +-----------------------------------+----------------+----------+-----------------+
 
 **GeochronID (Primary Key, Foreign Key)** 
-  Geochronologic identification number. Field links to the `Geochronology <#_Table:_Geochronology>`__ table.
+  Geochronologic identification number. Field links to the :ref:`Geochronology` table.
 
 **PublicationID (Primary Key, Foreign Key)**
-  Publication identification number. Field links to the `Publications <#_Table:_Publications>`__ table.
+  Publication identification number. Field links to the :ref:`Publications` table.
+
+.. _GeochronTypes:
 
 GeochronTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lookup table for Geochronology Types. Table is referenced by the
-`Geochronology <#_Table:_Geochronology>`__ table.
+:ref:`Geochronology` table.
 
 +----------------------------+----------------+------+-----+
 | **GeochronTypes**                                        |
@@ -551,6 +565,8 @@ Lookup table for Geochronology Types. Table is referenced by the
 **GeochronType**
   Type of Geochronologic measurement.
 
+.. _RelativeAgePublications:
+
 RelativeAgePublications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -565,18 +581,20 @@ This table stores Publications in which Relative Ages are reported for Collectio
 +--------------------------------------+----------------+----------+----------------+
 
 **RelativeAgeID (Primary Key, Foreign Key)** 
-  Relative Ages identification number. Field links to the `RelativeAges <#_Table:_RelativeAges>`__ table.
+  Relative Ages identification number. Field links to the :ref:`RelativeAges` table.
 
 **PublicationID (Primary Key, Foreign Key)**
-  Publication identification number. Field links to `Publications <#_Table:_Publications>`__ table.
+  Publication identification number. Field links to :ref:`Publications` table.
+
+.. _RelativeAges:
 
 RelativeAges
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table of RelativeAges. Table is referenced by the `RelativeChronology <#_Table:_RelativeChronology>`__ table.
+Lookup table of RelativeAges. Table is referenced by the :ref:`RelativeChronology` table.
 
 +---------------------------+----------------+------+---------------------+
-| **Table: RelativeAges**   |
+| **RelativeAges**                                                        |
 +---------------------------+----------------+------+---------------------+
 | RelativeAgeID             | Long Integer   | PK   |                     |
 +---------------------------+----------------+------+---------------------+
@@ -601,10 +619,10 @@ Lookup table of RelativeAges. Table is referenced by the `RelativeChronology <#_
   An arbitrary Relative Age identification number.
 
 **RelativeAgeUnitID (Foreign Key)**
-  Relative Age Unit (e.g. «Marine isotope stage», «Land mammal age»). Field links to the `RelativeAgeUnits  #_Table:_RelativeAgeUnits>`__ lookup table.
+  Relative Age Unit (e.g. «Marine isotope stage», «Land mammal age»). Field links to the :ref:`RelativeAgeUnits` lookup table.
 
 **RelativeAgeScaleID (Foreign Key)**
-  Relative Age Scale (e.g. «Geologic time scale», «Marine isotope stages»). Field links to the `RelativeAgeScales <#_Table:_RelativeAgeScales>`__ lookup table.
+  Relative Age Scale (e.g. «Geologic time scale», «Marine isotope stages»). Field links to the :ref:`RelativeAgeScales` lookup table.
 
 **RelativeAge**
   Relative Age (e.g. «Rancholabrean», a land mammal age; «MIS 11», marine isotope stage 11).
@@ -671,6 +689,8 @@ Result:
 | Blancan V          | 1,900,000           | 2,500,000         |
 +--------------------+---------------------+-------------------+
 
+.. _RadiocarbonCalibration:
+
 RadiocarbonCalibration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -690,11 +710,13 @@ Radiocarbon calibraton table. This table is intended for quick calibraton of age
 **CalyrBP**
   Age in calibrated radiocarbon years BP.
 
+.. _RelativeAgeScales:
+
 RelativeAgeScales
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lookup table of Relative Age Scales. Table is referenced by the
-`RelativeAges <#_Table:_RelativeAges>`__ table.
+:ref:`RelativeAges` table.
 
 +--------------------------------+----------------+------+-----+
 | **RelativeAgeScales**                                        |
@@ -717,11 +739,13 @@ Lookup table of Relative Age Scales. Table is referenced by the
   * North American land mammal ages
   * Quaternary event classification
 
+.. _RelativeAgeUnits:
+
 RelativeAgeUnits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lookup table of RelativeAgeUnits. Table is referenced by the
-`RelativeAges <#_Table:_RelativeAges>`__ table.
+:ref:`RelativeAges` table.
 
 +-------------------------------+----------------+------+-----+
 | **RelativeAgeUnits**                                        |
@@ -753,10 +777,12 @@ Lookup table of RelativeAgeUnits. Table is referenced by the
 
 «Period», «Epoch», and «Stage» are defined by the International Commission on Statigraphy. An «Informal stage» is defined in Neotoma.
 
+.. _RelativeChronology:
+
 RelativeChronology
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores relative chronologic data. Relative Ages are assigned to Analysis Units, The Relative Age data along with any possible `Geochronology <#_Table:_Geochronology>`__ and `Tephrachronology <#_Table:_Tephrachronology>`__ data are used to create a chronology.
+This table stores relative chronologic data. Relative Ages are assigned to Analysis Units, The Relative Age data along with any possible :ref:`Geochronology` and :ref:`Tephrachronology` data are used to create a chronology.
 
 +---------------------------------+----------------+------+-----------------+
 | RelativeChronology**                                                      |
@@ -774,24 +800,21 @@ This table stores relative chronologic data. Relative Ages are assigned to Analy
   An arbitrary Relative Chronology identification number.
 
 **AnalysisUnitID (Foreign Key)**
-  Analysis Unit identification number. Field links to the `AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
+  Analysis Unit identification number. Field links to the :ref:`AnalysisUnits` table.
 
 **RelativeAgeID (Foreign Key)**
-  Relative Age identification number. Field links to the `RelativeAges <#_Table:_RelativeAges>`__ lookup table.
+  Relative Age identification number. Field links to the :ref:`RelativeAges` lookup table.
 
 **Notes**
   Free form notes or comments.
 
+.. _Tephrachronology:
+
 Tephrachronology
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores tephrachronologic data. The table relates Analysis
-Units with dated tephras in the `Tephras <#_Table:_Tephras>`__ table.
-These are tephras with established ages that are used form a chronology.
-The tephras are typically not directly dated at the Site of the Analysis
-Unit, but have been dated at other sites. A directly dated tephra, e.g.
-an argon-argon date, belongs in the
-`Geochronology <#_Table:_Geochronology>`__ table.
+This table stores tephrachronologic data. The table relates Analysis Units with dated tephras in the :ref:`Tephras` table.
+These are tephras with established ages that are used form a chronology.  The tephras are typically not directly dated at the Site of the Analysis Unit, but have been dated at other sites. A directly dated tephra, e.g. an argon-argon date, belongs in the :ref:`Geochronology` table.
 
 +-------------------------------+----------------+------+-----------------+
 | **Table: Tephrachronology**   |
@@ -805,26 +828,22 @@ an argon-argon date, belongs in the
 | Notes                         | Memo           |      |                 |
 +-------------------------------+----------------+------+-----------------+
 
-**TephrachronID (Primary Key)** An arbitrary Tephrachronology
-identification number.
+**TephrachronID (Primary Key)** An arbitrary Tephrachronology identification number.
 
-**AnalysisUnitID (Foreign Key)** Analysis Unit identification number.
-Field links to the ` <#_Table:_AnalysisUnits>`__ table. The tephra may
-be contained within the AnalysisUnit, especially in excavations, or the
-AnalysisUnit may be assigned specifically to the tephra, particulary
-with cores.
+**AnalysisUnitID (Foreign Key)** Analysis Unit identification number. Field links to the :ref:`AnalysisUnits` table. The tephra may be contained within the AnalysisUnit, especially in excavations, or the AnalysisUnit may be assigned specifically to the tephra, particulary with cores.
 
-**TephraID (Foreign Key)** Tephra identification number. Field links to
-the `Tephras <#_Table:_Tephras>`__ table.
+**TephraID (Foreign Key)** Tephra identification number. Field links to the :ref:`Tephras` table.
 
 **Notes** Free form notes or comments about the tephra.
 
-Table: Tephras
+.. _Tephras:
+
+Tephras
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Tephras lookup table. This table stores recognized tephras with
 established ages. Referenced by the
-`Tephrachronology <#_Table:_Tephrachronology>`__ table.
+`Tephrachronology` table.
 
 +----------------------+----------------+------+-----+
 | **Table: Tephras**   |

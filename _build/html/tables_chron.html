@@ -93,23 +93,23 @@
 <li class="toctree-l2"><a class="reference internal" href="#chroncontroltypes">ChronControlTypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#chronologies">Chronologies</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">SQL Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#aggregatesampleages">AggregateSampleAges</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">SQL Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">SQL Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#geochronology">Geochronology</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">SQL Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#geochronpublications">GeochronPublications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#geochrontypes">GeochronTypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#relativeagepublications">RelativeAgePublications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#relativeages">RelativeAges</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">SQL Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#radiocarboncalibration">RadiocarbonCalibration</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#relativeageunits">RelativeAgeUnits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#relativechronology">RelativeChronology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tephrachronology">Tephrachronology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#table-tephras">Table: Tephras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tephras">Tephras</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
@@ -174,10 +174,10 @@
   <div class="section" id="chronology-age-related-tables">
 <h1>Chronology &amp; Age Related Tables<a class="headerlink" href="#chronology-age-related-tables" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="agetypes">
-<h2>AgeTypes<a class="headerlink" href="#agetypes" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>AgeTypes<a class="headerlink" href="#agetypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Age Types or units. This table is referenced by the
-<a class="reference external" href="#_Table:_Chronologies">Chronologies</a> and
-<a class="reference external" href="#_Table:_Geochronology">Geochronology</a> tables.</p>
+<a class="reference internal" href="#chronologies"><span>Chronologies</span></a> and
+<a class="reference internal" href="#geochronology"><span>Geochronology</span></a> tables.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="46%" />
@@ -216,8 +216,8 @@
 </dl>
 </div>
 <div class="section" id="aggregatechronologies">
-<h2>AggregateChronologies<a class="headerlink" href="#aggregatechronologies" title="Permalink to this headline">¶</a></h2>
-<p>This table stores metadata for Aggregate Chronologies. An Aggregate Chronology refers to an explicit chronology assigned to a sample Aggregate. The individual Aggregate Samples have ages assigned in the <a class="reference external" href="#_Table:_AggregateSampleAges">AggregateSampleAges</a> table. An Aggregate Chronology would be used, for example, for a set of packrat middens assigned to an <a class="reference external" href="#_Table:_AggregateDatasets_1">AggregateDataset</a>. The Aggregate Chronology is analsgous to the Chronology assigned to samples from a single Collection Unit.</p>
+<span id="id2"></span><h2>AggregateChronologies<a class="headerlink" href="#aggregatechronologies" title="Permalink to this headline">¶</a></h2>
+<p>This table stores metadata for Aggregate Chronologies. An Aggregate Chronology refers to an explicit chronology assigned to a sample Aggregate. The individual Aggregate Samples have ages assigned in the <a class="reference internal" href="#aggregatesampleages"><span>AggregateSampleAges</span></a> table. An Aggregate Chronology would be used, for example, for a set of packrat middens assigned to an <span class="xref std std-ref">AggregateDataset</span>. The Aggregate Chronology is analsgous to the Chronology assigned to samples from a single Collection Unit.</p>
 <p>An Aggregate may have more than one Aggregate Chronology, for example one in radiocarbon years and another in calibrated radiocarbon years. One Aggreagate Chronology per Age Type may be designated the default, which is the Aggregate Chronology currently preferred by the database stewards.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -275,9 +275,9 @@
 <dt><strong>AggregateChronID (Primary Key)</strong></dt>
 <dd>An arbitrary Aggregate Chronology identification number.</dd>
 <dt><strong>AggregateDatasetID (Foreign Key)</strong></dt>
-<dd>Dataset to which the Aggregate Chronology applies. Field links to the <a class="reference external" href="#_Table:_AggregateDatasets_1">AggregateDatasets</a> table.</dd>
+<dd>Dataset to which the Aggregate Chronology applies. Field links to the <span class="xref std std-ref">AggregateDatasets</span> table.</dd>
 <dt><strong>AgeTypeID (Foreign Key)</strong></dt>
-<dd>Age type or units. Field links to the <a class="reference external" href="#_Table:_AgeTypes">AgeTypes</a> table.</dd>
+<dd>Age type or units. Field links to the <a class="reference internal" href="#agetypes"><span>AgeTypes</span></a> table.</dd>
 <dt><strong>IsDefault</strong></dt>
 <dd>Indicates whether the Aggregate Chronology is a default or not. Default status is determined by a Neotoma data steward.  Aggregate Datasets may have more than one default Aggregate Chronology, but may have only one default Aggregate Chronology per Age Type.</dd>
 <dt><strong>ChronologyName</strong></dt>
@@ -291,7 +291,7 @@
 </dl>
 </div>
 <div class="section" id="chroncontrols">
-<h2>ChronControls<a class="headerlink" href="#chroncontrols" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>ChronControls<a class="headerlink" href="#chroncontrols" title="Permalink to this headline">¶</a></h2>
 <p>This table stores data for Chronology Controls, which are the age-depth control points used for age models. These controls may be geophysical controls, such as radiocarbon dates, but include many other kinds of age controls, such as biostratigraphic controls, archaeological cultural associations, and volcanic tephras. In the case of radiocarbon dates, a Chronology Control may not simply be the raw radiocarbon date reported by the laboratory, but perhaps a radiocarbon date corrected for an old carbon reservoir, a calibrated radiocarbon date, or an average of several radiocarbon dates from the same level. A common control for lake-sediment cores is the age of the top of the core, which may be the year the core was taken or perhaps an estimate of 0 BP if a few cm of surficial sediment were lost.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -357,7 +357,7 @@
 <dt><strong>ChronologyID (Foreign Key)</strong></dt>
 <dd>Chronology to which the ChronControl belongs. Field links to the Chronolgies table.</dd>
 <dt><strong>ChronControlTypeID (Foreign Key)</strong></dt>
-<dd>The type of Chronology Control. Field links to the <a class="reference external" href="#_Table:_ChronControlTypes">ChronControlTypes</a> table.</dd>
+<dd>The type of Chronology Control. Field links to the <a class="reference internal" href="#chroncontroltypes"><span>ChronControlTypes</span></a> table.</dd>
 <dt><strong>Depth</strong></dt>
 <dd>Depth of the Chronology Control in cm.</dd>
 <dt><strong>Thickness</strong></dt>
@@ -373,9 +373,9 @@
 </dl>
 </div>
 <div class="section" id="chroncontroltypes">
-<h2>ChronControlTypes<a class="headerlink" href="#chroncontroltypes" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>ChronControlTypes<a class="headerlink" href="#chroncontroltypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Chronology Control Types. This table is referenced by
-the <a class="reference external" href="#_Table:_ChronControls">ChronControls</a> table.</p>
+the <a class="reference internal" href="#chroncontrols"><span>ChronControls</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="54%" />
@@ -407,10 +407,10 @@ the <a class="reference external" href="#_Table:_ChronControls">ChronControls</a
 </dl>
 </div>
 <div class="section" id="chronologies">
-<h2>Chronologies<a class="headerlink" href="#chronologies" title="Permalink to this headline">¶</a></h2>
-<p>This table stores Chronology data. A Chronology refers to an explicit chronology assigned to a Collection Unit. A Chronology has Chronology Controls, the actual age-depth control points, which are stored in the <a class="reference external" href="#_Table:_ChronControls">ChronControls</a> table. A Chronology is also based on an Age Model, which may be a numerical method that fits a curve to a set of age-depth control points or may simply be individually dated Analysis Units.</p>
+<span id="id5"></span><h2>Chronologies<a class="headerlink" href="#chronologies" title="Permalink to this headline">¶</a></h2>
+<p>This table stores Chronology data. A Chronology refers to an explicit chronology assigned to a Collection Unit. A Chronology has Chronology Controls, the actual age-depth control points, which are stored in the <cite>ChronControls</cite> table. A Chronology is also based on an Age Model, which may be a numerical method that fits a curve to a set of age-depth control points or may simply be individually dated Analysis Units.</p>
 <p>A Collection Unit may have more than one Chronology, for example one in radiocarbon years and another in calibrated radiocarbon years. There may be a Chronology developed by the original author and another developed by a later research project. Chronologies may be stored for archival reasons, even though they are now believed to have problems, if they were used for an important research project. One Chronology per Age Type may be designated the default Chronology, which is the Chronology currently preferred by the database stewards.</p>
-<p>Based upon the Chronology, which includes the Age Model and the Chron Controls, ages are assigned to individual samples, which are stored in the <a class="reference external" href="#_Table:_SampleAges">SampleAges</a> table.</p>
+<p>Based upon the Chronology, which includes the Age Model and the Chron Controls, ages are assigned to individual samples, which are stored in the <span class="xref std std-ref">SampleAges</span> table.</p>
 <p>A younger and older age bounds are assigned to the Chronology. Within these bounds the Chronology is regarded as reliable. Ages may be assigned to samples beyond the reliable age bounds, but these are not considered reliable.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -484,11 +484,11 @@ the <a class="reference external" href="#_Table:_ChronControls">ChronControls</a
 <dt><strong>ChronologyID (Primary Key)</strong></dt>
 <dd>An arbitrary Chronology identification number.</dd>
 <dt><strong>CollectionUnitID (Foreign Key)</strong></dt>
-<dd>Collection Unit to which the Chronology applies. Field links to the <a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits</a> table.</dd>
+<dd>Collection Unit to which the Chronology applies. Field links to the <span class="xref std std-ref">CollectionUnits</span> table.</dd>
 <dt><strong>AgeTypeID (Foreign Key)</strong></dt>
-<dd>Age type or units. Field links to the <a class="reference external" href="#_Table:_AgeTypes">AgeTypes</a> table.</dd>
+<dd>Age type or units. Field links to the <a class="reference internal" href="#agetypes"><span>AgeTypes</span></a> table.</dd>
 <dt><strong>ContactID (Foreign Key)</strong></dt>
-<dd>Person who developed the Age Model. Field links to the ` &lt;#_Table:_Contacts&gt;`__ table.</dd>
+<dd>Person who developed the Age Model. Field links to the <span class="xref std std-ref">Contacts</span> table.</dd>
 <dt><strong>IsDefault</strong></dt>
 <dd>Indicates whether the Chronology is a default chronology or not. Default status is determined by a Neotoma data steward. Collection Units may have more than one default Chronology, but may have only one default Chronology per Age Type. Thus, there may be a default radiocarbon year Chronology and a default calibrated radiocarbon year Chronology, but only one of each. Default Chronologies may be used by the Neotoma web site, or other web sites, for displaying default diagrams or time series of data. Default Chronologies may also be of considerable use for actual research purposes; however, users may of course choose to develop their own chronologies.</dd>
 <dt><strong>ChronologyName</strong></dt>
@@ -565,8 +565,8 @@ the <a class="reference external" href="#_Table:_ChronControls">ChronControls</a
 </tbody>
 </table>
 </div>
-<div class="section" id="id1">
-<h3>SQL Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>SQL Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>The following statement produces a list of the ChronControls for the
 Default Chronology from in Calibrated radiocarbon years BP:</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -723,50 +723,51 @@ Default Chronology from in Calibrated radiocarbon years BP:</p>
 </div>
 </div>
 <div class="section" id="aggregatesampleages">
-<h2>AggregateSampleAges<a class="headerlink" href="#aggregatesampleages" title="Permalink to this headline">¶</a></h2>
-<p>This table stores the links to the ages of samples in an Aggregate
-Dataset. The table is necessary because samples may be from Collection
-Units with multiple chronologies, and this table stores the links to the
-sample ages desired for the Aggregate Dataset.</p>
+<span id="id7"></span><h2>AggregateSampleAges<a class="headerlink" href="#aggregatesampleages" title="Permalink to this headline">¶</a></h2>
+<p>This table stores the links to the ages of samples in an Aggregate Dataset. The table is necessary because samples may be from Collection Units with multiple chronologies, and this table stores the links to the sample ages desired for the Aggregate Dataset.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="9%" />
+<col width="13%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>AggregateSampleAges</strong></td>
+</tr>
+<tr class="row-even"><td>AggregateDatasetID</td>
+<td>int</td>
+<td>PK, FK</td>
+<td>AggregateDatasets</td>
+</tr>
+<tr class="row-odd"><td>AggregateChronID</td>
+<td>int</td>
+<td>PK, FK</td>
+<td>AggregateChronologies</td>
+</tr>
+<tr class="row-even"><td>SampleAgeID</td>
+<td>int</td>
+<td>PK, FK</td>
+<td>SampleAges</td>
+</tr>
+</tbody>
+</table>
 <dl class="docutils">
 <dt><strong>AggregateDatasetID (Primary Key, Foreign Key)</strong></dt>
-<dd>Aggregate Dataset identification number. Field links to the <a class="reference external" href="#_Table:_AggregateDatasets_1">AggregateDatasets</a> table.</dd>
+<dd>Aggregate Dataset identification number. Field links to the <span class="xref std std-ref">AggregateDatasets</span> table.</dd>
 <dt><strong>AggregateChronID (Primary Key, Foreign Key)</strong></dt>
-<dd>Aggregate Chronology identification number Field links to the <a class="reference external" href="#_Table:_AggregateChronologies">AggregateChronologies</a> table.</dd>
+<dd>Aggregate Chronology identification number Field links to the <a class="reference internal" href="#aggregatechronologies"><span>AggregateChronologies</span></a> table.</dd>
 <dt><strong>SampleAgeID (Primary Key, Foreign Key)</strong></dt>
-<dd>Sample Age ID number. Field links to the <a class="reference external" href="#_Table:_SampleAges">SampleAges</a> table.</dd>
+<dd>Sample Age ID number. Field links to the <span class="xref std std-ref">SampleAges</span> table.</dd>
 </dl>
-<div class="section" id="id2">
-<h3>SQL Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>SQL Example<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>The following SQL statement produces a list of Sample ID numbers and
-ages for the «» Aggregate Dataset:</p>
-<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">AggregateSamples</span><span class="p">.</span><span class="n">SampleID</span><span class="p">,</span> <span class="n">SampleAges</span><span class="p">.</span><span class="n">Age</span>
-
-<span class="k">FROM</span> <span class="n">SampleAges</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">AggregateDatasets</span> <span class="k">INNER</span> <span class="k">JOIN</span>
-<span class="n">AggregateSampleAges</span> <span class="k">ON</span> <span class="n">AggregateDatasets</span><span class="p">.</span><span class="n">AggregateDatasetID</span> <span class="o">=</span>
-<span class="n">AggregateSampleAges</span><span class="p">.</span><span class="n">AggregateDatasetID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">AggregateSamples</span> <span class="k">ON</span>
-<span class="n">AggregateDatasets</span><span class="p">.</span><span class="n">AggregateDatasetID</span> <span class="o">=</span>
-<span class="n">AggregateSamples</span><span class="p">.</span><span class="n">AggregateDatasetID</span><span class="p">)</span> <span class="k">ON</span> <span class="p">(</span><span class="n">AggregateSamples</span><span class="p">.</span><span class="n">SampleID</span> <span class="o">=</span>
-<span class="n">SampleAges</span><span class="p">.</span><span class="n">SampleID</span><span class="p">)</span> <span class="k">AND</span> <span class="p">(</span><span class="n">SampleAges</span><span class="p">.</span><span class="n">SampleAgeID</span> <span class="o">=</span>
-<span class="n">AggregateSampleAges</span><span class="p">.</span><span class="n">SampleAgeID</span><span class="p">)</span>
-
-<span class="k">WHERE</span> <span class="p">(((</span><span class="n">AggregateDatasets</span><span class="p">.</span><span class="n">AggregateDatasetName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;&quot;</span><span class="p">));</span>
-</pre></div>
-</td></tr></table></div>
+ages for the Aggregate Dataset:</p>
 </div>
-<div class="section" id="id3">
-<h3>SQL Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>The AggregateSampleAges table may have multiple SampleAgeID’s for Aggregate Dataset samples, for example SampleAgeID’s for radiocarbon and calibrated radiocarbon chronologies. In this case, the Chronolgies table must be linked into a query to obtain the ages of Aggregate Samples, and either the AgeTypeID must be specified in the Chronolgies table or the <a class="reference external" href="#_Table:_AgeTypes">AgeTypes</a> table must also be linked with the AgeType specified. The following SQL statement produces a list of Sample ID numbers and «Radiocarbon years BP» ages for the «» Aggregate Dataset:</p>
+<div class="section" id="id9">
+<h3>SQL Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>The AggregateSampleAges table may have multiple SampleAgeID&#8217;s for Aggregate Dataset samples, for example SampleAgeID&#8217;s for radiocarbon and calibrated radiocarbon chronologies. In this case, the Chronolgies table must be linked into a query to obtain the ages of Aggregate Samples, and either the AgeTypeID must be specified in the Chronolgies table or the <a class="reference internal" href="#agetypes"><span>AgeTypes</span></a> table must also be linked with the AgeType specified. The following SQL statement produces a list of Sample ID numbers and «Radiocarbon years BP» ages for the «» Aggregate Dataset: <span class="xref std std-ref">Samples</span></p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -799,7 +800,7 @@ ages for the «» Aggregate Dataset:</p>
 </div>
 </div>
 <div class="section" id="geochronology">
-<h2>Geochronology<a class="headerlink" href="#geochronology" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>Geochronology<a class="headerlink" href="#geochronology" title="Permalink to this headline">¶</a></h2>
 <p>This table stores geochronologic data. Geochronologic measurements are from geochronologic samples, which are from Analysis Units, which may have a depth and thickness. Geochronologic measurments may be from the same or different Analysis Units as fossils. In the case of faunal excavations, geochronologic samples are typically from the same Analysis Units as the fossils, and there may be multiple geochronologic samples from a single Analysis Unit. In the case of cores used for microfossil analyses, geochronologic samples are often from separate Analysis Units; dated core sections are often thicker than microfossil Analysis Units.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -877,9 +878,9 @@ ages for the «» Aggregate Dataset:</p>
 <dt><strong>GeochronID (Primary Key)</strong></dt>
 <dd>An arbitrary Geochronologic identificantion number.</dd>
 <dt><strong>SampleID (Foreign Key)</strong></dt>
-<dd>Sample identification number. Field links to <a class="reference external" href="#_Table:_Samples">Samples</a> table.</dd>
+<dd>Sample identification number. Field links to <span class="xref std std-ref">Samples</span> table.</dd>
 <dt><strong>GeochronTypeID (Foreign Key)</strong></dt>
-<dd>Identification number for the type of Geochronologic analysis, e.g. «Carbon-14», «Thermoluminescence». Field links to the <a class="reference external" href="#_Table:_GeochronTypes">GeochronTypes</a> table.</dd>
+<dd>Identification number for the type of Geochronologic analysis, e.g. «Carbon-14», «Thermoluminescence». Field links to the <a class="reference internal" href="#geochrontypes"><span>GeochronTypes</span></a> table.</dd>
 <dt><strong>AgeTypeID (Foreign Key)</strong></dt>
 <dd>Identification number for the age units, e.g. «Radiocarbon years BP», «Calaibrated radiocarbon years BP».</dd>
 <dt><strong>Age</strong></dt>
@@ -899,8 +900,8 @@ ages for the «» Aggregate Dataset:</p>
 <dt><strong>Notes</strong></dt>
 <dd>Free form notes or comments about the geochronologic measurement.</dd>
 </dl>
-<div class="section" id="id4">
-<h3>SQL Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>SQL Example<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>This query lists the geochronologic data for Montezuma Well.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -1050,7 +1051,7 @@ ages for the «» Aggregate Dataset:</p>
 </div>
 </div>
 <div class="section" id="geochronpublications">
-<h2>GeochronPublications<a class="headerlink" href="#geochronpublications" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>GeochronPublications<a class="headerlink" href="#geochronpublications" title="Permalink to this headline">¶</a></h2>
 <p>Publications in which Geochronologic measurements are reported. Many older radiocarbon dates are reported in the journal <em>Radiocarbon</em>. Dates may be reported in multiple publications. The &#8220;publication&#8221; could be a database such as the online Canadian Archaeological Radiocarbon Database.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1076,15 +1077,15 @@ ages for the «» Aggregate Dataset:</p>
 </table>
 <dl class="docutils">
 <dt><strong>GeochronID (Primary Key, Foreign Key)</strong></dt>
-<dd>Geochronologic identification number. Field links to the <a class="reference external" href="#_Table:_Geochronology">Geochronology</a> table.</dd>
+<dd>Geochronologic identification number. Field links to the <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> table.</dd>
 <dt><strong>PublicationID (Primary Key, Foreign Key)</strong></dt>
-<dd>Publication identification number. Field links to the <a class="reference external" href="#_Table:_Publications">Publications</a> table.</dd>
+<dd>Publication identification number. Field links to the <span class="xref std std-ref">Publications</span> table.</dd>
 </dl>
 </div>
 <div class="section" id="geochrontypes">
-<h2>GeochronTypes<a class="headerlink" href="#geochrontypes" title="Permalink to this headline">¶</a></h2>
+<span id="id13"></span><h2>GeochronTypes<a class="headerlink" href="#geochrontypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table for Geochronology Types. Table is referenced by the
-<a class="reference external" href="#_Table:_Geochronology">Geochronology</a> table.</p>
+<a class="reference internal" href="#geochronology"><span>Geochronology</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="51%" />
@@ -1115,7 +1116,7 @@ ages for the «» Aggregate Dataset:</p>
 </dl>
 </div>
 <div class="section" id="relativeagepublications">
-<h2>RelativeAgePublications<a class="headerlink" href="#relativeagepublications" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>RelativeAgePublications<a class="headerlink" href="#relativeagepublications" title="Permalink to this headline">¶</a></h2>
 <p>This table stores Publications in which Relative Ages are reported for CollectionUnits.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1141,21 +1142,78 @@ ages for the «» Aggregate Dataset:</p>
 </table>
 <dl class="docutils">
 <dt><strong>RelativeAgeID (Primary Key, Foreign Key)</strong></dt>
-<dd>Relative Ages identification number. Field links to the <a class="reference external" href="#_Table:_RelativeAges">RelativeAges</a> table.</dd>
+<dd>Relative Ages identification number. Field links to the <a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> table.</dd>
 <dt><strong>PublicationID (Primary Key, Foreign Key)</strong></dt>
-<dd>Publication identification number. Field links to <a class="reference external" href="#_Table:_Publications">Publications</a> table.</dd>
+<dd>Publication identification number. Field links to <span class="xref std std-ref">Publications</span> table.</dd>
 </dl>
 </div>
 <div class="section" id="relativeages">
-<h2>RelativeAges<a class="headerlink" href="#relativeages" title="Permalink to this headline">¶</a></h2>
-<p>Lookup table of RelativeAges. Table is referenced by the <a class="reference external" href="#_Table:_RelativeChronology">RelativeChronology</a> table.</p>
+<span id="id15"></span><h2>RelativeAges<a class="headerlink" href="#relativeages" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of RelativeAges. Table is referenced by the <a class="reference internal" href="#relativechronology"><span>RelativeChronology</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="23%" />
+<col width="9%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>RelativeAges</strong></td>
+</tr>
+<tr class="row-even"><td>RelativeAgeID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>RelativeAgeUnitID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>RelativeAgeUnits</td>
+</tr>
+<tr class="row-even"><td>RelativeAgeScaleID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>RelativeAgeScales</td>
+</tr>
+<tr class="row-odd"><td>RelativeAge</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>C14AgeYounger</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>C14AgeOlder</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>CalAgeYounger</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CalAgeOlder</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <dl class="docutils">
 <dt><strong>RelativeAgeID (Primary Key)</strong></dt>
 <dd>An arbitrary Relative Age identification number.</dd>
 <dt><strong>RelativeAgeUnitID (Foreign Key)</strong></dt>
-<dd>Relative Age Unit (e.g. «Marine isotope stage», «Land mammal age»). Field links to the <a href="#id6"><span class="problematic" id="id7">`RelativeAgeUnits  #_Table:_RelativeAgeUnits&gt;`__</span></a> lookup table.</dd>
+<dd>Relative Age Unit (e.g. «Marine isotope stage», «Land mammal age»). Field links to the <a class="reference internal" href="#relativeageunits"><span>RelativeAgeUnits</span></a> lookup table.</dd>
 <dt><strong>RelativeAgeScaleID (Foreign Key)</strong></dt>
-<dd>Relative Age Scale (e.g. «Geologic time scale», «Marine isotope stages»). Field links to the <a class="reference external" href="#_Table:_RelativeAgeScales">RelativeAgeScales</a> lookup table.</dd>
+<dd>Relative Age Scale (e.g. «Geologic time scale», «Marine isotope stages»). Field links to the <a class="reference internal" href="#relativeagescales"><span>RelativeAgeScales</span></a> lookup table.</dd>
 <dt><strong>RelativeAge</strong></dt>
 <dd>Relative Age (e.g. «Rancholabrean», a land mammal age; «MIS 11», marine isotope stage 11).</dd>
 <dt><strong>C14AgeYounger</strong></dt>
@@ -1169,8 +1227,8 @@ ages for the «» Aggregate Dataset:</p>
 <dt><strong>Notes</strong></dt>
 <dd>Free form notes or comments about Relative Age unit.</dd>
 </dl>
-<div class="section" id="id5">
-<h3>SQL Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>SQL Example<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <p>The following query gives the Relative Ages for the «North American land
 mammal ages». The Relative Age Unit for each of these is «Land mammal
 age». Commas were added to the ages in the query result to make them
@@ -1251,7 +1309,7 @@ more readable.</p>
 </div>
 </div>
 <div class="section" id="radiocarboncalibration">
-<h2>RadiocarbonCalibration<a class="headerlink" href="#radiocarboncalibration" title="Permalink to this headline">¶</a></h2>
+<span id="id17"></span><h2>RadiocarbonCalibration<a class="headerlink" href="#radiocarboncalibration" title="Permalink to this headline">¶</a></h2>
 <p>Radiocarbon calibraton table. This table is intended for quick calibraton of age-model radiocarbon dates. These calibrated dates are for perusal and data exploration only. Please see Section <em>2.5</em> for a full discussion.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1283,9 +1341,9 @@ more readable.</p>
 </dl>
 </div>
 <div class="section" id="relativeagescales">
-<h2>RelativeAgeScales<a class="headerlink" href="#relativeagescales" title="Permalink to this headline">¶</a></h2>
+<span id="id18"></span><h2>RelativeAgeScales<a class="headerlink" href="#relativeagescales" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Relative Age Scales. Table is referenced by the
-<a class="reference external" href="#_Table:_RelativeAges">RelativeAges</a> table.</p>
+<a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="54%" />
@@ -1325,9 +1383,9 @@ more readable.</p>
 </dl>
 </div>
 <div class="section" id="relativeageunits">
-<h2>RelativeAgeUnits<a class="headerlink" href="#relativeageunits" title="Permalink to this headline">¶</a></h2>
+<span id="id19"></span><h2>RelativeAgeUnits<a class="headerlink" href="#relativeageunits" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of RelativeAgeUnits. Table is referenced by the
-<a class="reference external" href="#_Table:_RelativeAges">RelativeAges</a> table.</p>
+<a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="53%" />
@@ -1384,8 +1442,8 @@ more readable.</p>
 <p>«Period», «Epoch», and «Stage» are defined by the International Commission on Statigraphy. An «Informal stage» is defined in Neotoma.</p>
 </div>
 <div class="section" id="relativechronology">
-<h2>RelativeChronology<a class="headerlink" href="#relativechronology" title="Permalink to this headline">¶</a></h2>
-<p>This table stores relative chronologic data. Relative Ages are assigned to Analysis Units, The Relative Age data along with any possible <a class="reference external" href="#_Table:_Geochronology">Geochronology</a> and <a class="reference external" href="#_Table:_Tephrachronology">Tephrachronology</a> data are used to create a chronology.</p>
+<span id="id20"></span><h2>RelativeChronology<a class="headerlink" href="#relativechronology" title="Permalink to this headline">¶</a></h2>
+<p>This table stores relative chronologic data. Relative Ages are assigned to Analysis Units, The Relative Age data along with any possible <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> and <a class="reference internal" href="#tephrachronology"><span>Tephrachronology</span></a> data are used to create a chronology.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="46%" />
@@ -1422,38 +1480,27 @@ more readable.</p>
 <dt><strong>RelativeChronID (Primary Key)</strong></dt>
 <dd>An arbitrary Relative Chronology identification number.</dd>
 <dt><strong>AnalysisUnitID (Foreign Key)</strong></dt>
-<dd>Analysis Unit identification number. Field links to the <a class="reference external" href="#_Table:_AnalysisUnits">AnalysisUnits</a> table.</dd>
+<dd>Analysis Unit identification number. Field links to the <span class="xref std std-ref">AnalysisUnits</span> table.</dd>
 <dt><strong>RelativeAgeID (Foreign Key)</strong></dt>
-<dd>Relative Age identification number. Field links to the <a class="reference external" href="#_Table:_RelativeAges">RelativeAges</a> lookup table.</dd>
+<dd>Relative Age identification number. Field links to the <a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> lookup table.</dd>
 <dt><strong>Notes</strong></dt>
 <dd>Free form notes or comments.</dd>
 </dl>
 </div>
 <div class="section" id="tephrachronology">
-<h2>Tephrachronology<a class="headerlink" href="#tephrachronology" title="Permalink to this headline">¶</a></h2>
-<p>This table stores tephrachronologic data. The table relates Analysis
-Units with dated tephras in the <a class="reference external" href="#_Table:_Tephras">Tephras</a> table.
-These are tephras with established ages that are used form a chronology.
-The tephras are typically not directly dated at the Site of the Analysis
-Unit, but have been dated at other sites. A directly dated tephra, e.g.
-an argon-argon date, belongs in the
-<a class="reference external" href="#_Table:_Geochronology">Geochronology</a> table.</p>
-<p><strong>TephrachronID (Primary Key)</strong> An arbitrary Tephrachronology
-identification number.</p>
-<p><strong>AnalysisUnitID (Foreign Key)</strong> Analysis Unit identification number.
-Field links to the ` &lt;#_Table:_AnalysisUnits&gt;`__ table. The tephra may
-be contained within the AnalysisUnit, especially in excavations, or the
-AnalysisUnit may be assigned specifically to the tephra, particulary
-with cores.</p>
-<p><strong>TephraID (Foreign Key)</strong> Tephra identification number. Field links to
-the <a class="reference external" href="#_Table:_Tephras">Tephras</a> table.</p>
+<span id="id21"></span><h2>Tephrachronology<a class="headerlink" href="#tephrachronology" title="Permalink to this headline">¶</a></h2>
+<p>This table stores tephrachronologic data. The table relates Analysis Units with dated tephras in the <a class="reference internal" href="#tephras"><span>Tephras</span></a> table.
+These are tephras with established ages that are used form a chronology.  The tephras are typically not directly dated at the Site of the Analysis Unit, but have been dated at other sites. A directly dated tephra, e.g. an argon-argon date, belongs in the <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> table.</p>
+<p><strong>TephrachronID (Primary Key)</strong> An arbitrary Tephrachronology identification number.</p>
+<p><strong>AnalysisUnitID (Foreign Key)</strong> Analysis Unit identification number. Field links to the <span class="xref std std-ref">AnalysisUnits</span> table. The tephra may be contained within the AnalysisUnit, especially in excavations, or the AnalysisUnit may be assigned specifically to the tephra, particulary with cores.</p>
+<p><strong>TephraID (Foreign Key)</strong> Tephra identification number. Field links to the <a class="reference internal" href="#tephras"><span>Tephras</span></a> table.</p>
 <p><strong>Notes</strong> Free form notes or comments about the tephra.</p>
 </div>
-<div class="section" id="table-tephras">
-<h2>Table: Tephras<a class="headerlink" href="#table-tephras" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tephras">
+<span id="id22"></span><h2>Tephras<a class="headerlink" href="#tephras" title="Permalink to this headline">¶</a></h2>
 <p>Tephras lookup table. This table stores recognized tephras with
 established ages. Referenced by the
-<a class="reference external" href="#_Table:_Tephrachronology">Tephrachronology</a> table.</p>
+<cite>Tephrachronology</cite> table.</p>
 <p><strong>TephraID (Primary Key)</strong> An arbitrary Tephra identification number.</p>
 <p><strong>TephraName</strong> Name of the tephra, e.g. «Mazama».</p>
 <p><strong>C14Age</strong> Age of the tephra in <sup>14</sup>C yr BP. For example,

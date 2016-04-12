@@ -433,7 +433,7 @@ This table lists all taxa in the database. Most taxa are biological taxa; howeve
 **Notes** 
    Free form notes or comments about the Taxon.
 
-.. _TaxaGroupType:
+.. _TaxaGroupTypes:
 
 TaxaGroupTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -662,6 +662,8 @@ Result:
 | Bison bison antiquus   | human butchering           | San Jon                    |
 +------------------------+----------------------------+----------------------------+
 
+.. _VariableContexts:
+
 VariableContexts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -717,7 +719,7 @@ Lookup table of Variable Elements. Table is referenced by the :ref:`Variables` t
 **VariableElement** 
    The element, part, or organ of the taxon identified. For plants, these include pollen, spores, and various macrofossil organs, such as «seed», «twig», «cone», and «cone bract». Thus, *Betula* pollen and *Betula* seeds are two different Variables. For mammals, Elements include the bone or tooth identified, e.g. «tibia». «tibia, distal, left», «M2, lower, left». Some more unusual elements are *Neotoma* fecal pellets and *Erethizon dorsata* quills. If no element is indicated for mammalian fauna, then the genric element «bone/tooth» is assigned. Elements were not assigned in FAUNMAP, so all Variables ingested from FAUNMAP were assigned the «bone/tooth» element. Physical Variables may also have elements. For example, the Loss-on-ignition Variables have «Loss-on-ignition» as a Taxon, and temperature of analysis as an element, e.g. «500°C», «900°C». Charcoal Variables have the size fragments as elements, e.g. «75-100 µm», «100-125 µm».
 
-.. _VariableModification:
+.. _VariableModifications:
 
 VariableModifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

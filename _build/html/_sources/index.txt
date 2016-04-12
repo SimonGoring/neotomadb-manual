@@ -14,6 +14,7 @@ Contents:
 
 .. toctree::
    :maxdepth: -1
+   :hidden:
 
    neotoma_introduction
    db_design_concepts
