@@ -1,34 +1,23 @@
 Dataset & Collection Related Tables
 -----------------------------------
 
+.. _AggregateDatasets:
+
 AggregateDatasets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Aggregate Datasets are aggregates of samples of a particular datatype.
-Some examples:
+Aggregate Datasets are aggregates of samples of a particular datatype. Some examples:
 
--  Plant macrofossil samples from a group of packrat middens collected
-   from a particular valley, mountain range, or other similarly defined
-   geographic area. Each midden is from a different Site or Collection
-   Unit, but they are grouped into time series for that area and are
-   published as single dataset.
+  * Plant macrofossil samples from a group of packrat middens collected from a particular valley, mountain range, or other similarly defined geographic area. Each midden is from a different Site or Collection Unit, but they are grouped into time series for that area and are published as single dataset.
 
--  Samples collected from 32 cutbanks along several km of , northeast .
-   Each sample is from a different site, but they form a time series
-   from 0-12,510 :sup:`14`\ C yr BP, and pollen, plant macrofossils, and
-   beetles were published and graphed as if from a single site.
+  * Samples collected from 32 cutbanks along several kms of road.  Each sample is from a different site, but they form a time series from 0 -- 12,510 :sup:`14`\ C yr BP, and pollen, plant macrofossils, and beetles were published and graphed as if from a single site.
 
--  A set of pollen surface samples from particular region or study that
-   were published and analyzed as a single dataset and submitted to the
-   database as a single dataset.
+  * A set of pollen surface samples from particular region or study that were published and analyzed as a single dataset and submitted to the database as a single dataset.
 
-The examples above are datasets predefined in the database. New
-aggregate datasets could be assembled for particular studies, for
-example all the pollen samples for a given time slice for a given
-geographic region.
+  * The examples above are datasets predefined in the database. New aggregate datasets could be assembled for particular studies, for example all the pollen samples for a given time slice for a given geographic region.
 
 +--------------------------------+-----------------+------+-----------------------+
-| **AggregateDatasets**   |
+| **AggregateDatasets**                                                           |
 +--------------------------------+-----------------+------+-----------------------+
 | AggregateDatasetID             | int             | PK   |                       |
 +--------------------------------+-----------------+------+-----------------------+
@@ -46,16 +35,17 @@ geographic region.
   Name of Aggregate Dataset.
 
 **AggregateOrderTypeID (Foreign Key)**
-  Aggregate Order Type identification number. Field links to the `AggregateOrderTypes <#_Table:_AggregateOrderTypes>`__ lookup table.
+  Aggregate Order Type identification number. Field links to the :ref:`AggregateOrderTypes` lookup table.
 
 **Notes**
   Free form notes about the Aggregate Order Type.
 
+.. _AggregateOrderTypes:
+
 AggregateOrderTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table for Aggregate Order Types. Table is referenced by the
-`AggregateDatasets <#_Table:_AggregateDatasets>`__ table.
+Lookup table for Aggregate Order Types. Table is referenced by the :ref:`AggregateDatasets` table.
 
 +----------------------------------+----------------+------+-----+
 | **AggregateOrderTypes**                                        |
@@ -78,41 +68,26 @@ Lookup table for Aggregate Order Types. Table is referenced by the
 
 The Aggregate Order Types are:
 
--  **Latitude**: AggregateDataset samples are ordered by, in order of
-       priority, either (1)
-       `CollectionUnits.GPSLatitude <#_Table:_CollectionUnits>`__ or (2)
-       the mean of `Sites.LatitudeNorth <#_Table:_Sites_1>`__ and
-       `Sites.LatitudeSouth <#_Table:_Sites_1>`__.
+  * **Latitude**: AggregateDataset samples are ordered by, in order of priority, either (1) :ref:`CollectionUnits`.GPSLatitude or (2) the mean of :ref:`Sites`.LatitudeNorth and :ref:`Sites`.LatitudeSouth.
 
--  **Longitude** AggregateDataset samples are ordered by, in order of
-       priority, either (1)
-       `CollectionUnits.GPSLongitude <#_Table:_CollectionUnits>`__ or
-       (2) the mean of `Sites.LongitudeWest <#_Table:_Sites_1>`__ and
-       `Sites.LongitudeEast <#_Table:_Sites_1>`__.
+  * **Longitude** AggregateDataset samples are ordered by, in order of priority, either (1) :ref:`CollectionUnits`.GPSLongitude or (2) the mean of :ref:`Sites`.LongitudeWest and :ref:`Sites`.LongitudeEast.
 
--  **Altitude** AggregateDataset samples are ordered by
-       `Sites.Altitude <#_Table:_Sites_1>`__.
+  * **Altitude** AggregateDataset samples are ordered by :ref:`Sites`.Altitude`.
 
--  **Age** AggregateDataset samples are ordered by
-       `SampleAges.Age <#_Table:_SampleAges>`__, where
-       `SampleAges.SampleAgeID <#_Table:_SampleAges>`__ is from
-       `AggregateSampleAges.SampleAgeID <#_Table:_AggregateSampleAges>`__.
+  * **Age** AggregateDataset samples are ordered by :ref:`SampleAges`.Age, where :ref:`SampleAges`.SampleAgeID is from :ref:`AggregateSampleAges`.SampleAgeID.
 
--  **Alphabetical by site name** AggregateDataset samples are ordered
-       alphabetically by `Sites.SiteName <#_Table:_Sites_1>`__.
+  * **Alphabetical by site name** AggregateDataset samples are ordered alphabetically by :ref:`Sites`.SiteName.
 
--  **Alphabetical by collection unit name** AggregateDataset samples
-       are ordered alphabetically by
-       `CollectionUnits.CollUnitName <#_Table:_CollectionUnits>`__.
+  * **Alphabetical by collection unit name** AggregateDataset samples are ordered alphabetically by :ref:`CollectionUnits`.CollUnitName.
 
--  **Alphabetical by collection units handle** AggregateDataset samples
-       are ordered alphabetically by
-       `CollectionUnits.Handle <#_Table:_CollectionUnits>`__.
+  * **Alphabetical by collection units handle** AggregateDataset samples are ordered alphabetically by :ref:`CollectionUnits`.Handle.
+
+.. _CollectionTypes:
 
 CollectionTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table is a lookup table of for types of Collection Units, or Collection Types. Table is referenced by the `CollectionUnits <#_Table:_CollectionUnits>`__ table.
+This table is a lookup table of for types of Collection Units, or Collection Types. Table is referenced by the :ref:`CollectionUnits` table.
 
 +------------------------------+----------------+------+-----+
 | **CollectionTypes**          | Variable Type  | Key  |     |
@@ -127,6 +102,8 @@ This table is a lookup table of for types of Collection Units, or Collection Typ
 
 **Colltype**
   The Collection Type. Types include cores, sections, excavations, and animal middens. Collection Units may be modern collections, surface float, or isolated specimens. Composite Collections Units include different kinds of Analysis Units, for example a modern surface sample for ostracodes and an associated water sample.
+
+.. _CollectionUnits:
 
 CollectionUnits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -177,13 +154,13 @@ This table stores data for Collection Units.
   An arbitrary Collection Unit identification number.
 
 **SiteID (Foreign Key)** 
-  Site where CollectionUnit was located. Field links to `Sites <#_Table:_Sites>`__ table.
+  Site where CollectionUnit was located. Field links to :ref:`Sites` table.
 
 **CollTypeID (Foreign Key)** 
-  Type of Collection Unit. Field links to the `CollectionTypes <#_Table:_Collection_Types>`__ table.
+  Type of Collection Unit. Field links to the :ref:`CollectionTypes` table.
 
 **DepEnvtID (Foreign Key)** 
-  Depositional environment of the CollectionUnit. Normally, this key refers to the modern environment. For example, the site may be located on a colluvial slope, in which case the Depositional Environment may be Colluvium or Colluvial Fan. However, an excavation may extend into alluvial sediments, which represent a different depositional environment. These are accounted for by the Facies of the AnalysisUnit. Field links to the `DepEnvtTypes <#_Table:_DepEnvtTypes>`__ table.
+  Depositional environment of the CollectionUnit. Normally, this key refers to the modern environment. For example, the site may be located on a colluvial slope, in which case the Depositional Environment may be Colluvium or Colluvial Fan. However, an excavation may extend into alluvial sediments, which represent a different depositional environment. These are accounted for by the Facies of the AnalysisUnit. Field links to the :ref:`DepEnvtTypes` table.
 
 **Handle**
   Code name for the Collection Unit. This code may be up to 10 characters, but an effort is made to keep these to 8 characters or less. Data are frequently distributed by Collection Unit, and the Handle is used for file names.
@@ -227,13 +204,15 @@ This table stores data for Collection Units.
 **Notes**
   Free form notes or comments about the Collection Unit.
 
+.. _DatasetPublications:
+
 DatasetPublications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This table lists the publications for datasets.
 
 +----------------------------------+-------+----------+----------------+
-| **DatasetPublications**   |
+| **DatasetPublications**                                              |
 +----------------------------------+-------+----------+----------------+
 | DatasetID                        | int   | PK, FK   | Datasets       |
 +----------------------------------+-------+----------+----------------+
@@ -242,29 +221,24 @@ This table lists the publications for datasets.
 | PrimaryPub                       | bit   |          |                |
 +----------------------------------+-------+----------+----------------+
 
-**DatasetID (Primary Key, Foreign Key)** Dataset identification number.
-Field links to Dataset table.
+**DatasetID (Primary Key, Foreign Key)** 
+  Dataset identification number. Field links to :ref:`Datasets` table.
 
-**PublicationID (Primary Key, Foreign Key)** Publication identification
-number. Field links to `Publications <#_Table:_Publications>`__ table.
+**PublicationID (Primary Key, Foreign Key)** 
+  Publication identification number. Field links to :ref:`Publications` table.
 
-**PrimaryPub** Is «True» if the publication is the primary publication
-for the dataset.
+**PrimaryPub** 
+  Is «True» if the publication is the primary publication for the dataset.
 
- Datasets
+.. _Datasets:
+
+Datasets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores the data for Datasets. A Dataset is the set of samples
-for a particular data type from a Collection Unit. A Collection Unit may
-have multiple Datasets for different data types, for example one dataset
-for pollen and another for plant macrofossils. Every Sample is assigned
-to a Dataset, and every Dataset is assigned to a Collection Unit.
-Samples from different Collection Units cannot be assigned to the same
-Dataset (although they may be assigned to `Aggregate
-Datasets <#_Table:_AggregateDatasets>`__).
+This table stores the data for Datasets. A Dataset is the set of samples for a particular data type from a Collection Unit. A Collection Unit may have multiple Datasets for different data types, for example one dataset for pollen and another for plant macrofossils. Every Sample is assigned to a Dataset, and every Dataset is assigned to a Collection Unit. Samples from different Collection Units cannot be assigned to the same Dataset (although they may be assigned to :ref:`AggregateDatasets`).
 
 +-----------------------+----------------+------+-------------------+
-| **Datasets**   |
+| **Datasets**                                                      |
 +-----------------------+----------------+------+-------------------+
 | DatasetID             | Long Integer   | PK   |                   |
 +-----------------------+----------------+------+-------------------+
@@ -277,19 +251,20 @@ Datasets <#_Table:_AggregateDatasets>`__).
 | Notes                 | Memo           |      |                   |
 +-----------------------+----------------+------+-------------------+
 
-**DatasetID (Primary Key)** An arbitrary Dataset identification number.
+**DatasetID (Primary Key)** 
+  An arbitrary Dataset identification number.
 
-**CollectionUnitID (Foreign Key)** Collection Unit identification
-number. Field links to the
-`CollectionUnits <#_Table:_CollectionUnits>`__ table.
+**CollectionUnitID (Foreign Key)** 
+  Collection Unit identification number. Field links to the :ref:`CollectionUnits` table.
 
-**DatasetTypeID (Foreign Key);** Dataset Type identification number.
-Field links to the `DatasetTypes <#_Table:_DatasetTypes>`__ lookup
-table.
+**DatasetTypeID (Foreign Key)** 
+  Dataset Type identification number. Field links to the :ref:`DatasetTypes` lookup table.
 
-**DatasetName** Optional name for the Dataset.
+**DatasetName** 
+  Optional name for the Dataset.
 
-**Notes** Free form notes or comments about the Dataset.
+**Notes** 
+  Free form notes or comments about the Dataset.
 
 SQL Example
 `````````````````````````````
@@ -323,8 +298,7 @@ Result:
 SQL Example
 `````````````````````````````
 
-This query lists the plant macrofossils identified at site «Bear River
-No. 3».
+This query lists the plant macrofossils identified at site «Bear River No. 3».
 
 .. code-block:: sql
    :linenos:
@@ -355,16 +329,19 @@ Result:
 | Bear River No. 3   | Zea mays                                   |
 +--------------------+--------------------------------------------+
 
+
+.. _DatasetSubmissions:
+
 DatasetSubmissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Submissions to the database are of Datasets. Submissions may be original
 submissions, resubmissions, compilations from other databases, or
 recompilations. See the description of the
-`DatasetSubmissionTypes <#_Table:_DatasetSubmissionTypes>`__ table.
+:ref:`DatasetSubmissionTypes` table.
 
 +---------------------------------+----------------+------+--------------------------+
-| **DatasetSubmissions**   |
+| **DatasetSubmissions**                                                             |
 +---------------------------------+----------------+------+--------------------------+
 | SubmissionID                    | Long Integer   | PK   |                          |
 +---------------------------------+----------------+------+--------------------------+
@@ -385,19 +362,19 @@ recompilations. See the description of the
   An arbitrary submission identification number.
 
 **DatasetID (Foreign Key)** 
-  Dataset identification number. Field links to the `Datasets <#table-datasets>`__ table. Datasets may occur multiple times in this table (e.g. once for the original compilation into a different database and a second time for the recompilation into Neotoma).
+  Dataset identification number. Field links to the :ref:`Datasets` table. Datasets may occur multiple times in this table (e.g. once for the original compilation into a different database and a second time for the recompilation into Neotoma).
 
 **ProjectID (Foreign Key)**
   Database project responsible for the submission or compilation.
 
 **ContactID (Foreign Key)**
-  Contact identification number. Field links to the `Contacts <#_Table:_Contacts>`__ table. The Contact is the person who submitted, resubmitted, compiled, or recompiled the data. This person is not necessarily the Dataset PI; it is the person who submitted the data or compiled the data from the literature.
+  Contact identification number. Field links to the :ref:`Contacts` table. The Contact is the person who submitted, resubmitted, compiled, or recompiled the data. This person is not necessarily the Dataset PI; it is the person who submitted the data or compiled the data from the literature.
 
 **SubmissionDate**
   Date of the submission, resubmission, compilation, or recompilation.
 
 **SubmissionTypeID (Foreign Key)**
-  Submission Type identification number. Field links to the DatasetSubmissionsType table.
+  Submission Type identification number. Field links to the :ref:`DatasetSubmissionsType` table.
 
 **Notes**
   Free form notes or comments about the submission.
@@ -405,11 +382,10 @@ recompilations. See the description of the
 DatasetSubmissionTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table of Dataset Submission Types. Table is referenced by the
-`DatasetSubmissions <#_Table:_DatasetSubmissions>`__ table.
+Lookup table of Dataset Submission Types. Table is referenced by the :ref:`DatasetSubmissions` table.
 
 +-------------------------------------+----------------+------+-----+
-| **DatasetSubmissionTypes**   |
+| **DatasetSubmissionTypes**                                        |
 +-------------------------------------+----------------+------+-----+
 | SubmissionTypeID                    | Long Integer   | PK   |     |
 +-------------------------------------+----------------+------+-----+
@@ -438,8 +414,7 @@ Lookup table of Dataset Submission Types. Table is referenced by the
 
   -  Compilation into Neotoma from primary source
 
-  -  Recompilation into or revisions to Neotoma
-    The initial development of Neotoma involved merging the data from several existing databases, including FAUNMAP, the Global Pollen Database, and the North American Plant Macrofossil Database. Thus original compilation of Datasets was into one of these databases, which were then recompiled into Neotoma. The original compilation and the recompilation into Neotoma are separate submissions.
+  -  Recompilation into or revisions to Neotoma:  The initial development of Neotoma involved merging the data from several existing databases, including FAUNMAP, the Global Pollen Database, and the North American Plant Macrofossil Database. Thus original compilation of Datasets was into one of these databases, which were then recompiled into Neotoma. The original compilation and the recompilation into Neotoma are separate submissions.
 
 SQL Example
 `````````````````````````````
@@ -482,10 +457,12 @@ Result:
 | vertebrate fauna     | Neotoma           | 11/25/2007           | Recompilation into or revisions to Neotoma       | Bison elements, fish, and birds added.   |
 +----------------------+-------------------+----------------------+--------------------------------------------------+------------------------------------------+
 
+.. _DatasetTypes:
+
 DatasetTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table for Dataset Types. Table is referenced by the `Datasets <#table-datasets>`__ table.
+Lookup table for Dataset Types. Table is referenced by the :ref:`Datasets` table.
 
 +---------------------------+----------------+------+-----+
 | **DatasetTypes**                                        |
@@ -508,6 +485,8 @@ Lookup table for Dataset Types. Table is referenced by the `Datasets <#table-dat
     -  vertebrate fauna
     -  mollusks
 
+.. _DatasetPIs:
+
 DatasetPIs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -523,19 +502,22 @@ This table lists the Principle Investigators for Datasets.
 | PIOrder                 | Long Integer   |          |            |
 +-------------------------+----------------+----------+------------+
 
-**DatasetID (Primary Key, Foreign Key)** Dataset identification number.
-Field links to Dataset table.
+**DatasetID (Primary Key, Foreign Key)** 
+  Dataset identification number. Field links to Dataset table.
 
-**ContactID (Primary Key, Foreign Key)** Contact identification number.
-Field links to `Contacts <#_Table:_Contacts>`__ table.
+**ContactID (Primary Key, Foreign Key)** 
+  Contact identification number. Field links to :ref:`Contacts` table.
 
-**PIOrder** Order in which PIs are listed.
+**PIOrder** 
+  Order in which PIs are listed.
+
+.. _DepEnvtTypes:
 
 DepEnvtTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lookup table of Depostional Environment Types. Table is referenced by
-the `CollectionUnits`__ table.
+the :ref:`CollectionUnits` table.
 
 +---------------------------+----------------+------+--------------------------+
 | **DepEnvtTypes**                                                             |
@@ -547,14 +529,14 @@ the `CollectionUnits`__ table.
 | DepEnvtHigherID           | Long Integer   | FK   | DepEnvtTypes:DepEnvtID   |
 +---------------------------+----------------+------+--------------------------+
 
-**DepEnvtID (Primary Key)** An arbitrary Depositional Environment Type
-identification number.
+**DepEnvtID (Primary Key)** 
+  An arbitrary Depositional Environment Type identification number.
 
-**DepEnvt** Depositional Environment.
+**DepEnvt** 
+  Depositional Environment.
 
-**DepEnvtHigherID** The Depositional Environment Types are
-hierarchical. DepEnvtHigherID is the DepEnvtID of the higher ranked
-Depositional Environment. See following table gives some examples.
+**DepEnvtHigherID** 
+  The Depositional Environment Types are hierarchical. DepEnvtHigherID is the DepEnvtID of the higher ranked Depositional Environment. See following table gives some examples.
 
 +---------------------+---------------+-----------------------+
 |     **DepEnvtID**   | **DepEnvt**   | **DepEnvtHigherID**   |
@@ -661,13 +643,15 @@ Result:
 | 131             | Volcanic      | 103                   |
 +-----------------+---------------+-----------------------+
 
+.. _Lithology:
+
 Lithology
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This table stores the lithologic descriptions of Collection Units.
 
 +------------------------+----------------+------+--------------------+
-| **Table: Lithology**   |
+| **Table: Lithology**                                                |
 +------------------------+----------------+------+--------------------+
 | LithologyID            | Long Integer   | PK   |                    |
 +------------------------+----------------+------+--------------------+
@@ -682,55 +666,52 @@ This table stores the lithologic descriptions of Collection Units.
 | Description            | Memo           |      |                    |
 +------------------------+----------------+------+--------------------+
 
-**LithologyID (Primary Key)** An arbitrary identification number for a
-lithologic unit.
+**LithologyID (Primary Key)** 
+  An arbitrary identification number for a lithologic unit.
 
-**CollectionUnitID (Foreign Key)** Collection Unit identification
-number. Field links to the
-`CollectionUnits <#_Table:_CollectionUnits>`__ table.
+**CollectionUnitID (Foreign Key)** 
+  Collection Unit identification number. Field links to the :ref:`CollectionUnits` table.
 
-**DepthTop** Depth of the top of the lithologic unit in cm.
+**DepthTop**
+  Depth of the top of the lithologic unit in cm.
 
-**DepthBottom** Depth of the bottom of the lithologic unit in cm.
+**DepthBottom**
+  Depth of the bottom of the lithologic unit in cm.
 
-**LowerBoundary** Description of the nature of the lower boundary of
-the lithologic unit, e.g. «gradual, over ca. 10 cm».
+**LowerBoundary**
+  Description of the nature of the lower boundary of the lithologic unit, e.g. «gradual, over ca. 10 cm».
 
-**Description** Description of the lithologic unit. These can be quite
-detailed, with Munsell color or Troels-Smith descriptions. Some
+**Description**
+  Description of the lithologic unit. These can be quite detailed, with Munsell color or Troels-Smith descriptions. Some
 examples:
 
--  interbedded gray silt and peat
+    -  interbedded gray silt and peat
 
--  marly fine-detritus copropel
+    -  marly fine-detritus copropel
 
--  humified sedge and Sphagnum peat
+    -  humified sedge and Sphagnum peat
 
--  sedge peat 5YR 5/4
+    -  sedge peat 5YR 5/4
 
--  gray sandy loam with mammoth and other animal bones
+    -  gray sandy loam with mammoth and other animal bones
 
--  grey-green gyttja, oxidizing to gray-brown
+    -  grey-green gyttja, oxidizing to gray-brown
 
--  Ag 3, Ga 1, medium gray, firm, elastic
+    -  Ag 3, Ga 1, medium gray, firm, elastic
 
--  nig3, strf0, elas2, sicc0; Th2 T12 Tb+
+    -  nig3, strf0, elas2, sicc0; Th2 T12 Tb+
 
--  Ld°4, , Dg+, Dh+
+    -  Ld°4, , Dg+, Dh+
 
-   1. .. rubric:: Table: Projects
-         :name: table-projects
+.. _Projects:
 
-This table stores a list of database projects that have supplied data to
-Neotoma. These include the databases that were merged in the initial
-development of Neotoma as well as other independent projects that
-continue to assemble data for a particular region or data type. Some of
-these projects have developed relational databases, whereas others have
-compiled data in flat files. This table is referenced by the
-DatabaseSubmissions table.
+Projects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This table stores a list of database projects that have supplied data to Neotoma. These include the databases that were merged in the initial development of Neotoma as well as other independent projects that continue to assemble data for a particular region or data type. Some of these projects have developed relational databases, whereas others have compiled data in flat files. This table is referenced by the :ref:`DatabaseSubmissions` table.
 
 +-----------------------+----------------+------+------------+
-| **Table: Projects**   |
+| **Table: Projects**                                        |
 +-----------------------+----------------+------+------------+
 | ProjectID             | Long Integer   | PK   |            |
 +-----------------------+----------------+------+------------+
@@ -741,12 +722,14 @@ DatabaseSubmissions table.
 | URL                   | Text           |      |            |
 +-----------------------+----------------+------+------------+
 
-**ProjectID (Primary Key)** An arbitrary Project identification number.
+**ProjectID (Primary Key)** 
+  An arbitrary Project identification number.
 
-**ProjectName** Name of the Project, e.g. «Cooperative Holocene Mapping
-Project», «North American Pollen Database», «FAUNMAP».
+**ProjectName** 
+  Name of the Project, e.g. «Cooperative Holocene Mapping Project», «North American Pollen Database», «FAUNMAP».
 
-**ContactID (Foreign Key)** Contact person for the project. Field links
-to the `Contacts`__ table.
+**ContactID (Foreign Key)** 
+  Contact person for the project. Field links to the :ref:`Contacts` table.
 
-**URL** Web site address for the project.
+**URL** 
+  Web site address for the project.

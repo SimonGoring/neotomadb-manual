@@ -6,13 +6,11 @@ The Neotoma Database contains more than 100 tables and as new proxy types get ad
 Chronology & Age Related Tables
 -----------------------------
 
-AgeTypes, AggregateChronologies, ChronControls, Chronologies, AggregateSampleAges, Geochronology, GeochronPublications, GeochronTypes, RelativeAgePublications, RelativeAges, RadiocarbonCalibration, RelativeAgeScales, RelativeAgeUnits, RelativeChronology
-
+:ref:`AgeTypes`, :ref:`AggregateChronologies`, :ref:`ChronControls`, :ref:`ChronControlTypes`, :ref:`Chronologies`, :ref:`AggregateSampleAges`, :ref:`Geochronology`, :ref:`GeochronPublications`, :ref:`GeochronTypes`, :ref:`RelativeAgePublications`, :ref:`RelativeAges`, :ref:`RadiocarbonCalibration`, :ref:`RelativeAgeScales`, :ref:`RelativeAgeUnits`, :ref:`RelativeChronology`, :ref:`Tephrachronology`, :ref:`Tephras`.
 
 Dataset & Collection Related Tables
 -----------------------------------
 
-AggregateDatasets
 
 Sample Related Tables
 ---------------------------

@@ -275,7 +275,7 @@
 <dt><strong>AggregateChronID (Primary Key)</strong></dt>
 <dd>An arbitrary Aggregate Chronology identification number.</dd>
 <dt><strong>AggregateDatasetID (Foreign Key)</strong></dt>
-<dd>Dataset to which the Aggregate Chronology applies. Field links to the <span class="xref std std-ref">AggregateDatasets</span> table.</dd>
+<dd>Dataset to which the Aggregate Chronology applies. Field links to the <a class="reference internal" href="tables_dataset.html#aggregatedatasets"><span>AggregateDatasets</span></a> table.</dd>
 <dt><strong>AgeTypeID (Foreign Key)</strong></dt>
 <dd>Age type or units. Field links to the <a class="reference internal" href="#agetypes"><span>AgeTypes</span></a> table.</dd>
 <dt><strong>IsDefault</strong></dt>
@@ -484,7 +484,7 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <dt><strong>ChronologyID (Primary Key)</strong></dt>
 <dd>An arbitrary Chronology identification number.</dd>
 <dt><strong>CollectionUnitID (Foreign Key)</strong></dt>
-<dd>Collection Unit to which the Chronology applies. Field links to the <span class="xref std std-ref">CollectionUnits</span> table.</dd>
+<dd>Collection Unit to which the Chronology applies. Field links to the <a class="reference internal" href="tables_dataset.html#collectionunits"><span>CollectionUnits</span></a> table.</dd>
 <dt><strong>AgeTypeID (Foreign Key)</strong></dt>
 <dd>Age type or units. Field links to the <a class="reference internal" href="#agetypes"><span>AgeTypes</span></a> table.</dd>
 <dt><strong>ContactID (Foreign Key)</strong></dt>
@@ -567,8 +567,7 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 </div>
 <div class="section" id="id6">
 <h3>SQL Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>The following statement produces a list of the ChronControls for the
-Default Chronology from in Calibrated radiocarbon years BP:</p>
+<p>The following statement produces a list of the ChronControls for the Default Chronology from in Calibrated radiocarbon years BP.  Here we show only the first 5 rows:</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -646,77 +645,11 @@ Default Chronology from in Calibrated radiocarbon years BP:</p>
 <td>51</td>
 <td>Interpolated, corrected for compaction</td>
 </tr>
-<tr class="row-odd"><td>702</td>
-<td>72</td>
-<td>67</td>
-<td>77</td>
-<td>Interpolated, corrected for compaction</td>
-</tr>
-<tr class="row-even"><td>715</td>
-<td>100</td>
-<td>80</td>
-<td>120</td>
-<td>Biostratigraphic, pollen</td>
-</tr>
-<tr class="row-odd"><td>750</td>
-<td>335</td>
-<td>120</td>
-<td>492</td>
-<td>Radiocarbon, calibrated</td>
-</tr>
-<tr class="row-even"><td>785</td>
-<td>433</td>
-<td>310</td>
-<td>517</td>
-<td>Radiocarbon, calibrated</td>
-</tr>
-<tr class="row-odd"><td>975</td>
-<td>2242</td>
-<td>2063</td>
-<td>2433</td>
-<td>Radiocarbon, calibrated</td>
-</tr>
-<tr class="row-even"><td>1065</td>
-<td>3402</td>
-<td>3261</td>
-<td>3556</td>
-<td>Radiocarbon, calibrated</td>
-</tr>
-<tr class="row-odd"><td>1135</td>
-<td>3776</td>
-<td>3585</td>
-<td>3973</td>
-<td>Radiocarbon, calibrated</td>
-</tr>
-<tr class="row-even"><td>1345</td>
-<td>5836</td>
-<td>5662</td>
-<td>5992</td>
-<td>Radiocarbon, calibrated</td>
-</tr>
-<tr class="row-odd"><td>1415</td>
-<td>6910</td>
-<td>6730</td>
-<td>7160</td>
-<td>Radiocarbon, calibrated</td>
-</tr>
-<tr class="row-even"><td>1520</td>
-<td>8268</td>
-<td>8022</td>
-<td>8443</td>
-<td>Radiocarbon, calibrated</td>
-</tr>
-<tr class="row-odd"><td>1640</td>
-<td>11636</td>
-<td>11264</td>
-<td>12027</td>
-<td>Radiocarbon, calibrated</td>
-</tr>
-<tr class="row-even"><td>1725</td>
-<td>13864</td>
-<td>13646</td>
-<td>14218</td>
-<td>Radiocarbon, calibrated</td>
+<tr class="row-odd"><td>. . .</td>
+<td>. . .</td>
+<td>. . .</td>
+<td>. . .</td>
+<td>. . .</td>
 </tr>
 </tbody>
 </table>
@@ -754,7 +687,7 @@ Default Chronology from in Calibrated radiocarbon years BP:</p>
 </table>
 <dl class="docutils">
 <dt><strong>AggregateDatasetID (Primary Key, Foreign Key)</strong></dt>
-<dd>Aggregate Dataset identification number. Field links to the <span class="xref std std-ref">AggregateDatasets</span> table.</dd>
+<dd>Aggregate Dataset identification number. Field links to the <a class="reference internal" href="tables_dataset.html#aggregatedatasets"><span>AggregateDatasets</span></a> table.</dd>
 <dt><strong>AggregateChronID (Primary Key, Foreign Key)</strong></dt>
 <dd>Aggregate Chronology identification number Field links to the <a class="reference internal" href="#aggregatechronologies"><span>AggregateChronologies</span></a> table.</dd>
 <dt><strong>SampleAgeID (Primary Key, Foreign Key)</strong></dt>
@@ -762,8 +695,7 @@ Default Chronology from in Calibrated radiocarbon years BP:</p>
 </dl>
 <div class="section" id="id8">
 <h3>SQL Example<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<p>The following SQL statement produces a list of Sample ID numbers and
-ages for the Aggregate Dataset:</p>
+<p>The following SQL statement produces a list of Sample ID numbers and ages for the Aggregate Dataset:</p>
 </div>
 <div class="section" id="id9">
 <h3>SQL Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
@@ -882,7 +814,7 @@ ages for the Aggregate Dataset:</p>
 <dt><strong>GeochronTypeID (Foreign Key)</strong></dt>
 <dd>Identification number for the type of Geochronologic analysis, e.g. «Carbon-14», «Thermoluminescence». Field links to the <a class="reference internal" href="#geochrontypes"><span>GeochronTypes</span></a> table.</dd>
 <dt><strong>AgeTypeID (Foreign Key)</strong></dt>
-<dd>Identification number for the age units, e.g. «Radiocarbon years BP», «Calaibrated radiocarbon years BP».</dd>
+<dd>Identification number for the age units, e.g. «Radiocarbon years BP», «Calibrated radiocarbon years BP».</dd>
 <dt><strong>Age</strong></dt>
 <dd>Reported age value of the geochronologic measurement.</dd>
 <dt><strong>ErrorOlder</strong></dt>
@@ -1084,8 +1016,7 @@ ages for the Aggregate Dataset:</p>
 </div>
 <div class="section" id="geochrontypes">
 <span id="id13"></span><h2>GeochronTypes<a class="headerlink" href="#geochrontypes" title="Permalink to this headline">¶</a></h2>
-<p>Lookup table for Geochronology Types. Table is referenced by the
-<a class="reference internal" href="#geochronology"><span>Geochronology</span></a> table.</p>
+<p>Lookup table for Geochronology Types. Table is referenced by the <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="51%" />
@@ -1384,8 +1315,7 @@ more readable.</p>
 </div>
 <div class="section" id="relativeageunits">
 <span id="id19"></span><h2>RelativeAgeUnits<a class="headerlink" href="#relativeageunits" title="Permalink to this headline">¶</a></h2>
-<p>Lookup table of RelativeAgeUnits. Table is referenced by the
-<a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> table.</p>
+<p>Lookup table of RelativeAgeUnits. Table is referenced by the <a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="53%" />
@@ -1491,6 +1421,38 @@ more readable.</p>
 <span id="id21"></span><h2>Tephrachronology<a class="headerlink" href="#tephrachronology" title="Permalink to this headline">¶</a></h2>
 <p>This table stores tephrachronologic data. The table relates Analysis Units with dated tephras in the <a class="reference internal" href="#tephras"><span>Tephras</span></a> table.
 These are tephras with established ages that are used form a chronology.  The tephras are typically not directly dated at the Site of the Analysis Unit, but have been dated at other sites. A directly dated tephra, e.g. an argon-argon date, belongs in the <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="23%" />
+<col width="9%" />
+<col width="24%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Tephrachronology</strong></td>
+</tr>
+<tr class="row-even"><td>TephrachronID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>AnalysisUnitID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>AnalysisUnits</td>
+</tr>
+<tr class="row-even"><td>TephraID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Tephras</td>
+</tr>
+<tr class="row-odd"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <p><strong>TephrachronID (Primary Key)</strong> An arbitrary Tephrachronology identification number.</p>
 <p><strong>AnalysisUnitID (Foreign Key)</strong> Analysis Unit identification number. Field links to the <span class="xref std std-ref">AnalysisUnits</span> table. The tephra may be contained within the AnalysisUnit, especially in excavations, or the AnalysisUnit may be assigned specifically to the tephra, particulary with cores.</p>
 <p><strong>TephraID (Foreign Key)</strong> Tephra identification number. Field links to the <a class="reference internal" href="#tephras"><span>Tephras</span></a> table.</p>
@@ -1498,26 +1460,84 @@ These are tephras with established ages that are used form a chronology.  The te
 </div>
 <div class="section" id="tephras">
 <span id="id22"></span><h2>Tephras<a class="headerlink" href="#tephras" title="Permalink to this headline">¶</a></h2>
-<p>Tephras lookup table. This table stores recognized tephras with
-established ages. Referenced by the
-<cite>Tephrachronology</cite> table.</p>
-<p><strong>TephraID (Primary Key)</strong> An arbitrary Tephra identification number.</p>
-<p><strong>TephraName</strong> Name of the tephra, e.g. «Mazama».</p>
-<p><strong>C14Age</strong> Age of the tephra in <sup>14</sup>C yr BP. For example,
-Hallett et al. (1997) provide an estimate of the age of the Mazama
-tephra based on radiocarbon dating of plant macrofossils in lake
-sediments encasing the tephra.</p>
-<p><strong>C14AgeYounger</strong> Younger age estimate of the tephra in <sup>14</sup>C yr
-BP.</p>
-<p><strong>C14AgeOlder</strong> Older age estimate of the tephra in <sup>14</sup>C yr BP.</p>
-<p><strong>CalAge</strong> Age of the tephra in cal yr BP, either calibrated
-radiocarbon years or estimated calendar years derived from another
-dating method. For example, Zdanowicz et al. (1999) identified the
-Mazama tephra in the GISP2 ice core and estimated the age from layer
-counts.</p>
-<p><strong>CalAgeYounger</strong> Younger age estimate of the tephra in cal yr BP.</p>
-<p><strong>CalAgeOlder</strong> Older age estimate of the tephra in cal yr BP.</p>
-<p><strong>Notes</strong> Free form notes or comments about the tephra.</p>
+<p>Tephras lookup table. This table stores recognized tephras with established ages. Referenced by the <a class="reference internal" href="#tephrachronology"><span>Tephrachronology</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="33%" />
+<col width="12%" />
+<col width="10%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Tephras</strong></td>
+</tr>
+<tr class="row-even"><td>TephraID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>TephraName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>C14Age</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>C14AgeYounger</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>C14AgeOlder</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CalAge</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>CalAgeYounger</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CalAgeOlder</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>TephraID (Primary Key)</strong></dt>
+<dd>An arbitrary Tephra identification number.</dd>
+<dt><strong>TephraName</strong></dt>
+<dd>Name of the tephra, e.g. «Mazama».</dd>
+<dt><strong>C14Age</strong></dt>
+<dd>Age of the tephra in <sup>14</sup>C yr BP. For example, Hallett et al. (1997) provide an estimate of the age of the Mazama tephra based on radiocarbon dating of plant macrofossils in lake sediments encasing the tephra.</dd>
+<dt><strong>C14AgeYounger</strong></dt>
+<dd>Younger age estimate of the tephra in <sup>14</sup>C yr BP.</dd>
+<dt><strong>C14AgeOlder</strong></dt>
+<dd>Older age estimate of the tephra in <sup>14</sup>C yr BP.</dd>
+<dt><strong>CalAge</strong></dt>
+<dd>Age of the tephra in cal yr BP, either calibrated radiocarbon years or estimated calendar years derived from another dating method. For example, Zdanowicz et al. (1999) identified the Mazama tephra in the GISP2 ice core and estimated the age from layer counts.</dd>
+<dt><strong>CalAgeYounger</strong></dt>
+<dd>Younger age estimate of the tephra in cal yr BP.</dd>
+<dt><strong>CalAgeOlder</strong></dt>
+<dd>Older age estimate of the tephra in cal yr BP.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the tephra.</dd>
+</dl>
 </div>
 </div>
 

@@ -275,8 +275,7 @@ Result:
 SQL Example
 ````````````````````````````
 
-The following statement produces a list of the ChronControls for the
-Default Chronology from in Calibrated radiocarbon years BP:
+The following statement produces a list of the ChronControls for the Default Chronology from in Calibrated radiocarbon years BP.  Here we show only the first 5 rows:
 
 .. code-block:: sql
    :linenos:
@@ -312,29 +311,7 @@ Result:
 +-------------+-----------+-----------------------+---------------------+------------------------------------------+
 | 690         | 46        | 41                    | 51                  | Interpolated, corrected for compaction   |
 +-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 702         | 72        | 67                    | 77                  | Interpolated, corrected for compaction   |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 715         | 100       | 80                    | 120                 | Biostratigraphic, pollen                 |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 750         | 335       | 120                   | 492                 | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 785         | 433       | 310                   | 517                 | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 975         | 2242      | 2063                  | 2433                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1065        | 3402      | 3261                  | 3556                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1135        | 3776      | 3585                  | 3973                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1345        | 5836      | 5662                  | 5992                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1415        | 6910      | 6730                  | 7160                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1520        | 8268      | 8022                  | 8443                | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1640        | 11636     | 11264                 | 12027               | Radiocarbon, calibrated                  |
-+-------------+-----------+-----------------------+---------------------+------------------------------------------+
-| 1725        | 13864     | 13646                 | 14218               | Radiocarbon, calibrated                  |
+| . . .       | . . .     | . . .                 | . . .               | . . .                                    |
 +-------------+-----------+-----------------------+---------------------+------------------------------------------+
 
 .. _AggregateSampleAges:
@@ -548,8 +525,7 @@ Publications in which Geochronologic measurements are reported. Many older radio
 GeochronTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table for Geochronology Types. Table is referenced by the
-:ref:`Geochronology` table.
+Lookup table for Geochronology Types. Table is referenced by the :ref:`Geochronology` table.
 
 +----------------------------+----------------+------+-----+
 | **GeochronTypes**                                        |
@@ -744,8 +720,7 @@ Lookup table of Relative Age Scales. Table is referenced by the
 RelativeAgeUnits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table of RelativeAgeUnits. Table is referenced by the
-:ref:`RelativeAges` table.
+Lookup table of RelativeAgeUnits. Table is referenced by the :ref:`RelativeAges` table.
 
 +-------------------------------+----------------+------+-----+
 | **RelativeAgeUnits**                                        |
@@ -817,7 +792,7 @@ This table stores tephrachronologic data. The table relates Analysis Units with 
 These are tephras with established ages that are used form a chronology.  The tephras are typically not directly dated at the Site of the Analysis Unit, but have been dated at other sites. A directly dated tephra, e.g. an argon-argon date, belongs in the :ref:`Geochronology` table.
 
 +-------------------------------+----------------+------+-----------------+
-| **Table: Tephrachronology**   |
+| **Table: Tephrachronology**                                             |
 +-------------------------------+----------------+------+-----------------+
 | TephrachronID                 | Long Integer   | PK   |                 |
 +-------------------------------+----------------+------+-----------------+
@@ -841,12 +816,10 @@ These are tephras with established ages that are used form a chronology.  The te
 Tephras
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Tephras lookup table. This table stores recognized tephras with
-established ages. Referenced by the
-`Tephrachronology` table.
+Tephras lookup table. This table stores recognized tephras with established ages. Referenced by the :ref:`Tephrachronology` table.
 
 +----------------------+----------------+------+-----+
-| **Table: Tephras**   |
+| **Table: Tephras**                                 |
 +----------------------+----------------+------+-----+
 | TephraID             | Long Integer   | PK   |     |
 +----------------------+----------------+------+-----+
@@ -867,29 +840,29 @@ established ages. Referenced by the
 | Notes                | Memo           |      |     |
 +----------------------+----------------+------+-----+
 
-**TephraID (Primary Key)** An arbitrary Tephra identification number.
+**TephraID (Primary Key)** 
+  An arbitrary Tephra identification number.
 
-**TephraName** Name of the tephra, e.g. «Mazama».
+**TephraName** 
+  Name of the tephra, e.g. «Mazama».
 
-**C14Age** Age of the tephra in :sup:`14`\ C yr BP. For example,
-Hallett et al. (1997) provide an estimate of the age of the Mazama
-tephra based on radiocarbon dating of plant macrofossils in lake
-sediments encasing the tephra.
+**C14Age** 
+  Age of the tephra in :sup:`14`\ C yr BP. For example, Hallett et al. (1997) provide an estimate of the age of the Mazama tephra based on radiocarbon dating of plant macrofossils in lake sediments encasing the tephra.
 
-**C14AgeYounger** Younger age estimate of the tephra in :sup:`14`\ C yr
-BP.
+**C14AgeYounger**
+  Younger age estimate of the tephra in :sup:`14`\ C yr BP.
 
-**C14AgeOlder** Older age estimate of the tephra in :sup:`14`\ C yr BP.
+**C14AgeOlder** 
+  Older age estimate of the tephra in :sup:`14`\ C yr BP.
 
-**CalAge** Age of the tephra in cal yr BP, either calibrated
-radiocarbon years or estimated calendar years derived from another
-dating method. For example, Zdanowicz et al. (1999) identified the
-Mazama tephra in the GISP2 ice core and estimated the age from layer
-counts.
+**CalAge** 
+  Age of the tephra in cal yr BP, either calibrated radiocarbon years or estimated calendar years derived from another dating method. For example, Zdanowicz et al. (1999) identified the Mazama tephra in the GISP2 ice core and estimated the age from layer counts.
 
-**CalAgeYounger** Younger age estimate of the tephra in cal yr BP.
+**CalAgeYounger** 
+  Younger age estimate of the tephra in cal yr BP.
 
-**CalAgeOlder** Older age estimate of the tephra in cal yr BP.
+**CalAgeOlder** 
+  Older age estimate of the tephra in cal yr BP.
 
-**Notes** Free form notes or comments about the tephra.
-
+**Notes** 
+  Free form notes or comments about the tephra.

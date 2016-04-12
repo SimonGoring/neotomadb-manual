@@ -92,24 +92,26 @@
 <li class="toctree-l2"><a class="reference internal" href="#aggregateordertypes">AggregateOrderTypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#collectiontypes">CollectionTypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#collectionunits">CollectionUnits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datasetpublications">DatasetPublications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#datasetpublications">DatasetPublications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datasets">Datasets</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">SQL Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#datasetsubmissions">DatasetSubmissions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#datasetsubmissiontypes">DatasetSubmissionTypes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">SQL Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#datasettypes">DatasetTypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#datasetpis">DatasetPIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#depenvttypes">DepEnvtTypes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">SQL Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">SQL Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#lithology">Lithology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#projects">Projects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
@@ -165,42 +167,62 @@
   <div class="section" id="dataset-collection-related-tables">
 <h1>Dataset &amp; Collection Related Tables<a class="headerlink" href="#dataset-collection-related-tables" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="aggregatedatasets">
-<h2>AggregateDatasets<a class="headerlink" href="#aggregatedatasets" title="Permalink to this headline">¶</a></h2>
-<p>Aggregate Datasets are aggregates of samples of a particular datatype.
-Some examples:</p>
-<ul class="simple">
-<li>Plant macrofossil samples from a group of packrat middens collected
-from a particular valley, mountain range, or other similarly defined
-geographic area. Each midden is from a different Site or Collection
-Unit, but they are grouped into time series for that area and are
-published as single dataset.</li>
-<li>Samples collected from 32 cutbanks along several km of , northeast .
-Each sample is from a different site, but they form a time series
-from 0-12,510 <sup>14</sup>C yr BP, and pollen, plant macrofossils, and
-beetles were published and graphed as if from a single site.</li>
-<li>A set of pollen surface samples from particular region or study that
-were published and analyzed as a single dataset and submitted to the
-database as a single dataset.</li>
+<span id="id1"></span><h2>AggregateDatasets<a class="headerlink" href="#aggregatedatasets" title="Permalink to this headline">¶</a></h2>
+<p>Aggregate Datasets are aggregates of samples of a particular datatype. Some examples:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Plant macrofossil samples from a group of packrat middens collected from a particular valley, mountain range, or other similarly defined geographic area. Each midden is from a different Site or Collection Unit, but they are grouped into time series for that area and are published as single dataset.</li>
+<li>Samples collected from 32 cutbanks along several kms of road.  Each sample is from a different site, but they form a time series from 0 &#8211; 12,510 <sup>14</sup>C yr BP, and pollen, plant macrofossils, and beetles were published and graphed as if from a single site.</li>
+<li>A set of pollen surface samples from particular region or study that were published and analyzed as a single dataset and submitted to the database as a single dataset.</li>
+<li>The examples above are datasets predefined in the database. New aggregate datasets could be assembled for particular studies, for example all the pollen samples for a given time slice for a given geographic region.</li>
 </ul>
-<p>The examples above are datasets predefined in the database. New
-aggregate datasets could be assembled for particular studies, for
-example all the pollen samples for a given time slice for a given
-geographic region.</p>
+</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="22%" />
+<col width="8%" />
+<col width="29%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>AggregateDatasets</strong></td>
+</tr>
+<tr class="row-even"><td>AggregateDatasetID</td>
+<td>int</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>AggregateDatasetName</td>
+<td>nvarchar(255)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>AggregateOrderTypeID</td>
+<td>int</td>
+<td>FK</td>
+<td>AggregateOrderTypes</td>
+</tr>
+<tr class="row-odd"><td>Notes</td>
+<td>nvarchar(MAX)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <dl class="docutils">
 <dt><strong>AggregateDatasetID (Primary Key)</strong></dt>
 <dd>An arbitrary Aggregate Dataset identification number.</dd>
 <dt><strong>AggregateDatasetName</strong></dt>
 <dd>Name of Aggregate Dataset.</dd>
 <dt><strong>AggregateOrderTypeID (Foreign Key)</strong></dt>
-<dd>Aggregate Order Type identification number. Field links to the <a class="reference external" href="#_Table:_AggregateOrderTypes">AggregateOrderTypes</a> lookup table.</dd>
+<dd>Aggregate Order Type identification number. Field links to the <a class="reference internal" href="#aggregateordertypes"><span>AggregateOrderTypes</span></a> lookup table.</dd>
 <dt><strong>Notes</strong></dt>
 <dd>Free form notes about the Aggregate Order Type.</dd>
 </dl>
 </div>
 <div class="section" id="aggregateordertypes">
-<h2>AggregateOrderTypes<a class="headerlink" href="#aggregateordertypes" title="Permalink to this headline">¶</a></h2>
-<p>Lookup table for Aggregate Order Types. Table is referenced by the
-<a class="reference external" href="#_Table:_AggregateDatasets">AggregateDatasets</a> table.</p>
+<span id="id2"></span><h2>AggregateOrderTypes<a class="headerlink" href="#aggregateordertypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table for Aggregate Order Types. Table is referenced by the <a class="reference internal" href="#aggregatedatasets"><span>AggregateDatasets</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="56%" />
@@ -237,64 +259,21 @@ geographic region.</p>
 <dd>Free form notes or comments about the Aggregate Order Type.</dd>
 </dl>
 <p>The Aggregate Order Types are:</p>
-<ul>
-<li><dl class="first docutils">
-<dt><strong>Latitude</strong>: AggregateDataset samples are ordered by, in order of</dt>
-<dd><p class="first last">priority, either (1)
-<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits.GPSLatitude</a> or (2)
-the mean of <a class="reference external" href="#_Table:_Sites_1">Sites.LatitudeNorth</a> and
-<a class="reference external" href="#_Table:_Sites_1">Sites.LatitudeSouth</a>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><strong>Longitude</strong> AggregateDataset samples are ordered by, in order of</dt>
-<dd><p class="first last">priority, either (1)
-<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits.GPSLongitude</a> or
-(2) the mean of <a class="reference external" href="#_Table:_Sites_1">Sites.LongitudeWest</a> and
-<a class="reference external" href="#_Table:_Sites_1">Sites.LongitudeEast</a>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><strong>Altitude</strong> AggregateDataset samples are ordered by</dt>
-<dd><p class="first last"><a class="reference external" href="#_Table:_Sites_1">Sites.Altitude</a>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><strong>Age</strong> AggregateDataset samples are ordered by</dt>
-<dd><p class="first last"><a class="reference external" href="#_Table:_SampleAges">SampleAges.Age</a>, where
-<a class="reference external" href="#_Table:_SampleAges">SampleAges.SampleAgeID</a> is from
-<a class="reference external" href="#_Table:_AggregateSampleAges">AggregateSampleAges.SampleAgeID</a>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><strong>Alphabetical by site name</strong> AggregateDataset samples are ordered</dt>
-<dd><p class="first last">alphabetically by <a class="reference external" href="#_Table:_Sites_1">Sites.SiteName</a>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><strong>Alphabetical by collection unit name</strong> AggregateDataset samples</dt>
-<dd><p class="first last">are ordered alphabetically by
-<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits.CollUnitName</a>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><strong>Alphabetical by collection units handle</strong> AggregateDataset samples</dt>
-<dd><p class="first last">are ordered alphabetically by
-<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits.Handle</a>.</p>
-</dd>
-</dl>
-</li>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Latitude</strong>: AggregateDataset samples are ordered by, in order of priority, either (1) <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.GPSLatitude or (2) the mean of <span class="xref std std-ref">Sites</span>.LatitudeNorth and <span class="xref std std-ref">Sites</span>.LatitudeSouth.</li>
+<li><strong>Longitude</strong> AggregateDataset samples are ordered by, in order of priority, either (1) <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.GPSLongitude or (2) the mean of <span class="xref std std-ref">Sites</span>.LongitudeWest and <span class="xref std std-ref">Sites</span>.LongitudeEast.</li>
+<li><strong>Altitude</strong> AggregateDataset samples are ordered by <span class="xref std std-ref">Sites</span>.Altitude`.</li>
+<li><strong>Age</strong> AggregateDataset samples are ordered by <span class="xref std std-ref">SampleAges</span>.Age, where <span class="xref std std-ref">SampleAges</span>.SampleAgeID is from <a class="reference internal" href="tables_chron.html#aggregatesampleages"><span>AggregateSampleAges</span></a>.SampleAgeID.</li>
+<li><strong>Alphabetical by site name</strong> AggregateDataset samples are ordered alphabetically by <span class="xref std std-ref">Sites</span>.SiteName.</li>
+<li><strong>Alphabetical by collection unit name</strong> AggregateDataset samples are ordered alphabetically by <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.CollUnitName.</li>
+<li><strong>Alphabetical by collection units handle</strong> AggregateDataset samples are ordered alphabetically by <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.Handle.</li>
 </ul>
+</div></blockquote>
 </div>
 <div class="section" id="collectiontypes">
-<h2>CollectionTypes<a class="headerlink" href="#collectiontypes" title="Permalink to this headline">¶</a></h2>
-<p>This table is a lookup table of for types of Collection Units, or Collection Types. Table is referenced by the <a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits</a> table.</p>
+<span id="id3"></span><h2>CollectionTypes<a class="headerlink" href="#collectiontypes" title="Permalink to this headline">¶</a></h2>
+<p>This table is a lookup table of for types of Collection Units, or Collection Types. Table is referenced by the <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="53%" />
@@ -328,7 +307,7 @@ the mean of <a class="reference external" href="#_Table:_Sites_1">Sites.Latitude
 </dl>
 </div>
 <div class="section" id="collectionunits">
-<h2>CollectionUnits<a class="headerlink" href="#collectionunits" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>CollectionUnits<a class="headerlink" href="#collectionunits" title="Permalink to this headline">¶</a></h2>
 <p>This table stores data for Collection Units.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -439,11 +418,11 @@ the mean of <a class="reference external" href="#_Table:_Sites_1">Sites.Latitude
 <dt><strong>CollectionUnitID (Primary Key)</strong></dt>
 <dd>An arbitrary Collection Unit identification number.</dd>
 <dt><strong>SiteID (Foreign Key)</strong></dt>
-<dd>Site where CollectionUnit was located. Field links to <a class="reference external" href="#_Table:_Sites">Sites</a> table.</dd>
+<dd>Site where CollectionUnit was located. Field links to <span class="xref std std-ref">Sites</span> table.</dd>
 <dt><strong>CollTypeID (Foreign Key)</strong></dt>
-<dd>Type of Collection Unit. Field links to the <a class="reference external" href="#_Table:_Collection_Types">CollectionTypes</a> table.</dd>
+<dd>Type of Collection Unit. Field links to the <a class="reference internal" href="#collectiontypes"><span>CollectionTypes</span></a> table.</dd>
 <dt><strong>DepEnvtID (Foreign Key)</strong></dt>
-<dd>Depositional environment of the CollectionUnit. Normally, this key refers to the modern environment. For example, the site may be located on a colluvial slope, in which case the Depositional Environment may be Colluvium or Colluvial Fan. However, an excavation may extend into alluvial sediments, which represent a different depositional environment. These are accounted for by the Facies of the AnalysisUnit. Field links to the <a class="reference external" href="#_Table:_DepEnvtTypes">DepEnvtTypes</a> table.</dd>
+<dd>Depositional environment of the CollectionUnit. Normally, this key refers to the modern environment. For example, the site may be located on a colluvial slope, in which case the Depositional Environment may be Colluvium or Colluvial Fan. However, an excavation may extend into alluvial sediments, which represent a different depositional environment. These are accounted for by the Facies of the AnalysisUnit. Field links to the <a class="reference internal" href="#depenvttypes"><span>DepEnvtTypes</span></a> table.</dd>
 <dt><strong>Handle</strong></dt>
 <dd>Code name for the Collection Unit. This code may be up to 10 characters, but an effort is made to keep these to 8 characters or less. Data are frequently distributed by Collection Unit, and the Handle is used for file names.</dd>
 <dt><strong>CollUnitName</strong></dt>
@@ -475,34 +454,96 @@ the mean of <a class="reference external" href="#_Table:_Sites_1">Sites.Latitude
 </dl>
 </div>
 <div class="section" id="datasetpublications">
-<h2>DatasetPublications<a class="headerlink" href="#datasetpublications" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>DatasetPublications<a class="headerlink" href="#datasetpublications" title="Permalink to this headline">¶</a></h2>
 <p>This table lists the publications for datasets.</p>
-<p><strong>DatasetID (Primary Key, Foreign Key)</strong> Dataset identification number.
-Field links to Dataset table.</p>
-<p><strong>PublicationID (Primary Key, Foreign Key)</strong> Publication identification
-number. Field links to <a class="reference external" href="#_Table:_Publications">Publications</a> table.</p>
-<p><strong>PrimaryPub</strong> Is «True» if the publication is the primary publication
-for the dataset.</p>
-<blockquote>
-<div>Datasets</div></blockquote>
-<hr class="docutils" />
-<p>This table stores the data for Datasets. A Dataset is the set of samples
-for a particular data type from a Collection Unit. A Collection Unit may
-have multiple Datasets for different data types, for example one dataset
-for pollen and another for plant macrofossils. Every Sample is assigned
-to a Dataset, and every Dataset is assigned to a Collection Unit.
-Samples from different Collection Units cannot be assigned to the same
-Dataset (although they may be assigned to <a class="reference external" href="#_Table:_AggregateDatasets">Aggregate
-Datasets</a>).</p>
-<p><strong>DatasetID (Primary Key)</strong> An arbitrary Dataset identification number.</p>
-<p><strong>CollectionUnitID (Foreign Key)</strong> Collection Unit identification
-number. Field links to the
-<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits</a> table.</p>
-<p><strong>DatasetTypeID (Foreign Key);</strong> Dataset Type identification number.
-Field links to the <a class="reference external" href="#_Table:_DatasetTypes">DatasetTypes</a> lookup
-table.</p>
-<p><strong>DatasetName</strong> Optional name for the Dataset.</p>
-<p><strong>Notes</strong> Free form notes or comments about the Dataset.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="10%" />
+<col width="15%" />
+<col width="24%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>DatasetPublications</strong></td>
+</tr>
+<tr class="row-even"><td>DatasetID</td>
+<td>int</td>
+<td>PK, FK</td>
+<td>Datasets</td>
+</tr>
+<tr class="row-odd"><td>PublicationID</td>
+<td>int</td>
+<td>PK, FK</td>
+<td>Publications</td>
+</tr>
+<tr class="row-even"><td>PrimaryPub</td>
+<td>bit</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>DatasetID (Primary Key, Foreign Key)</strong></dt>
+<dd>Dataset identification number. Field links to <a class="reference internal" href="#datasets"><span>Datasets</span></a> table.</dd>
+<dt><strong>PublicationID (Primary Key, Foreign Key)</strong></dt>
+<dd>Publication identification number. Field links to <span class="xref std std-ref">Publications</span> table.</dd>
+<dt><strong>PrimaryPub</strong></dt>
+<dd>Is «True» if the publication is the primary publication for the dataset.</dd>
+</dl>
+</div>
+<div class="section" id="datasets">
+<span id="id6"></span><h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
+<p>This table stores the data for Datasets. A Dataset is the set of samples for a particular data type from a Collection Unit. A Collection Unit may have multiple Datasets for different data types, for example one dataset for pollen and another for plant macrofossils. Every Sample is assigned to a Dataset, and every Dataset is assigned to a Collection Unit. Samples from different Collection Units cannot be assigned to the same Dataset (although they may be assigned to <a class="reference internal" href="#aggregatedatasets"><span>AggregateDatasets</span></a>).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="25%" />
+<col width="9%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Datasets</strong></td>
+</tr>
+<tr class="row-even"><td>DatasetID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CollectionUnitID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>CollectionUnits</td>
+</tr>
+<tr class="row-even"><td>DatasetTypeID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>DatasetTypes</td>
+</tr>
+<tr class="row-odd"><td>DatasetName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>DatasetID (Primary Key)</strong></dt>
+<dd>An arbitrary Dataset identification number.</dd>
+<dt><strong>CollectionUnitID (Foreign Key)</strong></dt>
+<dd>Collection Unit identification number. Field links to the <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a> table.</dd>
+<dt><strong>DatasetTypeID (Foreign Key)</strong></dt>
+<dd>Dataset Type identification number. Field links to the <a class="reference internal" href="#datasettypes"><span>DatasetTypes</span></a> lookup table.</dd>
+<dt><strong>DatasetName</strong></dt>
+<dd>Optional name for the Dataset.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the Dataset.</dd>
+</dl>
 <div class="section" id="sql-example">
 <h3>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h3>
 <p>The following query lists the Dataset Types for the site «».</p>
@@ -545,10 +586,9 @@ table.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id1">
-<h3>SQL Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>This query lists the plant macrofossils identified at site «Bear River
-No. 3».</p>
+<div class="section" id="id7">
+<h3>SQL Example<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>This query lists the plant macrofossils identified at site «Bear River No. 3».</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -601,38 +641,106 @@ No. 3».</p>
 </div>
 </div>
 <div class="section" id="datasetsubmissions">
-<h2>DatasetSubmissions<a class="headerlink" href="#datasetsubmissions" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>DatasetSubmissions<a class="headerlink" href="#datasetsubmissions" title="Permalink to this headline">¶</a></h2>
 <p>Submissions to the database are of Datasets. Submissions may be original
 submissions, resubmissions, compilations from other databases, or
 recompilations. See the description of the
-<a class="reference external" href="#_Table:_DatasetSubmissionTypes">DatasetSubmissionTypes</a> table.</p>
+<span class="xref std std-ref">DatasetSubmissionTypes</span> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="20%" />
+<col width="7%" />
+<col width="32%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>DatasetSubmissions</strong></td>
+</tr>
+<tr class="row-even"><td>SubmissionID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>DatasetID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Datasets</td>
+</tr>
+<tr class="row-even"><td>ProjectID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Projects</td>
+</tr>
+<tr class="row-odd"><td>ContactID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Contacts</td>
+</tr>
+<tr class="row-even"><td>SubmissionTypeID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>DatasetSubmissionTypes</td>
+</tr>
+<tr class="row-odd"><td>SubmissionDate</td>
+<td>Date/Time</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <dl class="docutils">
 <dt><strong>SubmissionID (Primary Key)</strong></dt>
 <dd>An arbitrary submission identification number.</dd>
 <dt><strong>DatasetID (Foreign Key)</strong></dt>
-<dd>Dataset identification number. Field links to the <a class="reference external" href="#table-datasets">Datasets</a> table. Datasets may occur multiple times in this table (e.g. once for the original compilation into a different database and a second time for the recompilation into Neotoma).</dd>
+<dd>Dataset identification number. Field links to the <a class="reference internal" href="#datasets"><span>Datasets</span></a> table. Datasets may occur multiple times in this table (e.g. once for the original compilation into a different database and a second time for the recompilation into Neotoma).</dd>
 <dt><strong>ProjectID (Foreign Key)</strong></dt>
 <dd>Database project responsible for the submission or compilation.</dd>
 <dt><strong>ContactID (Foreign Key)</strong></dt>
-<dd>Contact identification number. Field links to the <a class="reference external" href="#_Table:_Contacts">Contacts</a> table. The Contact is the person who submitted, resubmitted, compiled, or recompiled the data. This person is not necessarily the Dataset PI; it is the person who submitted the data or compiled the data from the literature.</dd>
+<dd>Contact identification number. Field links to the <span class="xref std std-ref">Contacts</span> table. The Contact is the person who submitted, resubmitted, compiled, or recompiled the data. This person is not necessarily the Dataset PI; it is the person who submitted the data or compiled the data from the literature.</dd>
 <dt><strong>SubmissionDate</strong></dt>
 <dd>Date of the submission, resubmission, compilation, or recompilation.</dd>
 <dt><strong>SubmissionTypeID (Foreign Key)</strong></dt>
-<dd>Submission Type identification number. Field links to the DatasetSubmissionsType table.</dd>
+<dd>Submission Type identification number. Field links to the <span class="xref std std-ref">DatasetSubmissionsType</span> table.</dd>
 <dt><strong>Notes</strong></dt>
 <dd>Free form notes or comments about the submission.</dd>
 </dl>
 </div>
 <div class="section" id="datasetsubmissiontypes">
 <h2>DatasetSubmissionTypes<a class="headerlink" href="#datasetsubmissiontypes" title="Permalink to this headline">¶</a></h2>
-<p>Lookup table of Dataset Submission Types. Table is referenced by the
-<a class="reference external" href="#_Table:_DatasetSubmissions">DatasetSubmissions</a> table.</p>
+<p>Lookup table of Dataset Submission Types. Table is referenced by the <a class="reference internal" href="#datasetsubmissions"><span>DatasetSubmissions</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="25%" />
+<col width="9%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>DatasetSubmissionTypes</strong></td>
+</tr>
+<tr class="row-even"><td>SubmissionTypeID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SubmissionType</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <dl class="docutils">
 <dt><strong>SubmissionTypeID (Primary Key)</strong></dt>
 <dd>An arbitrary Submission Type identification number.</dd>
 <dt><strong>SubmissionType</strong></dt>
 <dd><p class="first">Type of submission. The database has the following types:</p>
-<ul class="simple">
+<ul class="last simple">
 <li>Original submission from data contributor</li>
 <li>Resubmission or revision from data contributor</li>
 <li>Compilation into a flat file database</li>
@@ -641,14 +749,12 @@ recompilations. See the description of the
 <li>Compilation into Neotoma from another database</li>
 <li>Recompilation into Neotoma from another database</li>
 <li>Compilation into Neotoma from primary source</li>
-<li>Recompilation into or revisions to Neotoma</li>
+<li>Recompilation into or revisions to Neotoma:  The initial development of Neotoma involved merging the data from several existing databases, including FAUNMAP, the Global Pollen Database, and the North American Plant Macrofossil Database. Thus original compilation of Datasets was into one of these databases, which were then recompiled into Neotoma. The original compilation and the recompilation into Neotoma are separate submissions.</li>
 </ul>
-<blockquote class="last">
-<div>The initial development of Neotoma involved merging the data from several existing databases, including FAUNMAP, the Global Pollen Database, and the North American Plant Macrofossil Database. Thus original compilation of Datasets was into one of these databases, which were then recompiled into Neotoma. The original compilation and the recompilation into Neotoma are separate submissions.</div></blockquote>
 </dd>
 </dl>
-<div class="section" id="id2">
-<h3>SQL Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>SQL Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>This query gives a list of Dataset Submissions for the site «Bear River
 No. 3» ordered by date.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -733,8 +839,8 @@ No. 3» ordered by date.</p>
 </div>
 </div>
 <div class="section" id="datasettypes">
-<h2>DatasetTypes<a class="headerlink" href="#datasettypes" title="Permalink to this headline">¶</a></h2>
-<p>Lookup table for Dataset Types. Table is referenced by the <a class="reference external" href="#table-datasets">Datasets</a> table.</p>
+<span id="id10"></span><h2>DatasetTypes<a class="headerlink" href="#datasettypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table for Dataset Types. Table is referenced by the <a class="reference internal" href="#datasets"><span>Datasets</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
@@ -776,7 +882,7 @@ No. 3» ordered by date.</p>
 </dl>
 </div>
 <div class="section" id="datasetpis">
-<h2>DatasetPIs<a class="headerlink" href="#datasetpis" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>DatasetPIs<a class="headerlink" href="#datasetpis" title="Permalink to this headline">¶</a></h2>
 <p>This table lists the Principle Investigators for Datasets.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -805,16 +911,19 @@ No. 3» ordered by date.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>DatasetID (Primary Key, Foreign Key)</strong> Dataset identification number.
-Field links to Dataset table.</p>
-<p><strong>ContactID (Primary Key, Foreign Key)</strong> Contact identification number.
-Field links to <a class="reference external" href="#_Table:_Contacts">Contacts</a> table.</p>
-<p><strong>PIOrder</strong> Order in which PIs are listed.</p>
+<dl class="docutils">
+<dt><strong>DatasetID (Primary Key, Foreign Key)</strong></dt>
+<dd>Dataset identification number. Field links to Dataset table.</dd>
+<dt><strong>ContactID (Primary Key, Foreign Key)</strong></dt>
+<dd>Contact identification number. Field links to <span class="xref std std-ref">Contacts</span> table.</dd>
+<dt><strong>PIOrder</strong></dt>
+<dd>Order in which PIs are listed.</dd>
+</dl>
 </div>
 <div class="section" id="depenvttypes">
-<h2>DepEnvtTypes<a class="headerlink" href="#depenvttypes" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>DepEnvtTypes<a class="headerlink" href="#depenvttypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Depostional Environment Types. Table is referenced by
-the <a href="#id5"><span class="problematic" id="id6">`CollectionUnits`__</span></a> table.</p>
+the <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="36%" />
@@ -842,12 +951,14 @@ the <a href="#id5"><span class="problematic" id="id6">`CollectionUnits`__</span>
 </tr>
 </tbody>
 </table>
-<p><strong>DepEnvtID (Primary Key)</strong> An arbitrary Depositional Environment Type
-identification number.</p>
-<p><strong>DepEnvt</strong> Depositional Environment.</p>
-<p><strong>DepEnvtHigherID</strong> The Depositional Environment Types are
-hierarchical. DepEnvtHigherID is the DepEnvtID of the higher ranked
-Depositional Environment. See following table gives some examples.</p>
+<dl class="docutils">
+<dt><strong>DepEnvtID (Primary Key)</strong></dt>
+<dd>An arbitrary Depositional Environment Type identification number.</dd>
+<dt><strong>DepEnvt</strong></dt>
+<dd>Depositional Environment.</dd>
+<dt><strong>DepEnvtHigherID</strong></dt>
+<dd>The Depositional Environment Types are hierarchical. DepEnvtHigherID is the DepEnvtID of the higher ranked Depositional Environment. See following table gives some examples.</dd>
+</dl>
 <table border="1" class="docutils">
 <colgroup>
 <col width="36%" />
@@ -901,8 +1012,8 @@ Depositional Environment. See following table gives some examples.</p>
 </tr>
 </tbody>
 </table>
-<div class="section" id="id3">
-<h3>SQL Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>SQL Example<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>This query gives a list of the top level Depostional Environment Types.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -980,8 +1091,8 @@ FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes\_1 ON
 </tbody>
 </table>
 </div>
-<div class="section" id="id4">
-<h3>SQL Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>SQL Example<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <p>This following query gives a list of the second level «Terrestrial»
 Depositional Environment Types.
 .. code-block:: sql</p>
@@ -1045,57 +1156,124 @@ DepEnvtTypes.DepEnvtID = DepEnvtTypes_1.DepEnvtHigherID</p>
 </div>
 </div>
 <div class="section" id="lithology">
-<h2>Lithology<a class="headerlink" href="#lithology" title="Permalink to this headline">¶</a></h2>
+<span id="id15"></span><h2>Lithology<a class="headerlink" href="#lithology" title="Permalink to this headline">¶</a></h2>
 <p>This table stores the lithologic descriptions of Collection Units.</p>
-<p><strong>LithologyID (Primary Key)</strong> An arbitrary identification number for a
-lithologic unit.</p>
-<p><strong>CollectionUnitID (Foreign Key)</strong> Collection Unit identification
-number. Field links to the
-<a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits</a> table.</p>
-<p><strong>DepthTop</strong> Depth of the top of the lithologic unit in cm.</p>
-<p><strong>DepthBottom</strong> Depth of the bottom of the lithologic unit in cm.</p>
-<p><strong>LowerBoundary</strong> Description of the nature of the lower boundary of
-the lithologic unit, e.g. «gradual, over ca. 10 cm».</p>
-<p><strong>Description</strong> Description of the lithologic unit. These can be quite
-detailed, with Munsell color or Troels-Smith descriptions. Some
-examples:</p>
-<ul>
-<li><p class="first">interbedded gray silt and peat</p>
-</li>
-<li><p class="first">marly fine-detritus copropel</p>
-</li>
-<li><p class="first">humified sedge and Sphagnum peat</p>
-</li>
-<li><p class="first">sedge peat 5YR 5/4</p>
-</li>
-<li><p class="first">gray sandy loam with mammoth and other animal bones</p>
-</li>
-<li><p class="first">grey-green gyttja, oxidizing to gray-brown</p>
-</li>
-<li><p class="first">Ag 3, Ga 1, medium gray, firm, elastic</p>
-</li>
-<li><p class="first">nig3, strf0, elas2, sicc0; Th2 T12 Tb+</p>
-</li>
-<li><p class="first">Ld°4, , Dg+, Dh+</p>
-<ol class="arabic">
-<li><p class="first rubric" id="table-projects">Table: Projects</p>
-</li>
-</ol>
-</li>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="24%" />
+<col width="9%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Lithology</strong></td>
+</tr>
+<tr class="row-even"><td>LithologyID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CollectionUnitID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>CollectionUnits</td>
+</tr>
+<tr class="row-even"><td>DepthTop</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>DepthBottom</td>
+<td>Double</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>LowerBoundary</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Description</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>LithologyID (Primary Key)</strong></dt>
+<dd>An arbitrary identification number for a lithologic unit.</dd>
+<dt><strong>CollectionUnitID (Foreign Key)</strong></dt>
+<dd>Collection Unit identification number. Field links to the <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a> table.</dd>
+<dt><strong>DepthTop</strong></dt>
+<dd>Depth of the top of the lithologic unit in cm.</dd>
+<dt><strong>DepthBottom</strong></dt>
+<dd>Depth of the bottom of the lithologic unit in cm.</dd>
+<dt><strong>LowerBoundary</strong></dt>
+<dd>Description of the nature of the lower boundary of the lithologic unit, e.g. «gradual, over ca. 10 cm».</dd>
+<dt><strong>Description</strong></dt>
+<dd>Description of the lithologic unit. These can be quite detailed, with Munsell color or Troels-Smith descriptions. Some</dd>
+</dl>
+<p>examples:</p>
+<blockquote>
+<div><ul class="simple">
+<li>interbedded gray silt and peat</li>
+<li>marly fine-detritus copropel</li>
+<li>humified sedge and Sphagnum peat</li>
+<li>sedge peat 5YR 5/4</li>
+<li>gray sandy loam with mammoth and other animal bones</li>
+<li>grey-green gyttja, oxidizing to gray-brown</li>
+<li>Ag 3, Ga 1, medium gray, firm, elastic</li>
+<li>nig3, strf0, elas2, sicc0; Th2 T12 Tb+</li>
+<li>Ld°4, , Dg+, Dh+</li>
 </ul>
-<p>This table stores a list of database projects that have supplied data to
-Neotoma. These include the databases that were merged in the initial
-development of Neotoma as well as other independent projects that
-continue to assemble data for a particular region or data type. Some of
-these projects have developed relational databases, whereas others have
-compiled data in flat files. This table is referenced by the
-DatabaseSubmissions table.</p>
-<p><strong>ProjectID (Primary Key)</strong> An arbitrary Project identification number.</p>
-<p><strong>ProjectName</strong> Name of the Project, e.g. «Cooperative Holocene Mapping
-Project», «North American Pollen Database», «FAUNMAP».</p>
-<p><strong>ContactID (Foreign Key)</strong> Contact person for the project. Field links
-to the <a href="#id5"><span class="problematic" id="id7">`Contacts`__</span></a> table.</p>
-<p><strong>URL</strong> Web site address for the project.</p>
+</div></blockquote>
+</div>
+<div class="section" id="projects">
+<span id="id16"></span><h2>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h2>
+<p>This table stores a list of database projects that have supplied data to Neotoma. These include the databases that were merged in the initial development of Neotoma as well as other independent projects that continue to assemble data for a particular region or data type. Some of these projects have developed relational databases, whereas others have compiled data in flat files. This table is referenced by the <span class="xref std std-ref">DatabaseSubmissions</span> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="28%" />
+<col width="11%" />
+<col width="21%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Projects</strong></td>
+</tr>
+<tr class="row-even"><td>ProjectID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>ProjectName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>ContactID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Contacts</td>
+</tr>
+<tr class="row-odd"><td>URL</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>ProjectID (Primary Key)</strong></dt>
+<dd>An arbitrary Project identification number.</dd>
+<dt><strong>ProjectName</strong></dt>
+<dd>Name of the Project, e.g. «Cooperative Holocene Mapping Project», «North American Pollen Database», «FAUNMAP».</dd>
+<dt><strong>ContactID (Foreign Key)</strong></dt>
+<dd>Contact person for the project. Field links to the <span class="xref std std-ref">Contacts</span> table.</dd>
+<dt><strong>URL</strong></dt>
+<dd>Web site address for the project.</dd>
+</dl>
 </div>
 </div>
 
