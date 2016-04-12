@@ -1,13 +1,15 @@
 Contact and Individual Related Tables
 ----------------------------------------------------
 
+.. _Collectors:
+
 Collectors
 ~~~~~~~~~~~~~~~~~~~
 
 The Collectors table lists the people who collected Collection Units.
 
 +-------------------------+----------------+------+-------------------+
-| **Collectors**                                               |
+| **Collectors**                                                      |
 +-------------------------+----------------+------+-------------------+
 | CollectorID             | Long Integer   | PK   |                   |
 +-------------------------+----------------+------+-------------------+
@@ -22,29 +24,23 @@ The Collectors table lists the people who collected Collection Units.
   An arbitrary Collector identification number.
 
 **CollectionUnitID (Foreign Key)**
-  CollectionUnit collected. Field links to `CollectionUnits <#_Table:_CollectionUnits>`__ table.
+  CollectionUnit collected. Field links to :ref:`CollectionUnits` table.
 
 **ContactID (Foreign Key)**
-  Person who collected the CollectionUnit. Multiple individuals are listed in separate records. Field links to the `<#_Table:_Contacts>`__ table.
+  Person who collected the CollectionUnit. Multiple individuals are listed in separate records. Field links to the :ref:`Contacts` table.
 
 **CollectorOrder**
   Order in which Collectors should be listed.
 
+.. _Contacts:
+
 Contacts
 ~~~~~~~~~~~~~~~~~~~
 
-This table lists persons and organizations referenced by the
-`Chronologies <#_Table:_Chronologies>`__,
-`Collectors <#_Table:_Collectors>`__,
-`DatasetPIs <#_Table:_DatasetPIs>`__,
-`DatasetSubmissions <#_Table:_DatasetSubmissions>`__,
-`Projects <#_Table:_Projects>`__,
-`PublicationAuthors <#_Table:_PublicationAuthors>`__,
-`SampleAnalysts <#_Table:_SampleAnalysts>`__, and
-`SiteImages <#_Table:_SiteImages>`__ tables.
+This table lists persons and organizations.  The table is referenced through Foreign Keys in the following tables: :ref:`Chronologies`, :ref:`Collectors`, :ref:`DatasetPIs`, :ref:`DatasetSubmissions`, :ref:`Projects`, :ref:`PublicationAuthors`, :ref:`SampleAnalysts`, and :ref:`SiteImages` tables.
 
 +-----------------------+----------------+------+----------------------+
-| **Contacts**   |
+| **Contacts**                                                         |
 +-----------------------+----------------+------+----------------------+
 | ContactID             | Long Integer   | PK   |                      |
 +-----------------------+----------------+------+----------------------+
@@ -87,44 +83,50 @@ This table lists persons and organizations referenced by the
   Full name of the person, last name first (e.g. «Simpson, George Gaylord») or name of organization or project (e.g. «Great Plains Flora Association»).
 
 **ContactStatusID (Foreign Key)**
-  Current status of the person, organization, or project. Field links to the `ContactStatuses <#_Table:_ContactStatuses>`__ lookup table.
+  Current status of the person, organization, or project. Field links to the :ref:`ContactStatuses` lookup table.
 
 **FamilyName**
   Family or surname name of a person.
 
 **LeadingInitials**
-  Leading initials for given or forenames without
-spaces (e.g. «G.G.»).
+  Leading initials for given or forenames without spaces (e.g. «G.G.»).
 
-**GivenNames** Given or forenames of a person (e.g. «George Gaylord»).
-Initials with spaces are used if full given names are not known (e.g.
-«G. G»).
+**GivenNames** 
+  Given or forenames of a person (e.g. «George Gaylord»). Initials with spaces are used if full given names are not known (e.g. «G. G»).
 
-**Suffix** Suffix of a person’s name (e.g. «Jr.», «III»).
+**Suffix** 
+  Suffix of a person’s name (e.g. «Jr.», «III»).
 
-**Title** A person’s title (e.g. «Dr.», «Prof.», «»).
+**Title** 
+  A person’s title (e.g. «Dr.», «Prof.», «»).
 
-**Phone** Telephone number.
+**Phone** 
+  Telephone number.
 
-**Fax** Fax number.
+**Fax** 
+  Fax number.
 
-**Email** Email address.
+**Email** 
+  Email address.
 
-**URL** Universal Resource Locator, an Internet World Wide Web address.
+**URL** 
+  Universal Resource Locator, an Internet World Wide Web address.
 
-**Address** Full mailing address.
+**Address** 
+  Full mailing address.
 
-**Notes** Free form notes or comments about the person, organization,
-or project.
+**Notes** 
+  Free form notes or comments about the person, organization, or project.
+
+.. _ContactStatuses:
 
 ContactStatuses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table of Contact Statuses. Table is referenced by the
-`Contacts <#_Table:_Contacts>`__ table.
+Lookup table of Contact Statuses. Table is referenced by the :ref:`Contacts` table.
 
 +------------------------------+----------------+------+-----+
-| **ContactStatuses**   |
+| **ContactStatuses**                                        |
 +------------------------------+----------------+------+-----+
 | ContactStatusID              | Long Integer   | PK   |     |
 +------------------------------+----------------+------+-----+
@@ -140,21 +142,12 @@ Lookup table of Contact Statuses. Table is referenced by the
   Status of person, organization, or project.
 
 **StatusDescription**
-  Description of the status.
-
-The following statuses exist (with descriptions):
-
--  active Person, project, or organization is active in the field
-
--  deceased Person is deceased
-
--  defunct Project or organization is defunct or non-operational
-
--  extant Project or organization is extant
-
--  inactive Person is inactive in the field
-
--  retired Person is retired
-
--  unknown Status is unknown
+  Description of the status.  The following statuses exist (with descriptions):
+    -  active Person, project, or organization is active in the field
+    -  deceased Person is deceased
+    -  defunct Project or organization is defunct or non-operational
+    -  extant Project or organization is extant
+    -  inactive Person is inactive in the field
+    -  retired Person is retired
+    -  unknown Status is unknown
 

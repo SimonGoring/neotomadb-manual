@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
-        <link rel="next" title="References Cited" href="references_cited.html"/>
+        <link rel="next" title="Contact and Individual Related Tables" href="tables_contacts.html"/>
         <link rel="prev" title="Taxonomy Related Tables" href="tables_taxa.html"/> 
 
   
@@ -103,9 +103,31 @@
 <li class="toctree-l3"><a class="reference internal" href="#journal-article">Journal Article</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#book-chapter">Book Chapter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authored-book">Authored Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edited-book">Edited Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#masters-thesis">Master’s Thesis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#doctoral-dissertation">Doctoral Dissertation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authored-report">Authored Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edited-report">Edited Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-authored-publication">Other Authored Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-edited-publication">Other Edited Publication</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#edited-book">Edited Book</a><ul>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Publication Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#publicationauthors">PublicationAuthors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#publicationeditors">PublicationEditors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publications">Publications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publicationtypes">PublicationTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#legacy-publication">Legacy Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#journal-article">Journal Article</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#book-chapter">Book Chapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authored-book">Authored Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edited-book">Edited Book</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#masters-thesis">Master’s Thesis</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#doctoral-dissertation">Doctoral Dissertation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authored-report">Authored Report</a></li>
@@ -534,12 +556,10 @@ The Johns Hopkins University Press, Baltimore, Maryland, USA.</p>
 <p class="last">Flora of North America Editorial Committee. 2002. Flora of North America north of . <strong>Volume 26</strong>. <strong>Magnoliophyta: Liliidae: Liliales and Orchidales</strong>. Oxford University Press, New York, New York, USA.</p>
 </dd>
 <dt><strong>SeriesTitle</strong></dt>
-<dd>Title of a book series. Book series consist of a series of books, typically published at irregular intervals on sometimes</dd>
-</dl>
-<p>related but different topics. The number of volumes in a series is typically open ended. Book series are often assigned ISSN numbers as well as ISBN numbers. However, in contrast to most serials, book series have individual titles and authors or editors. Citation practices for book series vary; sometimes they are cited as books, other times as journals. The default citation for Neotoma includes all information. An example of SeriesTitle and SeriesVolume:</p>
-<blockquote>
-<div>Curtis, J. H., and D. A. Hodell. 1993. An isotopic and trace element study of ostracods from , : A 10,500 year record of paleosalinity and paleotemperature changes in the . Pages 135-152 in P. K. Swart, K. C. Lohmann, J. McKensie, and S. Savin, editors. Climate change in continental isotopic records. <strong>Geophysical Monograph 78</strong>. American Geophysical Union, Washington, D.C., USA.</div></blockquote>
-<dl class="docutils">
+<dd><blockquote class="first">
+<div>Title of a book series. Book series consist of a series of books, typically published at irregular intervals on sometimes related but different topics. The number of volumes in a series is typically open ended. Book series are often assigned ISSN numbers as well as ISBN numbers. However, in contrast to most serials, book series have individual titles and authors or editors. Citation practices for book series vary; sometimes they are cited as books, other times as journals. The default citation for Neotoma includes all information. An example of SeriesTitle and SeriesVolume:</div></blockquote>
+<p class="last">Curtis, J. H., and D. A. Hodell. 1993. An isotopic and trace element study of ostracods from , : A 10,500 year record of paleosalinity and paleotemperature changes in the . Pages 135-152 in P. K. Swart, K. C. Lohmann, J. McKensie, and S. Savin, editors. Climate change in continental isotopic records. <strong>Geophysical Monograph 78</strong>. American Geophysical Union, Washington, D.C., USA.</p>
+</dd>
 <dt><strong>SeriesVolume</strong></dt>
 <dd>Volume number in a series.</dd>
 <dt><strong>Publisher</strong></dt>
@@ -625,19 +645,451 @@ The Johns Hopkins University Press, Baltimore, Maryland, USA.</p>
 <p>Examples of the different Publication Types are given in the following sections. Shown for each Publication Type are the fields in the <a class="reference internal" href="#publications"><span>Publications</span></a> table that may be filled for that type, with the exception that OriginalLanguage and Notes are not shown unless used.</p>
 <div class="section" id="legacy-publication">
 <h3>Legacy Publication<a class="headerlink" href="#legacy-publication" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>PubTypeID = Legacy</strong></td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Each author a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>Citation</td>
+<td>Complete citation as imported</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Legacy Example: Imported from FAUNMAP</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Semken, H. A., Jr. 1983. Holocene mammalian biogeography and climatic change in the eastern and central
+United States. Pp. 182-207 in Late-Quaternary environments of the United States, Volume 2: The Holocene
+(H. E. Wright, Jr., ed.), University of Minnesota Press, Minneapolis.</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="8">
+<li><ol class="first upperalpha">
+<li>Semken, Jr.</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1983</td>
+</tr>
+<tr class="row-odd"><td>Citation</td>
+<td>Semken, H. A., Jr. 1983. Holocene mammalian biogeography and climatic change in the eastern
+and central United States. Pp. 182-207 in Late-Quaternary environments of the United States,
+Volume 2: The Holocene (H. E. Wright, Jr., ed.), University of Minnesota Press, Minneapolis.</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="journal-article">
 <h3>Journal Article<a class="headerlink" href="#journal-article" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>PubTypeID = Journal</strong></td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Each author a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>ArticleTitle</td>
+<td>Article title</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Journal name</td>
+</tr>
+<tr class="row-even"><td>Volume</td>
+<td>Volume</td>
+</tr>
+<tr class="row-odd"><td>Issue</td>
+<td>Issue</td>
+</tr>
+<tr class="row-even"><td>Pages</td>
+<td>Pages</td>
+</tr>
+<tr class="row-odd"><td>CitationNumber</td>
+<td>Citation number</td>
+</tr>
+<tr class="row-even"><td>DOI</td>
+<td>Digital Object Identifier</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Journal Example: Page numbers</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Wright, H.E., Jr., T.C. Winter, and H.L. Patten. 1963. Two pollen diagrams from southeastern : problems in the regional late-glacial
+and postglacial vegetational history. Geological Society of Bulletin 74:1371-1396.</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td>H. E. Wright Jr.
+T. C. Winter
+H. L. Patten</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1963</td>
+</tr>
+<tr class="row-odd"><td>ArticleTitle</td>
+<td>Two pollen diagrams from southeastern : problems in the regional late-glacial and postglacial vegetational
+history</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Geological Society of Bulletin</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>74</td>
+</tr>
+<tr class="row-even"><td>Issue</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>1371-1396</td>
+</tr>
+<tr class="row-even"><td>CitationNumber</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>DOI</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Journal Example: Page numbers, article in French, OriginalLanguage not needed</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Richard, P .J. H. 1979. Contribution à l&#8217;histoire postglaciaire de la végétation au nord-est de la Jamésie, Nouveau-Québec.
+Géographie physique et Quaternaire 33:93-112.</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td>Richard, P. J. H.</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1979</td>
+</tr>
+<tr class="row-odd"><td>ArticleTitle</td>
+<td>Contribution à l&#8217;histoire postglaciaire de la végétation au nord-est de la Jamésie, Nouveau-Québec</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Géographie physique et Quaternaire</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>33</td>
+</tr>
+<tr class="row-even"><td>Issue</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>93-112</td>
+</tr>
+<tr class="row-even"><td>CitationNumber</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>DOI</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="book-chapter">
 <h3>Book Chapter<a class="headerlink" href="#book-chapter" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>PubTypeID = Book Chapter</strong></td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Each author a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>ArticleTitle</td>
+<td>Article title</td>
+</tr>
+<tr class="row-odd"><td>Editors</td>
+<td>Table PublicatonAuthors: AuthorTypeID =Editor</td>
+</tr>
+<tr class="row-even"><td>Volume</td>
+<td>Volume in set</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>Article pages</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Book title</td>
+</tr>
+<tr class="row-odd"><td>Edition</td>
+<td>Edition</td>
+</tr>
+<tr class="row-even"><td>VolumeTitle</td>
+<td>Title of volume in multivolume set</td>
+</tr>
+<tr class="row-odd"><td>SeriesTitle</td>
+<td>Series title</td>
+</tr>
+<tr class="row-even"><td>SeriesVolume</td>
+<td>Volume in series</td>
+</tr>
+<tr class="row-odd"><td>Publisher</td>
+<td>Publisher</td>
+</tr>
+<tr class="row-even"><td>City</td>
+<td>City where published</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>State or province where published</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>Country where published</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="authored-book">
 <h3>Authored Book<a class="headerlink" href="#authored-book" title="Permalink to this headline">¶</a></h3>
-</div>
+<p>A book published by a single, or multiple authors.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>PubTypeID = Authored Book</strong></td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Each author a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>Volume</td>
+<td>Volume in set</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Book title</td>
+</tr>
+<tr class="row-even"><td>Edition</td>
+<td>Edition</td>
+</tr>
+<tr class="row-odd"><td>NumVolumes</td>
+<td>Number of volumes in set. Use only if Volume not specified.</td>
+</tr>
+<tr class="row-even"><td>VolumeTitle</td>
+<td>Title of volume in multivolume set</td>
+</tr>
+<tr class="row-odd"><td>SeriesTitle</td>
+<td>Series title</td>
+</tr>
+<tr class="row-even"><td>SeriesVolume</td>
+<td>Series volume</td>
+</tr>
+<tr class="row-odd"><td>Publisher</td>
+<td>Publisher</td>
+</tr>
+<tr class="row-even"><td>City</td>
+<td>City where published</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>State or province where published</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>Country where published</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="68%" />
+<col width="32%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Authored Book Example</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Ritchie, J. C. 1987. Postglacial vegetation of . Press, .</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="10">
+<li><ol class="first upperalpha" start="3">
+<li>Ritchie</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1987</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Postglacial vegetation of</td>
+</tr>
+<tr class="row-odd"><td>Edition</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>NumVolumes</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VolumeTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>Press</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Authored Book Example: Multivolume</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Wilson, D. E., and D. M. Reeder. 2005. Mammal species of the world: a taxonomic and geographic reference. Third edition. 2 volumes. The Press, .</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td>D. E. Wilson
+D. M. Reeder</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>2005</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Mammal species of the world: a taxonomic and geographic reference</td>
+</tr>
+<tr class="row-odd"><td>Edition</td>
+<td>Third</td>
+</tr>
+<tr class="row-even"><td>NumVolumes</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>VolumeTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>The Press</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="edited-book">
-<span id="id5"></span><h2>Edited Book<a class="headerlink" href="#edited-book" title="Permalink to this headline">¶</a></h2>
+<h3>Edited Book<a class="headerlink" href="#edited-book" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>PubTypeID = Edited Book</strong></td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Each editor a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>Volume</td>
+<td>Volume in set</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Book title</td>
+</tr>
+<tr class="row-even"><td>Edition</td>
+<td>Edition</td>
+</tr>
+<tr class="row-odd"><td>NumVolumes</td>
+<td>Number of volumes in set. Use only if Volume not specified.</td>
+</tr>
+<tr class="row-even"><td>VolumeTitle</td>
+<td>Title of volume in multivolume set</td>
+</tr>
+<tr class="row-odd"><td>SeriesTitle</td>
+<td>Series title</td>
+</tr>
+<tr class="row-even"><td>SeriesVolume</td>
+<td>Series volume</td>
+</tr>
+<tr class="row-odd"><td>Publisher</td>
+<td>Publisher</td>
+</tr>
+<tr class="row-even"><td>City</td>
+<td>City where published</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>State or province where published</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>Country where published</td>
+</tr>
+</tbody>
+</table>
 <table border="1" class="docutils">
 <colgroup>
 <col width="74%" />
@@ -695,23 +1147,332 @@ The Johns Hopkins University Press, Baltimore, Maryland, USA.</p>
 </tr>
 </tbody>
 </table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Edited Book Example: May also be entered as an edited report</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Jeter, M. D., editor. 1988. The Burris site and beyond: archeological survey and testing along a pipeline
+corridor and excavations at a Mississippian village, northeast . Research Report 27. Archeological Survey,</td>
+</tr>
+<tr class="row-odd"><td>Editors</td>
+<td><ol class="first last upperalpha simple" start="13">
+<li><ol class="first upperalpha" start="4">
+<li>Jeter</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1988</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>The Burris site and beyond: archeological survey and testing along a pipeline corridor and
+excavations at a Mississippian village, northeast</td>
+</tr>
+<tr class="row-odd"><td>Edition</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>NumVolumes</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VolumeTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>Research Report</td>
+</tr>
+<tr class="row-odd"><td colspan="2">SeriesVolume| 27</td>
+</tr>
+<tr class="row-even"><td colspan="2">Publisher   | Archeological Survey</td>
+</tr>
+<tr class="row-odd"><td colspan="2">City        |</td>
+</tr>
+<tr class="row-even"><td colspan="2">State       |</td>
+</tr>
+<tr class="row-odd"><td colspan="2">Country     |</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="masters-thesis">
 <h3>Master’s Thesis<a class="headerlink" href="#masters-thesis" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>PubTypeID = Master’s Thesis</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Author a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>Pages</td>
+<td>Number of pages in thesis</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Title of thesis</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>University where degree granted</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>City of university</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>State or province of university</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>Country of university</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="doctoral-dissertation">
 <h3>Doctoral Dissertation<a class="headerlink" href="#doctoral-dissertation" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>PubTypeID = Doctoral Dissertation</strong></td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Author a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>Pages</td>
+<td>Number of pages in thesis</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Title of thesis</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>University where degree granted</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>City of university</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>State or province of university</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>Country of university</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="authored-report">
 <h3>Authored Report<a class="headerlink" href="#authored-report" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>PubTypeID = Authored Report</strong></td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Each author a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>Pages</td>
+<td>Number of pages in report</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Title of report</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>Report series or description</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>Report number if in a numbered series</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>Publisher, may be a government agency or non-governmental organization</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>City where published</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>State where published</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>Country where published</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="edited-report">
 <h3>Edited Report<a class="headerlink" href="#edited-report" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>PubTypeID = Edited Report</strong></td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Each editor a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>Pages</td>
+<td>Number of pages in report</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Title of report</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>Report series or description</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>Report number if in a numbered series</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>Publisher, may be a government agency or non-governmental organization</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>City where published</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>State where published</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>Country where published</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Edited Report Example: Numbered series</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Fishel, R. L., editor. 1999. Bison hunters of the western prairies: archaeological investigations at the site
+(13WD8), . Report 21. Office of the State Archaeologist, University of , .</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="18">
+<li><ol class="first upperalpha" start="12">
+<li>Fishel</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1999</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Bison hunters of the western prairies: archaeological investigations at the site (13WD8).</td>
+</tr>
+<tr class="row-odd"><td>SeriesTitle</td>
+<td>Report</td>
+</tr>
+<tr class="row-even"><td>SeriesVolume</td>
+<td>21</td>
+</tr>
+<tr class="row-odd"><td>Publisher</td>
+<td>Office of the State Archaeologist,</td>
+</tr>
+<tr class="row-even"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="other-authored-publication">
 <h3>Other Authored Publication<a class="headerlink" href="#other-authored-publication" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>PubTypeID = Other Authored</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Each author a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>ArticleTitle</td>
+<td>Rest of citation</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Other Example: Web site</strong></td>
+</tr>
+<tr class="row-even"><td>Stevens, P.F. 2007. Angiosperm Phylogeny Website. Version 8, June 2007. <a class="reference external" href="http://www.mobot.org/MOBOT/research/APweb/">http://www.mobot.org/MOBOT/research/APweb/</a></td>
+</tr>
+<tr class="row-odd"><td>Authors           | P. F. Stevens</td>
+</tr>
+<tr class="row-even"><td>Year              | 2007</td>
+</tr>
+<tr class="row-odd"><td>ArticleTitle      | Angiosperm Phylogeny Website. Version 8, June 2007. <a class="reference external" href="http://www.mobot.org/MOBOT/research/APweb/">http://www.mobot.org/MOBOT/research/APweb/</a></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="other-edited-publication">
 <h3>Other Edited Publication<a class="headerlink" href="#other-edited-publication" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>PubTypeID = Other Edited</strong></td>
+</tr>
+<tr class="row-even"><td>Authors</td>
+<td>Each editor a record in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table</td>
+</tr>
+<tr class="row-odd"><td>Year</td>
+<td>Year published</td>
+</tr>
+<tr class="row-even"><td>ArticleTitle</td>
+<td>Rest of citation</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -723,7 +1484,7 @@ The Johns Hopkins University Press, Baltimore, Maryland, USA.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="references_cited.html" class="btn btn-neutral float-right" title="References Cited" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tables_contacts.html" class="btn btn-neutral float-right" title="Contact and Individual Related Tables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="tables_taxa.html" class="btn btn-neutral" title="Taxonomy Related Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

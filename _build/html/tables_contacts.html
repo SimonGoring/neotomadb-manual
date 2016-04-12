@@ -30,7 +30,9 @@
   
 
   
-    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/> 
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
+        <link rel="next" title="References Cited" href="references_cited.html"/>
+        <link rel="prev" title="Publication Related Tables" href="tables_publications.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -79,7 +81,7 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
@@ -89,6 +91,13 @@
 <li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Contact and Individual Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#collectors">Collectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contacts">Contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contactstatuses">ContactStatuses</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
 </ul>
@@ -138,30 +147,141 @@
   <div class="section" id="contact-and-individual-related-tables">
 <h1>Contact and Individual Related Tables<a class="headerlink" href="#contact-and-individual-related-tables" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="collectors">
-<h2>Collectors<a class="headerlink" href="#collectors" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Collectors<a class="headerlink" href="#collectors" title="Permalink to this headline">¶</a></h2>
 <p>The Collectors table lists the people who collected Collection Units.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="24%" />
+<col width="9%" />
+<col width="29%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Collectors</strong></td>
+</tr>
+<tr class="row-even"><td>CollectorID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CollectionUnitID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>CollectionUnits</td>
+</tr>
+<tr class="row-even"><td>ContactID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Contacts</td>
+</tr>
+<tr class="row-odd"><td>CollectorOrder</td>
+<td>Long Integer</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <dl class="docutils">
 <dt><strong>CollectorID (Primary Key)</strong></dt>
 <dd>An arbitrary Collector identification number.</dd>
 <dt><strong>CollectionUnitID (Foreign Key)</strong></dt>
-<dd>CollectionUnit collected. Field links to <a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits</a> table.</dd>
+<dd>CollectionUnit collected. Field links to <a class="reference internal" href="tables_dataset.html#collectionunits"><span>CollectionUnits</span></a> table.</dd>
 <dt><strong>ContactID (Foreign Key)</strong></dt>
-<dd>Person who collected the CollectionUnit. Multiple individuals are listed in separate records. Field links to the <a class="reference external" href="#_Table:_Contacts">#_Table:_Contacts</a> table.</dd>
+<dd>Person who collected the CollectionUnit. Multiple individuals are listed in separate records. Field links to the <a class="reference internal" href="#contacts"><span>Contacts</span></a> table.</dd>
 <dt><strong>CollectorOrder</strong></dt>
 <dd>Order in which Collectors should be listed.</dd>
 </dl>
 </div>
 <div class="section" id="contacts">
-<h2>Contacts<a class="headerlink" href="#contacts" title="Permalink to this headline">¶</a></h2>
-<p>This table lists persons and organizations referenced by the
-<a class="reference external" href="#_Table:_Chronologies">Chronologies</a>,
-<a class="reference external" href="#_Table:_Collectors">Collectors</a>,
-<a class="reference external" href="#_Table:_DatasetPIs">DatasetPIs</a>,
-<a class="reference external" href="#_Table:_DatasetSubmissions">DatasetSubmissions</a>,
-<a class="reference external" href="#_Table:_Projects">Projects</a>,
-<a class="reference external" href="#_Table:_PublicationAuthors">PublicationAuthors</a>,
-<a class="reference external" href="#_Table:_SampleAnalysts">SampleAnalysts</a>, and
-<a class="reference external" href="#_Table:_SiteImages">SiteImages</a> tables.</p>
+<span id="id2"></span><h2>Contacts<a class="headerlink" href="#contacts" title="Permalink to this headline">¶</a></h2>
+<p>This table lists persons and organizations.  The table is referenced through Foreign Keys in the following tables: <a class="reference internal" href="tables_chron.html#chronologies"><span>Chronologies</span></a>, <a class="reference internal" href="#collectors"><span>Collectors</span></a>, <a class="reference internal" href="tables_dataset.html#datasetpis"><span>DatasetPIs</span></a>, <a class="reference internal" href="tables_dataset.html#datasetsubmissions"><span>DatasetSubmissions</span></a>, <a class="reference internal" href="tables_dataset.html#projects"><span>Projects</span></a>, <a class="reference internal" href="tables_publications.html#publicationauthors"><span>PublicationAuthors</span></a>, <span class="xref std std-ref">SampleAnalysts</span>, and <span class="xref std std-ref">SiteImages</span> tables.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="9%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Contacts</strong></td>
+</tr>
+<tr class="row-even"><td>ContactID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>AliasID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Contacts:ContactID</td>
+</tr>
+<tr class="row-even"><td>ContactName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>ContactStatusID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>ContactStatuses</td>
+</tr>
+<tr class="row-even"><td>FamilyName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>LeadingInitials</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>GivenNames</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Suffix</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Title</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Phone</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Fax</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Email</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>URL</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Address</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <dl class="docutils">
 <dt><strong>ContactID (Primary Key)</strong></dt>
 <dd>An arbitrary Contact identification number.</dd>
@@ -170,40 +290,70 @@
 <dt><strong>ContactName</strong></dt>
 <dd>Full name of the person, last name first (e.g. «Simpson, George Gaylord») or name of organization or project (e.g. «Great Plains Flora Association»).</dd>
 <dt><strong>ContactStatusID (Foreign Key)</strong></dt>
-<dd>Current status of the person, organization, or project. Field links to the <a class="reference external" href="#_Table:_ContactStatuses">ContactStatuses</a> lookup table.</dd>
+<dd>Current status of the person, organization, or project. Field links to the <a class="reference internal" href="#contactstatuses"><span>ContactStatuses</span></a> lookup table.</dd>
 <dt><strong>FamilyName</strong></dt>
 <dd>Family or surname name of a person.</dd>
 <dt><strong>LeadingInitials</strong></dt>
-<dd>Leading initials for given or forenames without</dd>
+<dd>Leading initials for given or forenames without spaces (e.g. «G.G.»).</dd>
+<dt><strong>GivenNames</strong></dt>
+<dd>Given or forenames of a person (e.g. «George Gaylord»). Initials with spaces are used if full given names are not known (e.g. «G. G»).</dd>
+<dt><strong>Suffix</strong></dt>
+<dd>Suffix of a person’s name (e.g. «Jr.», «III»).</dd>
+<dt><strong>Title</strong></dt>
+<dd>A person’s title (e.g. «Dr.», «Prof.», «»).</dd>
+<dt><strong>Phone</strong></dt>
+<dd>Telephone number.</dd>
+<dt><strong>Fax</strong></dt>
+<dd>Fax number.</dd>
+<dt><strong>Email</strong></dt>
+<dd>Email address.</dd>
+<dt><strong>URL</strong></dt>
+<dd>Universal Resource Locator, an Internet World Wide Web address.</dd>
+<dt><strong>Address</strong></dt>
+<dd>Full mailing address.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the person, organization, or project.</dd>
 </dl>
-<p>spaces (e.g. «G.G.»).</p>
-<p><strong>GivenNames</strong> Given or forenames of a person (e.g. «George Gaylord»).
-Initials with spaces are used if full given names are not known (e.g.
-«G. G»).</p>
-<p><strong>Suffix</strong> Suffix of a person’s name (e.g. «Jr.», «III»).</p>
-<p><strong>Title</strong> A person’s title (e.g. «Dr.», «Prof.», «»).</p>
-<p><strong>Phone</strong> Telephone number.</p>
-<p><strong>Fax</strong> Fax number.</p>
-<p><strong>Email</strong> Email address.</p>
-<p><strong>URL</strong> Universal Resource Locator, an Internet World Wide Web address.</p>
-<p><strong>Address</strong> Full mailing address.</p>
-<p><strong>Notes</strong> Free form notes or comments about the person, organization,
-or project.</p>
 </div>
 <div class="section" id="contactstatuses">
-<h2>ContactStatuses<a class="headerlink" href="#contactstatuses" title="Permalink to this headline">¶</a></h2>
-<p>Lookup table of Contact Statuses. Table is referenced by the
-<a class="reference external" href="#_Table:_Contacts">Contacts</a> table.</p>
+<span id="id3"></span><h2>ContactStatuses<a class="headerlink" href="#contactstatuses" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Contact Statuses. Table is referenced by the <a class="reference internal" href="#contacts"><span>Contacts</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="28%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>ContactStatuses</strong></td>
+</tr>
+<tr class="row-even"><td>ContactStatusID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>ContactStatus</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>StatusDescription</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <dl class="docutils">
 <dt><strong>ContactStatusID (Primary Key)</strong></dt>
 <dd>An arbitrary Contact Status identification number.</dd>
 <dt><strong>ContactStatus</strong></dt>
 <dd>Status of person, organization, or project.</dd>
 <dt><strong>StatusDescription</strong></dt>
-<dd>Description of the status.</dd>
-</dl>
-<p>The following statuses exist (with descriptions):</p>
-<ul class="simple">
+<dd><dl class="first last docutils">
+<dt>Description of the status.  The following statuses exist (with descriptions):</dt>
+<dd><ul class="first last simple">
 <li>active Person, project, or organization is active in the field</li>
 <li>deceased Person is deceased</li>
 <li>defunct Project or organization is defunct or non-operational</li>
@@ -212,6 +362,10 @@ or project.</p>
 <li>retired Person is retired</li>
 <li>unknown Status is unknown</li>
 </ul>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -219,6 +373,15 @@ or project.</p>
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="references_cited.html" class="btn btn-neutral float-right" title="References Cited" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tables_publications.html" class="btn btn-neutral" title="Publication Related Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
