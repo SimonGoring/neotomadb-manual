@@ -94,18 +94,20 @@
 <li class="toctree-l2"><a class="reference internal" href="#sites">Sites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sitegeopolitical">SiteGeoPolitical</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">SQL Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#geopoliticalunits">GeoPoliticalUnits</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">SQL Example</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="table_contacts.html">Contact and Individual Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="table_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
 </ul>
 
@@ -154,7 +156,7 @@
   <div class="section" id="site-related-tables">
 <h1>Site Related Tables<a class="headerlink" href="#site-related-tables" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="siteimages">
-<h2>SiteImages<a class="headerlink" href="#siteimages" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>SiteImages<a class="headerlink" href="#siteimages" title="Permalink to this headline">¶</a></h2>
 <p>This table stores hyperlinks to jpeg images of sites.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -174,12 +176,12 @@
 <tr class="row-odd"><td>SiteID</td>
 <td>Long Integer</td>
 <td>FK</td>
-<td><span class="xref std std-ref">Sites</span></td>
+<td><a class="reference internal" href="#sites"><span>Sites</span></a></td>
 </tr>
 <tr class="row-even"><td>ContactID</td>
 <td>Long Integer</td>
 <td>FK</td>
-<td><span class="xref std std-ref">Contacts</span></td>
+<td><a class="reference internal" href="tables_contacts.html#contacts"><span>Contacts</span></a></td>
 </tr>
 <tr class="row-odd"><td>Caption</td>
 <td>Memo</td>
@@ -203,33 +205,26 @@
 </tr>
 </tbody>
 </table>
-<p><strong>SiteImageID (Primary Key)</strong> An arbitrary Site Image identification
-number.</p>
-<p><strong>SiteID (Foreign Key)</strong> Site identification number. Field links to the
-<span class="xref std std-ref">Sites</span> table.</p>
-<p><strong>ContactID (Foreign Key)</strong> Contact identification number for image
-attribution from the <span class="xref std std-ref">Contacts</span> table.</p>
-<p><strong>Caption</strong> Caption for the image.</p>
-<p><strong>Credit</strong> Credit for the image. If null, the credit is formed from the
-ContactID.</p>
-<p><strong>Date</strong> Date of photograph or image.</p>
-<p><strong>SiteImage</strong> Hyperlink to a URL for the image.</p>
+<dl class="docutils">
+<dt><strong>SiteImageID (Primary Key)</strong></dt>
+<dd>An arbitrary Site Image identification number.</dd>
+<dt><strong>SiteID (Foreign Key)</strong></dt>
+<dd>Site identification number. Field links to the <a class="reference internal" href="#sites"><span>Sites</span></a> table.</dd>
+<dt><strong>ContactID (Foreign Key)</strong></dt>
+<dd>Contact identification number for image attribution from the <a class="reference internal" href="tables_contacts.html#contacts"><span>Contacts</span></a> table.</dd>
+<dt><strong>Caption</strong></dt>
+<dd>Caption for the image.</dd>
+<dt><strong>Credit</strong></dt>
+<dd>Credit for the image. If null, the credit is formed from the ContactID.</dd>
+<dt><strong>Date</strong></dt>
+<dd>Date of photograph or image.</dd>
+<dt><strong>SiteImage</strong></dt>
+<dd>Hyperlink to a URL for the image.</dd>
+</dl>
 </div>
 <div class="section" id="sites">
-<h2>Sites<a class="headerlink" href="#sites" title="Permalink to this headline">¶</a></h2>
-<p>The Sites table stores information about sites or localities, including
-name, geographic coordinates, and description. Sites generally have an
-areal extent and can be circumscribed by a latitude-longitude box.
-However, site data ingested from legacy databases have included only
-point locations. The lat-long box can be used either to circumscribe the
-areal extent of a site or to provide purposeful imprecision to the site
-location. Site location may be imprecise because of the original
-description was vague, e.g. «a gravel bar 5 miles east of town», or
-because the investigators, land owner, or land management agency may not
-want the exact location made public, perhaps to prevent looting and
-vandalism. In the first case, the lat-long box can be made sufficiently
-large to encompass the true location and in the second case to prevent
-exact location.</p>
+<span id="id2"></span><h2>Sites<a class="headerlink" href="#sites" title="Permalink to this headline">¶</a></h2>
+<p>The Sites table stores information about sites or localities, including name, geographic coordinates, and description. Sites generally have an areal extent and can be circumscribed by a latitude-longitude box. However, site data ingested from legacy databases have included only point locations. The lat-long box can be used either to circumscribe the areal extent of a site or to provide purposeful imprecision to the site location. Site location may be imprecise because of the original description was vague, e.g. «a gravel bar 5 miles east of town», or because the investigators, land owner, or land management agency may not want the exact location made public, perhaps to prevent looting and vandalism. In the first case, the lat-long box can be made sufficiently large to encompass the true location and in the second case to prevent exact location.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="43%" />
@@ -292,68 +287,97 @@ exact location.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>SiteID (Primary Key)</strong> An arbitrary Site identification number.</p>
-<p><strong>SiteName</strong> Name of the site. Alternative names, including
-archaeological site numbers, are placed in square brackets, for example:</p>
-<ul>
-<li><p class="first">New #4 [Lloyd&#8217;s Rock Hole]</p>
-</li>
-<li><p class="first">Modoc Rock Shelter [11RA501]</p>
+<dl class="docutils">
+<dt><strong>SiteID (Primary Key)</strong></dt>
+<dd>An arbitrary Site identification number.</dd>
+<dt><strong>SiteName</strong></dt>
+<dd><p class="first">Name of the site. Alternative names, including archaeological site numbers, are placed in square brackets, for example:</p>
 <blockquote>
-<div><p>A search of the SiteName field for any of the alternative names or
-for the archaeological site number will find the site. Some
-archaeological sites are known only by their site number.</p>
-<p>Modifiers to site names are placed in parentheses. Authors are added
-for generic sites names, especially for surface samples, that are
-duplicated in the database, for example:</p>
-</div></blockquote>
-</li>
-<li><p class="first">Site 1 (Heusser 1978)</p>
-</li>
-<li><p class="first">Site 1 (Delcourt et al. 1983)</p>
-</li>
-<li><p class="first">Site 1 (Elliot-Fisk et al. 1982)</p>
-</li>
-<li><p class="first">Site 1 (Whitehead and Jackson 1990)</p>
-<blockquote>
-<div><p>For actual site names duplicated in the database, the name is
-followed by the 2-letter country code and state or province, for
-example:</p>
-</div></blockquote>
-</li>
-<li><p class="first">(US:)</p>
-</li>
-<li><p class="first">(CA:)</p>
-</li>
-<li><p class="first">(US:)</p>
-</li>
-<li><p class="first">(US:)</p>
-</li>
+<div><ul class="simple">
+<li>New #4 [Lloyd&#8217;s Rock Hole]</li>
+<li>Modoc Rock Shelter [11RA501]</li>
 </ul>
-<p><strong>LongitudeEast</strong> East bounding longitude for a site.</p>
-<p><strong>LatitudeNorth</strong> North bounding latitude for a site.</p>
-<p><strong>LongitudeWest</strong>: West bounding longitude for a site.</p>
-<p><strong>LatitudeSouth</strong> South bounding latitude for a site.</p>
-<p><strong>Altitude</strong> Altitude of a site in meters.</p>
-<p><strong>Area</strong> Area of a site in hectares.</p>
-<p><strong>SiteDescription</strong> Free form description of a site, including such
-information as physiography and vegetation around the site.</p>
-<p><strong>Notes</strong> Free form notes or comments about the site.</p>
+</div></blockquote>
+<p>A search of the SiteName field for any of the alternative names or for the archaeological site number will find the site. Some archaeological sites are known only by their site number.</p>
+<p>Modifiers to site names are placed in parentheses. Authors are added for generic sites names, especially for surface samples, that are duplicated in the database, for example:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Site 1 (Heusser 1978)</li>
+<li>Site 1 (Delcourt et al. 1983)</li>
+<li>Site 1 (Elliot-Fisk et al. 1982)</li>
+<li>Site 1 (Whitehead and Jackson 1990)</li>
+</ul>
+</div></blockquote>
+<dl class="last docutils">
+<dt>For actual site names duplicated in the database, the name is followed by the 2-letter country code and state or province, for example:</dt>
+<dd><ul class="first last simple">
+<li>(US:)</li>
+<li>(CA:)</li>
+<li>(US:)</li>
+<li>(US:)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>LongitudeEast</strong></dt>
+<dd>East bounding longitude for a site.</dd>
+<dt><strong>LatitudeNorth</strong></dt>
+<dd>North bounding latitude for a site.</dd>
+<dt><strong>LongitudeWest</strong></dt>
+<dd>West bounding longitude for a site.</dd>
+<dt><strong>LatitudeSouth</strong></dt>
+<dd>South bounding latitude for a site.</dd>
+<dt><strong>Altitude</strong></dt>
+<dd>Altitude of a site in meters.</dd>
+<dt><strong>Area</strong></dt>
+<dd>Area of a site in hectares.</dd>
+<dt><strong>SiteDescription</strong></dt>
+<dd>Free form description of a site, including such information as physiography and vegetation around the site.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the site.</dd>
+</dl>
 </div>
 <div class="section" id="sitegeopolitical">
-<h2>SiteGeoPolitical<a class="headerlink" href="#sitegeopolitical" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>SiteGeoPolitical<a class="headerlink" href="#sitegeopolitical" title="Permalink to this headline">¶</a></h2>
 <p>This table lists the GeoPolitical units in which sites occur.</p>
-<p><strong>SiteGeoPoliticalID (Primary Key)</strong> An arbitrary Site GeoPolitical
-identification number.</p>
-<p><strong>SiteID (Foreign Key)</strong> Site identification number. Field links to the
-<a class="reference external" href="#_Table:_Sites_1">Sites</a> table.</p>
-<p><strong>GeoPoliticalID (Foreign Key)</strong> GeoPolitical identification number.
-Field links to the <a class="reference external" href="#_Table:_GeoPoliticalUnits">GeoPoliticalUnits</a>
-lookup table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="20%" />
+<col width="8%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>SiteGeoPolitical</strong></td>
+</tr>
+<tr class="row-even"><td>SiteGeoPoliticalID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SiteID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td><a class="reference internal" href="#sites"><span>Sites</span></a></td>
+</tr>
+<tr class="row-even"><td>GeoPoliticalID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td><a class="reference internal" href="#geopoliticalunits"><span>GeoPoliticalUnits</span></a></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>SiteGeoPoliticalID (Primary Key)</strong></dt>
+<dd>An arbitrary Site GeoPolitical identification number.</dd>
+<dt><strong>SiteID (Foreign Key)</strong></dt>
+<dd>Site identification number. Field links to the <a class="reference internal" href="#sites"><span>Sites</span></a> table.</dd>
+<dt><strong>GeoPoliticalID (Foreign Key)</strong></dt>
+<dd>GeoPolitical identification number. Field links to the <a class="reference internal" href="#geopoliticalunits"><span>GeoPoliticalUnits</span></a> lookup table.</dd>
+</dl>
 <div class="section" id="sql-example">
 <h3>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h3>
-<p>The query in Example 2.8.1 lists the GeoPoliticalUnits for «», one unit
-to a record. This query lists them in a single record.</p>
+<p>The query in Example 2.8.1 lists the GeoPoliticalUnits for «», one unit to a record. This query lists them in a single record.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -412,14 +436,10 @@ WHERE (((Sites.SiteName)=&quot;&quot;) AND ((GeoPoliticalUnits.Rank)=1) AND
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div>SQL Example</div></blockquote>
-<hr class="docutils" />
-<p>The problem with the query above is that if a site has less than three
-GeoPolitical Names, the result will return empty. For example, «» has no
-GeoPoliticalUnit with Rank = 3, and will return an empty result with the
-above query. A solution to this problem is to create and save separate
-queries for the three ranks:</p>
+</div>
+<div class="section" id="id4">
+<h3>SQL Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The problem with the query above is that if a site has less than three GeoPolitical Names, the result will return empty. For example, «» has no GeoPoliticalUnit with Rank = 3, and will return an empty result with the above query. A solution to this problem is to create and save separate queries for the three ranks:</p>
 <p>Query GeoPol1:</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -468,9 +488,7 @@ queries for the three ranks:</p>
 <span class="k">WHERE</span> <span class="p">(((</span><span class="n">GeoPoliticalUnits</span><span class="p">.</span><span class="n">Rank</span><span class="p">)</span><span class="o">=</span><span class="mi">3</span><span class="p">));</span>
 </pre></div>
 </td></tr></table></div>
-<p>These three queries can now be combined in a new query with left joins,
-and the GeoPolitical Names will be returned even if there are less than
-three.</p>
+<p>These three queries can now be combined in a new query with left joins, and the GeoPolitical Names will be returned even if there are less than three.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -508,11 +526,9 @@ three.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id1">
-<h3>SQL Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>The saved queries from the example above can be linked with tables in a
-more complicated query. This query lists all the pollen sites in the
-adjacent states of «» in the «» and «» in «».</p>
+<div class="section" id="id5">
+<h3>SQL Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>The saved queries from the example above can be linked with tables in a more complicated query. This query lists all the pollen sites in the adjacent states of «» in the «» and «» in «».</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -621,29 +637,9 @@ adjacent states of «» in the «» and «» in «».</p>
 </div>
 </div>
 <div class="section" id="geopoliticalunits">
-<h2>GeoPoliticalUnits<a class="headerlink" href="#geopoliticalunits" title="Permalink to this headline">¶</a></h2>
-<p>Lookup table of GeoPoliticalUnits. Table is referenced by the
-<a class="reference external" href="#_Table:_SiteGeoPolitical">SiteGeoPolitical</a> table. These are
-countries and various subdivisions. Countries and subdivisions were
-acquired from the U.S. Central Intelligence Agency World Factbook <a href="#id5"><span class="problematic" id="id6"><span id="id2"></span>[8]_</span></a>
-and the ISO 3166-1 and ISO 3166-2 databases <a href="#id7"><span class="problematic" id="id8"><span id="id3"></span>[9]_</span></a>.</p>
-<p>Each GeoPolitical Unit has a rank. GeoPolitical Units with Rank 1 are
-generally countries. There are a few exceptions, including Antarctica
-and island territories, such as , which although a Danish territory, is
-geographically separate and distinct. Rank 2 units are generally
-secondary political divisions with various designations: e.g. states in
-the , provinces in , and regions in . For some countries, the secondary
-divisions are not political but rather distinct geographic entities,
-such as islands. The secondary divisions of some island nations include
-either groups of islands or sections of more highly populated islands;
-however, the actual island on which a site is located is more important
-information. Some countries also have Rank 3 units, e.g. counties in the
-and metropolitan departments in . In addition to purely political units,
-various other administrative regions and geographic entities can be
-contained in this table. Examples of administrative regions are National
-Parks and Forests. It might be quite useful, for example, to have a
-record of all the sites in . These additional units are Rank 4, and they
-can be added to the database as warranted.</p>
+<span id="id6"></span><h2>GeoPoliticalUnits<a class="headerlink" href="#geopoliticalunits" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of GeoPoliticalUnits. Table is referenced by the <a class="reference internal" href="#sitegeopolitical"><span>SiteGeoPolitical</span></a> table. These are countries and various subdivisions. Countries and subdivisions were acquired from the U.S. Central Intelligence Agency World Factbook <a class="footnote-reference" href="#id10" id="id7">[8]</a> and the ISO 3166-1 and ISO 3166-2 databases <a class="footnote-reference" href="#id11" id="id8">[9]</a>.</p>
+<p>Each GeoPolitical Unit has a rank. GeoPolitical Units with Rank 1 are generally countries. There are a few exceptions, including Antarctica and island territories, such as , which although a Danish territory, is geographically separate and distinct. Rank 2 units are generally secondary political divisions with various designations: e.g. states in the , provinces in , and regions in . For some countries, the secondary divisions are not political but rather distinct geographic entities, such as islands. The secondary divisions of some island nations include either groups of islands or sections of more highly populated islands; however, the actual island on which a site is located is more important information. Some countries also have Rank 3 units, e.g. counties in the and metropolitan departments in . In addition to purely political units, various other administrative regions and geographic entities can be contained in this table. Examples of administrative regions are National Parks and Forests. It might be quite useful, for example, to have a record of all the sites in . These additional units are Rank 4, and they can be added to the database as warranted.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="36%" />
@@ -681,16 +677,20 @@ can be added to the database as warranted.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>GeoPoliticalID (Primary Key)</strong> An arbitrary GeoPolitical
-identification number.</p>
-<p><strong>GeoPoliticalName</strong> Name of the GeoPolitical Unit, e.g. , .</p>
-<p><strong>GeoPoliticalUnit</strong> The name of the unit, e.g. country, state, county,
-island, governorate, oblast.</p>
-<p><strong>Rank</strong> The rank of the unit.</p>
-<p><strong>HigherGeoPoliticalID</strong> The GeoPoliticalUnit with higher rank, e.g.
-the country in which a state lies.</p>
-<div class="section" id="id4">
-<h3>SQL Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><strong>GeoPoliticalID (Primary Key)</strong></dt>
+<dd>An arbitrary GeoPolitical identification number.</dd>
+<dt><strong>GeoPoliticalName</strong></dt>
+<dd>Name of the GeoPolitical Unit, e.g. , .</dd>
+<dt><strong>GeoPoliticalUnit</strong></dt>
+<dd>The name of the unit, e.g. country, state, county, island, governorate, oblast.</dd>
+<dt><strong>Rank</strong></dt>
+<dd>The rank of the unit.</dd>
+<dt><strong>HigherGeoPoliticalID</strong></dt>
+<dd>The GeoPoliticalUnit with higher rank, e.g. the country in which a state lies.</dd>
+</dl>
+<div class="section" id="id9">
+<h3>SQL Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>The following query lists all the political subdivisions of in the .</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -801,6 +801,18 @@ WHERE (((GeoPoliticalUnits.GeoPoliticalName)=&quot;&quot;) AND
 <td>district</td>
 <td>Carrickfergus</td>
 </tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[8]</a></td><td><a class="reference external" href="https://www.cia.gov/library/publications/the-world-factbook/">https://www.cia.gov/library/publications/the-world-factbook/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[9]</a></td><td><a class="reference external" href="http://www.iso.org/iso/country_codes/iso_3166_databases.htm">http://www.iso.org/iso/country_codes/iso_3166_databases.htm</a></td></tr>
 </tbody>
 </table>
 </div>
