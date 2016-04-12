@@ -1,0 +1,787 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Publication Related Tables &mdash; neotoma 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
+        <link rel="next" title="References Cited" href="references_cited.html"/>
+        <link rel="prev" title="Taxonomy Related Tables" href="tables_taxa.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> neotoma
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Publication Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#publicationauthors">PublicationAuthors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#publicationeditors">PublicationEditors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publications">Publications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publicationtypes">PublicationTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#legacy-publication">Legacy Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#journal-article">Journal Article</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#book-chapter">Book Chapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authored-book">Authored Book</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#edited-book">Edited Book</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#masters-thesis">Master’s Thesis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#doctoral-dissertation">Doctoral Dissertation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authored-report">Authored Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edited-report">Edited Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-authored-publication">Other Authored Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-edited-publication">Other Edited Publication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">neotoma</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Publication Related Tables</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tables_publications.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="publication-related-tables">
+<h1>Publication Related Tables<a class="headerlink" href="#publication-related-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="publicationauthors">
+<span id="id1"></span><h2>PublicationAuthors<a class="headerlink" href="#publicationauthors" title="Permalink to this headline">¶</a></h2>
+<p>This table lists authors as their names are given in publications. Only the initials are stored for authors’ given names. The ContactID links to the author’s full name and contact data in the <span class="xref std std-ref">Contacts</span> table. Thus, for a bibliographic entry, Charles Robert Darwin is listed as C. R. Darwin, or as C. Darwin if the publication did not include his middle name. Book editors are also stored in this table if the entire book is cited. However, if a book chapter or section is cited, authors are stored in this table, but the book editors are stored in the <a class="reference internal" href="#publicationeditors"><span>PublicationEditors</span></a> table. Thus, for the following reference, G. C. Frison is stored in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table.</p>
+<blockquote>
+<div>Frison, G. C., editor. 1996. The Mill Iron site. University of New Mexico Press, Albuquerque, New Mexico, USA.</div></blockquote>
+<p>Whereas for the following publication, L. S. Cummings is listed in the PublicationAuthors table, and G. C. Frison is listed in the <a class="reference internal" href="#publicationeditors"><span>PublicationEditors</span></a> table.</p>
+<blockquote>
+<div>Cummings, L. S. 1996. Paleoenvironmental interpretations for the Mill Iron site: stratigraphic pollen and phyrolith analysis. Pages 177-193 in G. C. Frison, editor. The Mill Iron site. University of New Mexico Press, Albuquerque, New Mexico, USA.</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="23%" />
+<col width="8%" />
+<col width="23%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: PublicationAuthors</strong></td>
+</tr>
+<tr class="row-even"><td>AuthorID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>PublicationID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Publications</td>
+</tr>
+<tr class="row-even"><td>AuthorOrder</td>
+<td>Long Integer</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>FamilyName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Initials</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Suffix</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>ContactID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Contacts</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>AuthorID (Primary Key)</strong></dt>
+<dd>An arbitrary Author identification number.</dd>
+<dt><strong>PublicationID (Foreign Key)</strong></dt>
+<dd>Publication identification number. Field links to the <a class="reference internal" href="#publications"><span>Publications</span></a> table.</dd>
+<dt><strong>AuthorOrder</strong></dt>
+<dd>Ordinal number for the position in which the author&#8217;s name appears in the publication’s author list.</dd>
+<dt><strong>FamilyName</strong></dt>
+<dd>Family name of author</dd>
+<dt><strong>Initials</strong></dt>
+<dd>Initials of author’s given names</dd>
+<dt><strong>Suffix</strong></dt>
+<dd>Authors suffix (e.g. «Jr.»)</dd>
+<dt><strong>ContactID (Foreign Key)</strong></dt>
+<dd>Contact identification number. Field links to the <span class="xref std std-ref">Contacts</span> table.</dd>
+</dl>
+<div class="section" id="sql-example">
+<h3>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h3>
+<p>The following query lists the PublicationID and complete author names for the publication of . Note that because is a name likely to be duplicated in the database, the name is given with a wild card ending and the GeoPolitical tables are linked in. The citation for this publication is:</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">PublicationAuthors</span><span class="p">.</span><span class="n">PublicationID</span><span class="p">,</span> <span class="n">Contacts</span><span class="p">.</span><span class="n">ContactName</span>
+
+<span class="k">FROM</span> <span class="n">GeoPoliticalUnits</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">Contacts</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">Publications</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(((</span><span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">CollectionUnits</span> <span class="k">ON</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Datasets</span> <span class="k">ON</span>
+<span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="n">DatasetPublications</span> <span class="k">ON</span> <span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span>
+<span class="n">DatasetPublications</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">ON</span> <span class="n">Publications</span><span class="p">.</span><span class="n">PublicationID</span> <span class="o">=</span>
+<span class="n">DatasetPublications</span><span class="p">.</span><span class="n">PublicationID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">PublicationAuthors</span> <span class="k">ON</span>
+<span class="n">Publications</span><span class="p">.</span><span class="n">PublicationID</span> <span class="o">=</span> <span class="n">PublicationAuthors</span><span class="p">.</span><span class="n">PublicationID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">Contacts</span><span class="p">.</span><span class="n">ContactID</span> <span class="o">=</span> <span class="n">PublicationAuthors</span><span class="p">.</span><span class="n">ContactID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="n">SiteGeoPolitical</span> <span class="k">ON</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">SiteGeoPolitical</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">GeoPoliticalUnits</span><span class="p">.</span><span class="n">GeoPoliticalID</span> <span class="o">=</span> <span class="n">SiteGeoPolitical</span><span class="p">.</span><span class="n">GeoPoliticalID</span>
+
+<span class="k">WHERE</span> <span class="p">(((</span><span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">)</span> <span class="k">Like</span> <span class="ss">&quot; \*&quot;</span><span class="p">)</span> <span class="k">AND</span>
+<span class="p">((</span><span class="n">GeoPoliticalUnits</span><span class="p">.</span><span class="n">GeoPoliticalName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>PublicationID</strong></td>
+<td><strong>ContactName</strong></td>
+</tr>
+<tr class="row-even"><td>202</td>
+<td>Baker, Richard G.</td>
+</tr>
+<tr class="row-odd"><td>202</td>
+<td>Maher, Louis J., Jr.</td>
+</tr>
+<tr class="row-even"><td>202</td>
+<td><ol class="first last upperalpha simple" start="12">
+<li></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>202</td>
+<td>Chumbley, Craig A.</td>
+</tr>
+</tbody>
+</table>
+<p>The citation for PublicationID is:</p>
+<p>Baker, R. G., L. J. Maher, Jr., C. A. Chumbley, and K. L. Van Zant. 1992. Patterns of Holocene environmental change in the midwestern United States. Quaternary Research 37:379-389.</p>
+</div>
+</div>
+<div class="section" id="publicationeditors">
+<span id="id2"></span><h2>PublicationEditors<a class="headerlink" href="#publicationeditors" title="Permalink to this headline">¶</a></h2>
+<p>This table stores the editors of publications for which chapters or sections are the primary bibliographic entries. Chapter authors are stored in the PublicatonAuthors table, where they are linked to the <span class="xref std std-ref">Contacts</span> table. However, publication editors are not cross-referenced in the <span class="xref std std-ref">Contacts</span> table, because chapter authors are the principal citation.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="23%" />
+<col width="8%" />
+<col width="23%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: PublicationEditors</strong></td>
+</tr>
+<tr class="row-even"><td>EditorID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>PublicationID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>Publications</td>
+</tr>
+<tr class="row-even"><td>EditorOrder</td>
+<td>Long Integer</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>FamilyName</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Initials</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Suffix</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>EditorID (Primary Key)</strong></dt>
+<dd>An arbitrary Editor identification number.</dd>
+<dt><strong>PublicationID (Foreign Key)</strong></dt>
+<dd>Publication identification number. Field links to the <a class="reference internal" href="#publications"><span>Publications</span></a> table.</dd>
+<dt><strong>EditorOrder</strong></dt>
+<dd>Ordinal number for the position in which the editor’s name appears in the publication’s author list.</dd>
+<dt><strong>FamilyName</strong></dt>
+<dd>Family name of editor</dd>
+<dt><strong>Initials</strong></dt>
+<dd>Initials of editor’s given names</dd>
+<dt><strong>Suffix</strong></dt>
+<dd>Authors suffix (e.g. «Jr.»)</dd>
+</dl>
+</div>
+<div class="section" id="publications">
+<span id="id3"></span><h2>Publications<a class="headerlink" href="#publications" title="Permalink to this headline">¶</a></h2>
+<p>This table stores publication or bibliographic data. The table is designed with fields for bibliographic data so that bibliographies can be formatted in different styles and potentially exported to bibliographic software such EndNote®. In the constituent databases that were originally merged into Neotoma, bibliographic entries were not parsed into separate fields, but rather were stored as free-form text.</p>
+<p>Because complete parsing of these thousands of legacy bibliographic entries into individual fields would have been prohibitively time consuming, the existing bibliographic data were ingested “as is” with a PubTypeID = Other. However, for legacy publications, the year of publication was added to the Year field, and authors were parsed into the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table and added to the <span class="xref std std-ref">Contacts</span> table. In addition, some global changes were made. For example, «Pp.» was changed to «Pages», «Ed.» to «Editor», and «Eds.» to «Editors». Also for FAUNMAP entries, abbreviated journal names were changed to fully spelled out names.</p>
+<p>The merged databases used different bibliographic styles, and data entry personnel working on the same database sometimes followed different conventions. Consequently, the current bibliographic entries are not stylistically uniform. Eventually, the legacy bibliographic data will be parsed into separate fields.</p>
+<p>The Publications table has fields to accommodate a number of different types of publications. Some fields contain different kinds of data for different kinds of publications. For example, the BookTitle field stores the titles of books, but stores the journal name for journal articles. The Publisher field stores the name of the publisher for books, but the name of the university for theses and dissertations.</p>
+<p>Authors are stored in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table. Editors are also stored in the <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table if the entire publication is cited. The <a class="reference internal" href="#publicationauthors"><span>PublicationAuthors</span></a> table has a ContactID field, which links to the <span class="xref std std-ref">Contacts</span> table, where full names and contact information is stored for authors and editors. The PubTypeID «Authored Book» or «Edited Book» indicates whether the PublicationAuathors records are authors or editors. If a book chapter or section is the primary bibliographic entry, then the book editors are stored in the <a class="reference internal" href="#publicationeditors"><span>PublicationEditors</span></a> table, which does not have a ContactID field.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="23%" />
+<col width="9%" />
+<col width="29%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Publications</strong></td>
+</tr>
+<tr class="row-even"><td>PublicationID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>Publications</td>
+</tr>
+<tr class="row-odd"><td>PubTypeID</td>
+<td>Long Integer</td>
+<td>FK</td>
+<td>PublicationTypes</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Citation</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>ArticleTitle</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Volume</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Issue</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Pages</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CitationNumber</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>DOI</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>NumVolumes</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Edition</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VolumeTitle</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>OriginalLanguage</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>PublicationID (Primary Key)</strong></dt>
+<dd>An arbitrary Publication identification number.</dd>
+<dt><strong>PubTypeID (Foreign Key)</strong></dt>
+<dd>Publication type. Field links to the <a class="reference internal" href="#publicationtypes"><span>PublicationTypes</span></a> lookup table.</dd>
+<dt><strong>Year</strong></dt>
+<dd>Year of publication.</dd>
+<dt><strong>Citation</strong></dt>
+<dd>The complete citation in a standard style. For Legacy citations inherited from other databases, this field holds the citation as ingested from the other databases.</dd>
+<dt><strong>ArticleTitle</strong></dt>
+<dd>The title of a journal or book chapter article.</dd>
+<dt><strong>BookTitle</strong></dt>
+<dd>The title of a book or journal</dd>
+<dt><strong>Volume</strong></dt>
+<dd>The volume number of a journal or the volume number of a book in a set. A set of books is comprised of a fixed number of volumes and normally have ISBN numbers, not ISSN numbers. Book sets are often published simultaneously, but not necessarily. For instance, many floras, such as <em>The</em> <em>Flora of North America north of</em> and <em>Flora Europaea</em>, consist of a set number of volumes planned in advance but published over a period of years.</dd>
+<dt><strong>Issue</strong></dt>
+<dd>Journal issue number, normally included only if issues are independently paginated.</dd>
+<dt><strong>Pages</strong></dt>
+<dd>Page numbers for journal or book chapter articles, or the number of pages in theses, dissertations, and reports.</dd>
+<dt><strong>CitationNumber</strong></dt>
+<dd>A citation or article number used in lieu of page numbers for digital or online publications, typically used in conjunction with the DOI. For example, journals published by the American Geophysical Union since 1999 use citation numbers rather than page numbers.</dd>
+<dt><strong>DOI</strong></dt>
+<dd><p class="first">Digital Object Identifier. A unique identifier assigned to digital publications. The DOI consists of a prefix and suffix separated by a slash. The portion before the slash stands for the publisher and is assigned by the International DOI Foundation. For example, 10.1029 is the prefix for the American Geophysical Union. The suffix is assigned by the publisher according to their protocols. For example, the DOI 10.1029/2002PA000768 is for an article submitted to <em>Paleoceanography</em> in 2002 and is article number 768 submitted since the system was installed. An example of CitationNumber and DOI:</p>
+<blockquote class="last">
+<div>Barron, J. A., L. Heusser, T. Herbert, and M. Lyle. 2003.
+High-resolution climatic evolution of coastal northern during the
+past 16,000 years, Paleoceanography 18(1):<strong>1020.
+DOI:10.1029/2002PA000768.</strong></div></blockquote>
+</dd>
+<dt><strong>NumVolumes</strong></dt>
+<dd><blockquote class="first">
+<div>Number of volumes in a set of books. Used when the entire set is referenced. An example of NumVolumes and Edition:</div></blockquote>
+<p class="last">Wilson, D. E., and D. M. Reeder. 2005. Mammal species of the world:
+a taxonomic and geographic reference. <strong>Third edition. 2 volumes</strong>.
+The Johns Hopkins University Press, Baltimore, Maryland, USA.</p>
+</dd>
+<dt><strong>Edition</strong></dt>
+<dd>Edition of a publication.</dd>
+<dt><strong>VolumeTitle</strong></dt>
+<dd><blockquote class="first">
+<div>Title of a book volume in a set. Used if the individual volume is referenced. Example of Volume and VolumeTitle:</div></blockquote>
+<p class="last">Flora of North America Editorial Committee. 2002. Flora of North America north of . <strong>Volume 26</strong>. <strong>Magnoliophyta: Liliidae: Liliales and Orchidales</strong>. Oxford University Press, New York, New York, USA.</p>
+</dd>
+<dt><strong>SeriesTitle</strong></dt>
+<dd>Title of a book series. Book series consist of a series of books, typically published at irregular intervals on sometimes</dd>
+</dl>
+<p>related but different topics. The number of volumes in a series is typically open ended. Book series are often assigned ISSN numbers as well as ISBN numbers. However, in contrast to most serials, book series have individual titles and authors or editors. Citation practices for book series vary; sometimes they are cited as books, other times as journals. The default citation for Neotoma includes all information. An example of SeriesTitle and SeriesVolume:</p>
+<blockquote>
+<div>Curtis, J. H., and D. A. Hodell. 1993. An isotopic and trace element study of ostracods from , : A 10,500 year record of paleosalinity and paleotemperature changes in the . Pages 135-152 in P. K. Swart, K. C. Lohmann, J. McKensie, and S. Savin, editors. Climate change in continental isotopic records. <strong>Geophysical Monograph 78</strong>. American Geophysical Union, Washington, D.C., USA.</div></blockquote>
+<dl class="docutils">
+<dt><strong>SeriesVolume</strong></dt>
+<dd>Volume number in a series.</dd>
+<dt><strong>Publisher</strong></dt>
+<dd>Publisher, including commercial publishing houses, university presses, government agencies, and non-governmental organizations, generally the owner of the copyright.</dd>
+<dt><strong>City</strong></dt>
+<dd>City in which the publication was published. The first city if a list is given.</dd>
+<dt><strong>State</strong></dt>
+<dd>State or province in which the publication was published. Used for the and , not used for many countries.</dd>
+<dt><strong>Country</strong></dt>
+<dd>Country in which the publication was published, generally the complete country name, but «» for the .</dd>
+<dt><strong>OriginalLanguage</strong></dt>
+<dd><blockquote class="first">
+<div>The original language if the publication or bibliographic citation is translated from another language or transliterated from a non-Latin character set. Field not needed for non-translated publications in languages using the Latin character set. In the following example, the ArticleTitle is translated from Russian to English and the BookTitle (journal name) is transliterated from Russian:</div></blockquote>
+<p class="last">Tarasov, P.E. 1991. Late Holocene features of the Kokchetav Highland. Vestnik Moskovskogo Universiteta. Series 5. Geography <strong>6</strong>:54-60 [in <strong>Russian</strong>].</p>
+</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the publication, which may be added parenthetically to the citation.</dd>
+</dl>
+</div>
+<div class="section" id="publicationtypes">
+<span id="id4"></span><h2>PublicationTypes<a class="headerlink" href="#publicationtypes" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Publication Types. This table is referenced by the <a class="reference internal" href="#publications"><span>Publications</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="28%" />
+<col width="10%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: PublicationTypes</strong></td>
+</tr>
+<tr class="row-even"><td>PubTypeID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>PubType</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>PubTypeID</strong></dt>
+<dd>An arbitrary Publication Type identification number.</dd>
+<dt><strong>PubType</strong></dt>
+<dd>Publication Type. The database has the following types:</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt>Legacy Legacy citation ingested from another database and not parsed</dt>
+<dd><p class="first last">into separate fields</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Journal Article Article in a journal</p>
+</li>
+<li><p class="first">Book Chapter Chapter or section in an edited book</p>
+</li>
+<li><p class="first">Authored Book An authored book</p>
+</li>
+<li><p class="first">Edited Book An edited book</p>
+</li>
+<li><p class="first">Master&#8217;s Thesis A Master&#8217;s thesis</p>
+</li>
+<li><p class="first">Doctoral Dissertation A doctoral dissertation or Ph.D. thesis</p>
+</li>
+<li><p class="first">Authored Report An authored report</p>
+</li>
+<li><p class="first">Edited Report An edited report</p>
+</li>
+<li><dl class="first docutils">
+<dt>Other Authored An authored publication not fitting in any other</dt>
+<dd><p class="first last">category (e.g. web sites, maps)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Other Edited A edited publication not fitting into any other category</p>
+</li>
+</ul>
+<p>Examples of the different Publication Types are given in the following sections. Shown for each Publication Type are the fields in the <a class="reference internal" href="#publications"><span>Publications</span></a> table that may be filled for that type, with the exception that OriginalLanguage and Notes are not shown unless used.</p>
+<div class="section" id="legacy-publication">
+<h3>Legacy Publication<a class="headerlink" href="#legacy-publication" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="journal-article">
+<h3>Journal Article<a class="headerlink" href="#journal-article" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="book-chapter">
+<h3>Book Chapter<a class="headerlink" href="#book-chapter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="authored-book">
+<h3>Authored Book<a class="headerlink" href="#authored-book" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="edited-book">
+<span id="id5"></span><h2>Edited Book<a class="headerlink" href="#edited-book" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="74%" />
+<col width="26%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Edited Book Example</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Frison, G. C., editor. 1996. The Mill Iron site. of Press, .</td>
+</tr>
+<tr class="row-odd"><td>Editors</td>
+<td><ol class="first last upperalpha simple" start="7">
+<li><ol class="first upperalpha" start="3">
+<li>Frison</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1996</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>The Mill Iron site</td>
+</tr>
+<tr class="row-odd"><td>Edition</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>NumVolumes</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VolumeTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>Press</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="masters-thesis">
+<h3>Master’s Thesis<a class="headerlink" href="#masters-thesis" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="doctoral-dissertation">
+<h3>Doctoral Dissertation<a class="headerlink" href="#doctoral-dissertation" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="authored-report">
+<h3>Authored Report<a class="headerlink" href="#authored-report" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="edited-report">
+<h3>Edited Report<a class="headerlink" href="#edited-report" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="other-authored-publication">
+<h3>Other Authored Publication<a class="headerlink" href="#other-authored-publication" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="other-edited-publication">
+<h3>Other Edited Publication<a class="headerlink" href="#other-edited-publication" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="references_cited.html" class="btn btn-neutral float-right" title="References Cited" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tables_taxa.html" class="btn btn-neutral" title="Taxonomy Related Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

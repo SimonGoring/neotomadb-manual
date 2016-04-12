@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Contact and Individual Related Tables &mdash; neotoma 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> neotoma
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">neotoma</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Contact and Individual Related Tables</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tables_contacts.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="contact-and-individual-related-tables">
+<h1>Contact and Individual Related Tables<a class="headerlink" href="#contact-and-individual-related-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="collectors">
+<h2>Collectors<a class="headerlink" href="#collectors" title="Permalink to this headline">¶</a></h2>
+<p>The Collectors table lists the people who collected Collection Units.</p>
+<dl class="docutils">
+<dt><strong>CollectorID (Primary Key)</strong></dt>
+<dd>An arbitrary Collector identification number.</dd>
+<dt><strong>CollectionUnitID (Foreign Key)</strong></dt>
+<dd>CollectionUnit collected. Field links to <a class="reference external" href="#_Table:_CollectionUnits">CollectionUnits</a> table.</dd>
+<dt><strong>ContactID (Foreign Key)</strong></dt>
+<dd>Person who collected the CollectionUnit. Multiple individuals are listed in separate records. Field links to the <a class="reference external" href="#_Table:_Contacts">#_Table:_Contacts</a> table.</dd>
+<dt><strong>CollectorOrder</strong></dt>
+<dd>Order in which Collectors should be listed.</dd>
+</dl>
+</div>
+<div class="section" id="contacts">
+<h2>Contacts<a class="headerlink" href="#contacts" title="Permalink to this headline">¶</a></h2>
+<p>This table lists persons and organizations referenced by the
+<a class="reference external" href="#_Table:_Chronologies">Chronologies</a>,
+<a class="reference external" href="#_Table:_Collectors">Collectors</a>,
+<a class="reference external" href="#_Table:_DatasetPIs">DatasetPIs</a>,
+<a class="reference external" href="#_Table:_DatasetSubmissions">DatasetSubmissions</a>,
+<a class="reference external" href="#_Table:_Projects">Projects</a>,
+<a class="reference external" href="#_Table:_PublicationAuthors">PublicationAuthors</a>,
+<a class="reference external" href="#_Table:_SampleAnalysts">SampleAnalysts</a>, and
+<a class="reference external" href="#_Table:_SiteImages">SiteImages</a> tables.</p>
+<dl class="docutils">
+<dt><strong>ContactID (Primary Key)</strong></dt>
+<dd>An arbitrary Contact identification number.</dd>
+<dt><strong>AliasID (Foreign Key)</strong></dt>
+<dd>The ContactID of a person’s current name. If the AliasID is different from the ContactID, the ContactID refers to the person’s former name. For example, if J. L. Bouvier became J. B. Kennedy, the ContactID for J. B. Kennedy is the AliasID for J. L. Bouvier.</dd>
+<dt><strong>ContactName</strong></dt>
+<dd>Full name of the person, last name first (e.g. «Simpson, George Gaylord») or name of organization or project (e.g. «Great Plains Flora Association»).</dd>
+<dt><strong>ContactStatusID (Foreign Key)</strong></dt>
+<dd>Current status of the person, organization, or project. Field links to the <a class="reference external" href="#_Table:_ContactStatuses">ContactStatuses</a> lookup table.</dd>
+<dt><strong>FamilyName</strong></dt>
+<dd>Family or surname name of a person.</dd>
+<dt><strong>LeadingInitials</strong></dt>
+<dd>Leading initials for given or forenames without</dd>
+</dl>
+<p>spaces (e.g. «G.G.»).</p>
+<p><strong>GivenNames</strong> Given or forenames of a person (e.g. «George Gaylord»).
+Initials with spaces are used if full given names are not known (e.g.
+«G. G»).</p>
+<p><strong>Suffix</strong> Suffix of a person’s name (e.g. «Jr.», «III»).</p>
+<p><strong>Title</strong> A person’s title (e.g. «Dr.», «Prof.», «»).</p>
+<p><strong>Phone</strong> Telephone number.</p>
+<p><strong>Fax</strong> Fax number.</p>
+<p><strong>Email</strong> Email address.</p>
+<p><strong>URL</strong> Universal Resource Locator, an Internet World Wide Web address.</p>
+<p><strong>Address</strong> Full mailing address.</p>
+<p><strong>Notes</strong> Free form notes or comments about the person, organization,
+or project.</p>
+</div>
+<div class="section" id="contactstatuses">
+<h2>ContactStatuses<a class="headerlink" href="#contactstatuses" title="Permalink to this headline">¶</a></h2>
+<p>Lookup table of Contact Statuses. Table is referenced by the
+<a class="reference external" href="#_Table:_Contacts">Contacts</a> table.</p>
+<dl class="docutils">
+<dt><strong>ContactStatusID (Primary Key)</strong></dt>
+<dd>An arbitrary Contact Status identification number.</dd>
+<dt><strong>ContactStatus</strong></dt>
+<dd>Status of person, organization, or project.</dd>
+<dt><strong>StatusDescription</strong></dt>
+<dd>Description of the status.</dd>
+</dl>
+<p>The following statuses exist (with descriptions):</p>
+<ul class="simple">
+<li>active Person, project, or organization is active in the field</li>
+<li>deceased Person is deceased</li>
+<li>defunct Project or organization is defunct or non-operational</li>
+<li>extant Project or organization is extant</li>
+<li>inactive Person is inactive in the field</li>
+<li>retired Person is retired</li>
+<li>unknown Status is unknown</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

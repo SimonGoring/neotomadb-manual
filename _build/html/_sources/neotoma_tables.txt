@@ -11,6 +11,7 @@ Chronology & Age Related Tables
 Dataset & Collection Related Tables
 -----------------------------------
 
+:ref:`AggregateDatasets`, :ref:`AggregateOrderTypes`, :ref:`CollectionTypes`, :ref:`CollectionUnits`, :ref:`DatasetPublications`, :ref:`Datasets`, :ref:`DatasetSubmissions`, :ref:`DatasetSubmissionTypes`, :ref:`DatasetTypes`, :ref:`DatasetPIs`, :ref:`DepEnvtTypes`, :ref:`Lithology`, :ref:`Projects`.
 
 Sample Related Tables
 ---------------------------

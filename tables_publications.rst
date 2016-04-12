@@ -1,36 +1,21 @@
 Publication Related Tables
 -------------------------------------------
 
+.. _PublicationAuthors:
+
 PublicationAuthors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table lists authors as their names are given in publications. Only
-the initials are stored for authors’ given names. The ContactID links to
-the author’s full name and contact data in the
-`Contacts <#_Table:_Contacts>`__ table. Thus, for a bibliographic entry,
-Charles Robert Darwin is listed as C. R. Darwin, or as C. Darwin if the
-publication did not include his middle name. Book editors are also
-stored in this table if the entire book is cited. However, if a book
-chapter or section is cited, authors are stored in this table, but the
-book editors are stored in the
-`PublicationEditors <#_Table:_PublicationEditors>`__ table. Thus, for
-the following reference, G. C. Frison is stored in the
-`PublicationAuthors <#_Table:_PublicationAuthors>`__ table.
+This table lists authors as their names are given in publications. Only the initials are stored for authors’ given names. The ContactID links to the author’s full name and contact data in the :ref:`Contacts` table. Thus, for a bibliographic entry, Charles Robert Darwin is listed as C. R. Darwin, or as C. Darwin if the publication did not include his middle name. Book editors are also stored in this table if the entire book is cited. However, if a book chapter or section is cited, authors are stored in this table, but the book editors are stored in the :ref:`PublicationEditors` table. Thus, for the following reference, G. C. Frison is stored in the :ref:`PublicationAuthors` table.
 
-    Frison, G. C., editor. 1996. The Mill Iron site. University of New
-    Mexico Press, Albuquerque, New Mexico, USA.
+    Frison, G. C., editor. 1996. The Mill Iron site. University of New Mexico Press, Albuquerque, New Mexico, USA.
 
-Whereas for the following publication, L. S. Cummings is listed in the
-PublicationAuthors table, and G. C. Frison is listed in the
-`PublicationEditors <#_Table:_PublicationEditors>`__ table.
+Whereas for the following publication, L. S. Cummings is listed in the PublicationAuthors table, and G. C. Frison is listed in the :ref:`PublicationEditors` table.
 
-    Cummings, L. S. 1996. Paleoenvironmental interpretations for the
-    Mill Iron site: stratigraphic pollen and phyrolith analysis. Pages
-    177-193 in G. C. Frison, editor. The Mill Iron site. University of
-    New Mexico Press, Albuquerque, New Mexico, USA.
+    Cummings, L. S. 1996. Paleoenvironmental interpretations for the Mill Iron site: stratigraphic pollen and phyrolith analysis. Pages 177-193 in G. C. Frison, editor. The Mill Iron site. University of New Mexico Press, Albuquerque, New Mexico, USA.
 
 +---------------------------------+----------------+------+----------------+
-| **Table: PublicationAuthors**   |
+| **Table: PublicationAuthors**                                            |
 +---------------------------------+----------------+------+----------------+
 | AuthorID                        | Long Integer   | PK   |                |
 +---------------------------------+----------------+------+----------------+
@@ -47,31 +32,31 @@ PublicationAuthors table, and G. C. Frison is listed in the
 | ContactID                       | Long Integer   | FK   | Contacts       |
 +---------------------------------+----------------+------+----------------+
 
-**AuthorID (Primary Key)** An arbitrary Author identification number.
+**AuthorID (Primary Key)** 
+  An arbitrary Author identification number.
 
-**PublicationID (Foreign Key)** Publication identification number.
-Field links to the `Publications <#_Table:_Publications>`__ table.
+**PublicationID (Foreign Key)** 
+  Publication identification number. Field links to the :ref:`Publications` table.
 
-**AuthorOrder** Ordinal number for the position in which the author’s
-name appears in the publication’s author list.
+**AuthorOrder** 
+  Ordinal number for the position in which the author's name appears in the publication’s author list.
 
-**FamilyName** Family name of author
+**FamilyName** 
+  Family name of author
 
-**Initials** Initials of author’s given names
+**Initials**
+  Initials of author’s given names
 
-**Suffix** Authors suffix (e.g. «Jr.»)
+**Suffix**
+  Authors suffix (e.g. «Jr.»)
 
-**ContactID (Foreign Key)** Contact identification number. Field links
-to the `Contacts <#_Table:_Contacts>`__ table.
+**ContactID (Foreign Key)**
+  Contact identification number. Field links to the :ref:`Contacts` table.
 
 SQL Example
 `````````````````````````````
 
-The following query lists the PublicationID and complete author names
-for the publication of . Note that because is a name likely to be
-duplicated in the database, the name is given with a wild card ending
-and the GeoPolitical tables are linked in. The citation for this
-publication is:
+The following query lists the PublicationID and complete author names for the publication of . Note that because is a name likely to be duplicated in the database, the name is given with a wild card ending and the GeoPolitical tables are linked in. The citation for this publication is:
 
 .. code-block:: sql
    :linenos:
@@ -109,19 +94,14 @@ Result:
 
 The citation for PublicationID is:
 
-Baker, R. G., L. J. Maher, Jr., C. A. Chumbley, and K. L. Van Zant.
-1992. Patterns of Holocene environmental change in the midwestern .
-Quaternary Research 37:379-389.
+Baker, R. G., L. J. Maher, Jr., C. A. Chumbley, and K. L. Van Zant. 1992. Patterns of Holocene environmental change in the midwestern United States. Quaternary Research 37:379-389.
+
+.. _PublicationEditors:
 
 PublicationEditors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores the editors of publications for which chapters or
-sections are the primary bibliographic entries. Chapter authors are
-stored in the PublicatonAuthors table, where they are linked to the
-`Contacts <#_Table:_Contacts>`__ table. However, publication editors are
-not cross-referenced in the `Contacts <#_Table:_Contacts>`__ table,
-because chapter authors are the principal citation.
+This table stores the editors of publications for which chapters or sections are the primary bibliographic entries. Chapter authors are stored in the PublicatonAuthors table, where they are linked to the :ref:`Contacts` table. However, publication editors are not cross-referenced in the :ref:`Contacts` table, because chapter authors are the principal citation.
 
 +---------------------------------+----------------+------+----------------+
 | **Table: PublicationEditors**                                            |
@@ -139,66 +119,38 @@ because chapter authors are the principal citation.
 | Suffix                          | Text           |      |                |
 +---------------------------------+----------------+------+----------------+
 
-**EditorID (Primary Key)** An arbitrary Editor identification number.
+**EditorID (Primary Key)**
+  An arbitrary Editor identification number.
 
-**PublicationID (Foreign Key)** Publication identification number.
-Field links to the `Publications <#_Table:_Publications>`__ table.
+**PublicationID (Foreign Key)**
+  Publication identification number. Field links to the :ref:`Publications` table.
 
-**EditorOrder** Ordinal number for the position in which the editor’s
-name appears in the publication’s author list.
+**EditorOrder**
+  Ordinal number for the position in which the editor’s name appears in the publication’s author list.
 
-**FamilyName** Family name of editor
+**FamilyName**
+  Family name of editor
 
-**Initials** Initials of editor’s given names
+**Initials**
+  Initials of editor’s given names
 
-**Suffix** Authors suffix (e.g. «Jr.»)
+**Suffix**
+	Authors suffix (e.g. «Jr.»)
+
+.. _Publications:
 
 Publications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores publication or bibliographic data. The table is
-designed with fields for bibliographic data so that bibliographies can
-be formatted in different styles and potentially exported to
-bibliographic software such EndNote®. In the constituent databases that
-were originally merged into Neotoma, bibliographic entries were not
-parsed into separate fields, but rather were stored as free-form text.
-Because complete parsing of these thousands of legacy bibliographic
-entries into individual fields would have been prohibitively time
-consuming, the existing bibliographic data were ingested “as is” with a
-PubTypeID = Other. However, for legacy publications, the year of
-publication was added to the Year field, and authors were parsed into
-the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table and added
-to the `Contacts <#_Table:_Contacts>`__ table. In addition, some global
-changes were made. For example, «Pp.» was changed to «Pages», «Ed.» to
-«Editor», and «Eds.» to «Editors». Also for FAUNMAP entries, abbreviated
-journal names were changed to fully spelled out names.
+This table stores publication or bibliographic data. The table is designed with fields for bibliographic data so that bibliographies can be formatted in different styles and potentially exported to bibliographic software such EndNote®. In the constituent databases that were originally merged into Neotoma, bibliographic entries were not parsed into separate fields, but rather were stored as free-form text.
 
-The merged databases used different bibliographic styles, and data entry
-personnel working on the same database sometimes followed different
-conventions. Consequently, the current bibliographic entries are not
-stylistically uniform. Eventually, the legacy bibliographic data will be
-parsed into separate fields.
+Because complete parsing of these thousands of legacy bibliographic entries into individual fields would have been prohibitively time consuming, the existing bibliographic data were ingested “as is” with a PubTypeID = Other. However, for legacy publications, the year of publication was added to the Year field, and authors were parsed into the :ref:`PublicationAuthors` table and added to the :ref:`Contacts` table. In addition, some global changes were made. For example, «Pp.» was changed to «Pages», «Ed.» to «Editor», and «Eds.» to «Editors». Also for FAUNMAP entries, abbreviated journal names were changed to fully spelled out names.
 
-The Publications table has fields to accommodate a number of different
-types of publications. Some fields contain different kinds of data for
-different kinds of publications. For example, the BookTitle field stores
-the titles of books, but stores the journal name for journal articles.
-The Publisher field stores the name of the publisher for books, but the
-name of the university for theses and dissertations.
+The merged databases used different bibliographic styles, and data entry personnel working on the same database sometimes followed different conventions. Consequently, the current bibliographic entries are not stylistically uniform. Eventually, the legacy bibliographic data will be parsed into separate fields.
 
-Authors are stored in the
-`PublicationAuthors <#_Table:_PublicationAuthors>`__ table. Editors are
-also stored in the `PublicationAuthors <#_Table:_PublicationAuthors>`__
-table if the entire publication is cited. The
-`PublicationAuthors <#_Table:_PublicationAuthors>`__ table has a
-ContactID field, which links to the `Contacts <#_Table:_Contacts>`__
-table, where full names and contact information is stored for authors
-and editors. The PubTypeID «Authored Book» or «Edited Book» indicates
-whether the PublicationAuathors records are authors or editors. If a
-book chapter or section is the primary bibliographic entry, then the
-book editors are stored in the
-`PublicationEditors <#_Table:_PublicationEditors>`__ table, which does
-not have a ContactID field.
+The Publications table has fields to accommodate a number of different types of publications. Some fields contain different kinds of data for different kinds of publications. For example, the BookTitle field stores the titles of books, but stores the journal name for journal articles. The Publisher field stores the name of the publisher for books, but the name of the university for theses and dissertations.
+
+Authors are stored in the :ref:`PublicationAuthors` table. Editors are also stored in the :ref:`PublicationAuthors` table if the entire publication is cited. The :ref:`PublicationAuthors` table has a ContactID field, which links to the :ref:`Contacts` table, where full names and contact information is stored for authors and editors. The PubTypeID «Authored Book» or «Edited Book» indicates whether the PublicationAuathors records are authors or editors. If a book chapter or section is the primary bibliographic entry, then the book editors are stored in the :ref:`PublicationEditors` table, which does not have a ContactID field.
 
 +---------------------------+----------------+------+--------------------+
 | **Table: Publications**                                                |
@@ -248,137 +200,108 @@ not have a ContactID field.
 | Notes                     | Memo           |      |                    |
 +---------------------------+----------------+------+--------------------+
 
-**PublicationID (Primary Key)** An arbitrary Publication identification
-number.
+**PublicationID (Primary Key)**
+  An arbitrary Publication identification number.
 
-**PubTypeID (Foreign Key)** Publication type. Field links to the
-`PublicationTypes <#_Table:_PublicationTypes>`__ lookup table.
+**PubTypeID (Foreign Key)**
+  Publication type. Field links to the :ref:`PublicationTypes` lookup table.
 
-**Year** Year of publication.
+**Year**
+  Year of publication.
 
-**Citation** The complete citation in a standard style. For Legacy
-citations inherited from other databases, this field holds the citation
-as ingested from the other databases.
+**Citation**
+  The complete citation in a standard style. For Legacy citations inherited from other databases, this field holds the citation as ingested from the other databases.
 
-**ArticleTitle** The title of a journal or book chapter article.
+**ArticleTitle**
+  The title of a journal or book chapter article.
 
-**BookTitle** The title of a book or journal
+**BookTitle**
+  The title of a book or journal
 
-**Volume** The volume number of a journal or the volume number of a
-book in a set. A set of books is comprised of a fixed number of volumes
-and normally have ISBN numbers, not ISSN numbers. Book sets are often
-published simultaneously, but not necessarily. For instance, many
-floras, such as *The* *Flora of North America north of* and *Flora
-Europaea*, consist of a set number of volumes planned in advance but
-published over a period of years.
+**Volume**
+  The volume number of a journal or the volume number of a book in a set. A set of books is comprised of a fixed number of volumes and normally have ISBN numbers, not ISSN numbers. Book sets are often published simultaneously, but not necessarily. For instance, many floras, such as *The* *Flora of North America north of* and *Flora Europaea*, consist of a set number of volumes planned in advance but published over a period of years.
 
-**Issue** Journal issue number, normally included only if issues are
-independently paginated.
+**Issue**
+  Journal issue number, normally included only if issues are independently paginated.
 
-**Pages** Page numbers for journal or book chapter articles, or the
-number of pages in theses, dissertations, and reports.
+**Pages**
+  Page numbers for journal or book chapter articles, or the number of pages in theses, dissertations, and reports.
 
-**CitationNumber** A citation or article number used in lieu of page
-numbers for digital or online publications, typically used in
-conjunction with the DOI. For example, journals published by the
-American Geophysical Union since 1999 use citation numbers rather than
-page numbers.
+**CitationNumber**
+  A citation or article number used in lieu of page numbers for digital or online publications, typically used in conjunction with the DOI. For example, journals published by the American Geophysical Union since 1999 use citation numbers rather than page numbers.
 
-**DOI** Digital Object Identifier. A unique identifier assigned to
-digital publications. The DOI consists of a prefix and suffix separated
-by a slash. The portion before the slash stands for the publisher and is
-assigned by the International DOI Foundation. For example, 10.1029 is
-the prefix for the American Geophysical Union. The suffix is assigned by
-the publisher according to their protocols. For example, the DOI
-10.1029/2002PA000768 is for an article submitted to *Paleoceanography*
-in 2002 and is article number 768 submitted since the system was
-installed. An example of CitationNumber and DOI:
+**DOI**
+  Digital Object Identifier. A unique identifier assigned to digital publications. The DOI consists of a prefix and suffix separated by a slash. The portion before the slash stands for the publisher and is assigned by the International DOI Foundation. For example, 10.1029 is the prefix for the American Geophysical Union. The suffix is assigned by the publisher according to their protocols. For example, the DOI 10.1029/2002PA000768 is for an article submitted to *Paleoceanography* in 2002 and is article number 768 submitted since the system was installed. An example of CitationNumber and DOI:
 
     Barron, J. A., L. Heusser, T. Herbert, and M. Lyle. 2003.
     High-resolution climatic evolution of coastal northern during the
     past 16,000 years, Paleoceanography 18(1):\ **1020.
     DOI:10.1029/2002PA000768.**
 
-**NumVolumes** Number of volumes in a set of books. Used when the
-entire set is referenced. An example of NumVolumes and Edition:
+**NumVolumes**
+	Number of volumes in a set of books. Used when the entire set is referenced. An example of NumVolumes and Edition:
 
     Wilson, D. E., and D. M. Reeder. 2005. Mammal species of the world:
     a taxonomic and geographic reference. **Third edition. 2 volumes**.
     The Johns Hopkins University Press, Baltimore, Maryland, USA.
 
-**Edition** Edition of a publication.
+**Edition**
+	Edition of a publication.
 
-**VolumeTitle** Title of a book volume in a set. Used if the individual
-volume is referenced. Example of Volume and VolumeTitle:
+**VolumeTitle**
+	Title of a book volume in a set. Used if the individual volume is referenced. Example of Volume and VolumeTitle:
 
-    Flora of North America Editorial Committee. 2002. Flora of North
-    America north of . **Volume 26**. **Magnoliophyta: Liliidae:
-    Liliales and Orchidales**. Oxford University Press, New York, New
-    York, USA.
+    Flora of North America Editorial Committee. 2002. Flora of North America north of . **Volume 26**. **Magnoliophyta: Liliidae: Liliales and Orchidales**. Oxford University Press, New York, New York, USA.
 
-**SeriesTitle** Title of a book series. Book series consist of a series
-of books, typically published at irregular intervals on sometimes
-related but different topics. The number of volumes in a series is
-typically open ended. Book series are often assigned ISSN numbers as
-well as ISBN numbers. However, in contrast to most serials, book series
-have individual titles and authors or editors. Citation practices for
-book series vary; sometimes they are cited as books, other times as
-journals. The default citation for Neotoma includes all information. An
-example of SeriesTitle and SeriesVolume:
+**SeriesTitle**
+	Title of a book series. Book series consist of a series of books, typically published at irregular intervals on sometimes
+related but different topics. The number of volumes in a series is typically open ended. Book series are often assigned ISSN numbers as well as ISBN numbers. However, in contrast to most serials, book series have individual titles and authors or editors. Citation practices for book series vary; sometimes they are cited as books, other times as journals. The default citation for Neotoma includes all information. An example of SeriesTitle and SeriesVolume:
 
-    Curtis, J. H., and D. A. Hodell. 1993. An isotopic and trace element
-    study of ostracods from , : A 10,500 year record of paleosalinity
-    and paleotemperature changes in the . Pages 135-152 in P. K. Swart,
-    K. C. Lohmann, J. McKensie, and S. Savin, editors. Climate change in
-    continental isotopic records. **Geophysical Monograph 78**. American
-    Geophysical Union, Washington, D.C., USA.
+    Curtis, J. H., and D. A. Hodell. 1993. An isotopic and trace element study of ostracods from , : A 10,500 year record of paleosalinity and paleotemperature changes in the . Pages 135-152 in P. K. Swart, K. C. Lohmann, J. McKensie, and S. Savin, editors. Climate change in continental isotopic records. **Geophysical Monograph 78**. American Geophysical Union, Washington, D.C., USA.
 
-**SeriesVolume** Volume number in a series.
+**SeriesVolume**
+	Volume number in a series.
 
-**Publisher** Publisher, including commercial publishing houses,
-university presses, government agencies, and non-governmental
-organizations, generally the owner of the copyright.
+**Publisher**
+	Publisher, including commercial publishing houses, university presses, government agencies, and non-governmental organizations, generally the owner of the copyright.
 
-**City** City in which the publication was published. The first city if
-a list is given.
+**City**
+	City in which the publication was published. The first city if a list is given.
 
-**State** State or province in which the publication was published.
-Used for the and , not used for many countries.
+**State**
+	State or province in which the publication was published. Used for the and , not used for many countries.
 
-**Country** Country in which the publication was published, generally
-the complete country name, but «» for the .
+**Country**
+	Country in which the publication was published, generally the complete country name, but «» for the .
 
-**OriginalLanguage** The original language if the publication or
-bibliographic citation is translated from another language or
-transliterated from a non-Latin character set. Field not needed for
-non-translated publications in languages using the Latin character set.
-In the following example, the ArticleTitle is translated from Russian to
-English and the BookTitle (journal name) is transliterated from Russian:
+**OriginalLanguage**
+	The original language if the publication or bibliographic citation is translated from another language or transliterated from a non-Latin character set. Field not needed for non-translated publications in languages using the Latin character set. In the following example, the ArticleTitle is translated from Russian to English and the BookTitle (journal name) is transliterated from Russian:
 
-    Tarasov, P.E. 1991. Late Holocene features of the Kokchetav
-    Highland. Vestnik Moskovskogo Universiteta. Series 5. Geography
-    6:54-60 [in **Russian**].
+    Tarasov, P.E. 1991. Late Holocene features of the Kokchetav Highland. Vestnik Moskovskogo Universiteta. Series 5. Geography **6**:54-60 [in **Russian**].
 
-**Notes** Free form notes or comments about the publication, which may
-be added parenthetically to the citation.
+**Notes**
+	Free form notes or comments about the publication, which may be added parenthetically to the citation.
+
+.. _PublicationTypes:
 
 PublicationTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table of Publication Types. This table is referenced by the
-`Publications <#_Table:_Publications>`__ table.
+Lookup table of Publication Types. This table is referenced by the :ref:`Publications` table.
 
 +-------------------------------+----------------+------+-----+
-| **Table: PublicationTypes**   |
+| **Table: PublicationTypes**                                 |
 +-------------------------------+----------------+------+-----+
 | PubTypeID                     | Long Integer   | PK   |     |
 +-------------------------------+----------------+------+-----+
 | PubType                       | Text           |      |     |
 +-------------------------------+----------------+------+-----+
 
-**PubTypeID** An arbitrary Publication Type identification number.
+**PubTypeID**
+	An arbitrary Publication Type identification number.
 
-**PubType** Publication Type. The database has the following types:
+**PubType**
+	Publication Type. The database has the following types:
 
 -  Legacy Legacy citation ingested from another database and not parsed
        into separate fields
@@ -404,11 +327,7 @@ Lookup table of Publication Types. This table is referenced by the
 
 -  Other Edited A edited publication not fitting into any other category
 
-Examples of the different Publication Types are given in the following
-sections. Shown for each Publication Type are the fields in the
-`Publications <#_Table:_Publications>`__ table that may be filled for
-that type, with the exception that OriginalLanguage and Notes are not
-shown unless used.
+Examples of the different Publication Types are given in the following sections. Shown for each Publication Type are the fields in the :ref:`Publications` table that may be filled for that type, with the exception that OriginalLanguage and Notes are not shown unless used.
 
 Legacy Publication
 `````````````````````````````
@@ -416,7 +335,7 @@ Legacy Publication
 +--------------------------+------------------------------------------------------------------------------------------+
 | **PubTypeID = Legacy**                                                                                              |
 +--------------------------+------------------------------------------------------------------------------------------+
-| Authors                  | Each author a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                  | Each author a record in the :ref:`PublicationAuthors` table   |
 +--------------------------+------------------------------------------------------------------------------------------+
 | Year                     | Year published                                                                           |
 +--------------------------+------------------------------------------------------------------------------------------+
@@ -453,7 +372,7 @@ Journal Article
 +---------------------------+------------------------------------------------------------------------------------------+
 | **PubTypeID = Journal**                                                                                              |
 +---------------------------+------------------------------------------------------------------------------------------+
-| Authors                   | Each author a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                   | Each author a record in the :ref:`PublicationAuthors` table   |
 +---------------------------+------------------------------------------------------------------------------------------+
 | Year                      | Year published                                                                           |
 +---------------------------+------------------------------------------------------------------------------------------+
@@ -586,7 +505,7 @@ Book Chapter
 +--------------------------------+------------------------------------------------------------------------------------------+
 | **PubTypeID = Book Chapter**                                                                                              |
 +--------------------------------+------------------------------------------------------------------------------------------+
-| Authors                        | Each author a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                        | Each author a record in the :ref:`PublicationAuthors` table   |
 +--------------------------------+------------------------------------------------------------------------------------------+
 | Year                           | Year published                                                                           |
 +--------------------------------+------------------------------------------------------------------------------------------+
@@ -749,7 +668,7 @@ Authored Book
 +-----------------------------------+------------------------------------------------------------------------------------------+
 | \ **PubTypeID = Authored Book**   |
 +-----------------------------------+------------------------------------------------------------------------------------------+
-| Authors                           | Each author a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                           | Each author a record in the :ref:`PublicationAuthors` table   |
 +-----------------------------------+------------------------------------------------------------------------------------------+
 | Year                              | Year published                                                                           |
 +-----------------------------------+------------------------------------------------------------------------------------------+
@@ -874,13 +793,15 @@ Authored Book
 | Country                                                                                                                                       |                                                    |
 +-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------+
 
+.. _Edited Book:
+
 Edited Book
 ~~~~~~~~~~~
 
 +-------------------------------+------------------------------------------------------------------------------------------+
 | **PubTypeID = Edited Book**                                                                                              |
 +-------------------------------+------------------------------------------------------------------------------------------+
-| Authors                       | Each editor a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                       | Each editor a record in the :ref:`PublicationAuthors` table   |
 +-------------------------------+------------------------------------------------------------------------------------------+
 | Year                          | Year published                                                                           |
 +-------------------------------+------------------------------------------------------------------------------------------+
@@ -1025,7 +946,7 @@ Master’s Thesis
 +-----------------------------------+-------------------------------------------------------------------------------------+
 | **PubTypeID = Master’s Thesis**   |
 +-----------------------------------+-------------------------------------------------------------------------------------+
-| Authors                           | Author a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                           | Author a record in the :ref:`PublicationAuthors` table   |
 +-----------------------------------+-------------------------------------------------------------------------------------+
 | Year                              | Year published                                                                      |
 +-----------------------------------+-------------------------------------------------------------------------------------+
@@ -1070,7 +991,7 @@ Doctoral Dissertation
 +-----------------------------------------+-------------------------------------------------------------------------------------+
 | **PubTypeID = Doctoral Dissertation**   |
 +-----------------------------------------+-------------------------------------------------------------------------------------+
-| Authors                                 | Author a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                                 | Author a record in the :ref:`PublicationAuthors` table   |
 +-----------------------------------------+-------------------------------------------------------------------------------------+
 | Year                                    | Year published                                                                      |
 +-----------------------------------------+-------------------------------------------------------------------------------------+
@@ -1115,7 +1036,7 @@ Authored Report
 +-----------------------------------+------------------------------------------------------------------------------------------+
 | **PubTypeID = Authored Report**   |
 +-----------------------------------+------------------------------------------------------------------------------------------+
-| Authors                           | Each author a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                           | Each author a record in the :ref:`PublicationAuthors` table   |
 +-----------------------------------+------------------------------------------------------------------------------------------+
 | Year                              | Year published                                                                           |
 +-----------------------------------+------------------------------------------------------------------------------------------+
@@ -1224,7 +1145,7 @@ Edited Report
 +---------------------------------+------------------------------------------------------------------------------------------+
 | **PubTypeID = Edited Report**   |
 +---------------------------------+------------------------------------------------------------------------------------------+
-| Authors                         | Each editor a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                         | Each editor a record in the :ref:`PublicationAuthors` table   |
 +---------------------------------+------------------------------------------------------------------------------------------+
 | Year                            | Year published                                                                           |
 +---------------------------------+------------------------------------------------------------------------------------------+
@@ -1277,7 +1198,7 @@ Other Authored Publication
 +----------------------------------+------------------------------------------------------------------------------------------+
 | **PubTypeID = Other Authored**   |
 +----------------------------------+------------------------------------------------------------------------------------------+
-| Authors                          | Each author a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                          | Each author a record in the :ref:`PublicationAuthors` table   |
 +----------------------------------+------------------------------------------------------------------------------------------+
 | Year                             | Year published                                                                           |
 +----------------------------------+------------------------------------------------------------------------------------------+
@@ -1302,7 +1223,7 @@ Other Edited Publication
 +--------------------------------+------------------------------------------------------------------------------------------+
 | **PubTypeID = Other Edited**   |
 +--------------------------------+------------------------------------------------------------------------------------------+
-| Authors                        | Each editor a record in the `PublicationAuthors <#_Table:_PublicationAuthors>`__ table   |
+| Authors                        | Each editor a record in the :ref:`PublicationAuthors` table   |
 +--------------------------------+------------------------------------------------------------------------------------------+
 | Year                           | Year published                                                                           |
 +--------------------------------+------------------------------------------------------------------------------------------+

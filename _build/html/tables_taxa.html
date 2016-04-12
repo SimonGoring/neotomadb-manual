@@ -115,6 +115,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#variableelements">VariableElements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#variablemodifications">VariableModifications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#variableunits">VariableUnits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#repositoryinstitutions">RepositoryInstitutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#repositoryspecimens">RepositorySpecimens</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id20">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#specimendates">SpecimenDates</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="table_contacts.html">Contact and Individual Related Tables</a></li>
@@ -1259,6 +1265,203 @@ with human butchering.</p>
 <dd>An arbitrary Variable Units identification number.</dd>
 <dt><strong>VariableUnit</strong></dt>
 <dd>The units of measurement. For fauna, these are «present/absent», «NISP» (Number of Individual Specimens), and «MNI» (Minimum Number of Individals). For pollen, these are «NISP» (pollen counts) and «percent». Units for plant macrofossils include «present/abesnt» and «NISP», as well as a number of quantitative concentration measurements and semi-quantitative abundance measurements such as «1-5 scale». Examples of charcoal measurement units are «fragments/ml» and «µm^2/ml».</dd>
+</dl>
+</div>
+<div class="section" id="repositoryinstitutions">
+<span id="id18"></span><h2>RepositoryInstitutions<a class="headerlink" href="#repositoryinstitutions" title="Permalink to this headline">¶</a></h2>
+<p>A lookup table of institutions that are repositories for fossil specimens. Table is referenced by the <a class="reference internal" href="#repositoryspecimens"><span>RepositorySpecimens</span></a> table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="25%" />
+<col width="9%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: RepositoryInstitutions</strong></td>
+</tr>
+<tr class="row-even"><td>RepositoryID</td>
+<td>Long Integer</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Acronym</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Repository</td>
+<td>Text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>RepositoryID (PrimaryKey)</strong></dt>
+<dd>An arbitrary Repository identification number. Repositories include museums, university departments, and various governmental agencies.</dd>
+<dt><strong>Acronym</strong></dt>
+<dd>A unique acronym for the repository. Many repositories have well-established acronyms (e.g. AMNH = of Natural History); however, there is no official list. Various acronyms have been used for some institutions, and in some cases the same acronym has been used for different institutions. Consequently, the database acronym may differ from the acronym used in some publications. For example, «CMNH» has been used for the Carnegie Museum of Natural History, the Cleveland Museum of Natural History, and the Cincinnati Museum of Natural History. In Neotoma, two of these institutions were assigned different acronyms, ones that have been used for them in other publications: CM – Carnegie Museum of Natural History, CLM – Cleveland Museum of Natural History.</dd>
+<dt><strong>Repository</strong></dt>
+<dd>The full name of the repository.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the repository, especially notes about name changes, closures, and specimen transfers. In some cases, it is known that the specimens were transferred, but their current disposition may be uncertain.</dd>
+</dl>
+</div>
+<div class="section" id="repositoryspecimens">
+<span id="id19"></span><h2>RepositorySpecimens<a class="headerlink" href="#repositoryspecimens" title="Permalink to this headline">¶</a></h2>
+<p>This table lists the repositories in which fossil specimens have been accessioned or reposited. The inventory in Neotoma is by Dataset, which is the collection of specimens from a Collection Unit. Occasionally, specimens from a single Collection Unit have been reposited at different institutions, in which case multiple records for that Dataset occur in the table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="18%" />
+<col width="11%" />
+<col width="31%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: RepositorySpecimens</strong></td>
+</tr>
+<tr class="row-even"><td>DatasetID</td>
+<td>Long Integer</td>
+<td>PK, FK</td>
+<td>Datasets</td>
+</tr>
+<tr class="row-odd"><td>RepositoryID</td>
+<td>Long Integer</td>
+<td>PK, FK</td>
+<td>RepositoryInstitutions</td>
+</tr>
+<tr class="row-even"><td>Notes</td>
+<td>Memo</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>DatasetID (Primary Key, Foreign Key)</strong></dt>
+<dd>Dataset identification number. Field links to the <a class="reference internal" href="tables_dataset.html#datasets"><span>Datasets</span></a> table.</dd>
+<dt><strong>RepositoryID (Primary Key, Foreign Key)</strong></dt>
+<dd>Repository identification number. Field links to the <a class="reference internal" href="#repositoryinstitutions"><span>RepositoryInstitutions</span></a> lookup table.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about the disposition of the specimens.</dd>
+</dl>
+<div class="section" id="id20">
+<h3>SQL Example<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<p>This query lists the repositories for specimens from the Kimmswick site.</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">,</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollUnitName</span><span class="p">,</span>
+<span class="n">RepositoryInstitutions</span><span class="p">.</span><span class="n">Repository</span>
+
+<span class="k">FROM</span> <span class="n">RepositoryInstitutions</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(((</span><span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="n">CollectionUnits</span> <span class="k">ON</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="n">Datasets</span> <span class="k">ON</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span>
+<span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">RepositorySpecimens</span> <span class="k">ON</span>
+<span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span> <span class="n">RepositorySpecimens</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">ON</span>
+<span class="n">RepositoryInstitutions</span><span class="p">.</span><span class="n">RepositoryID</span> <span class="o">=</span> <span class="n">RepositorySpecimens</span><span class="p">.</span><span class="n">RepositoryID</span>
+
+<span class="k">WHERE</span> <span class="p">(((</span><span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;Kimmswick&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="37%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>SiteName</strong></td>
+<td><strong>CollUnitName</strong></td>
+<td><strong>Repository</strong></td>
+</tr>
+<tr class="row-even"><td>Kimmswick</td>
+<td>Locality</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Kimmswick</td>
+<td>Locality</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="specimendates">
+<span id="id21"></span><h2>SpecimenDates<a class="headerlink" href="#specimendates" title="Permalink to this headline">¶</a></h2>
+<p>This table enables queries for dated specimens of indivual taxa.
+Although the MaterialDated field in the Geochronology table may list the
+taxa dated, this protocol is not enforced, and the field is not linked
+to the taxa table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="16%" />
+<col width="10%" />
+<col width="34%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><strong>Table: Synonyms</strong></td>
+</tr>
+<tr class="row-even"><td>SpecimenDateID</td>
+<td>int</td>
+<td>PK</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>GeochronID</td>
+<td>int</td>
+<td>FK</td>
+<td>Geochronology</td>
+</tr>
+<tr class="row-even"><td>TaxonID</td>
+<td>int</td>
+<td>FK</td>
+<td>Taxa</td>
+</tr>
+<tr class="row-odd"><td>VariableElementID</td>
+<td>int</td>
+<td>FK</td>
+<td>VariableElements</td>
+</tr>
+<tr class="row-even"><td>SampleID</td>
+<td>int</td>
+<td>FK</td>
+<td>Samples</td>
+</tr>
+<tr class="row-odd"><td>Notes</td>
+<td>ntext</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>SpecimenDateID (Primary Key)</strong></dt>
+<dd>An arbitrary specicimen date ID.</dd>
+<dt><strong>GeochronID (Foreign Key)</strong></dt>
+<dd>Geochronologic identification number. Field links to the <a class="reference internal" href="tables_chron.html#geochronology"><span>Geochronology</span></a> table.</dd>
+<dt><strong>TaxonID (Foreign Key)</strong></dt>
+<dd>Accepted name in Neotoma. Field links to <a class="reference internal" href="#taxa"><span>Taxa</span></a> table.</dd>
+<dt><strong>VariableElementID (Foreign Key)</strong></dt>
+<dd>Variable Element identification number. Field links to the <a class="reference internal" href="#variableelements"><span>VariableElements</span></a> lookup table.</dd>
+<dt><strong>SampleID (Primary Key, Foreign Key)</strong></dt>
+<dd>Sample ID number. Field links to the <span class="xref std std-ref">Samples</span> table.</dd>
+<dt><strong>Notes</strong></dt>
+<dd>Free form notes or comments about dated specimen.</dd>
 </dl>
 </div>
 </div>
