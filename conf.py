@@ -25,9 +25,9 @@ import os
 #html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 #  I like this one the best:
-import sphinx_theme_pd
-html_theme = "sphinx_theme_pd"
-html_theme_path = [sphinx_theme_pd.get_html_theme_path()]
+#import sphinx_theme_pd
+#html_theme = "sphinx_theme_pd"
+#html_theme_path = [sphinx_theme_pd.get_html_theme_path()]
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the

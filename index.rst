@@ -13,7 +13,7 @@ Full Manual Contents
 ======================
 
 .. toctree::
-   .. :maxdepth: -1  
+   :maxdepth: -1
 
    neotoma_introduction
    db_design_concepts
