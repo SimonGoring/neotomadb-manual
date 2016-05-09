@@ -1,176 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Neotoma Tables &mdash; neotoma 1.0 documentation</title>
-  
-
-  
-  
-
-  
-
-  
-  
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Chronology &amp; Age Related Tables" href="tables_chron.html"/>
-        <link rel="prev" title="SQL Quickly" href="sql_quickly.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
+    <title>Neotoma Tables &mdash; neotoma 1.0 documentation</title>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+    <link rel="stylesheet" href="_static/pd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/table_styling.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html" />
+    <link rel="next" title="Chronology &amp; Age Related Tables" href="tables_chron.html" />
+    <link rel="prev" title="SQL Quickly" href="sql_quickly.html" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script type="text/javascript" src="_static/pd.js"></script>
 
-          
-            <a href="index.html" class="icon icon-home"> neotoma
-          
+  </head>
+  <body role="document">
+    <div id="header">
+        <h1>neotoma 1.0 documentation</h1>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+        <ul>
+            <li class="nav-item nav-item-0"><a href="index.html">neotoma 1.0 documentation</a> &raquo;
+            </li>
+        </ul>
+    </div>
+  
 
-          
-          </a>
-
-          
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
-            
-              <div class="version">
-                1.0
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-                <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Neotoma Tables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#chronology-age-related-tables">Chronology &amp; Age Related Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dataset-collection-related-tables">Dataset &amp; Collection Related Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sample-related-tables">Sample Related Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#site-related-tables">Site Related Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#taxonomy-related-tables">Taxonomy Related Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#individual-related-tables">Individual Related Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#publication-related-tables">Publication Related Tables</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#repositoryinstitutions">RepositoryInstitutions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#repositoryspecimens">RepositorySpecimens</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sql-example">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#specimendates">SpecimenDates</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="table_contacts.html">Contact and Individual Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="table_publications.html">Publication Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">neotoma</a>
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          
-
- 
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Neotoma Tables</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/neotoma_tables.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="neotoma-tables">
+<div class="section" id="neotoma-tables">
 <h1>Neotoma Tables<a class="headerlink" href="#neotoma-tables" title="Permalink to this headline">¶</a></h1>
-<p>The Neotoma Database contains more than 100 tables and as new proxy types get added, or new metadata is stored, the number of tables may increase or decrease.  As a result, this manual should not be considered the final authority, but it should provide nearly complete coverage of the database and its structure.  In particular, we divide tables into logical groupings, Chronology &amp; Chronology related tables, Site related tables, Contact tables, Sample tables and so on.</p>
-<div class="section" id="chronology-age-related-tables">
-<h2>Chronology &amp; Age Related Tables<a class="headerlink" href="#chronology-age-related-tables" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="tables_chron.html#agetypes"><span>AgeTypes</span></a>, <a class="reference internal" href="tables_chron.html#aggregatechronologies"><span>AggregateChronologies</span></a>, <a class="reference internal" href="tables_chron.html#chroncontrols"><span>ChronControls</span></a>, <a class="reference internal" href="tables_chron.html#chroncontroltypes"><span>ChronControlTypes</span></a>, <a class="reference internal" href="tables_chron.html#chronologies"><span>Chronologies</span></a>, <a class="reference internal" href="tables_chron.html#aggregatesampleages"><span>AggregateSampleAges</span></a>, <a class="reference internal" href="tables_chron.html#geochronology"><span>Geochronology</span></a>, <a class="reference internal" href="tables_chron.html#geochronpublications"><span>GeochronPublications</span></a>, <a class="reference internal" href="tables_chron.html#geochrontypes"><span>GeochronTypes</span></a>, <a class="reference internal" href="tables_chron.html#relativeagepublications"><span>RelativeAgePublications</span></a>, <a class="reference internal" href="tables_chron.html#relativeages"><span>RelativeAges</span></a>, <a class="reference internal" href="tables_chron.html#radiocarboncalibration"><span>RadiocarbonCalibration</span></a>, <a class="reference internal" href="tables_chron.html#relativeagescales"><span>RelativeAgeScales</span></a>, <a class="reference internal" href="tables_chron.html#relativeageunits"><span>RelativeAgeUnits</span></a>, <a class="reference internal" href="tables_chron.html#relativechronology"><span>RelativeChronology</span></a>, <a class="reference internal" href="tables_chron.html#tephrachronology"><span>Tephrachronology</span></a>, <a class="reference internal" href="tables_chron.html#tephras"><span>Tephras</span></a>.</p>
+<p>The Neotoma Database contains more than 100 tables and as new proxy types get added, or new metadata is stored, the number of tables may increase or decrease.  As a result, this manual should not be considered the final authority, but it should provide nearly complete coverage of the database and its structure.  In particular, do our best to divide tables into logical groupings: Chronology &amp; Age related tables, Dataset related tables, Site related tables, Contact tables, Sample tables and so on.</p>
+<div class="section" id="site-related-tables">
+<h2>Site Related Tables<a class="headerlink" href="#site-related-tables" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="tables_site.html#siteimages"><span>SiteImages</span></a>, <a class="reference internal" href="tables_site.html#sites"><span>Sites</span></a>, <a class="reference internal" href="tables_site.html#sitegeopolitical"><span>SiteGeoPolitical</span></a>, <a class="reference internal" href="tables_site.html#geopoliticalunits"><span>GeoPoliticalUnits</span></a></p>
 </div>
 <div class="section" id="dataset-collection-related-tables">
 <h2>Dataset &amp; Collection Related Tables<a class="headerlink" href="#dataset-collection-related-tables" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="tables_dataset.html#aggregatedatasets"><span>AggregateDatasets</span></a>, <a class="reference internal" href="tables_dataset.html#aggregateordertypes"><span>AggregateOrderTypes</span></a>, <a class="reference internal" href="tables_dataset.html#collectiontypes"><span>CollectionTypes</span></a>, <a class="reference internal" href="tables_dataset.html#collectionunits"><span>CollectionUnits</span></a>, <a class="reference internal" href="tables_dataset.html#datasetpublications"><span>DatasetPublications</span></a>, <a class="reference internal" href="tables_dataset.html#datasets"><span>Datasets</span></a>, <a class="reference internal" href="tables_dataset.html#datasetsubmissions"><span>DatasetSubmissions</span></a>, <span class="xref std std-ref">DatasetSubmissionTypes</span>, <a class="reference internal" href="tables_dataset.html#datasettypes"><span>DatasetTypes</span></a>, <a class="reference internal" href="tables_dataset.html#datasetpis"><span>DatasetPIs</span></a>, <a class="reference internal" href="tables_dataset.html#depenvttypes"><span>DepEnvtTypes</span></a>, <a class="reference internal" href="tables_dataset.html#lithology"><span>Lithology</span></a>, <a class="reference internal" href="tables_dataset.html#projects"><span>Projects</span></a>.</p>
+<p>Tables related to complete datasets, or collections of samples.  These include Collection information, but only refer to sites, since, as described in the Design Concepts, datasets are conceptually nested within sites, even if a site contains only a single dataset.</p>
+<blockquote>
+<div><a class="reference internal" href="tables_dataset.html#aggregatedatasets"><span>AggregateDatasets</span></a>, <a class="reference internal" href="tables_dataset.html#aggregateordertypes"><span>AggregateOrderTypes</span></a>, <a class="reference internal" href="tables_dataset.html#collectiontypes"><span>CollectionTypes</span></a>, <a class="reference internal" href="tables_dataset.html#collectionunits"><span>CollectionUnits</span></a>, <a class="reference internal" href="tables_dataset.html#datasetpublications"><span>DatasetPublications</span></a>, <a class="reference internal" href="tables_dataset.html#datasets"><span>Datasets</span></a>, <a class="reference internal" href="tables_dataset.html#datasetsubmissions"><span>DatasetSubmissions</span></a>, <a class="reference internal" href="tables_dataset.html#datasetsubmissiontypes"><span>DatasetSubmissionTypes</span></a>, <a class="reference internal" href="tables_dataset.html#datasettypes"><span>DatasetTypes</span></a>, <a class="reference internal" href="tables_dataset.html#datasetpis"><span>DatasetPIs</span></a>, <a class="reference internal" href="tables_dataset.html#depenvttypes"><span>DepEnvtTypes</span></a>, <a class="reference internal" href="tables_dataset.html#lithology"><span>Lithology</span></a>, <a class="reference internal" href="tables_dataset.html#projects"><span>Projects</span></a>.</div></blockquote>
+</div>
+<div class="section" id="chronology-age-related-tables">
+<h2>Chronology &amp; Age Related Tables<a class="headerlink" href="#chronology-age-related-tables" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal" href="tables_chron.html#agetypes"><span>AgeTypes</span></a>, <a class="reference internal" href="tables_chron.html#aggregatechronologies"><span>AggregateChronologies</span></a>, <a class="reference internal" href="tables_chron.html#chroncontrols"><span>ChronControls</span></a>, <a class="reference internal" href="tables_chron.html#chroncontroltypes"><span>ChronControlTypes</span></a>, <a class="reference internal" href="tables_chron.html#chronologies"><span>Chronologies</span></a>, <a class="reference internal" href="tables_chron.html#aggregatesampleages"><span>AggregateSampleAges</span></a>, <a class="reference internal" href="tables_chron.html#geochronology"><span>Geochronology</span></a>, <a class="reference internal" href="tables_chron.html#geochronpublications"><span>GeochronPublications</span></a>, <a class="reference internal" href="tables_chron.html#geochrontypes"><span>GeochronTypes</span></a>, <a class="reference internal" href="tables_chron.html#relativeagepublications"><span>RelativeAgePublications</span></a>, <a class="reference internal" href="tables_chron.html#relativeages"><span>RelativeAges</span></a>, <a class="reference internal" href="tables_chron.html#radiocarboncalibration"><span>RadiocarbonCalibration</span></a>, <a class="reference internal" href="tables_chron.html#relativeagescales"><span>RelativeAgeScales</span></a>, <a class="reference internal" href="tables_chron.html#relativeageunits"><span>RelativeAgeUnits</span></a>, <a class="reference internal" href="tables_chron.html#relativechronology"><span>RelativeChronology</span></a>, <a class="reference internal" href="tables_chron.html#tephrachronology"><span>Tephrachronology</span></a>, <a class="reference internal" href="tables_chron.html#tephras"><span>Tephras</span></a>.</div></blockquote>
 </div>
 <div class="section" id="sample-related-tables">
 <h2>Sample Related Tables<a class="headerlink" href="#sample-related-tables" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="site-related-tables">
-<h2>Site Related Tables<a class="headerlink" href="#site-related-tables" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="taxonomy-related-tables">
 <h2>Taxonomy Related Tables<a class="headerlink" href="#taxonomy-related-tables" title="Permalink to this headline">¶</a></h2>
@@ -183,286 +80,68 @@
 </div>
 <div class="section" id="publication-related-tables">
 <h2>Publication Related Tables<a class="headerlink" href="#publication-related-tables" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="repositoryinstitutions">
-<h3>RepositoryInstitutions<a class="headerlink" href="#repositoryinstitutions" title="Permalink to this headline">¶</a></h3>
-<p>A lookup table of institutions that are repositories for fossil
-specimens. Table is referenced by the
-<a class="reference external" href="#_Table:_RepositorySpecimens">RepositorySpecimens</a> table.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="58%" />
-<col width="25%" />
-<col width="9%" />
-<col width="8%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>Table: RepositoryInstitutions</strong></td>
-</tr>
-<tr class="row-even"><td>RepositoryID</td>
-<td>Long Integer</td>
-<td>PK</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>Acronym</td>
-<td>Text</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>Repository</td>
-<td>Text</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>Notes</td>
-<td>Memo</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-<p><strong>RepositoryID (PrimaryKey)</strong> An arbitrary Repository identification
-number. Repositories include museums, university departments, and
-various governmental agencies.</p>
-<p><strong>Acronym</strong> A unique acronym for the repository. Many repositories have
-well-established acronyms (e.g. AMNH = of Natural History); however,
-there is no official list. Various acronyms have been used for some
-institutions, and in some cases the same acronym has been used for
-different institutions. Consequently, the database acronym may differ
-from the acronym used in some publications. For example, «CMNH» has been
-used for the Carnegie Museum of Natural History, the Cleveland Museum of
-Natural History, and the Cincinnati Museum of Natural History. In
-Neotoma, two of these institutions were assigned different acronyms,
-ones that have been used for them in other publications: CM – Carnegie
-Museum of Natural History, CLM – Cleveland Museum of Natural History.</p>
-<p><strong>Repository</strong> The full name of the repository.</p>
-<p><strong>Notes</strong> Free form notes or comments about the repository, especially
-notes about name changes, closures, and specimen transfers. In some
-cases, it is known that the specimens were transferred, but their
-current disposition may be uncertain.</p>
-</div>
-<div class="section" id="repositoryspecimens">
-<h3>RepositorySpecimens<a class="headerlink" href="#repositoryspecimens" title="Permalink to this headline">¶</a></h3>
-<p>This table lists the repositories in which fossil specimens have been
-accessioned or reposited. The inventory in Neotoma is by Dataset, which
-is the collection of specimens from a Collection Unit. Occasionally,
-specimens from a single Collection Unit have been reposited at different
-institutions, in which case multiple records for that Dataset occur in
-the table.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="39%" />
-<col width="18%" />
-<col width="11%" />
-<col width="31%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>Table: RepositorySpecimens</strong></td>
-</tr>
-<tr class="row-even"><td>DatasetID</td>
-<td>Long Integer</td>
-<td>PK, FK</td>
-<td>Datasets</td>
-</tr>
-<tr class="row-odd"><td>RepositoryID</td>
-<td>Long Integer</td>
-<td>PK, FK</td>
-<td>RepositoryInstitutions</td>
-</tr>
-<tr class="row-even"><td>Notes</td>
-<td>Memo</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-<p><strong>DatasetID (Primary Key, Foreign Key)</strong> Dataset identification number.
-Field links to the <a class="reference external" href="#table-datasets">Datasets</a> table.</p>
-<p><strong>RepositoryID (Primary Key, Foreign Key)</strong> Repository identification
-number. Field links to the
-<a class="reference external" href="#_Table:_RepositoryInstitutions">RepositoryInstitutions</a> lookup
-table.</p>
-<p><strong>Notes</strong> Free form notes or comments about the disposition of the
-specimens.</p>
-<div class="section" id="sql-example">
-<h4>SQL Example<a class="headerlink" href="#sql-example" title="Permalink to this headline">¶</a></h4>
-<p>This query lists the repositories for specimens from the Kimmswick site.</p>
-<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">,</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollUnitName</span><span class="p">,</span>
-<span class="n">RepositoryInstitutions</span><span class="p">.</span><span class="n">Repository</span>
-
-<span class="k">FROM</span> <span class="n">RepositoryInstitutions</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(((</span><span class="n">Sites</span> <span class="k">INNER</span> <span class="k">JOIN</span>
-<span class="n">CollectionUnits</span> <span class="k">ON</span> <span class="n">Sites</span><span class="p">.</span><span class="n">SiteID</span> <span class="o">=</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">SiteID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span>
-<span class="n">Datasets</span> <span class="k">ON</span> <span class="n">CollectionUnits</span><span class="p">.</span><span class="n">CollectionUnitID</span> <span class="o">=</span>
-<span class="n">Datasets</span><span class="p">.</span><span class="n">CollectionUnitID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">RepositorySpecimens</span> <span class="k">ON</span>
-<span class="n">Datasets</span><span class="p">.</span><span class="n">DatasetID</span> <span class="o">=</span> <span class="n">RepositorySpecimens</span><span class="p">.</span><span class="n">DatasetID</span><span class="p">)</span> <span class="k">ON</span>
-<span class="n">RepositoryInstitutions</span><span class="p">.</span><span class="n">RepositoryID</span> <span class="o">=</span> <span class="n">RepositorySpecimens</span><span class="p">.</span><span class="n">RepositoryID</span>
-
-<span class="k">WHERE</span> <span class="p">(((</span><span class="n">Sites</span><span class="p">.</span><span class="n">SiteName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;Kimmswick&quot;</span><span class="p">));</span>
-</pre></div>
-</td></tr></table></div>
-<p>Result:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="30%" />
-<col width="37%" />
-<col width="33%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>SiteName</strong></td>
-<td><strong>CollUnitName</strong></td>
-<td><strong>Repository</strong></td>
-</tr>
-<tr class="row-even"><td>Kimmswick</td>
-<td>Locality</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>Kimmswick</td>
-<td>Locality</td>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="specimendates">
-<h3>SpecimenDates<a class="headerlink" href="#specimendates" title="Permalink to this headline">¶</a></h3>
-<p>This table enables queries for dated specimens of indivual taxa.
-Although the MaterialDated field in the Geochronology table may list the
-taxa dated, this protocol is not enforced, and the field is not linked
-to the taxa table.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="40%" />
-<col width="16%" />
-<col width="10%" />
-<col width="34%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>Table: Synonyms</strong></td>
-</tr>
-<tr class="row-even"><td>SpecimenDateID</td>
-<td>int</td>
-<td>PK</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>GeochronID</td>
-<td>int</td>
-<td>FK</td>
-<td>Geochronology</td>
-</tr>
-<tr class="row-even"><td>TaxonID</td>
-<td>int</td>
-<td>FK</td>
-<td>Taxa</td>
-</tr>
-<tr class="row-odd"><td>VariableElementID</td>
-<td>int</td>
-<td>FK</td>
-<td>VariableElements</td>
-</tr>
-<tr class="row-even"><td>SampleID</td>
-<td>int</td>
-<td>FK</td>
-<td>Samples</td>
-</tr>
-<tr class="row-odd"><td>Notes</td>
-<td>ntext</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-<p><strong>SpecimenDateID (Primary Key)</strong> An arbitrary specicimen date
-ID</p>
-<p><strong>GeochronID (Foreign Key)</strong> Geochronologic identification number.
-Field links to the <a class="reference external" href="#_Table:_Geochronology">Geochronology</a> table.</p>
-<p><strong>TaxonID (Foreign Key)</strong> Accepted name in Neotoma. Field links to
-<a class="reference external" href="#_Table:_Taxa">Taxa</a> table.</p>
-<p><strong>VariableElementID (Foreign Key)</strong> Variable Element identification
-number. Field links to the
-<a class="reference external" href="#_Table:_VariableElements">VariableElements</a> lookup table.</p>
-<p><strong>SampleID (Primary Key, Foreign Key)</strong> Sample ID number. Field links
-to the <a class="reference external" href="#_Table:_Samples">Samples</a> table.</p>
-<p><strong>Notes</strong> Free form notes or comments about dated specimen.</p>
-</div>
 </div>
 </div>
 
 
-           </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="tables_chron.html" class="btn btn-neutral float-right" title="Chronology &amp; Age Related Tables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="sql_quickly.html" class="btn btn-neutral" title="SQL Quickly" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2016, Eric Grimm, Simon Goring.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
         </div>
       </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Neotoma Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#site-related-tables">Site Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-collection-related-tables">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chronology-age-related-tables">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-related-tables">Sample Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#taxonomy-related-tables">Taxonomy Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#individual-related-tables">Individual Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publication-related-tables">Publication Related Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
 
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/neotoma_tables.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+    </div>
+  </body>
 </html>

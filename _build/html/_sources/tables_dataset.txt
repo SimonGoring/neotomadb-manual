@@ -374,10 +374,12 @@ recompilations. See the description of the
   Date of the submission, resubmission, compilation, or recompilation.
 
 **SubmissionTypeID (Foreign Key)**
-  Submission Type identification number. Field links to the :ref:`DatasetSubmissionsType` table.
+  Submission Type identification number. Field links to the :ref:`DatasetSubmissionTypes` table.
 
 **Notes**
   Free form notes or comments about the submission.
+
+.. _DatasetSubmissionTypes:
 
 DatasetSubmissionTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -610,18 +612,19 @@ Result:
 SQL Example
 `````````````````````````````
 
-This following query gives a list of the second level «Terrestrial»
-Depositional Environment Types.
+This following query gives a list of the second level «Terrestrial» Depositional Environment Types.
+
 .. code-block:: sql
-   :linenos:
+  :linenos:
 
-   SELECT DepEnvtTypes\_1.DepEnvtID, DepEnvtTypes\_1.DepEnvt,
-   DepEnvtTypes\_1.DepEnvtHigherID
+  SELECT DepEnvtTypes\_1.DepEnvtID, DepEnvtTypes\_1.DepEnvt,
+  DepEnvtTypes\_1.DepEnvtHigherID
 
-   FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes\_1 ON
-   DepEnvtTypes.DepEnvtID = DepEnvtTypes\_1.DepEnvtHigherID
+  FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes\_1 ON
+  DepEnvtTypes.DepEnvtID = DepEnvtTypes\_1.DepEnvtHigherID
 
-   WHERE (((DepEnvtTypes.DepEnvt)="Terrestrial"));
+  WHERE (((DepEnvtTypes.DepEnvt)="Terrestrial"));
+
 
 Result:
 
@@ -702,13 +705,14 @@ examples:
     -  nig3, strf0, elas2, sicc0; Th2 T12 Tb+
 
     -  Ld°4, , Dg+, Dh+
+..
 
 .. _Projects:
 
 Projects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores a list of database projects that have supplied data to Neotoma. These include the databases that were merged in the initial development of Neotoma as well as other independent projects that continue to assemble data for a particular region or data type. Some of these projects have developed relational databases, whereas others have compiled data in flat files. This table is referenced by the :ref:`DatabaseSubmissions` table.
+This table stores a list of database projects that have supplied data to Neotoma. These include the databases that were merged in the initial development of Neotoma as well as other independent projects that continue to assemble data for a particular region or data type. Some of these projects have developed relational databases, whereas others have compiled data in flat files. This table is referenced by the :ref:`DatasetSubmissions` table.
 
 +-----------------------+----------------+------+------------+
 | **Table: Projects**                                        |

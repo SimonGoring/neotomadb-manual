@@ -1,171 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Dataset &amp; Collection Related Tables &mdash; neotoma 1.0 documentation</title>
-  
-
-  
-  
-
-  
-
-  
-  
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Sample Related Tables" href="tables_samples.html"/>
-        <link rel="prev" title="Chronology &amp; Age Related Tables" href="tables_chron.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
+    <title>Dataset &amp; Collection Related Tables &mdash; neotoma 1.0 documentation</title>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+    <link rel="stylesheet" href="_static/pd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/table_styling.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html" />
+    <link rel="next" title="Sample Related Tables" href="tables_samples.html" />
+    <link rel="prev" title="Chronology &amp; Age Related Tables" href="tables_chron.html" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script type="text/javascript" src="_static/pd.js"></script>
 
-          
-            <a href="index.html" class="icon icon-home"> neotoma
-          
+  </head>
+  <body role="document">
+    <div id="header">
+        <h1>neotoma 1.0 documentation</h1>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+        <ul>
+            <li class="nav-item nav-item-0"><a href="index.html">neotoma 1.0 documentation</a> &raquo;
+            </li>
+        </ul>
+    </div>
+  
 
-          
-          </a>
-
-          
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
-            
-              <div class="version">
-                1.0
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-                <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Dataset &amp; Collection Related Tables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#aggregatedatasets">AggregateDatasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#aggregateordertypes">AggregateOrderTypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#collectiontypes">CollectionTypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#collectionunits">CollectionUnits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datasetpublications">DatasetPublications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datasets">Datasets</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#datasetsubmissions">DatasetSubmissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datasetsubmissiontypes">DatasetSubmissionTypes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id9">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#datasettypes">DatasetTypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datasetpis">DatasetPIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#depenvttypes">DepEnvtTypes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id13">SQL Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#lithology">Lithology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#projects">Projects</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">neotoma</a>
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          
-
- 
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Dataset &amp; Collection Related Tables</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/tables_dataset.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="dataset-collection-related-tables">
+<div class="section" id="dataset-collection-related-tables">
 <h1>Dataset &amp; Collection Related Tables<a class="headerlink" href="#dataset-collection-related-tables" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="aggregatedatasets">
 <span id="id1"></span><h2>AggregateDatasets<a class="headerlink" href="#aggregatedatasets" title="Permalink to this headline">¶</a></h2>
@@ -262,11 +145,11 @@
 <p>The Aggregate Order Types are:</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>Latitude</strong>: AggregateDataset samples are ordered by, in order of priority, either (1) <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.GPSLatitude or (2) the mean of <span class="xref std std-ref">Sites</span>.LatitudeNorth and <span class="xref std std-ref">Sites</span>.LatitudeSouth.</li>
-<li><strong>Longitude</strong> AggregateDataset samples are ordered by, in order of priority, either (1) <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.GPSLongitude or (2) the mean of <span class="xref std std-ref">Sites</span>.LongitudeWest and <span class="xref std std-ref">Sites</span>.LongitudeEast.</li>
-<li><strong>Altitude</strong> AggregateDataset samples are ordered by <span class="xref std std-ref">Sites</span>.Altitude`.</li>
-<li><strong>Age</strong> AggregateDataset samples are ordered by <span class="xref std std-ref">SampleAges</span>.Age, where <span class="xref std std-ref">SampleAges</span>.SampleAgeID is from <a class="reference internal" href="tables_chron.html#aggregatesampleages"><span>AggregateSampleAges</span></a>.SampleAgeID.</li>
-<li><strong>Alphabetical by site name</strong> AggregateDataset samples are ordered alphabetically by <span class="xref std std-ref">Sites</span>.SiteName.</li>
+<li><strong>Latitude</strong>: AggregateDataset samples are ordered by, in order of priority, either (1) <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.GPSLatitude or (2) the mean of <a class="reference internal" href="tables_site.html#sites"><span>Sites</span></a>.LatitudeNorth and <a class="reference internal" href="tables_site.html#sites"><span>Sites</span></a>.LatitudeSouth.</li>
+<li><strong>Longitude</strong> AggregateDataset samples are ordered by, in order of priority, either (1) <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.GPSLongitude or (2) the mean of <a class="reference internal" href="tables_site.html#sites"><span>Sites</span></a>.LongitudeWest and <a class="reference internal" href="tables_site.html#sites"><span>Sites</span></a>.LongitudeEast.</li>
+<li><strong>Altitude</strong> AggregateDataset samples are ordered by <a class="reference internal" href="tables_site.html#sites"><span>Sites</span></a>.Altitude`.</li>
+<li><strong>Age</strong> AggregateDataset samples are ordered by <a class="reference internal" href="tables_samples.html#sampleages"><span>SampleAges</span></a>.Age, where <a class="reference internal" href="tables_samples.html#sampleages"><span>SampleAges</span></a>.SampleAgeID is from <a class="reference internal" href="tables_chron.html#aggregatesampleages"><span>AggregateSampleAges</span></a>.SampleAgeID.</li>
+<li><strong>Alphabetical by site name</strong> AggregateDataset samples are ordered alphabetically by <a class="reference internal" href="tables_site.html#sites"><span>Sites</span></a>.SiteName.</li>
 <li><strong>Alphabetical by collection unit name</strong> AggregateDataset samples are ordered alphabetically by <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.CollUnitName.</li>
 <li><strong>Alphabetical by collection units handle</strong> AggregateDataset samples are ordered alphabetically by <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a>.Handle.</li>
 </ul>
@@ -419,7 +302,7 @@
 <dt><strong>CollectionUnitID (Primary Key)</strong></dt>
 <dd>An arbitrary Collection Unit identification number.</dd>
 <dt><strong>SiteID (Foreign Key)</strong></dt>
-<dd>Site where CollectionUnit was located. Field links to <span class="xref std std-ref">Sites</span> table.</dd>
+<dd>Site where CollectionUnit was located. Field links to <a class="reference internal" href="tables_site.html#sites"><span>Sites</span></a> table.</dd>
 <dt><strong>CollTypeID (Foreign Key)</strong></dt>
 <dd>Type of Collection Unit. Field links to the <a class="reference internal" href="#collectiontypes"><span>CollectionTypes</span></a> table.</dd>
 <dt><strong>DepEnvtID (Foreign Key)</strong></dt>
@@ -646,7 +529,7 @@
 <p>Submissions to the database are of Datasets. Submissions may be original
 submissions, resubmissions, compilations from other databases, or
 recompilations. See the description of the
-<span class="xref std std-ref">DatasetSubmissionTypes</span> table.</p>
+<a class="reference internal" href="#datasetsubmissiontypes"><span>DatasetSubmissionTypes</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="41%" />
@@ -702,17 +585,17 @@ recompilations. See the description of the
 <dt><strong>ProjectID (Foreign Key)</strong></dt>
 <dd>Database project responsible for the submission or compilation.</dd>
 <dt><strong>ContactID (Foreign Key)</strong></dt>
-<dd>Contact identification number. Field links to the <span class="xref std std-ref">Contacts</span> table. The Contact is the person who submitted, resubmitted, compiled, or recompiled the data. This person is not necessarily the Dataset PI; it is the person who submitted the data or compiled the data from the literature.</dd>
+<dd>Contact identification number. Field links to the <a class="reference internal" href="tables_contacts.html#contacts"><span>Contacts</span></a> table. The Contact is the person who submitted, resubmitted, compiled, or recompiled the data. This person is not necessarily the Dataset PI; it is the person who submitted the data or compiled the data from the literature.</dd>
 <dt><strong>SubmissionDate</strong></dt>
 <dd>Date of the submission, resubmission, compilation, or recompilation.</dd>
 <dt><strong>SubmissionTypeID (Foreign Key)</strong></dt>
-<dd>Submission Type identification number. Field links to the <span class="xref std std-ref">DatasetSubmissionsType</span> table.</dd>
+<dd>Submission Type identification number. Field links to the <a class="reference internal" href="#datasetsubmissiontypes"><span>DatasetSubmissionTypes</span></a> table.</dd>
 <dt><strong>Notes</strong></dt>
 <dd>Free form notes or comments about the submission.</dd>
 </dl>
 </div>
 <div class="section" id="datasetsubmissiontypes">
-<h2>DatasetSubmissionTypes<a class="headerlink" href="#datasetsubmissiontypes" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>DatasetSubmissionTypes<a class="headerlink" href="#datasetsubmissiontypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Dataset Submission Types. Table is referenced by the <a class="reference internal" href="#datasetsubmissions"><span>DatasetSubmissions</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -754,8 +637,8 @@ recompilations. See the description of the
 </ul>
 </dd>
 </dl>
-<div class="section" id="id9">
-<h3>SQL Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>SQL Example<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>This query gives a list of Dataset Submissions for the site «Bear River
 No. 3» ordered by date.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -840,7 +723,7 @@ No. 3» ordered by date.</p>
 </div>
 </div>
 <div class="section" id="datasettypes">
-<span id="id10"></span><h2>DatasetTypes<a class="headerlink" href="#datasettypes" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>DatasetTypes<a class="headerlink" href="#datasettypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table for Dataset Types. Table is referenced by the <a class="reference internal" href="#datasets"><span>Datasets</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -883,7 +766,7 @@ No. 3» ordered by date.</p>
 </dl>
 </div>
 <div class="section" id="datasetpis">
-<span id="id11"></span><h2>DatasetPIs<a class="headerlink" href="#datasetpis" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>DatasetPIs<a class="headerlink" href="#datasetpis" title="Permalink to this headline">¶</a></h2>
 <p>This table lists the Principle Investigators for Datasets.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -916,13 +799,13 @@ No. 3» ordered by date.</p>
 <dt><strong>DatasetID (Primary Key, Foreign Key)</strong></dt>
 <dd>Dataset identification number. Field links to Dataset table.</dd>
 <dt><strong>ContactID (Primary Key, Foreign Key)</strong></dt>
-<dd>Contact identification number. Field links to <span class="xref std std-ref">Contacts</span> table.</dd>
+<dd>Contact identification number. Field links to <a class="reference internal" href="tables_contacts.html#contacts"><span>Contacts</span></a> table.</dd>
 <dt><strong>PIOrder</strong></dt>
 <dd>Order in which PIs are listed.</dd>
 </dl>
 </div>
 <div class="section" id="depenvttypes">
-<span id="id12"></span><h2>DepEnvtTypes<a class="headerlink" href="#depenvttypes" title="Permalink to this headline">¶</a></h2>
+<span id="id13"></span><h2>DepEnvtTypes<a class="headerlink" href="#depenvttypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Depostional Environment Types. Table is referenced by
 the <a class="reference internal" href="#collectionunits"><span>CollectionUnits</span></a> table.</p>
 <table border="1" class="docutils">
@@ -1013,8 +896,8 @@ the <a class="reference internal" href="#collectionunits"><span>CollectionUnits<
 </tr>
 </tbody>
 </table>
-<div class="section" id="id13">
-<h3>SQL Example<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>SQL Example<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <p>This query gives a list of the top level Depostional Environment Types.</p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -1092,26 +975,24 @@ FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes\_1 ON
 </tbody>
 </table>
 </div>
-<div class="section" id="id14">
-<h3>SQL Example<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<p>This following query gives a list of the second level «Terrestrial»
-Depositional Environment Types.
-.. code-block:: sql</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">linenos:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<p>SELECT DepEnvtTypes_1.DepEnvtID, DepEnvtTypes_1.DepEnvt,
-DepEnvtTypes_1.DepEnvtHigherID</p>
-<p>FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes_1 ON
-DepEnvtTypes.DepEnvtID = DepEnvtTypes_1.DepEnvtHigherID</p>
-<p>WHERE (((DepEnvtTypes.DepEnvt)=&#8221;Terrestrial&#8221;));</p>
-</div></blockquote>
+<div class="section" id="id15">
+<h3>SQL Example<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>This following query gives a list of the second level «Terrestrial» Depositional Environment Types.</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>SELECT DepEnvtTypes\_1.DepEnvtID, DepEnvtTypes\_1.DepEnvt,
+DepEnvtTypes\_1.DepEnvtHigherID
+
+FROM DepEnvtTypes INNER JOIN DepEnvtTypes AS DepEnvtTypes\_1 ON
+DepEnvtTypes.DepEnvtID = DepEnvtTypes\_1.DepEnvtHigherID
+
+WHERE (((DepEnvtTypes.DepEnvt)=&quot;Terrestrial&quot;));
+</pre></div>
+</td></tr></table></div>
 <p>Result:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1157,7 +1038,7 @@ DepEnvtTypes.DepEnvtID = DepEnvtTypes_1.DepEnvtHigherID</p>
 </div>
 </div>
 <div class="section" id="lithology">
-<span id="id15"></span><h2>Lithology<a class="headerlink" href="#lithology" title="Permalink to this headline">¶</a></h2>
+<span id="id16"></span><h2>Lithology<a class="headerlink" href="#lithology" title="Permalink to this headline">¶</a></h2>
 <p>This table stores the lithologic descriptions of Collection Units.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1231,8 +1112,8 @@ DepEnvtTypes.DepEnvtID = DepEnvtTypes_1.DepEnvtHigherID</p>
 </div></blockquote>
 </div>
 <div class="section" id="projects">
-<span id="id16"></span><h2>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h2>
-<p>This table stores a list of database projects that have supplied data to Neotoma. These include the databases that were merged in the initial development of Neotoma as well as other independent projects that continue to assemble data for a particular region or data type. Some of these projects have developed relational databases, whereas others have compiled data in flat files. This table is referenced by the <span class="xref std std-ref">DatabaseSubmissions</span> table.</p>
+<span id="id17"></span><h2>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h2>
+<p>This table stores a list of database projects that have supplied data to Neotoma. These include the databases that were merged in the initial development of Neotoma as well as other independent projects that continue to assemble data for a particular region or data type. Some of these projects have developed relational databases, whereas others have compiled data in flat files. This table is referenced by the <a class="reference internal" href="#datasetsubmissions"><span>DatasetSubmissions</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="40%" />
@@ -1271,7 +1152,7 @@ DepEnvtTypes.DepEnvtID = DepEnvtTypes_1.DepEnvtHigherID</p>
 <dt><strong>ProjectName</strong></dt>
 <dd>Name of the Project, e.g. «Cooperative Holocene Mapping Project», «North American Pollen Database», «FAUNMAP».</dd>
 <dt><strong>ContactID (Foreign Key)</strong></dt>
-<dd>Contact person for the project. Field links to the <span class="xref std std-ref">Contacts</span> table.</dd>
+<dd>Contact person for the project. Field links to the <a class="reference internal" href="tables_contacts.html#contacts"><span>Contacts</span></a> table.</dd>
 <dt><strong>URL</strong></dt>
 <dd>Web site address for the project.</dd>
 </dl>
@@ -1279,71 +1160,81 @@ DepEnvtTypes.DepEnvtID = DepEnvtTypes_1.DepEnvtHigherID</p>
 </div>
 
 
-           </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="tables_samples.html" class="btn btn-neutral float-right" title="Sample Related Tables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="tables_chron.html" class="btn btn-neutral" title="Chronology &amp; Age Related Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2016, Eric Grimm, Simon Goring.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
         </div>
       </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Dataset &amp; Collection Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#aggregatedatasets">AggregateDatasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregateordertypes">AggregateOrderTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collectiontypes">CollectionTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collectionunits">CollectionUnits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datasetpublications">DatasetPublications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datasets">Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#datasetsubmissions">DatasetSubmissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datasetsubmissiontypes">DatasetSubmissionTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#datasettypes">DatasetTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datasetpis">DatasetPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#depenvttypes">DepEnvtTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lithology">Lithology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#projects">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
 
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tables_dataset.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+    </div>
+  </body>
 </html>

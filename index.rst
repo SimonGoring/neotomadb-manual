@@ -1,20 +1,19 @@
 Neotoma Paleoecology Database
 =================================
 
-Plio-Pleistocene to Holocene
----------------------------------
-
-|image0|
-
 Acknowledgements
 ---------------------------------------------------------------------
-This documentation would not be possible without the extrordinary work of Dr. Eric C. Grimm who has spent countless hours developing this manual.  In addition, Neotoma rests on the work of a number of researchers who contributed to the original North American Pollen Database, and subsequent data contributors, including FAUNMAP contributors.  The Neotoma Database would not exist were it not for the ongoing contributions of authors, data analysts and funding agencies, in particular the National Sciences Foundation.  This manual draws heavily from Eric Grimm's original Neotoma manual (v2), published as Grimm, E.C., 2008. Neotoma: an ecosystem database for the Pliocene, Pleistocene, and Holocene. *Illinois State Museum Scientific Papers E Series, 1*.
+This documentation would not be possible without the extrordinary work of Dr. Eric C. Grimm who has spent countless hours developing this manual.  In addition, Neotoma rests on the work of a number of researchers who contributed to the original North American Pollen Database, and subsequent data contributors, including FAUNMAP contributors.  The Neotoma Database would not exist were it not for the ongoing contributions of authors, data analysts and funding agencies, in particular the National Sciences Foundation.  This manual draws heavily from Eric Grimm's original Neotoma manual (v2), published as:
 
-Contents:
+Grimm, E.C., 2008. Neotoma: an ecosystem database for the Pliocene, Pleistocene, and Holocene. *Illinois State Museum Scientific Papers E Series, 1*.
+
+The SQL Server snapshot is accessible from here: http://www.neotomadb.org/snapshots
+
+Full Manual Contents
+======================
 
 .. toctree::
-   :maxdepth: -1
-   :hidden:
+   .. :maxdepth: -1  
 
    neotoma_introduction
    db_design_concepts
@@ -30,23 +29,11 @@ Contents:
    tables_publications
    references_cited
 
-Indices and tables
-========================================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
 .. [1]
    Grant number 0622349
 
 .. [2]
    Grant number 0622289
 
-.. [8]
-   https://www.cia.gov/library/publications/the-world-factbook/
-
-.. [9]
-   http://www.iso.org/iso/country_codes/iso_3166_databases.htm
 
 .. |image0| image:: media/image4.jpeg

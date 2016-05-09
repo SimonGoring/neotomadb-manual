@@ -1,5 +1,5 @@
 Chronology & Age Related Tables
------------------------------
+--------------------------------------------------
 
 .. _AgeTypes:
 
@@ -7,16 +7,19 @@ AgeTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lookup table of Age Types or units. This table is referenced by the
-:ref:`Chronologies` and
-:ref:`Geochronology` tables.
+:ref:`Chronologies` and :ref:`Geochronology` tables.
 
-+-----------------------+----------------+------+-----+
-| **AgeTypes**                                        |
-+-----------------------+----------------+------+-----+
-| AgeTypeID             | int            | PK   |     |
-+-----------------------+----------------+------+-----+
-| AgeType               | nvarchar(64)   |      |     |
-+-----------------------+----------------+------+-----+
+.. table::
+  :column-alignment: left center center
+
+  +-----------------------+----------------+------+
+  | Field Name            | Variable Type  | Key  |
+  +=======================+================+======+
+  | AgeTypeID             | int            | PK   |
+  +-----------------------+----------------+------+
+  | AgeType               | nvarchar(64)   |      |
+  +-----------------------+----------------+------+
+
 
 **AgeTypeID (Primary Key)**
   An arbitrary Age Type identification number.
@@ -39,29 +42,29 @@ Lookup table of Age Types or units. This table is referenced by the
 AggregateChronologies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores metadata for Aggregate Chronologies. An Aggregate Chronology refers to an explicit chronology assigned to a sample Aggregate. The individual Aggregate Samples have ages assigned in the :ref:`AggregateSampleAges` table. An Aggregate Chronology would be used, for example, for a set of packrat middens assigned to an :ref:`AggregateDataset`. The Aggregate Chronology is analsgous to the Chronology assigned to samples from a single Collection Unit.
+This table stores metadata for Aggregate Chronologies. An Aggregate Chronology refers to an explicit chronology assigned to a sample Aggregate. The individual Aggregate Samples have ages assigned in the :ref:`AggregateSampleAges` table. An Aggregate Chronology would be used, for example, for a set of packrat middens assigned to an :ref:`AggregateDatasets`. The Aggregate Chronology is analsgous to the Chronology assigned to samples from a single Collection Unit.
 
 An Aggregate may have more than one Aggregate Chronology, for example one in radiocarbon years and another in calibrated radiocarbon years. One Aggreagate Chronology per Age Type may be designated the default, which is the Aggregate Chronology currently preferred by the database stewards.
 
-+------------------------------------+-----------------+------+---------------------+
-| **AggregateChronologies**                                                         |
-+------------------------------------+-----------------+------+---------------------+
-| AggregateChronID                   | int             | PK   |                     |
-+------------------------------------+-----------------+------+---------------------+
-| AggregateDatasetID                 | int             | FK   | AggregateDatasets   |
-+------------------------------------+-----------------+------+---------------------+
-| AgeTypeID                          | int             | FK   | AgeTypes            |
-+------------------------------------+-----------------+------+---------------------+
-| IsDefault                          | bit             |      |                     |
-+------------------------------------+-----------------+------+---------------------+
-| ChronologyName                     | nvarchar(80)    |      |                     |
-+------------------------------------+-----------------+------+---------------------+
-| AgeBoundYounger                    | int             |      |                     |
-+------------------------------------+-----------------+------+---------------------+
-| AgeBoundOlder                      | int             |      |                     |
-+------------------------------------+-----------------+------+---------------------+
-| Notes                              | nvarchar(MAX)   |      |                     |
-+------------------------------------+-----------------+------+---------------------+
++------------------------------------+-----------------+------+--------------------------+
+| Field Name                         | Variable Type   | Key  | Reference Table          |
++====================================+=================+======+==========================+
+| AggregateChronID                   | int             | PK   |                          |
++------------------------------------+-----------------+------+--------------------------+
+| AggregateDatasetID                 | int             | FK   | :ref:`AggregateDatasets` |
++------------------------------------+-----------------+------+--------------------------+
+| AgeTypeID                          | int             | FK   | :ref:`AgeTypes`          |
++------------------------------------+-----------------+------+--------------------------+
+| IsDefault                          | bit             |      |                          |
++------------------------------------+-----------------+------+--------------------------+
+| ChronologyName                     | nvarchar(80)    |      |                          |
++------------------------------------+-----------------+------+--------------------------+
+| AgeBoundYounger                    | int             |      |                          |
++------------------------------------+-----------------+------+--------------------------+
+| AgeBoundOlder                      | int             |      |                          |
++------------------------------------+-----------------+------+--------------------------+
+| Notes                              | nvarchar(MAX)   |      |                          |
++------------------------------------+-----------------+------+--------------------------+
 
 **AggregateChronID (Primary Key)** 
   An arbitrary Aggregate Chronology identification number.
@@ -94,27 +97,27 @@ ChronControls
 
 This table stores data for Chronology Controls, which are the age-depth control points used for age models. These controls may be geophysical controls, such as radiocarbon dates, but include many other kinds of age controls, such as biostratigraphic controls, archaeological cultural associations, and volcanic tephras. In the case of radiocarbon dates, a Chronology Control may not simply be the raw radiocarbon date reported by the laboratory, but perhaps a radiocarbon date corrected for an old carbon reservoir, a calibrated radiocarbon date, or an average of several radiocarbon dates from the same level. A common control for lake-sediment cores is the age of the top of the core, which may be the year the core was taken or perhaps an estimate of 0 BP if a few cm of surficial sediment were lost.
 
-+----------------------------+---------+------+---------------------+
-| **ChronControls**          |                                      |
-+----------------------------+---------+------+---------------------+
-| ChronControlID             | int     | PK   |                     |
-+----------------------------+---------+------+---------------------+
-| ChronologyID               | int     | FK   | Chronologies        |
-+----------------------------+---------+------+---------------------+
-| ChronControlTypeID         | int     | FK   | ChronControlTypes   |
-+----------------------------+---------+------+---------------------+
-| Depth                      | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| Thickness                  | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| Age                        | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| AgeLimitYounger            | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| AgeLimitOlder              | float   |      |                     |
-+----------------------------+---------+------+---------------------+
-| Notes                      | ntext   |      |                     |
-+----------------------------+---------+------+---------------------+
++----------------------------+----------------+------+--------------------------+
+| Field Name                 | Variable Type  | Key  | Reference Table          |
++============================+================+======+==========================+
+| ChronControlID             | int            | PK   |                          |
++----------------------------+----------------+------+--------------------------+
+| ChronologyID               | int            | FK   | :ref:`Chronologies`      |
++----------------------------+----------------+------+--------------------------+
+| ChronControlTypeID         | int            | FK   | :ref:`ChronControlTypes` |
++----------------------------+----------------+------+--------------------------+
+| Depth                      | float          |      |                          |
++----------------------------+----------------+------+--------------------------+
+| Thickness                  | float          |      |                          |
++----------------------------+----------------+------+--------------------------+
+| Age                        | float          |      |                          |
++----------------------------+----------------+------+--------------------------+
+| AgeLimitYounger            | float          |      |                          |
++----------------------------+----------------+------+--------------------------+
+| AgeLimitOlder              | float          |      |                          |
++----------------------------+----------------+------+--------------------------+
+| Notes                      | ntext          |      |                          |
++----------------------------+----------------+------+--------------------------+
 
 **ChronControlID (Primary Key)**
   An arbitrary Chronology Control identification number.
@@ -148,22 +151,21 @@ This table stores data for Chronology Controls, which are the age-depth control 
 ChronControlTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table of Chronology Control Types. This table is referenced by
-the :ref:`ChronControls` table.
+Lookup table of Chronology Control Types. This table is referenced by the :ref:`ChronControls` table.
 
-+--------------------------------+----------------+------+-----+
-| **ChronControlTypes**          |                             |
-+--------------------------------+----------------+------+-----+
-| ChronControlTypeID             | int            | PK   |     |
-+--------------------------------+----------------+------+-----+
-| ChronControlType               | nvarchar(50)   |      |     |
-+--------------------------------+----------------+------+-----+
++---------------------------+----------------+------+
+| Field Name                | Variable Type  | Key  |
++===========================+================+======+
+| ChronControlTypeID        | int            | PK   |
++---------------------------+----------------+------+
+| ChronControlType          | nvarchar(50)   |      |
++---------------------------+----------------+------+
 
 **ChronControlTypeID (Primary Key)**
   An arbitrary Chronology Control Type identification number.
 
 **ChronControlType**
-  The Chronology Control Type. Chronology Controls include such geophysical controls as radiocarbon dates, calibrated radiocarbon dates, averages of several radiocarbon dates, potassium-argon dates, and thermoluminescence dates, as well as biostratigraphic controls, sediment stratigraphic contols, volcanic tephras, archaeological cultural associations, and any other types of age controls.
+  The type of Chronology Control object. Chronology Controls include such geophysical controls as radiocarbon dates, calibrated radiocarbon dates, averages of several radiocarbon dates, potassium-argon dates, and thermoluminescence dates, as well as biostratigraphic controls, sediment stratigraphic contols, volcanic tephras, archaeological cultural associations, and any other types of age controls.  In general these are calibrated or calendar year dates Before Present.  Some ChronControlTypes are in Radiocarbon Years, so caution must be exercised.
 
 .. _Chronologies:
 
@@ -178,31 +180,31 @@ Based upon the Chronology, which includes the Age Model and the Chron Controls, 
 
 A younger and older age bounds are assigned to the Chronology. Within these bounds the Chronology is regarded as reliable. Ages may be assigned to samples beyond the reliable age bounds, but these are not considered reliable.
 
-+---------------------------+----------------+------+-------------------+
-| **Chronologies**          |                                           |
-+---------------------------+----------------+------+-------------------+
-| ChronologyID              | int            | PK   |                   |
-+---------------------------+----------------+------+-------------------+
-| CollectionUnitID          | int            | FK   | CollectionUnits   |
-+---------------------------+----------------+------+-------------------+
-| AgeTypeID                 | int            | FK   | AgeTypes          |
-+---------------------------+----------------+------+-------------------+
-| ContactID                 | int            | FK   | Contacts          |
-+---------------------------+----------------+------+-------------------+
-| IsDefault                 | bit            |      |                   |
-+---------------------------+----------------+------+-------------------+
-| ChronologyName            | nvarchar(80)   |      |                   |
-+---------------------------+----------------+------+-------------------+
-| DatePrepared              | datetime       |      |                   |
-+---------------------------+----------------+------+-------------------+
-| AgeModel                  | nvarchar(80)   |      |                   |
-+---------------------------+----------------+------+-------------------+
-| AgeBoundYounger           | int            |      |                   |
-+---------------------------+----------------+------+-------------------+
-| AgeBoundOlder             | int            |      |                   |
-+---------------------------+----------------+------+-------------------+
-| Notes                     | ntext          |      |                   |
-+---------------------------+----------------+------+-------------------+
++---------------------------+----------------+------+--------------------------+
+| Field Name                | Variable Type  | Key  | Reference Table          |
++===========================+================+======+==========================+
+| ChronologyID              | int            | PK   |                          |
++---------------------------+----------------+------+--------------------------+
+| CollectionUnitID          | int            | FK   | :ref:`CollectionUnits`   |
++---------------------------+----------------+------+--------------------------+
+| AgeTypeID                 | int            | FK   | :ref:`AgeTypes`          |
++---------------------------+----------------+------+--------------------------+
+| ContactID                 | int            | FK   | :ref:`Contacts`          |
++---------------------------+----------------+------+--------------------------+
+| IsDefault                 | bit            |      |                          |
++---------------------------+----------------+------+--------------------------+
+| ChronologyName            | nvarchar(80)   |      |                          |
++---------------------------+----------------+------+--------------------------+
+| DatePrepared              | datetime       |      |                          |
++---------------------------+----------------+------+--------------------------+
+| AgeModel                  | nvarchar(80)   |      |                          |
++---------------------------+----------------+------+--------------------------+
+| AgeBoundYounger           | int            |      |                          |
++---------------------------+----------------+------+--------------------------+
+| AgeBoundOlder             | int            |      |                          |
++---------------------------+----------------+------+--------------------------+
+| Notes                     | ntext          |      |                          |
++---------------------------+----------------+------+--------------------------+
 
 **ChronologyID (Primary Key)**
   An arbitrary Chronology identification number.
@@ -321,15 +323,15 @@ AggregateSampleAges
 
 This table stores the links to the ages of samples in an Aggregate Dataset. The table is necessary because samples may be from Collection Units with multiple chronologies, and this table stores the links to the sample ages desired for the Aggregate Dataset.
 
-+----------------------------------+-------+----------+-------------------------+
-| **AggregateSampleAges**                                                       |
-+----------------------------------+-------+----------+-------------------------+
-| AggregateDatasetID               | int   | PK, FK   | AggregateDatasets       |
-+----------------------------------+-------+----------+-------------------------+
-| AggregateChronID                 | int   | PK, FK   | AggregateChronologies   |
-+----------------------------------+-------+----------+-------------------------+
-| SampleAgeID                      | int   | PK, FK   | SampleAges              |
-+----------------------------------+-------+----------+-------------------------+
++----------------------------+----------------+----------+--------------------------------+
+| Field Name                 | Variable Type  | Key      | Reference Table                |
++============================+================+==========+================================+
+| AggregateDatasetID         | int            | PK, FK   | :ref:`AggregateDatasets`       |
++----------------------------+----------------+----------+--------------------------------+
+| AggregateChronID           | int            | PK, FK   | :ref:`AggregateChronologies`   |
++----------------------------+----------------+----------+--------------------------------+
+| SampleAgeID                | int            | PK, FK   | :ref:`SampleAges`              |
++----------------------------+----------------+----------+--------------------------------+
 
 **AggregateDatasetID (Primary Key, Foreign Key)**
   Aggregate Dataset identification number. Field links to the :ref:`AggregateDatasets` table.
@@ -347,6 +349,7 @@ The following SQL statement produces a list of Sample ID numbers and ages for th
 
 .. code-block:: sql
    :linenos:
+
    SELECT AggregateSamples.SampleID, SampleAges.Age
 
    FROM SampleAges INNER JOIN ((AggregateDatasets INNER JOIN
@@ -390,33 +393,30 @@ Geochronology
 
 This table stores geochronologic data. Geochronologic measurements are from geochronologic samples, which are from Analysis Units, which may have a depth and thickness. Geochronologic measurments may be from the same or different Analysis Units as fossils. In the case of faunal excavations, geochronologic samples are typically from the same Analysis Units as the fossils, and there may be multiple geochronologic samples from a single Analysis Unit. In the case of cores used for microfossil analyses, geochronologic samples are often from separate Analysis Units; dated core sections are often thicker than microfossil Analysis Units.
 
-+----------------------------+----------------+------+-----------------+
-| **Geochronology**                                                    |
-+----------------------------+----------------+------+-----------------+
-| GeochronID                 | Long Integer   | PK   |                 |
-+----------------------------+----------------+------+-----------------+
-| SampleID                   | Long Integer   | FK   | Samples         |
-+----------------------------+----------------+------+-----------------+
-| GeochronTypeID             | Long Integer   | FK   | GeochronTypes   |
-+----------------------------+----------------+------+-----------------+
-| AgeTypeID                  | Long Integer   | FK   | AgeTypes        |
-+----------------------------+----------------+------+-----------------+
-| Age                        | Double         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| ErrorOlder                 | Double         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| ErrorYounger               | Double         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| Infinite                   | Yes/No         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| Delta13C                   | Double         |      |                 |
-+----------------------------+----------------+------+-----------------+
-| LabNumber                  | Text           |      |                 |
-+----------------------------+----------------+------+-----------------+
-| MaterialDated              | Text           |      |                 |
-+----------------------------+----------------+------+-----------------+
-| Notes                      | Memo           |      |                 |
-+----------------------------+----------------+------+-----------------+
+\| GeochronID                 | Long Integer   | PK   |                        |
++----------------------------+----------------+------+------------------------+
+| SampleID                   | Long Integer   | FK   | :ref:`Samples`         |
++----------------------------+----------------+------+------------------------+
+| GeochronTypeID             | Long Integer   | FK   | :ref:`GeochronTypes`   |
++----------------------------+----------------+------+------------------------+
+| AgeTypeID                  | Long Integer   | FK   | :ref:`AgeTypes`        |
++----------------------------+----------------+------+------------------------+
+| Age                        | Double         |      |                        |
++----------------------------+----------------+------+------------------------+
+| ErrorOlder                 | Double         |      |                        |
++----------------------------+----------------+------+------------------------+
+| ErrorYounger               | Double         |      |                        |
++----------------------------+----------------+------+------------------------+
+| Infinite                   | Yes/No         |      |                        |
++----------------------------+----------------+------+------------------------+
+| Delta13C                   | Double         |      |                        |
++----------------------------+----------------+------+------------------------+
+| LabNumber                  | Text           |      |                        |
++----------------------------+----------------+------+------------------------+
+| MaterialDated              | Text           |      |                        |
++----------------------------+----------------+------+------------------------+
+| Notes                      | Memo           |      |                        |
++----------------------------+----------------+------+------------------------+
 
 **GeochronID (Primary Key)** 
   An arbitrary Geochronologic identificantion number.
@@ -506,13 +506,13 @@ GeochronPublications
 
 Publications in which Geochronologic measurements are reported. Many older radiocarbon dates are reported in the journal *Radiocarbon*. Dates may be reported in multiple publications. The "publication" could be a database such as the online Canadian Archaeological Radiocarbon Database.
 
-+-----------------------------------+----------------+----------+-----------------+
-| **GeochronPublications**                                                        |
-+-----------------------------------+----------------+----------+-----------------+
-| GeochronID                        | Long Integer   | PK, FK   | Geochronology   |
-+-----------------------------------+----------------+----------+-----------------+
-| PublicationID                     | Long Integer   | PK, FK   | Publications    |
-+-----------------------------------+----------------+----------+-----------------+
++---------------------------------+----------------+----------+------------------------+
+| Field Name                      | Variable Type  | Key      | Reference Table        |
++=================================+================+==========+========================+
+| GeochronID                      | Long Integer   | PK, FK   | :ref:`Geochronology`   |
++---------------------------------+----------------+----------+------------------------+
+| PublicationID                   | Long Integer   | PK, FK   | :ref:`Publications`    |
++---------------------------------+----------------+----------+------------------------+
 
 **GeochronID (Primary Key, Foreign Key)** 
   Geochronologic identification number. Field links to the :ref:`Geochronology` table.
@@ -527,13 +527,13 @@ GeochronTypes
 
 Lookup table for Geochronology Types. Table is referenced by the :ref:`Geochronology` table.
 
-+----------------------------+----------------+------+-----+
-| **GeochronTypes**                                        |
-+----------------------------+----------------+------+-----+
-| GeochronTypeID             | Long Integer   | PK   |     |
-+----------------------------+----------------+------+-----+
-| GeochronType               | Text           |      |     |
-+----------------------------+----------------+------+-----+
++----------------------------+----------------+------+
+| Field Name                 | Variable Type  | Key  |
++============================+================+======+
+| GeochronTypeID             | Long Integer   | PK   |
++----------------------------+----------------+------+
+| GeochronType               | Text           |      |
++----------------------------+----------------+------+
 
 **GeochronTypeID (Primary Key)**
   Geochronology Type identification number.
@@ -548,13 +548,13 @@ RelativeAgePublications
 
 This table stores Publications in which Relative Ages are reported for CollectionUnits.
 
-+--------------------------------------+----------------+----------+----------------+
-| **RelativeAgePublications**                                                       |
-+--------------------------------------+----------------+----------+----------------+
-| RelativeAgeID                        | Long Integer   | PK, FK   | RelativeAges   |
-+--------------------------------------+----------------+----------+----------------+
-| PublicationID                        | Long Integer   | PK, FK   | Publications   |
-+--------------------------------------+----------------+----------+----------------+
++---------------------------------+----------------+----------+---------------------+
+| Field Name                      | Variable Type  | Key      | Reference Table     |
++=================================+================+==========+=====================+
+| RelativeAgeID                   | Long Integer   | PK, FK   | :ref:`RelativeAges` |
++---------------------------------+----------------+----------+---------------------+
+| PublicationID                   | Long Integer   | PK, FK   | :ref:`Publications` |
++---------------------------------+----------------+----------+---------------------+
 
 **RelativeAgeID (Primary Key, Foreign Key)** 
   Relative Ages identification number. Field links to the :ref:`RelativeAges` table.
@@ -569,27 +569,27 @@ RelativeAges
 
 Lookup table of RelativeAges. Table is referenced by the :ref:`RelativeChronology` table.
 
-+---------------------------+----------------+------+---------------------+
-| **RelativeAges**                                                        |
-+---------------------------+----------------+------+---------------------+
-| RelativeAgeID             | Long Integer   | PK   |                     |
-+---------------------------+----------------+------+---------------------+
-| RelativeAgeUnitID         | Long Integer   | FK   | RelativeAgeUnits    |
-+---------------------------+----------------+------+---------------------+
-| RelativeAgeScaleID        | Long Integer   | FK   | RelativeAgeScales   |
-+---------------------------+----------------+------+---------------------+
-| RelativeAge               | Text           |      |                     |
-+---------------------------+----------------+------+---------------------+
-| C14AgeYounger             | Double         |      |                     |
-+---------------------------+----------------+------+---------------------+
-| C14AgeOlder               | Double         |      |                     |
-+---------------------------+----------------+------+---------------------+
-| CalAgeYounger             | Double         |      |                     |
-+---------------------------+----------------+------+---------------------+
-| CalAgeOlder               | Double         |      |                     |
-+---------------------------+----------------+------+---------------------+
-| Notes                     | Memo           |      |                     |
-+---------------------------+----------------+------+---------------------+
++---------------------------+----------------+------+----------------------------+
+| Field Name                | Variable Type  | Key  | Reference Table            |
++===========================+================+======+============================+
+| RelativeAgeID             | Long Integer   | PK   |                            |
++---------------------------+----------------+------+----------------------------+
+| RelativeAgeUnitID         | Long Integer   | FK   | :ref:`RelativeAgeUnits`    |
++---------------------------+----------------+------+----------------------------+
+| RelativeAgeScaleID        | Long Integer   | FK   | :ref:`RelativeAgeScales`   |
++---------------------------+----------------+------+----------------------------+
+| RelativeAge               | Text           |      |                            |
++---------------------------+----------------+------+----------------------------+
+| C14AgeYounger             | Double         |      |                            |
++---------------------------+----------------+------+----------------------------+
+| C14AgeOlder               | Double         |      |                            |
++---------------------------+----------------+------+----------------------------+
+| CalAgeYounger             | Double         |      |                            |
++---------------------------+----------------+------+----------------------------+
+| CalAgeOlder               | Double         |      |                            |
++---------------------------+----------------+------+----------------------------+
+| Notes                     | Memo           |      |                            |
++---------------------------+----------------+------+----------------------------+
 
 **RelativeAgeID (Primary Key)** 
   An arbitrary Relative Age identification number.
@@ -639,31 +639,9 @@ more readable.
 
 Result:
 
-+--------------------+---------------------+-------------------+
-| **RelativeAge**    | **CalAgeYounger**   | **CalAgeOlder**   |
-+--------------------+---------------------+-------------------+
-| Rancholabrean      | 11,800              | 150,000           |
-+--------------------+---------------------+-------------------+
-| Irvingtonian       | 150,000             | 1,900,000         |
-+--------------------+---------------------+-------------------+
-| Irvingtonian I     | 850,000             | 1,900,000         |
-+--------------------+---------------------+-------------------+
-| Irvingtonian II    | 400,000             | 850,000           |
-+--------------------+---------------------+-------------------+
-| Irvingtonian III   | 150,000             | 400,000           |
-+--------------------+---------------------+-------------------+
-| Blancan            | 1,900,000           | 4,900,000         |
-+--------------------+---------------------+-------------------+
-| Blancan I          | 4,620,000           | 4,900,000         |
-+--------------------+---------------------+-------------------+
-| Blancan II         | 4,100,000           | 4,620,000         |
-+--------------------+---------------------+-------------------+
-| Blancan III        | 3,000,000           | 4,100,000         |
-+--------------------+---------------------+-------------------+
-| Blancan IV         | 2,500,000           | 3,000,000         |
-+--------------------+---------------------+-------------------+
-| Blancan V          | 1,900,000           | 2,500,000         |
-+--------------------+---------------------+-------------------+
+.. csv-table::
+  :file: ./csvs/relativeage.csv
+  :header-rows: 1
 
 .. _RadiocarbonCalibration:
 
@@ -672,13 +650,13 @@ RadiocarbonCalibration
 
 Radiocarbon calibraton table. This table is intended for quick calibraton of age-model radiocarbon dates. These calibrated dates are for perusal and data exploration only. Please see Section *2.5* for a full discussion.
 
-+-------------------------------------+----------------+------+-----+
-| **RadiocarbonCalibration**                                        |
-+-------------------------------------+----------------+------+-----+
-| C14yrBP                             | Long Integer   | PK   |     |
-+-------------------------------------+----------------+------+-----+
-| CalyrBP                             | Long Integer   |      |     |
-+-------------------------------------+----------------+------+-----+
++-------------------------------------+----------------+------+
+| Field Name                          | Variable Type  | Key  |
++=====================================+================+======+
+| C14yrBP                             | Long Integer   | PK   |
++-------------------------------------+----------------+------+
+| CalyrBP                             | Long Integer   |      |
++-------------------------------------+----------------+------+
 
 **C14yrBP**
   Age in radiocarbon years BP. The range is -100 to 45,000 by 1-year increments.
@@ -694,13 +672,13 @@ RelativeAgeScales
 Lookup table of Relative Age Scales. Table is referenced by the
 :ref:`RelativeAges` table.
 
-+--------------------------------+----------------+------+-----+
-| **RelativeAgeScales**                                        |
-+--------------------------------+----------------+------+-----+
-| RelativeAgeScaleID             | Long Integer   | PK   |     |
-+--------------------------------+----------------+------+-----+
-| RelativeAgeScale               | Text           |      |     |
-+--------------------------------+----------------+------+-----+
++--------------------------------+----------------+------+
+| Field Name                     | Variable Type  | Key  |
++================================+================+======+
+| RelativeAgeScaleID             | Long Integer   | PK   |
++--------------------------------+----------------+------+
+| RelativeAgeScale               | Text           |      |
++--------------------------------+----------------+------+
 
 **RelativeAgeScaleID (Primary Key)**
   An arbitrary Relative Age Scale identification number.
@@ -722,13 +700,13 @@ RelativeAgeUnits
 
 Lookup table of RelativeAgeUnits. Table is referenced by the :ref:`RelativeAges` table.
 
-+-------------------------------+----------------+------+-----+
-| **RelativeAgeUnits**                                        |
-+-------------------------------+----------------+------+-----+
-| RelativeAgeUnitID             | Long Integer   | PK   |     |
-+-------------------------------+----------------+------+-----+
-| RelativeAgeUnit               | Text           |      |     |
-+-------------------------------+----------------+------+-----+
++-------------------------------+----------------+------+
+| Field Name                    | Variable Type  | Key  |
++===============================+================+======+
+| RelativeAgeUnitID             | Long Integer   | PK   |
++-------------------------------+----------------+------+
+| RelativeAgeUnit               | Text           |      |
++-------------------------------+----------------+------+
 
 **RelativeAgeUnitID (Primary Key)** 
   An arbitrary Relative Age Unit identification number.
@@ -759,17 +737,17 @@ RelativeChronology
 
 This table stores relative chronologic data. Relative Ages are assigned to Analysis Units, The Relative Age data along with any possible :ref:`Geochronology` and :ref:`Tephrachronology` data are used to create a chronology.
 
-+---------------------------------+----------------+------+-----------------+
-| RelativeChronology**                                                      |
-+---------------------------------+----------------+------+-----------------+
-| RelativeChronID                 | Long Integer   | PK   |                 |
-+---------------------------------+----------------+------+-----------------+
-| AnalysisUnitID                  | Long Integer   | FK   | AnalysisUnits   |
-+---------------------------------+----------------+------+-----------------+
-| RelativeAgeID                   | Long Integer   | FK   | RelativeAges    |
-+---------------------------------+----------------+------+-----------------+
-| Notes                           | Memo           |      |                 |
-+---------------------------------+----------------+------+-----------------+
++---------------------------------+----------------+------+------------------------+
+| Field Name                      | Variable Type  | Key  | Reference Table        |
++=================================+================+======+========================+
+| RelativeChronID                 | Long Integer   | PK   |                        |
++---------------------------------+----------------+------+------------------------+
+| AnalysisUnitID                  | Long Integer   | FK   | :ref:`AnalysisUnits`   |
++---------------------------------+----------------+------+------------------------+
+| RelativeAgeID                   | Long Integer   | FK   | :ref:`RelativeAges`    |
++---------------------------------+----------------+------+------------------------+
+| Notes                           | Memo           |      |                        |
++---------------------------------+----------------+------+------------------------+
 
 **RelativeChronID (Primary Key)**
   An arbitrary Relative Chronology identification number.
@@ -791,17 +769,17 @@ Tephrachronology
 This table stores tephrachronologic data. The table relates Analysis Units with dated tephras in the :ref:`Tephras` table.
 These are tephras with established ages that are used form a chronology.  The tephras are typically not directly dated at the Site of the Analysis Unit, but have been dated at other sites. A directly dated tephra, e.g. an argon-argon date, belongs in the :ref:`Geochronology` table.
 
-+-------------------------------+----------------+------+-----------------+
-| **Table: Tephrachronology**                                             |
-+-------------------------------+----------------+------+-----------------+
-| TephrachronID                 | Long Integer   | PK   |                 |
-+-------------------------------+----------------+------+-----------------+
-| AnalysisUnitID                | Long Integer   | FK   | AnalysisUnits   |
-+-------------------------------+----------------+------+-----------------+
-| TephraID                      | Long Integer   | FK   | Tephras         |
-+-------------------------------+----------------+------+-----------------+
-| Notes                         | Memo           |      |                 |
-+-------------------------------+----------------+------+-----------------+
++-------------------------------+----------------+------+------------------------+
+| Field Name                    | Variable Type  | Key  | Reference Table        |
++===============================+================+======+========================+
+| TephrachronID                 | Long Integer   | PK   |                        |
++-------------------------------+----------------+------+------------------------+
+| AnalysisUnitID                | Long Integer   | FK   | :ref:`AnalysisUnits`   |
++-------------------------------+----------------+------+------------------------+
+| TephraID                      | Long Integer   | FK   | :ref:`Tephras`         |
++-------------------------------+----------------+------+------------------------+
+| Notes                         | Memo           |      |                        |
++-------------------------------+----------------+------+------------------------+
 
 **TephrachronID (Primary Key)** An arbitrary Tephrachronology identification number.
 
@@ -818,27 +796,27 @@ Tephras
 
 Tephras lookup table. This table stores recognized tephras with established ages. Referenced by the :ref:`Tephrachronology` table.
 
-+----------------------+----------------+------+-----+
-| **Table: Tephras**                                 |
-+----------------------+----------------+------+-----+
-| TephraID             | Long Integer   | PK   |     |
-+----------------------+----------------+------+-----+
-| TephraName           | Text           |      |     |
-+----------------------+----------------+------+-----+
-| C14Age               | Double         |      |     |
-+----------------------+----------------+------+-----+
-| C14AgeYounger        | Double         |      |     |
-+----------------------+----------------+------+-----+
-| C14AgeOlder          | Double         |      |     |
-+----------------------+----------------+------+-----+
-| CalAge               | Double         |      |     |
-+----------------------+----------------+------+-----+
-| CalAgeYounger        | Double         |      |     |
-+----------------------+----------------+------+-----+
-| CalAgeOlder          | Double         |      |     |
-+----------------------+----------------+------+-----+
-| Notes                | Memo           |      |     |
-+----------------------+----------------+------+-----+
++----------------------+----------------+------+
+| Field Name           | Variable Type  | Key  |
++======================+================+======+
+| TephraID             | Long Integer   | PK   |
++----------------------+----------------+------+
+| TephraName           | Text           |      |
++----------------------+----------------+------+
+| C14Age               | Double         |      |
++----------------------+----------------+------+
+| C14AgeYounger        | Double         |      |
++----------------------+----------------+------+
+| C14AgeOlder          | Double         |      |
++----------------------+----------------+------+
+| CalAge               | Double         |      |
++----------------------+----------------+------+
+| CalAgeYounger        | Double         |      |
++----------------------+----------------+------+
+| CalAgeOlder          | Double         |      |
++----------------------+----------------+------+
+| Notes                | Memo           |      |
++----------------------+----------------+------+
 
 **TephraID (Primary Key)** 
   An arbitrary Tephra identification number.

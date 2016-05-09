@@ -1,202 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Chronology &amp; Age Related Tables &mdash; neotoma 1.0 documentation</title>
-  
-
-  
-  
-
-  
-
-  
-  
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Dataset &amp; Collection Related Tables" href="tables_dataset.html"/>
-        <link rel="prev" title="Neotoma Tables" href="neotoma_tables.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
+    <title>Chronology &amp; Age Related Tables &mdash; neotoma 1.0 documentation</title>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+    <link rel="stylesheet" href="_static/pd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/table_styling.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html" />
+    <link rel="next" title="Dataset &amp; Collection Related Tables" href="tables_dataset.html" />
+    <link rel="prev" title="Neotoma Tables" href="neotoma_tables.html" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script type="text/javascript" src="_static/pd.js"></script>
 
-          
-            <a href="index.html" class="icon icon-home"> neotoma
-          
+  </head>
+  <body role="document">
+    <div id="header">
+        <h1>neotoma 1.0 documentation</h1>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+        <ul>
+            <li class="nav-item nav-item-0"><a href="index.html">neotoma 1.0 documentation</a> &raquo;
+            </li>
+        </ul>
+    </div>
+  
 
-          
-          </a>
-
-          
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
-            
-              <div class="version">
-                1.0
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-                <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Chronology &amp; Age Related Tables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#agetypes">AgeTypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#aggregatechronologies">AggregateChronologies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#chroncontrols">ChronControls</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#chroncontroltypes">ChronControlTypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#chronologies">Chronologies</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#aggregatesampleages">AggregateSampleAges</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">SQL Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#geochronology">Geochronology</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id11">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#geochronpublications">GeochronPublications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#geochrontypes">GeochronTypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#relativeagepublications">RelativeAgePublications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#relativeages">RelativeAges</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id16">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#radiocarboncalibration">RadiocarbonCalibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#relativeagescales">RelativeAgeScales</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#relativeageunits">RelativeAgeUnits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#relativechronology">RelativeChronology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tephrachronology">Tephrachronology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tephras">Tephras</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="table_contacts.html">Contact and Individual Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="table_publications.html">Publication Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">neotoma</a>
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          
-
- 
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Chronology &amp; Age Related Tables</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/tables_chron.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="chronology-age-related-tables">
+<div class="section" id="chronology-age-related-tables">
 <h1>Chronology &amp; Age Related Tables<a class="headerlink" href="#chronology-age-related-tables" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="agetypes">
 <span id="id1"></span><h2>AgeTypes<a class="headerlink" href="#agetypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Age Types or units. This table is referenced by the
-<a class="reference internal" href="#chronologies"><span>Chronologies</span></a> and
-<a class="reference internal" href="#geochronology"><span>Geochronology</span></a> tables.</p>
-<table border="1" class="docutils">
+<a class="reference internal" href="#chronologies"><span>Chronologies</span></a> and <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> tables.</p>
+<table border="1" class="styled-table docutils">
 <colgroup>
-<col width="46%" />
-<col width="32%" />
-<col width="12%" />
-<col width="10%" />
+<col width="51%" />
+<col width="36%" />
+<col width="13%" />
 </colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="left-align head">Field Name</th>
+<th class="center-align head">Variable Type</th>
+<th class="center-align head">Key</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>AgeTypes</strong></td>
+<tr class="row-even"><td class="left-align">AgeTypeID</td>
+<td class="center-align">int</td>
+<td class="center-align">PK</td>
 </tr>
-<tr class="row-even"><td>AgeTypeID</td>
-<td>int</td>
-<td>PK</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>AgeType</td>
-<td>nvarchar(64)</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td class="left-align">AgeType</td>
+<td class="center-align">nvarchar(64)</td>
+<td class="center-align">&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -217,18 +94,23 @@
 </div>
 <div class="section" id="aggregatechronologies">
 <span id="id2"></span><h2>AggregateChronologies<a class="headerlink" href="#aggregatechronologies" title="Permalink to this headline">¶</a></h2>
-<p>This table stores metadata for Aggregate Chronologies. An Aggregate Chronology refers to an explicit chronology assigned to a sample Aggregate. The individual Aggregate Samples have ages assigned in the <a class="reference internal" href="#aggregatesampleages"><span>AggregateSampleAges</span></a> table. An Aggregate Chronology would be used, for example, for a set of packrat middens assigned to an <span class="xref std std-ref">AggregateDataset</span>. The Aggregate Chronology is analsgous to the Chronology assigned to samples from a single Collection Unit.</p>
+<p>This table stores metadata for Aggregate Chronologies. An Aggregate Chronology refers to an explicit chronology assigned to a sample Aggregate. The individual Aggregate Samples have ages assigned in the <a class="reference internal" href="#aggregatesampleages"><span>AggregateSampleAges</span></a> table. An Aggregate Chronology would be used, for example, for a set of packrat middens assigned to an <a class="reference internal" href="tables_dataset.html#aggregatedatasets"><span>AggregateDatasets</span></a>. The Aggregate Chronology is analsgous to the Chronology assigned to samples from a single Collection Unit.</p>
 <p>An Aggregate may have more than one Aggregate Chronology, for example one in radiocarbon years and another in calibrated radiocarbon years. One Aggreagate Chronology per Age Type may be designated the default, which is the Aggregate Chronology currently preferred by the database stewards.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="45%" />
-<col width="21%" />
-<col width="8%" />
-<col width="26%" />
+<col width="42%" />
+<col width="20%" />
+<col width="7%" />
+<col width="31%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>AggregateChronologies</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
+<th class="head">Reference Table</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>AggregateChronID</td>
 <td>int</td>
 <td>PK</td>
@@ -237,12 +119,12 @@
 <tr class="row-odd"><td>AggregateDatasetID</td>
 <td>int</td>
 <td>FK</td>
-<td>AggregateDatasets</td>
+<td><a class="reference internal" href="tables_dataset.html#aggregatedatasets"><span>AggregateDatasets</span></a></td>
 </tr>
 <tr class="row-even"><td>AgeTypeID</td>
 <td>int</td>
 <td>FK</td>
-<td>AgeTypes</td>
+<td><a class="reference internal" href="#agetypes"><span>AgeTypes</span></a></td>
 </tr>
 <tr class="row-odd"><td>IsDefault</td>
 <td>bit</td>
@@ -295,15 +177,19 @@
 <p>This table stores data for Chronology Controls, which are the age-depth control points used for age models. These controls may be geophysical controls, such as radiocarbon dates, but include many other kinds of age controls, such as biostratigraphic controls, archaeological cultural associations, and volcanic tephras. In the case of radiocarbon dates, a Chronology Control may not simply be the raw radiocarbon date reported by the laboratory, but perhaps a radiocarbon date corrected for an old carbon reservoir, a calibrated radiocarbon date, or an average of several radiocarbon dates from the same level. A common control for lake-sediment cores is the age of the top of the core, which may be the year the core was taken or perhaps an estimate of 0 BP if a few cm of surficial sediment were lost.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="44%" />
-<col width="14%" />
-<col width="9%" />
-<col width="33%" />
+<col width="37%" />
+<col width="21%" />
+<col width="8%" />
+<col width="34%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>ChronControls</strong></td>
-<td colspan="3">&nbsp;</td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
+<th class="head">Reference Table</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>ChronControlID</td>
 <td>int</td>
 <td>PK</td>
@@ -312,12 +198,12 @@
 <tr class="row-odd"><td>ChronologyID</td>
 <td>int</td>
 <td>FK</td>
-<td>Chronologies</td>
+<td><a class="reference internal" href="#chronologies"><span>Chronologies</span></a></td>
 </tr>
 <tr class="row-even"><td>ChronControlTypeID</td>
 <td>int</td>
 <td>FK</td>
-<td>ChronControlTypes</td>
+<td><a class="reference internal" href="#chroncontroltypes"><span>ChronControlTypes</span></a></td>
 </tr>
 <tr class="row-odd"><td>Depth</td>
 <td>float</td>
@@ -374,27 +260,26 @@
 </div>
 <div class="section" id="chroncontroltypes">
 <span id="id4"></span><h2>ChronControlTypes<a class="headerlink" href="#chroncontroltypes" title="Permalink to this headline">¶</a></h2>
-<p>Lookup table of Chronology Control Types. This table is referenced by
-the <a class="reference internal" href="#chroncontrols"><span>ChronControls</span></a> table.</p>
+<p>Lookup table of Chronology Control Types. This table is referenced by the <a class="reference internal" href="#chroncontrols"><span>ChronControls</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="54%" />
-<col width="27%" />
-<col width="10%" />
-<col width="8%" />
+<col width="55%" />
+<col width="33%" />
+<col width="12%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>ChronControlTypes</strong></td>
-<td colspan="3">&nbsp;</td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>ChronControlTypeID</td>
 <td>int</td>
 <td>PK</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>ChronControlType</td>
 <td>nvarchar(50)</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 </tbody>
@@ -403,26 +288,30 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <dt><strong>ChronControlTypeID (Primary Key)</strong></dt>
 <dd>An arbitrary Chronology Control Type identification number.</dd>
 <dt><strong>ChronControlType</strong></dt>
-<dd>The Chronology Control Type. Chronology Controls include such geophysical controls as radiocarbon dates, calibrated radiocarbon dates, averages of several radiocarbon dates, potassium-argon dates, and thermoluminescence dates, as well as biostratigraphic controls, sediment stratigraphic contols, volcanic tephras, archaeological cultural associations, and any other types of age controls.</dd>
+<dd>The type of Chronology Control object. Chronology Controls include such geophysical controls as radiocarbon dates, calibrated radiocarbon dates, averages of several radiocarbon dates, potassium-argon dates, and thermoluminescence dates, as well as biostratigraphic controls, sediment stratigraphic contols, volcanic tephras, archaeological cultural associations, and any other types of age controls.  In general these are calibrated or calendar year dates Before Present.  Some ChronControlTypes are in Radiocarbon Years, so caution must be exercised.</dd>
 </dl>
 </div>
 <div class="section" id="chronologies">
 <span id="id5"></span><h2>Chronologies<a class="headerlink" href="#chronologies" title="Permalink to this headline">¶</a></h2>
 <p>This table stores Chronology data. A Chronology refers to an explicit chronology assigned to a Collection Unit. A Chronology has Chronology Controls, the actual age-depth control points, which are stored in the <cite>ChronControls</cite> table. A Chronology is also based on an Age Model, which may be a numerical method that fits a curve to a set of age-depth control points or may simply be individually dated Analysis Units.</p>
 <p>A Collection Unit may have more than one Chronology, for example one in radiocarbon years and another in calibrated radiocarbon years. There may be a Chronology developed by the original author and another developed by a later research project. Chronologies may be stored for archival reasons, even though they are now believed to have problems, if they were used for an important research project. One Chronology per Age Type may be designated the default Chronology, which is the Chronology currently preferred by the database stewards.</p>
-<p>Based upon the Chronology, which includes the Age Model and the Chron Controls, ages are assigned to individual samples, which are stored in the <span class="xref std std-ref">SampleAges</span> table.</p>
+<p>Based upon the Chronology, which includes the Age Model and the Chron Controls, ages are assigned to individual samples, which are stored in the <a class="reference internal" href="tables_samples.html#sampleages"><span>SampleAges</span></a> table.</p>
 <p>A younger and older age bounds are assigned to the Chronology. Within these bounds the Chronology is regarded as reliable. Ages may be assigned to samples beyond the reliable age bounds, but these are not considered reliable.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="40%" />
-<col width="24%" />
-<col width="9%" />
-<col width="28%" />
+<col width="36%" />
+<col width="21%" />
+<col width="8%" />
+<col width="35%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Chronologies</strong></td>
-<td colspan="3">&nbsp;</td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
+<th class="head">Reference Table</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>ChronologyID</td>
 <td>int</td>
 <td>PK</td>
@@ -431,17 +320,17 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <tr class="row-odd"><td>CollectionUnitID</td>
 <td>int</td>
 <td>FK</td>
-<td>CollectionUnits</td>
+<td><a class="reference internal" href="tables_dataset.html#collectionunits"><span>CollectionUnits</span></a></td>
 </tr>
 <tr class="row-even"><td>AgeTypeID</td>
 <td>int</td>
 <td>FK</td>
-<td>AgeTypes</td>
+<td><a class="reference internal" href="#agetypes"><span>AgeTypes</span></a></td>
 </tr>
 <tr class="row-odd"><td>ContactID</td>
 <td>int</td>
 <td>FK</td>
-<td>Contacts</td>
+<td><a class="reference internal" href="tables_contacts.html#contacts"><span>Contacts</span></a></td>
 </tr>
 <tr class="row-even"><td>IsDefault</td>
 <td>bit</td>
@@ -488,7 +377,7 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <dt><strong>AgeTypeID (Foreign Key)</strong></dt>
 <dd>Age type or units. Field links to the <a class="reference internal" href="#agetypes"><span>AgeTypes</span></a> table.</dd>
 <dt><strong>ContactID (Foreign Key)</strong></dt>
-<dd>Person who developed the Age Model. Field links to the <span class="xref std std-ref">Contacts</span> table.</dd>
+<dd>Person who developed the Age Model. Field links to the <a class="reference internal" href="tables_contacts.html#contacts"><span>Contacts</span></a> table.</dd>
 <dt><strong>IsDefault</strong></dt>
 <dd>Indicates whether the Chronology is a default chronology or not. Default status is determined by a Neotoma data steward. Collection Units may have more than one default Chronology, but may have only one default Chronology per Age Type. Thus, there may be a default radiocarbon year Chronology and a default calibrated radiocarbon year Chronology, but only one of each. Default Chronologies may be used by the Neotoma web site, or other web sites, for displaying default diagrams or time series of data. Default Chronologies may also be of considerable use for actual research purposes; however, users may of course choose to develop their own chronologies.</dd>
 <dt><strong>ChronologyName</strong></dt>
@@ -660,28 +549,33 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <p>This table stores the links to the ages of samples in an Aggregate Dataset. The table is necessary because samples may be from Collection Units with multiple chronologies, and this table stores the links to the sample ages desired for the Aggregate Dataset.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="45%" />
-<col width="9%" />
-<col width="13%" />
 <col width="33%" />
+<col width="19%" />
+<col width="12%" />
+<col width="37%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>AggregateSampleAges</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
+<th class="head">Reference Table</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>AggregateDatasetID</td>
 <td>int</td>
 <td>PK, FK</td>
-<td>AggregateDatasets</td>
+<td><a class="reference internal" href="tables_dataset.html#aggregatedatasets"><span>AggregateDatasets</span></a></td>
 </tr>
 <tr class="row-odd"><td>AggregateChronID</td>
 <td>int</td>
 <td>PK, FK</td>
-<td>AggregateChronologies</td>
+<td><a class="reference internal" href="#aggregatechronologies"><span>AggregateChronologies</span></a></td>
 </tr>
 <tr class="row-even"><td>SampleAgeID</td>
 <td>int</td>
 <td>PK, FK</td>
-<td>SampleAges</td>
+<td><a class="reference internal" href="tables_samples.html#sampleages"><span>SampleAges</span></a></td>
 </tr>
 </tbody>
 </table>
@@ -691,15 +585,38 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <dt><strong>AggregateChronID (Primary Key, Foreign Key)</strong></dt>
 <dd>Aggregate Chronology identification number Field links to the <a class="reference internal" href="#aggregatechronologies"><span>AggregateChronologies</span></a> table.</dd>
 <dt><strong>SampleAgeID (Primary Key, Foreign Key)</strong></dt>
-<dd>Sample Age ID number. Field links to the <span class="xref std std-ref">SampleAges</span> table.</dd>
+<dd>Sample Age ID number. Field links to the <a class="reference internal" href="tables_samples.html#sampleages"><span>SampleAges</span></a> table.</dd>
 </dl>
 <div class="section" id="id8">
 <h3>SQL Example<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>The following SQL statement produces a list of Sample ID numbers and ages for the Aggregate Dataset:</p>
+<div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">AggregateSamples</span><span class="p">.</span><span class="n">SampleID</span><span class="p">,</span> <span class="n">SampleAges</span><span class="p">.</span><span class="n">Age</span>
+
+<span class="k">FROM</span> <span class="n">SampleAges</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">((</span><span class="n">AggregateDatasets</span> <span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="n">AggregateSampleAges</span> <span class="k">ON</span> <span class="n">AggregateDatasets</span><span class="p">.</span><span class="n">AggregateDatasetID</span> <span class="o">=</span>
+<span class="n">AggregateSampleAges</span><span class="p">.</span><span class="n">AggregateDatasetID</span><span class="p">)</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">AggregateSamples</span> <span class="k">ON</span>
+<span class="n">AggregateDatasets</span><span class="p">.</span><span class="n">AggregateDatasetID</span> <span class="o">=</span>
+<span class="n">AggregateSamples</span><span class="p">.</span><span class="n">AggregateDatasetID</span><span class="p">)</span> <span class="k">ON</span> <span class="p">(</span><span class="n">AggregateSamples</span><span class="p">.</span><span class="n">SampleID</span> <span class="o">=</span>
+<span class="n">SampleAges</span><span class="p">.</span><span class="n">SampleID</span><span class="p">)</span> <span class="k">AND</span> <span class="p">(</span><span class="n">SampleAges</span><span class="p">.</span><span class="n">SampleAgeID</span> <span class="o">=</span>
+<span class="n">AggregateSampleAges</span><span class="p">.</span><span class="n">SampleAgeID</span><span class="p">)</span>
+
+<span class="k">WHERE</span> <span class="p">(((</span><span class="n">AggregateDatasets</span><span class="p">.</span><span class="n">AggregateDatasetName</span><span class="p">)</span><span class="o">=</span><span class="ss">&quot;&quot;</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="id9">
 <h3>SQL Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>The AggregateSampleAges table may have multiple SampleAgeID&#8217;s for Aggregate Dataset samples, for example SampleAgeID&#8217;s for radiocarbon and calibrated radiocarbon chronologies. In this case, the Chronolgies table must be linked into a query to obtain the ages of Aggregate Samples, and either the AgeTypeID must be specified in the Chronolgies table or the <a class="reference internal" href="#agetypes"><span>AgeTypes</span></a> table must also be linked with the AgeType specified. The following SQL statement produces a list of Sample ID numbers and «Radiocarbon years BP» ages for the «» Aggregate Dataset: <span class="xref std std-ref">Samples</span></p>
+<p>The AggregateSampleAges table may have multiple SampleAgeID&#8217;s for Aggregate Dataset samples, for example SampleAgeID&#8217;s for radiocarbon and calibrated radiocarbon chronologies. In this case, the Chronolgies table must be linked into a query to obtain the ages of Aggregate Samples, and either the AgeTypeID must be specified in the Chronolgies table or the <a class="reference internal" href="#agetypes"><span>AgeTypes</span></a> table must also be linked with the AgeType specified. The following SQL statement produces a list of Sample ID numbers and «Radiocarbon years BP» ages for the «» Aggregate Dataset: <a class="reference internal" href="tables_samples.html#samples"><span>Samples</span></a></p>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -734,83 +651,35 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <div class="section" id="geochronology">
 <span id="id10"></span><h2>Geochronology<a class="headerlink" href="#geochronology" title="Permalink to this headline">¶</a></h2>
 <p>This table stores geochronologic data. Geochronologic measurements are from geochronologic samples, which are from Analysis Units, which may have a depth and thickness. Geochronologic measurments may be from the same or different Analysis Units as fossils. In the case of faunal excavations, geochronologic samples are typically from the same Analysis Units as the fossils, and there may be multiple geochronologic samples from a single Analysis Unit. In the case of cores used for microfossil analyses, geochronologic samples are often from separate Analysis Units; dated core sections are often thicker than microfossil Analysis Units.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="42%" />
-<col width="24%" />
-<col width="9%" />
-<col width="25%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>Geochronology</strong></td>
-</tr>
-<tr class="row-even"><td>GeochronID</td>
-<td>Long Integer</td>
-<td>PK</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>SampleID</td>
-<td>Long Integer</td>
-<td>FK</td>
-<td>Samples</td>
-</tr>
-<tr class="row-even"><td>GeochronTypeID</td>
-<td>Long Integer</td>
-<td>FK</td>
-<td>GeochronTypes</td>
-</tr>
-<tr class="row-odd"><td>AgeTypeID</td>
-<td>Long Integer</td>
-<td>FK</td>
-<td>AgeTypes</td>
-</tr>
-<tr class="row-even"><td>Age</td>
-<td>Double</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>ErrorOlder</td>
-<td>Double</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>ErrorYounger</td>
-<td>Double</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>Infinite</td>
-<td>Yes/No</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>Delta13C</td>
-<td>Double</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>LabNumber</td>
-<td>Text</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>MaterialDated</td>
-<td>Text</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>Notes</td>
-<td>Memo</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-</table>
+<p>| GeochronID                 | Long Integer   | PK   | &nbsp;                      |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| SampleID                   | Long Integer   | FK   | <a class="reference internal" href="tables_samples.html#samples"><span>Samples</span></a>         |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| GeochronTypeID             | Long Integer   | FK   | <a class="reference internal" href="#geochrontypes"><span>GeochronTypes</span></a>   |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| AgeTypeID                  | Long Integer   | FK   | <a class="reference internal" href="#agetypes"><span>AgeTypes</span></a>        |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| Age                        | Double         |      | &nbsp;                      |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| ErrorOlder                 | Double         |      | &nbsp;                      |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| ErrorYounger               | Double         |      | &nbsp;                      |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| Infinite                   | Yes/No         |      | &nbsp;                      |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| Delta13C                   | Double         |      | &nbsp;                      |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| LabNumber                  | Text           |      | &nbsp;                      |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| MaterialDated              | Text           |      | &nbsp;                      |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+
+| Notes                      | Memo           |      | &nbsp;                      |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+</p>
 <dl class="docutils">
 <dt><strong>GeochronID (Primary Key)</strong></dt>
 <dd>An arbitrary Geochronologic identificantion number.</dd>
 <dt><strong>SampleID (Foreign Key)</strong></dt>
-<dd>Sample identification number. Field links to <span class="xref std std-ref">Samples</span> table.</dd>
+<dd>Sample identification number. Field links to <a class="reference internal" href="tables_samples.html#samples"><span>Samples</span></a> table.</dd>
 <dt><strong>GeochronTypeID (Foreign Key)</strong></dt>
 <dd>Identification number for the type of Geochronologic analysis, e.g. «Carbon-14», «Thermoluminescence». Field links to the <a class="reference internal" href="#geochrontypes"><span>GeochronTypes</span></a> table.</dd>
 <dt><strong>AgeTypeID (Foreign Key)</strong></dt>
@@ -987,23 +856,28 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <p>Publications in which Geochronologic measurements are reported. Many older radiocarbon dates are reported in the journal <em>Radiocarbon</em>. Dates may be reported in multiple publications. The &#8220;publication&#8221; could be a database such as the online Canadian Archaeological Radiocarbon Database.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="45%" />
-<col width="21%" />
-<col width="13%" />
-<col width="22%" />
+<col width="40%" />
+<col width="19%" />
+<col width="12%" />
+<col width="29%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>GeochronPublications</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
+<th class="head">Reference Table</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>GeochronID</td>
 <td>Long Integer</td>
 <td>PK, FK</td>
-<td>Geochronology</td>
+<td><a class="reference internal" href="#geochronology"><span>Geochronology</span></a></td>
 </tr>
 <tr class="row-odd"><td>PublicationID</td>
 <td>Long Integer</td>
 <td>PK, FK</td>
-<td>Publications</td>
+<td><a class="reference internal" href="tables_publications.html#publications"><span>Publications</span></a></td>
 </tr>
 </tbody>
 </table>
@@ -1011,7 +885,7 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <dt><strong>GeochronID (Primary Key, Foreign Key)</strong></dt>
 <dd>Geochronologic identification number. Field links to the <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> table.</dd>
 <dt><strong>PublicationID (Primary Key, Foreign Key)</strong></dt>
-<dd>Publication identification number. Field links to the <span class="xref std std-ref">Publications</span> table.</dd>
+<dd>Publication identification number. Field links to the <a class="reference internal" href="tables_publications.html#publications"><span>Publications</span></a> table.</dd>
 </dl>
 </div>
 <div class="section" id="geochrontypes">
@@ -1019,22 +893,23 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <p>Lookup table for Geochronology Types. Table is referenced by the <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="51%" />
-<col width="29%" />
-<col width="11%" />
-<col width="9%" />
+<col width="56%" />
+<col width="32%" />
+<col width="12%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>GeochronTypes</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>GeochronTypeID</td>
 <td>Long Integer</td>
 <td>PK</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>GeochronType</td>
 <td>Text</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 </tbody>
@@ -1051,23 +926,28 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <p>This table stores Publications in which Relative Ages are reported for CollectionUnits.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="48%" />
+<col width="41%" />
 <col width="20%" />
 <col width="13%" />
-<col width="20%" />
+<col width="26%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>RelativeAgePublications</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
+<th class="head">Reference Table</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>RelativeAgeID</td>
 <td>Long Integer</td>
 <td>PK, FK</td>
-<td>RelativeAges</td>
+<td><a class="reference internal" href="#relativeages"><span>RelativeAges</span></a></td>
 </tr>
 <tr class="row-odd"><td>PublicationID</td>
 <td>Long Integer</td>
 <td>PK, FK</td>
-<td>Publications</td>
+<td><a class="reference internal" href="tables_publications.html#publications"><span>Publications</span></a></td>
 </tr>
 </tbody>
 </table>
@@ -1075,7 +955,7 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <dt><strong>RelativeAgeID (Primary Key, Foreign Key)</strong></dt>
 <dd>Relative Ages identification number. Field links to the <a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> table.</dd>
 <dt><strong>PublicationID (Primary Key, Foreign Key)</strong></dt>
-<dd>Publication identification number. Field links to <span class="xref std std-ref">Publications</span> table.</dd>
+<dd>Publication identification number. Field links to <a class="reference internal" href="tables_publications.html#publications"><span>Publications</span></a> table.</dd>
 </dl>
 </div>
 <div class="section" id="relativeages">
@@ -1083,14 +963,19 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <p>Lookup table of RelativeAges. Table is referenced by the <a class="reference internal" href="#relativechronology"><span>RelativeChronology</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="39%" />
-<col width="23%" />
-<col width="9%" />
-<col width="30%" />
+<col width="35%" />
+<col width="21%" />
+<col width="8%" />
+<col width="36%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>RelativeAges</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
+<th class="head">Reference Table</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>RelativeAgeID</td>
 <td>Long Integer</td>
 <td>PK</td>
@@ -1099,12 +984,12 @@ the <a class="reference internal" href="#chroncontrols"><span>ChronControls</spa
 <tr class="row-odd"><td>RelativeAgeUnitID</td>
 <td>Long Integer</td>
 <td>FK</td>
-<td>RelativeAgeUnits</td>
+<td><a class="reference internal" href="#relativeageunits"><span>RelativeAgeUnits</span></a></td>
 </tr>
 <tr class="row-even"><td>RelativeAgeScaleID</td>
 <td>Long Integer</td>
 <td>FK</td>
-<td>RelativeAgeScales</td>
+<td><a class="reference internal" href="#relativeagescales"><span>RelativeAgeScales</span></a></td>
 </tr>
 <tr class="row-odd"><td>RelativeAge</td>
 <td>Text</td>
@@ -1183,57 +1068,79 @@ more readable.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
-<col width="35%" />
-<col width="32%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CalAgeYounger</th>
+<th class="head">CalAgeOlder</th>
+<th class="head">RelativeAge</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>RelativeAge</strong></td>
-<td><strong>CalAgeYounger</strong></td>
-<td><strong>CalAgeOlder</strong></td>
+<tr class="row-even"><td>14000.0</td>
+<td>150000.0</td>
+<td>Rancholabrean</td>
 </tr>
-<tr class="row-even"><td>Rancholabrean</td>
-<td>11,800</td>
-<td>150,000</td>
+<tr class="row-odd"><td>150000.0</td>
+<td>1900000.0</td>
+<td>Irvingtonian</td>
 </tr>
-<tr class="row-odd"><td>Irvingtonian</td>
-<td>150,000</td>
-<td>1,900,000</td>
+<tr class="row-even"><td>850000.0</td>
+<td>1900000.0</td>
+<td>Irvingtonian I</td>
 </tr>
-<tr class="row-even"><td>Irvingtonian I</td>
-<td>850,000</td>
-<td>1,900,000</td>
+<tr class="row-odd"><td>400000.0</td>
+<td>850000.0</td>
+<td>Irvingtonian II</td>
 </tr>
-<tr class="row-odd"><td>Irvingtonian II</td>
-<td>400,000</td>
-<td>850,000</td>
+<tr class="row-even"><td>150000.0</td>
+<td>400000.0</td>
+<td>Irvingtonian III</td>
 </tr>
-<tr class="row-even"><td>Irvingtonian III</td>
-<td>150,000</td>
-<td>400,000</td>
+<tr class="row-odd"><td>1900000.0</td>
+<td>4900000.0</td>
+<td>Blancan</td>
 </tr>
-<tr class="row-odd"><td>Blancan</td>
-<td>1,900,000</td>
-<td>4,900,000</td>
+<tr class="row-even"><td>4620000.0</td>
+<td>4900000.0</td>
+<td>Blancan I</td>
 </tr>
-<tr class="row-even"><td>Blancan I</td>
-<td>4,620,000</td>
-<td>4,900,000</td>
+<tr class="row-odd"><td>4100000.0</td>
+<td>4620000.0</td>
+<td>Blancan II</td>
 </tr>
-<tr class="row-odd"><td>Blancan II</td>
-<td>4,100,000</td>
-<td>4,620,000</td>
+<tr class="row-even"><td>3000000.0</td>
+<td>4100000.0</td>
+<td>Blancan III</td>
 </tr>
-<tr class="row-even"><td>Blancan III</td>
-<td>3,000,000</td>
-<td>4,100,000</td>
+<tr class="row-odd"><td>2500000.0</td>
+<td>3000000.0</td>
+<td>Blancan IV</td>
 </tr>
-<tr class="row-odd"><td>Blancan IV</td>
-<td>2,500,000</td>
-<td>3,000,000</td>
+<tr class="row-even"><td>1900000.0</td>
+<td>2500000.0</td>
+<td>Blancan V</td>
 </tr>
-<tr class="row-even"><td>Blancan V</td>
-<td>1,900,000</td>
-<td>2,500,000</td>
+<tr class="row-odd"><td>4900000.0</td>
+<td>9000000.0</td>
+<td>Hemphillian</td>
+</tr>
+<tr class="row-even"><td>10000.0</td>
+<td>14000.0</td>
+<td>Early Santarosean</td>
+</tr>
+<tr class="row-odd"><td>410.0</td>
+<td>10000.0</td>
+<td>Late Santarosean</td>
+</tr>
+<tr class="row-even"><td>-100.0</td>
+<td>410.0</td>
+<td>Saintaugustinean</td>
+</tr>
+<tr class="row-odd"><td>410.0</td>
+<td>14000.0</td>
+<td>Santarosean</td>
 </tr>
 </tbody>
 </table>
@@ -1244,22 +1151,23 @@ more readable.</p>
 <p>Radiocarbon calibraton table. This table is intended for quick calibraton of age-model radiocarbon dates. These calibrated dates are for perusal and data exploration only. Please see Section <em>2.5</em> for a full discussion.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="58%" />
-<col width="25%" />
-<col width="9%" />
-<col width="8%" />
+<col width="63%" />
+<col width="27%" />
+<col width="10%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>RadiocarbonCalibration</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>C14yrBP</td>
 <td>Long Integer</td>
 <td>PK</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>CalyrBP</td>
 <td>Long Integer</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 </tbody>
@@ -1277,22 +1185,23 @@ more readable.</p>
 <a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="54%" />
-<col width="27%" />
-<col width="10%" />
-<col width="8%" />
+<col width="59%" />
+<col width="30%" />
+<col width="11%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>RelativeAgeScales</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>RelativeAgeScaleID</td>
 <td>Long Integer</td>
 <td>PK</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>RelativeAgeScale</td>
 <td>Text</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 </tbody>
@@ -1318,22 +1227,23 @@ more readable.</p>
 <p>Lookup table of RelativeAgeUnits. Table is referenced by the <a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="53%" />
-<col width="28%" />
-<col width="10%" />
-<col width="9%" />
+<col width="58%" />
+<col width="30%" />
+<col width="11%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>RelativeAgeUnits</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>RelativeAgeUnitID</td>
 <td>Long Integer</td>
 <td>PK</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>RelativeAgeUnit</td>
 <td>Text</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 </tbody>
@@ -1376,14 +1286,19 @@ more readable.</p>
 <p>This table stores relative chronologic data. Relative Ages are assigned to Analysis Units, The Relative Age data along with any possible <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> and <a class="reference internal" href="#tephrachronology"><span>Tephrachronology</span></a> data are used to create a chronology.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="46%" />
-<col width="22%" />
+<col width="42%" />
+<col width="20%" />
 <col width="8%" />
-<col width="24%" />
+<col width="30%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4">RelativeChronology**</td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
+<th class="head">Reference Table</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>RelativeChronID</td>
 <td>Long Integer</td>
 <td>PK</td>
@@ -1392,12 +1307,12 @@ more readable.</p>
 <tr class="row-odd"><td>AnalysisUnitID</td>
 <td>Long Integer</td>
 <td>FK</td>
-<td>AnalysisUnits</td>
+<td><a class="reference internal" href="tables_samples.html#analysisunits"><span>AnalysisUnits</span></a></td>
 </tr>
 <tr class="row-even"><td>RelativeAgeID</td>
 <td>Long Integer</td>
 <td>FK</td>
-<td>RelativeAges</td>
+<td><a class="reference internal" href="#relativeages"><span>RelativeAges</span></a></td>
 </tr>
 <tr class="row-odd"><td>Notes</td>
 <td>Memo</td>
@@ -1410,7 +1325,7 @@ more readable.</p>
 <dt><strong>RelativeChronID (Primary Key)</strong></dt>
 <dd>An arbitrary Relative Chronology identification number.</dd>
 <dt><strong>AnalysisUnitID (Foreign Key)</strong></dt>
-<dd>Analysis Unit identification number. Field links to the <span class="xref std std-ref">AnalysisUnits</span> table.</dd>
+<dd>Analysis Unit identification number. Field links to the <a class="reference internal" href="tables_samples.html#analysisunits"><span>AnalysisUnits</span></a> table.</dd>
 <dt><strong>RelativeAgeID (Foreign Key)</strong></dt>
 <dd>Relative Age identification number. Field links to the <a class="reference internal" href="#relativeages"><span>RelativeAges</span></a> lookup table.</dd>
 <dt><strong>Notes</strong></dt>
@@ -1423,14 +1338,19 @@ more readable.</p>
 These are tephras with established ages that are used form a chronology.  The tephras are typically not directly dated at the Site of the Analysis Unit, but have been dated at other sites. A directly dated tephra, e.g. an argon-argon date, belongs in the <a class="reference internal" href="#geochronology"><span>Geochronology</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="44%" />
-<col width="23%" />
-<col width="9%" />
-<col width="24%" />
+<col width="40%" />
+<col width="21%" />
+<col width="8%" />
+<col width="31%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>Table: Tephrachronology</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
+<th class="head">Reference Table</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>TephrachronID</td>
 <td>Long Integer</td>
 <td>PK</td>
@@ -1439,12 +1359,12 @@ These are tephras with established ages that are used form a chronology.  The te
 <tr class="row-odd"><td>AnalysisUnitID</td>
 <td>Long Integer</td>
 <td>FK</td>
-<td>AnalysisUnits</td>
+<td><a class="reference internal" href="tables_samples.html#analysisunits"><span>AnalysisUnits</span></a></td>
 </tr>
 <tr class="row-even"><td>TephraID</td>
 <td>Long Integer</td>
 <td>FK</td>
-<td>Tephras</td>
+<td><a class="reference internal" href="#tephras"><span>Tephras</span></a></td>
 </tr>
 <tr class="row-odd"><td>Notes</td>
 <td>Memo</td>
@@ -1454,7 +1374,7 @@ These are tephras with established ages that are used form a chronology.  The te
 </tbody>
 </table>
 <p><strong>TephrachronID (Primary Key)</strong> An arbitrary Tephrachronology identification number.</p>
-<p><strong>AnalysisUnitID (Foreign Key)</strong> Analysis Unit identification number. Field links to the <span class="xref std std-ref">AnalysisUnits</span> table. The tephra may be contained within the AnalysisUnit, especially in excavations, or the AnalysisUnit may be assigned specifically to the tephra, particulary with cores.</p>
+<p><strong>AnalysisUnitID (Foreign Key)</strong> Analysis Unit identification number. Field links to the <a class="reference internal" href="tables_samples.html#analysisunits"><span>AnalysisUnits</span></a> table. The tephra may be contained within the AnalysisUnit, especially in excavations, or the AnalysisUnit may be assigned specifically to the tephra, particulary with cores.</p>
 <p><strong>TephraID (Foreign Key)</strong> Tephra identification number. Field links to the <a class="reference internal" href="#tephras"><span>Tephras</span></a> table.</p>
 <p><strong>Notes</strong> Free form notes or comments about the tephra.</p>
 </div>
@@ -1463,57 +1383,51 @@ These are tephras with established ages that are used form a chronology.  The te
 <p>Tephras lookup table. This table stores recognized tephras with established ages. Referenced by the <a class="reference internal" href="#tephrachronology"><span>Tephrachronology</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="45%" />
-<col width="33%" />
-<col width="12%" />
-<col width="10%" />
+<col width="50%" />
+<col width="36%" />
+<col width="14%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="4"><strong>Table: Tephras</strong></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Variable Type</th>
+<th class="head">Key</th>
 </tr>
+</thead>
+<tbody valign="top">
 <tr class="row-even"><td>TephraID</td>
 <td>Long Integer</td>
 <td>PK</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>TephraName</td>
 <td>Text</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>C14Age</td>
 <td>Double</td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>C14AgeYounger</td>
 <td>Double</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>C14AgeOlder</td>
 <td>Double</td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>CalAge</td>
 <td>Double</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>CalAgeYounger</td>
 <td>Double</td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>CalAgeOlder</td>
 <td>Double</td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>Notes</td>
 <td>Memo</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 </tbody>
@@ -1542,71 +1456,88 @@ These are tephras with established ages that are used form a chronology.  The te
 </div>
 
 
-           </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="tables_dataset.html" class="btn btn-neutral float-right" title="Dataset &amp; Collection Related Tables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="neotoma_tables.html" class="btn btn-neutral" title="Neotoma Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2016, Eric Grimm, Simon Goring.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
         </div>
       </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Chronology &amp; Age Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agetypes">AgeTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregatechronologies">AggregateChronologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chroncontrols">ChronControls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chroncontroltypes">ChronControlTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chronologies">Chronologies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregatesampleages">AggregateSampleAges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#geochronology">Geochronology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#geochronpublications">GeochronPublications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geochrontypes">GeochronTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativeagepublications">RelativeAgePublications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativeages">RelativeAges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#radiocarboncalibration">RadiocarbonCalibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativeagescales">RelativeAgeScales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativeageunits">RelativeAgeUnits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relativechronology">RelativeChronology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tephrachronology">Tephrachronology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tephras">Tephras</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
 
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tables_chron.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+    </div>
+  </body>
 </html>

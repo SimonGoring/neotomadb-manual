@@ -1,86 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Neotoma Paleoecology Database &mdash; neotoma 1.0 documentation</title>
-  
-
-  
-  
-
-  
-
-  
-  
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="neotoma 1.0 documentation" href="#"/>
-        <link rel="next" title="Introduction" href="neotoma_introduction.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
+    <title>Neotoma Paleoecology Database &mdash; neotoma 1.0 documentation</title>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+    <link rel="stylesheet" href="_static/pd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/table_styling.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="neotoma 1.0 documentation" href="#" />
+    <link rel="next" title="Introduction" href="neotoma_introduction.html" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script type="text/javascript" src="_static/pd.js"></script>
 
-          
-            <a href="#" class="icon icon-home"> neotoma
-          
+  </head>
+  <body role="document">
+    <div id="header">
+        <h1>neotoma 1.0 documentation</h1>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+        <ul>
+            <li class="nav-item nav-item-0"><a href="#">neotoma 1.0 documentation</a> &raquo;
+            </li>
+        </ul>
+    </div>
+  
 
-          
-          </a>
-
-          
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
-            
-              <div class="version">
-                1.0
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="section" id="neotoma-paleoecology-database">
+<h1>Neotoma Paleoecology Database<a class="headerlink" href="#neotoma-paleoecology-database" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>This documentation would not be possible without the extrordinary work of Dr. Eric C. Grimm who has spent countless hours developing this manual.  In addition, Neotoma rests on the work of a number of researchers who contributed to the original North American Pollen Database, and subsequent data contributors, including FAUNMAP contributors.  The Neotoma Database would not exist were it not for the ongoing contributions of authors, data analysts and funding agencies, in particular the National Sciences Foundation.  This manual draws heavily from Eric Grimm&#8217;s original Neotoma manual (v2), published as:</p>
+<p>Grimm, E.C., 2008. Neotoma: an ecosystem database for the Pliocene, Pleistocene, and Holocene. <em>Illinois State Museum Scientific Papers E Series, 1</em>.</p>
+<p>The SQL Server snapshot is accessible from here: <a class="reference external" href="http://www.neotomadb.org/snapshots">http://www.neotomadb.org/snapshots</a></p>
+</div>
+</div>
+<div class="section" id="full-manual-contents">
+<h1>Full Manual Contents<a class="headerlink" href="#full-manual-contents" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_introduction.html#whence-neotoma">Whence Neotoma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_introduction.html#rationale">Rationale</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neotoma_introduction.html#north-american-plant-macrofossil-database">North American Plant Macrofossil Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="neotoma_introduction.html#faunmap">FAUNMAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="neotoma_introduction.html#beetle">BEETLE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_introduction.html#who-will-use-neotoma">Who Will Use Neotoma?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="db_design_concepts.html#sites-collection-units-analysis-units-samples-and-datasets">Sites, Collection Units, Analysis Units, Samples, and Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_design_concepts.html#taxa-and-variables">Taxa and Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_design_concepts.html#taxonomy-and-synonymy">Taxonomy and Synonymy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_design_concepts.html#taxa-and-ecological-groups">Taxa and Ecological Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_design_concepts.html#chronology">Chronology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_design_concepts.html#sediment-and-depositional-environments">Sediment and Depositional Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_design_concepts.html#date-fields">Date Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sql_quickly.html#sql-example">SQL Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sql_quickly.html#table-keys">Table Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sql_quickly.html#data-types">Data Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_tables.html#site-related-tables">Site Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_tables.html#dataset-collection-related-tables">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_tables.html#chronology-age-related-tables">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_tables.html#sample-related-tables">Sample Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_tables.html#taxonomy-related-tables">Taxonomy Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_tables.html#individual-related-tables">Individual Related Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotoma_tables.html#publication-related-tables">Publication Related Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#agetypes">AgeTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#aggregatechronologies">AggregateChronologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#chroncontrols">ChronControls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#chroncontroltypes">ChronControlTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#chronologies">Chronologies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_chron.html#sql-example">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_chron.html#id6">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#aggregatesampleages">AggregateSampleAges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_chron.html#id8">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_chron.html#id9">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#geochronology">Geochronology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_chron.html#id11">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#geochronpublications">GeochronPublications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#geochrontypes">GeochronTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#relativeagepublications">RelativeAgePublications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#relativeages">RelativeAges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_chron.html#id16">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#radiocarboncalibration">RadiocarbonCalibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#relativeagescales">RelativeAgeScales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#relativeageunits">RelativeAgeUnits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#relativechronology">RelativeChronology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#tephrachronology">Tephrachronology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_chron.html#tephras">Tephras</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#aggregatedatasets">AggregateDatasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#aggregateordertypes">AggregateOrderTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#collectiontypes">CollectionTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#collectionunits">CollectionUnits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#datasetpublications">DatasetPublications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#datasets">Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_dataset.html#sql-example">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_dataset.html#id7">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#datasetsubmissions">DatasetSubmissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#datasetsubmissiontypes">DatasetSubmissionTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_dataset.html#id10">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#datasettypes">DatasetTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#datasetpis">DatasetPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#depenvttypes">DepEnvtTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_dataset.html#id14">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_dataset.html#id15">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#lithology">Lithology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_dataset.html#projects">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#analysisunits">AnalysisUnits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#data">Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_samples.html#sql-example">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#depagents">DepAgents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#depagenttypes">DepAgentTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#sampleages">SampleAges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_samples.html#id6">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#sampleanalysts">SampleAnalysts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#samplekeywords">SampleKeywords</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_samples.html#id9">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#samples">Samples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_samples.html#id11">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#aggregatesamples">AggregateSamples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#faciestypes">FaciesTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_samples.html#keywords">Keywords</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tables_site.html#siteimages">SiteImages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_site.html#sites">Sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_site.html#sitegeopolitical">SiteGeoPolitical</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_site.html#sql-example">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_site.html#id4">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_site.html#id5">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_site.html#geopoliticalunits">GeoPoliticalUnits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_site.html#id9">SQL Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#ecolgroups">EcolGroups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_taxa.html#sql-example">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_taxa.html#id2">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#ecolgrouptypes">EcolGroupTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#ecolsettypes">EcolSetTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#synonyms">Synonyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#synonymtypes">SynonymTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_taxa.html#id7">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#taxa">Taxa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#taxagrouptypes">TaxaGroupTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#variables">Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_taxa.html#id11">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_taxa.html#id12">SQL Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_taxa.html#id13">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#variablecontexts">VariableContexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#variableelements">VariableElements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#variablemodifications">VariableModifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#variableunits">VariableUnits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#repositoryinstitutions">RepositoryInstitutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#repositoryspecimens">RepositorySpecimens</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_taxa.html#id20">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_taxa.html#specimendates">SpecimenDates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tables_publications.html#publicationauthors">PublicationAuthors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#sql-example">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_publications.html#publicationeditors">PublicationEditors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_publications.html#publications">Publications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_publications.html#publicationtypes">PublicationTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#legacy-publication">Legacy Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#journal-article">Journal Article</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#book-chapter">Book Chapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#authored-book">Authored Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#edited-book">Edited Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#masters-thesis">Master’s Thesis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#doctoral-dissertation">Doctoral Dissertation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#authored-report">Authored Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#edited-report">Edited Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#other-authored-publication">Other Authored Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#other-edited-publication">Other Edited Publication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tables_contacts.html#collectors">Collectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_contacts.html#contacts">Contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_contacts.html#contactstatuses">ContactStatuses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tables_publications.html#publicationauthors">PublicationAuthors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#sql-example">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tables_publications.html#publicationeditors">PublicationEditors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_publications.html#publications">Publications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables_publications.html#publicationtypes">PublicationTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#legacy-publication">Legacy Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#journal-article">Journal Article</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#book-chapter">Book Chapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#authored-book">Authored Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#edited-book">Edited Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#masters-thesis">Master’s Thesis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#doctoral-dissertation">Doctoral Dissertation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#authored-report">Authored Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#edited-report">Edited Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#other-authored-publication">Other Authored Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tables_publications.html#other-edited-publication">Other Edited Publication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
+</div>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Grant number 0622349</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td>Grant number 0622289</td></tr>
+</tbody>
+</table>
 </div>
 
-          
-        </div>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-                <ul>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
 <li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
@@ -96,159 +324,33 @@
 <li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
 </ul>
 
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">neotoma</a>
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          
-
- 
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
-      
-    <li>Neotoma Paleoecology Database</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="neotoma-paleoecology-database">
-<h1>Neotoma Paleoecology Database<a class="headerlink" href="#neotoma-paleoecology-database" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="plio-pleistocene-to-holocene">
-<h2>Plio-Pleistocene to Holocene<a class="headerlink" href="#plio-pleistocene-to-holocene" title="Permalink to this headline">¶</a></h2>
-<p><img alt="image0" src="_images/image4.jpeg" /></p>
-</div>
-<div class="section" id="acknowledgements">
-<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
-<p>This documentation would not be possible without the extrordinary work of Dr. Eric C. Grimm who has spent countless hours developing this manual.  In addition, Neotoma rests on the work of a number of researchers who contributed to the original North American Pollen Database, and subsequent data contributors, including FAUNMAP contributors.  The Neotoma Database would not exist were it not for the ongoing contributions of authors, data analysts and funding agencies, in particular the National Sciences Foundation.  This manual draws heavily from Eric Grimm&#8217;s original Neotoma manual (v2), published as Grimm, E.C., 2008. Neotoma: an ecosystem database for the Pliocene, Pleistocene, and Holocene. <em>Illinois State Museum Scientific Papers E Series, 1</em>.</p>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
-</ul>
-<table class="docutils footnote" frame="void" id="id1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td>Grant number 0622349</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[2]</td><td>Grant number 0622289</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[8]</td><td><a class="reference external" href="https://www.cia.gov/library/publications/the-world-factbook/">https://www.cia.gov/library/publications/the-world-factbook/</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[9]</td><td><a class="reference external" href="http://www.iso.org/iso/country_codes/iso_3166_databases.htm">http://www.iso.org/iso/country_codes/iso_3166_databases.htm</a></td></tr>
-</tbody>
-</table>
-</div>
-
-
-           </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="neotoma_introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2016, Eric Grimm, Simon Goring.
-
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+    </div>
+  </body>
 </html>

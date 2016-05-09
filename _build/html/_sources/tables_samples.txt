@@ -1,6 +1,8 @@
 Sample Related Tables
 -------------------------------
 
+.. _AnalysisUnits:
+
 AnalysisUnits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -32,7 +34,7 @@ This table stores the data for Analysis Units.
   An arbitrary Analysis Unit identification number.
 
 **CollectionUnitID (Foreign Key)** 
-  Collection Unit ID number. Field links to `CollectionUnits <#_Table:_CollectionUnits>`__ table. Every Analysis Unit belongs to a Collection Unit.
+  Collection Unit ID number. Field links to :ref:`CollectionUnits` table. Every Analysis Unit belongs to a Collection Unit.
 
 **AnalysisUnitName** 
   Optional name for an Analysis Unit. Analysis Units are usually designated with either a depth or a name, sometimes both.
@@ -45,7 +47,7 @@ This table stores the data for Analysis Units.
   Optional thickness of the Analysis Unit in cm. For many microfossil core samples, the depths are treated as points, and the thicknesses are not given in the publications, although 0.5 to 1.0 cm would be typical.
 
 **FaciesID**
-  Sedimentary facies of the Analysis Unit. Field links to the `FaciesTypes <#_Table:_FaciesTypes>`__ table.
+  Sedimentary facies of the Analysis Unit. Field links to the :ref:`FaciesTypes` table.
 
 **Mixed**
   Indicates whether specimens in the Analysis Unit are of mixed ages, for example Pleistocene fossils occurring with late Holocene fossils. Although Analysis Units may be mixed, samples from the Analysis Unit may not be, for example individually radiocarbon dated specimens.
@@ -56,14 +58,15 @@ This table stores the data for Analysis Units.
 **Notes** 
   Free form notes or comments about the Analysis Unit.
 
+.. _Data:
+
 Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The primary data table in the database. Each occurrence of a Variable in
-a sample comprises a record in the Data table.
+The primary data table in the database. Each occurrence of a Variable in a sample comprises a record in the Data table.
 
 +-------------------+----------------+----------+-------------+
-| **Table: Data**   |
+| **Table: Data**                                             |
 +-------------------+----------------+----------+-------------+
 | SampleID          | Long Integer   | PK, FK   | Samples     |
 +-------------------+----------------+----------+-------------+
@@ -73,10 +76,10 @@ a sample comprises a record in the Data table.
 +-------------------+----------------+----------+-------------+
 
 **SampleID (Primary Key, Foreign Key)**
-  Sample identification number. Field links to `Samples <#_Table:_Samples>`__ table.
+  Sample identification number. Field links to :ref:`Samples` table.
 
 **VariableID (Primary Key, Foreign Key)**
-  Variable identification number. Field links to `Variables <#_Table:_Variables>`__ table.
+  Variable identification number. Field links to :ref:`Variables` table.
 
 **Value**
   The value of the variable.
@@ -88,49 +91,49 @@ The following SQL example gives a list of vertebrate taxa by
 Analysis Unit for all sites. Also listed are Variable Measurement Units and Values.
 
 .. code-block:: sql
-   :linenos:
+     :linenos:
 
-  SELECT
-    AnalysisUnits.AnalysisUnitName,
-    Taxa.TaxonName,
-    VariableUnits.VariableUnits,
-    `Data.Value`
+     SELECT
+       AnalysisUnits.AnalysisUnitName,
+       Taxa.TaxonName,
+       VariableUnits.VariableUnits,
+       `Data.Value`
 
-  FROM
-    VariableUnits
-  INNER JOIN (
-    AnalysisUnits
-    INNER JOIN (
-      DatasetTypes
-      INNER JOIN (
-        Taxa
-        INNER JOIN (
-          `Variables`
-          INNER JOIN (
-            (
-              (
-                (
-                  Sites
-                  INNER JOIN CollectionUnits ON Sites.SiteID = CollectionUnits.SiteID
-                )
-                INNER JOIN Datasets ON CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID
-              )
-              INNER JOIN Samples ON Datasets.DatasetID = Samples.DatasetID
-            )
-            INNER JOIN `Data` ON Samples.SampleID = `Data.SampleID`
-          ) ON `Variables.VariableID` = `Data.VariableID`
-        ) ON Taxa.TaxonID = `Variables.TaxonID`
-      ) ON DatasetTypes.DatasetTypeID = Datasets.DatasetTypeID
-      AND (DatasetTypes.DatasetType) = "vertebrate fauna"
-    ) ON (
-      CollectionUnits.CollectionUnitID = AnalysisUnits.CollectionUnitID
-    )
-    AND (
-      AnalysisUnits.AnalysisUnitID = Samples.AnalysisUnitID
-    )
-  ) ON VariableUnits.VariableUnitsID = `Variables.VariableUnitsID`
+     FROM
+       VariableUnits
+     INNER JOIN (
+       AnalysisUnits
+       INNER JOIN (
+         DatasetTypes
+         INNER JOIN (
+           Taxa
+           INNER JOIN (
+             `Variables`
+             INNER JOIN (
+               (
+                 (
+                   (
+                     Sites
+                     INNER JOIN CollectionUnits ON Sites.SiteID = CollectionUnits.SiteID
+                   )
+                   INNER JOIN Datasets ON CollectionUnits.CollectionUnitID = Datasets.CollectionUnitID
+                 )
+                 INNER JOIN Samples ON Datasets.DatasetID = Samples.DatasetID
+               )
+               INNER JOIN `Data` ON Samples.SampleID = `Data.SampleID`
+             ) ON `Variables.VariableID` = `Data.VariableID`
+           ) ON Taxa.TaxonID = `Variables.TaxonID`
+         ) ON DatasetTypes.DatasetTypeID = Datasets.DatasetTypeID
+         AND (DatasetTypes.DatasetType) = "vertebrate fauna"
+       ) ON (
+         CollectionUnits.CollectionUnitID = AnalysisUnits.CollectionUnitID
+       )
+       AND (
+         AnalysisUnits.AnalysisUnitID = Samples.AnalysisUnitID
+       )
+     ) ON VariableUnits.VariableUnitsID = `Variables.VariableUnitsID`
 
-  LIMIT 5;
+     LIMIT 5;
 
 The first few lines of the result:
 
@@ -150,11 +153,12 @@ The first few lines of the result:
 | Level 10 prov. 1-3     | Martes                  | NISP                | 2           |
 +------------------------+-------------------------+---------------------+-------------+
 
+.. _DepAgents:
+
 DepAgents
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Deposition Agents for Analysis Units. Individual Analysis Units may be
-listed multiple times with different Deposition Agents.
+Deposition Agents for Analysis Units. Individual Analysis Units may be listed multiple times with different Deposition Agents.
 
 +------------------------+----------------+----------+------------------+
 | **DepAgents**                                                         |
@@ -165,15 +169,17 @@ listed multiple times with different Deposition Agents.
 +------------------------+----------------+----------+------------------+
 
 **AnalysisUnitID (Primary Key)**
-  Analysis Unit identification number. Field links to `AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
+  Analysis Unit identification number. Field links to :ref:`AnalysisUnits` table.
 
 **DepAgentID**
-  Deposition Agent identification number. Field links to `DepAgentTypes <#_Table:_DepAgentTypes>`__ table.
+  Deposition Agent identification number. Field links to :ref:`DepAgentTypes` table.
+
+.. _DepAgentTypes:
 
 DepAgentTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table of Depositional Agents. Table is referenced by the `DepAgents <#_Table:_DepAgents>`__ table.
+Lookup table of Depositional Agents. Table is referenced by the :ref:`DepAgents` table.
 
 +----------------------------+----------------+------+-----+
 | **DepAgentTypes**                                        |
@@ -183,22 +189,18 @@ Lookup table of Depositional Agents. Table is referenced by the `DepAgents <#_Ta
 | DepAgent                   | Text           |      |     |
 +----------------------------+----------------+------+-----+
 
-**DepAgentID (Primary Key)** An arbitrary Depositional Agent
-identification number.
+**DepAgentID (Primary Key)**
+   An arbitrary Depositional Agent identification number.
 
-**DepAgent** Depostional Agent.
+**DepAgent** 
+   Depostional Agent.
 
-
+.. _SampleAges:
 
 SampleAges
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table stores sample ages. Ages are assigned to a Chronology.
-Because there may be more than one Chronology for a Collection Unit,
-samples may be assigned different ages for different Chronologies. A
-simple example is one sample age in radiocarbon years and another in
-calibrated radiocarbon years. The age units are an attribute of the
-Chronology.
+This table stores sample ages. Ages are assigned to a Chronology. Because there may be more than one Chronology for a Collection Unit, samples may be assigned different ages for different Chronologies. A simple example is one sample age in radiocarbon years and another in calibrated radiocarbon years. The age units are an attribute of the Chronology.
 
 +-------------------------+----------------+------+----------------+
 | **Table: SampleAges**                                            |
@@ -216,31 +218,28 @@ Chronology.
 | AgeOlder                | Double         |      |                |
 +-------------------------+----------------+------+----------------+
 
-**SampleAgeID (Primary Key)** An arbitrary Sample Age identification
-number.
+**SampleAgeID (Primary Key)** 
+   An arbitrary Sample Age identification number.
 
-**SampleID (Foreign Key)** Sample identification number. Field links to
-the `Samples <#_Table:_Samples>`__ table.
+**SampleID (Foreign Key)** 
+   Sample identification number. Field links to the :ref:`Samples` table.
 
-**ChronologyID (Foreign Key)** Chronology identification number. Field
-links to the `Chronologies <#_Table:_Chronologies>`__ table.
+**ChronologyID (Foreign Key)** 
+   Chronology identification number. Field links to the :ref:`Chronologies` table.
 
-**Age** Age of the sample
+**Age** 
+   Age of the sample
 
-**AgeYounger** Younger error estimate of the age. The definition of
-this estimate is an attribute of the Chronology. Many ages do not have
-explicit error estimates assigned.
+**AgeYounger** 
+   Younger error estimate of the age. The definition of this estimate is an attribute of the Chronology. Many ages do not have explicit error estimates assigned.
 
-**AgeOlder** Older error estimate of the age.
+**AgeOlder**
+   Older error estimate of the age.
 
 SQL Example
 `````````````````````````````
 
-This query lists the Sample Ages for the default Chronologies for «».
-The CollectionUnit.Handle indicates that there is only one Collection
-Unit from this site. There are two default Chronologies, one in
-«Radiocarbon years BP» and the other in «Calibrated radiocarbon years
-BP».
+This query lists the Sample Ages for the default Chronologies for «». The CollectionUnit.Handle indicates that there is only one Collection Unit from this site. There are two default Chronologies, one in «Radiocarbon years BP» and the other in «Calibrated radiocarbon years BP».
 
 .. code-block:: sql
    :linenos:
@@ -295,6 +294,8 @@ The first five lines of the result for each Age Type:
 |                | MUSKOX       | 2567      | Calibrated radiocarbon years BP   |
 +----------------+--------------+-----------+-----------------------------------+
 
+.. _SampleAnalysts:
+
 SampleAnalysts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -312,23 +313,24 @@ This table lists the Sample Analysts.
 | AnalystOrder                | Long Integer   |      |            |
 +-----------------------------+----------------+------+------------+
 
-**AnalystID (Primary Key)** An arbitrary Sample Analyst identification
-number.
+**AnalystID (Primary Key)**
+   An arbitrary Sample Analyst identification number.
 
-**SampleID (Foreign Key)** Sample identification number. Field links to
-the `Samples <#_Table:_Samples>`__ table.
+**SampleID (Foreign Key)** 
+   Sample identification number. Field links to the :ref:`Samples` table.
 
-**ContactID (Foreign Key)** Contact identification number. Field links
-to the `Contacts <#_Table:_Contacts>`__ table.
+**ContactID (Foreign Key)** 
+   Contact identification number. Field links to the :ref:`Contacts` table.
 
-**AnalystOrder** Order in which Sample Analysts are listed if more than
-one (rare).
+**AnalystOrder**
+   Order in which Sample Analysts are listed if more than one (rare).
+
+.. _SampleKeywords:
 
 SampleKeywords
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This table links keywords to samples. For example, it identifies modern
-pollen surface samples.
+This table links keywords to samples. For example, it identifies modern pollen surface samples.
 
 +-----------------------------+----------------+----------+------------+
 | **Table: SampleKeywords**   |                                        |
@@ -338,11 +340,11 @@ pollen surface samples.
 | KeywordID                   | Long Integer   | PK, FK   | Keywords   |
 +-----------------------------+----------------+----------+------------+
 
-**SampleID (Primary Key, Foreign Key)** Sample identification number.
-Field links to the `Samples <#_Table:_Samples>`__ table.
+**SampleID (Primary Key, Foreign Key)** 
+   Sample identification number. Field links to the :ref:`Samples` table.
 
-**KeywordID (Primary Key, Foreign Key)** Keyword identification number.
-Field links to the `Keywords <#table-keywords>`__ lookup table.
+**KeywordID (Primary Key, Foreign Key)** 
+   Keyword identification number. Field links to the :ref:`Keywords` lookup table.
 
 SQL Example
 `````````````````````````````
@@ -429,6 +431,8 @@ Result:
 | 24778          | JHMS29 (McAndrews and Wright 1969)   | Modern         | McAndrews, John H.        | Organic Detritus   |
 +----------------+--------------------------------------+----------------+---------------------------+--------------------+
 
+.. _Samples:
+
 Samples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -458,10 +462,10 @@ This table stores sample data. Samples belong to Analysis Units, which belong to
    An arbitrary Sample identification number.
 
 **AnalysisUnitID (Foreign Key)**
-   Analysis Unit identification number. Field links to the `AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
+   Analysis Unit identification number. Field links to the :ref:`AnalysisUnits` table.
 
 **DatasetID (Foreign Key)** 
-   Dataset identification number. Field links to the `Datasets <#table-datasets>`__ table.
+   Dataset identification number. Field links to the :ref:`Datasets` table.
 
 **SampleName**
    Sample name if any.
@@ -470,7 +474,7 @@ This table stores sample data. Samples belong to Analysis Units, which belong to
    Date of analysis.
 
 **LabNumber**
-   Laboratory number for the sample. A special case regards geochronologic samples, for which the LabNumber is the number, if any, assigned by the submitter, not the number assigned by the radiocarbon laboratory, which is in the `Geochronology <#_Table:_Geochronology>`__ table.
+   Laboratory number for the sample. A special case regards geochronologic samples, for which the LabNumber is the number, if any, assigned by the submitter, not the number assigned by the radiocarbon laboratory, which is in the :ref:`Geochronology` table.
 
 **PreparationMethod** 
    Description, notes, or comments on preparation methods. For faunal samples, notes on screening methods or screen size are stored here.
@@ -550,6 +554,8 @@ Result:
 | Unit C             | Level 2                   | geochronologic     |                                                                         |
 +--------------------+---------------------------+--------------------+-------------------------------------------------------------------------+
 
+.. _AggregateSamples:
+
 AggregateSamples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -563,21 +569,21 @@ This table stores the samples in Aggregate Datasets.
 | SampleID                      | int   | PK, FK   | Samples             |
 +-------------------------------+-------+----------+---------------------+
 
-**AggregateDatasetID (Primary Key, Foreign Key)** An arbitrary
-Aggregate Dataset identification number. Field links to the
-`AggregateDatasets`__ table.
+**AggregateDatasetID (Primary Key, Foreign Key)** 
+   An arbitrary Aggregate Dataset identification number. Field links to the :ref:`AggregateDatasets`__ table.
 
-**SampleID (Primary Key, Foreign Key)** Sample ID number. Field links
-to the `Samples`__ table.
+**SampleID (Primary Key, Foreign Key)**
+   Sample ID number. Field links to the :ref:`Samples`__ table.
+
+.. _FaciesTypes:
 
 FaciesTypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table of Facies Types. Table is referenced by the
-`AnalysisUnits <#_Table:_AnalysisUnits>`__ table.
+Lookup table of Facies Types. Table is referenced by the :ref:`AnalysisUnits` table.
 
 +--------------------------+----------------+------+-----+
-| **FaciesTypes**                                 |
+| **FaciesTypes**                                        |
 +--------------------------+----------------+------+-----+
 | FaciesID                 | Long Integer   | PK   |     |
 +--------------------------+----------------+------+-----+
@@ -590,26 +596,24 @@ Lookup table of Facies Types. Table is referenced by the
 **Facies** 
    Short Facies description.
 
+.. _Keywords:
+
 Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lookup table of Keywords referenced by the
-`SampleKeywords <#_Table:_SampleKeywords>`__ table. The table provides a
-means to identify samples sharing a common attribute. For example, the
-keyword «modern sample» identifies modern surface samples in the
-database. These samples include individual surface samples, as well as
-core tops. Although not implemented, a «pre-European settlement» keyword
-would be a means to identify samples just predating European settlement.
+Lookup table of Keywords referenced by the :ref:`SampleKeywords` table. The table provides a means to identify samples sharing a common attribute. For example, the
+keyword «modern sample» identifies modern surface samples in the database. These samples include individual surface samples, as well as core tops. Although not implemented, a «pre-European settlement» keyword would be a means to identify samples just predating European settlement.
 
 +-----------------------+----------------+------+-----+
-| **Table: Keywords**   |
+| **Table: Keywords**                                 |
 +-----------------------+----------------+------+-----+
 | KeywordID             | Long Integer   | PK   |     |
 +-----------------------+----------------+------+-----+
 | Keyword               | Text           |      |     |
 +-----------------------+----------------+------+-----+
 
-**KeywordID (Primary Key)** An arbitrary Keyword identification number.
+**KeywordID (Primary Key)**
+   An arbitrary Keyword identification number.
 
-**Keyword** A keyword for identifying samples sharing a common
-attribute.
+**Keyword**
+   A keyword for identifying samples sharing a common attribute.
