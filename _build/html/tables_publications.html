@@ -1,43 +1,189 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Publication Related Tables &mdash; neotoma 1.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/table_styling.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="neotoma 1.0 documentation" href="index.html" />
-    <link rel="next" title="Contact and Individual Related Tables" href="tables_contacts.html" />
-    <link rel="prev" title="Taxonomy Related Tables" href="tables_taxa.html" />
-   
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Publication Related Tables &mdash; neotoma 1.0 documentation</title>
+  
 
-  </head>
-  <body role="document">  
+  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/table_styling.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Contact and Individual Related Tables" href="tables_contacts.html"/>
+        <link rel="prev" title="Taxonomy Related Tables" href="tables_taxa.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> neotoma
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Publication Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#publicationauthors">PublicationAuthors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#publicationeditors">PublicationEditors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publications">Publications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publicationtypes">PublicationTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#legacy-publication">Legacy Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#journal-article">Journal Article</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#book-chapter">Book Chapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authored-book">Authored Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edited-book">Edited Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#masters-thesis">Master’s Thesis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#doctoral-dissertation">Doctoral Dissertation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authored-report">Authored Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edited-report">Edited Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-authored-publication">Other Authored Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-edited-publication">Other Edited Publication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Publication Related Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#publicationauthors">PublicationAuthors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#publicationeditors">PublicationEditors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publications">Publications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publicationtypes">PublicationTypes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#legacy-publication">Legacy Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#journal-article">Journal Article</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#book-chapter">Book Chapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authored-book">Authored Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edited-book">Edited Book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#masters-thesis">Master’s Thesis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#doctoral-dissertation">Doctoral Dissertation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authored-report">Authored Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edited-report">Edited Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-authored-publication">Other Authored Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-edited-publication">Other Edited Publication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">neotoma</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Publication Related Tables</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tables_publications.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="publication-related-tables">
 <h1>Publication Related Tables<a class="headerlink" href="#publication-related-tables" title="Permalink to this headline">¶</a></h1>
@@ -392,17 +538,12 @@
 <dt><strong>DOI</strong></dt>
 <dd><p class="first">Digital Object Identifier. A unique identifier assigned to digital publications. The DOI consists of a prefix and suffix separated by a slash. The portion before the slash stands for the publisher and is assigned by the International DOI Foundation. For example, 10.1029 is the prefix for the American Geophysical Union. The suffix is assigned by the publisher according to their protocols. For example, the DOI 10.1029/2002PA000768 is for an article submitted to <em>Paleoceanography</em> in 2002 and is article number 768 submitted since the system was installed. An example of CitationNumber and DOI:</p>
 <blockquote class="last">
-<div>Barron, J. A., L. Heusser, T. Herbert, and M. Lyle. 2003.
-High-resolution climatic evolution of coastal northern during the
-past 16,000 years, Paleoceanography 18(1):<strong>1020.
-DOI:10.1029/2002PA000768.</strong></div></blockquote>
+<div>Barron, J. A., L. Heusser, T. Herbert, and M. Lyle. 2003.  High-resolution climatic evolution of coastal northern during the past 16,000 years, Paleoceanography 18(1):<strong>1020. DOI:10.1029/2002PA000768.</strong></div></blockquote>
 </dd>
 <dt><strong>NumVolumes</strong></dt>
 <dd><blockquote class="first">
 <div>Number of volumes in a set of books. Used when the entire set is referenced. An example of NumVolumes and Edition:</div></blockquote>
-<p class="last">Wilson, D. E., and D. M. Reeder. 2005. Mammal species of the world:
-a taxonomic and geographic reference. <strong>Third edition. 2 volumes</strong>.
-The Johns Hopkins University Press, Baltimore, Maryland, USA.</p>
+<p class="last">Wilson, D. E., and D. M. Reeder. 2005. Mammal species of the world: a taxonomic and geographic reference. <strong>Third edition. 2 volumes</strong>. The Johns Hopkins University Press, Baltimore, Maryland, USA.</p>
 </dd>
 <dt><strong>Edition</strong></dt>
 <dd>Edition of a publication.</dd>
@@ -522,6 +663,31 @@ The Johns Hopkins University Press, Baltimore, Maryland, USA.</p>
 </table>
 <table border="1" class="docutils">
 <colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Legacy Example: Imported from the North American Pollen Database</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Baker, R. G. 1983. Holocene vegetational history of the western . Pages 109-127 in H.E. Wright, Jr., editor.
+Late-Quaternary environments of the  United States. Volume 2. The Holocene. University of Minnesota Press.
+Minneapolis, MN.</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td>R G Baker</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1979</td>
+</tr>
+<tr class="row-odd"><td>Citation</td>
+<td>Baker, R.G. 1983. Holocene vegetational history of the western . Pages 109-127 in H.E. Wright,
+Jr., editor. Late-Quaternary environments of the United States. Volume 2. The Holocene.
+University of Minnesota Press. Minneapolis, MN.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
 <col width="14%" />
 <col width="86%" />
 </colgroup>
@@ -593,14 +759,15 @@ Volume 2: The Holocene (H. E. Wright, Jr., ed.), University of Minnesota Press, 
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col width="26%" />
+<col width="74%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td colspan="2"><strong>Journal Example: Page numbers</strong></td>
 </tr>
-<tr class="row-even"><td colspan="2">Wright, H.E., Jr., T.C. Winter, and H.L. Patten. 1963. Two pollen diagrams from southeastern : problems in the regional late-glacial
-and postglacial vegetational history. Geological Society of Bulletin 74:1371-1396.</td>
+<tr class="row-even"><td colspan="2">Wright, H.E., Jr., T.C. Winter, and H.L. Patten. 1963. Two pollen diagrams from southeastern : problems
+in the regional late-glacial  and postglacial vegetational history. Geological Society of Bulletin.
+74:1371-1396.</td>
 </tr>
 <tr class="row-odd"><td>Authors</td>
 <td>H. E. Wright Jr.
@@ -611,8 +778,8 @@ H. L. Patten</td>
 <td>1963</td>
 </tr>
 <tr class="row-odd"><td>ArticleTitle</td>
-<td>Two pollen diagrams from southeastern : problems in the regional late-glacial and postglacial vegetational
-history</td>
+<td>Two pollen diagrams from southeastern : problems in the regional late-
+glacial and postglacial vegetational history.</td>
 </tr>
 <tr class="row-even"><td>BookTitle</td>
 <td>Geological Society of Bulletin</td>
@@ -636,14 +803,14 @@ history</td>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col width="26%" />
+<col width="74%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td colspan="2"><strong>Journal Example: Page numbers, article in French, OriginalLanguage not needed</strong></td>
 </tr>
-<tr class="row-even"><td colspan="2">Richard, P .J. H. 1979. Contribution à l&#8217;histoire postglaciaire de la végétation au nord-est de la Jamésie, Nouveau-Québec.
-Géographie physique et Quaternaire 33:93-112.</td>
+<tr class="row-even"><td colspan="2">Richard, P .J. H. 1979. Contribution à l&#8217;histoire postglaciaire de la végétation au nord-est de la
+Jamésie, Nouveau-Québec. Géographie physique et Quaternaire 33:93-112.</td>
 </tr>
 <tr class="row-odd"><td>Authors</td>
 <td>Richard, P. J. H.</td>
@@ -652,7 +819,8 @@ Géographie physique et Quaternaire 33:93-112.</td>
 <td>1979</td>
 </tr>
 <tr class="row-odd"><td>ArticleTitle</td>
-<td>Contribution à l&#8217;histoire postglaciaire de la végétation au nord-est de la Jamésie, Nouveau-Québec</td>
+<td>Contribution à l&#8217;histoire postglaciaire de la végétation au nord-est de la
+Jamésie, Nouveau-Québec</td>
 </tr>
 <tr class="row-even"><td>BookTitle</td>
 <td>Géographie physique et Quaternaire</td>
@@ -671,6 +839,104 @@ Géographie physique et Quaternaire 33:93-112.</td>
 </tr>
 <tr class="row-odd"><td>DOI</td>
 <td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Journal Example: Citation number and DOI</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Barron, J. A., L. Heusser, T. Herbert, and M. Lyle. 2003. High-resolution climatic evolution of coastal
+northern during the past 16,000 years, Paleoceanography 18(1):1020. DOI:10.1029/2002PA000768.</td>
+</tr>
+<tr class="row-odd"><td colspan="2"><dl class="first last docutils">
+<dt>Authors                  | J. A. Barron</dt>
+<dd><div class="first last line-block">
+<div class="line">L. Heusser</div>
+<div class="line">T. Herbert</div>
+<div class="line">M. Lyle</div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>2003</td>
+</tr>
+<tr class="row-odd"><td>ArticleTitle</td>
+<td>High-resolution climatic evolution of coastal northern during the past
+16,000 years</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Paleoceanography</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>18</td>
+</tr>
+<tr class="row-even"><td>Issue</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>CitationNumber</td>
+<td>1020</td>
+</tr>
+<tr class="row-odd"><td>DOI</td>
+<td>10.1029/2002PA000768</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Journal Example: Translated and transliterated from Russian</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Tarasov, P.E. 1991. Late Holocene features of the Kokchetav Highland. Vestnik Moskovskogo Universiteta.
+Series 5. Geography 6:54-60 [in Russian].</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="16">
+<li><ol class="first upperalpha" start="5">
+<li>Tarasov</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1991</td>
+</tr>
+<tr class="row-odd"><td>ArticleTitle</td>
+<td>Late Holocene features of the Kokchetav Highland</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Vestnik Moskovskogo Universiteta. Series 5. Geography</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>6</td>
+</tr>
+<tr class="row-even"><td>Issue</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>54-60</td>
+</tr>
+<tr class="row-even"><td>CitationNumber</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>DOI</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>OriginalLanguage</td>
+<td>Russian</td>
 </tr>
 </tbody>
 </table>
@@ -729,6 +995,217 @@ Géographie physique et Quaternaire 33:93-112.</td>
 </tr>
 <tr class="row-even"><td>Country</td>
 <td>Country where published</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Book Chapter Example: Volume in a set</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Lundelius, E. L., Jr., R. W. Graham, E. Anderson, J. Guilday, J. A. Holman, D. W. Steadman, and S. D. Webb. 1983.
+Terrestrial vertebrate faunas. Pages 311-353 in S. C. Porter, editor. Late-Quaternary environments of the . Volume 1.
+The late Pleistocene. of Press, .</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td>E. L. Lundelius Jr.
+R. W. Graham
+J. Guilday
+J. A. Holman
+D. W. Steadman
+S. D. Webb</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1983</td>
+</tr>
+<tr class="row-odd"><td>ArticleTitle</td>
+<td>Terrestrial vertebrate faunas</td>
+</tr>
+<tr class="row-even"><td>Editors</td>
+<td><ol class="first last upperalpha simple" start="19">
+<li><ol class="first upperalpha" start="3">
+<li>Porter</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>Pages</td>
+<td>311-353</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Late-Quaternary environments of the</td>
+</tr>
+<tr class="row-even"><td>Edition</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VolumeTitle</td>
+<td>The late Pleistocene</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>Press</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Book Chapter Example: Volume in a series</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Curtis, J. H., and D. A. Hodell. 1993. An isotopic and trace element study of ostracods from , : A 10,500 year record of
+paleosalinity and paleotemperature changes in the . Pages 135-152 in P. K. Swart, K. C. Lohmann, J. McKensie, and S.
+Savin, editors. Climate change in continental isotopic records. Geophysical Monograph 78. American Geophysical Union, .</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td>J. H. Curtis
+D. A. Hodell</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1993</td>
+</tr>
+<tr class="row-odd"><td colspan="2"><dl class="first last docutils">
+<dt>ArticleTitle           | An isotopic and trace element study of ostracods from , <span class="classifier-delimiter">:</span> <span class="classifier">A 10,500 year record of paleosalinity</span></dt>
+<dd><div class="first last line-block">
+<div class="line">and paleotemperature changes in the</div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td colspan="2"><dl class="first last docutils">
+<dt>Editors                | P. K. Swart</dt>
+<dd><div class="first last line-block">
+<div class="line">K. C. Lohmann</div>
+<div class="line">J. McKensie</div>
+<div class="line">S. Savin</div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Pages</td>
+<td>135-152</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Climate change in continental isotopic records</td>
+</tr>
+<tr class="row-even"><td>Edition</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VolumeTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>Geophysical Monograph</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>78</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>American Geophysical</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Book Chapter Example: Chapter in an edited technical report</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Gust, S. 1990. Faunal. Pages 112-113 in J. G. Maniery, editor. Northern Pomo prehistory: archaeological test excavations
+at CA-MEN 2138, . Technical Report 1. PAR Environmental Services, Inc.,</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="19">
+<li>Gust</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1990</td>
+</tr>
+<tr class="row-odd"><td>ArticleTitle</td>
+<td>Faunal</td>
+</tr>
+<tr class="row-even"><td>Editors</td>
+<td><ol class="first last upperalpha simple" start="10">
+<li><ol class="first upperalpha" start="7">
+<li>Maniery</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Pages</td>
+<td>112-113</td>
+</tr>
+<tr class="row-odd"><td>BookTitle</td>
+<td>Northern Pomo prehistory: archaeological test excavations at CA-MEN 2138,</td>
+</tr>
+<tr class="row-even"><td>Edition</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VolumeTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>Technical Report</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>71</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>PAR Environmental Services, Inc.</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -844,16 +1321,17 @@ Géographie physique et Quaternaire 33:93-112.</td>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="19%" />
-<col width="81%" />
+<col width="23%" />
+<col width="77%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td colspan="2"><strong>Authored Book Example: Multivolume</strong></td>
 </tr>
-<tr class="row-even"><td colspan="2">Wilson, D. E., and D. M. Reeder. 2005. Mammal species of the world: a taxonomic and geographic reference. Third edition. 2 volumes. The Press, .</td>
+<tr class="row-even"><td colspan="2">Wilson, D. E., and D. M. Reeder. 2005. Mammal species of the world: a taxonomic and geographic reference. Third
+edition. 2 volumes. The Press, .</td>
 </tr>
 <tr class="row-odd"><td>Authors</td>
-<td>D. E. Wilson
+<td>D. E.Wilson
 D. M. Reeder</td>
 </tr>
 <tr class="row-even"><td>Year</td>
@@ -891,6 +1369,45 @@ D. M. Reeder</td>
 </tr>
 <tr class="row-odd"><td>Country</td>
 <td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Authored Book Example: Volume in a set</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Flora of Editorial Committee. 2002. Flora of North America north of . Volume 26. Magnoliophyta: Liliidae: Liliales and
+Orchidales. Press, .</td>
+</tr>
+<tr class="row-odd"><td colspan="2">Authors              | Flora of Editorial Committee</td>
+</tr>
+<tr class="row-even"><td colspan="2">Year                 | 2002</td>
+</tr>
+<tr class="row-odd"><td colspan="2">Volume               | 26</td>
+</tr>
+<tr class="row-even"><td colspan="2">BookTitle            | Flora of North America north of</td>
+</tr>
+<tr class="row-odd"><td colspan="2">Edition              |</td>
+</tr>
+<tr class="row-even"><td colspan="2">NumVolumes           |</td>
+</tr>
+<tr class="row-odd"><td colspan="2">VolumeTitle          | Magnoliophyta: Liliidae: Liliales and Orchidales</td>
+</tr>
+<tr class="row-even"><td colspan="2">SeriesTitle          |</td>
+</tr>
+<tr class="row-odd"><td colspan="2">SeriesVolume         |</td>
+</tr>
+<tr class="row-even"><td colspan="2">Publisher            | Press</td>
+</tr>
+<tr class="row-odd"><td colspan="2">City                 |</td>
+</tr>
+<tr class="row-even"><td colspan="2">State                |</td>
+</tr>
+<tr class="row-odd"><td colspan="2">Country              |</td>
 </tr>
 </tbody>
 </table>
@@ -1045,15 +1562,81 @@ excavations at a Mississippian village, northeast</td>
 <tr class="row-even"><td>SeriesTitle</td>
 <td>Research Report</td>
 </tr>
-<tr class="row-odd"><td colspan="2">SeriesVolume| 27</td>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>27</td>
 </tr>
-<tr class="row-even"><td colspan="2">Publisher   | Archeological Survey</td>
+<tr class="row-even"><td>Publisher</td>
+<td>Archeological Survey</td>
 </tr>
-<tr class="row-odd"><td colspan="2">City        |</td>
+<tr class="row-odd"><td>City</td>
+<td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td colspan="2">State       |</td>
+<tr class="row-even"><td>State</td>
+<td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td colspan="2">Country     |</td>
+<tr class="row-odd"><td>Country</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Edited Book Example: Second edition of volume in a set</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Tutin, T. G., N. A. Burges, A. O. Chater, J. R. Edmondson, V. H. Heywood, D. M. Moore, D. H. Valentine,
+S. M. Walters, and D. A. Webb, editors. 1993. Flora Europaea. Volume 1. Psilotaceae to Platanaceae. Second
+edition. Press, .</td>
+</tr>
+<tr class="row-odd"><td>Editors</td>
+<td>T. G. Tutin
+N. A. Burges
+A. O. Chater
+J. R. Edmondson
+V. H. Heywood
+D. M. Moore
+D. H. Valentine
+S. M. Walters
+D. A. Webb</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Flora Europaea</td>
+</tr>
+<tr class="row-odd"><td>Edition</td>
+<td>Second</td>
+</tr>
+<tr class="row-even"><td>NumVolumes</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VolumeTitle</td>
+<td>Psilotaceae to Platanaceae</td>
+</tr>
+<tr class="row-even"><td>SeriesTitle</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SeriesVolume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Publisher</td>
+<td>Press</td>
+</tr>
+<tr class="row-odd"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1095,13 +1678,57 @@ excavations at a Mississippian village, northeast</td>
 </tr>
 </tbody>
 </table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Master&#8217;s Thesis Example</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Radle, N. J. 1981. Vegetation history and lake-level changes at a saline lake in northeastern South Dakota.
+Master&#8217;s thesis. University of Minnesota, Minneapolis, Minnesota, USA.</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="14">
+<li><ol class="first upperalpha" start="10">
+<li>Radle</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1981</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>126</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Vegetation history and lake-level changes at a saline lake in northeastern
+South Dakota.</td>
+</tr>
+<tr class="row-odd"><td>Publisher</td>
+<td>University of Minnesota</td>
+</tr>
+<tr class="row-even"><td>City</td>
+<td>Minneapolis</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>Minnesota</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>USA</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="doctoral-dissertation">
 <h3>Doctoral Dissertation<a class="headerlink" href="#doctoral-dissertation" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col width="34%" />
+<col width="66%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td colspan="2"><strong>PubTypeID = Doctoral Dissertation</strong></td>
@@ -1129,6 +1756,47 @@ excavations at a Mississippian village, northeast</td>
 </tr>
 <tr class="row-odd"><td>Country</td>
 <td>Country of university</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Doctoral Dissertation Example</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Ortega-Guerrero, B. 1992. Paleomagnetismo, magnetoestratifia y paleoecología del Cuaternario tardío en el Lago
+de Chalco, Cuenca de México. Doctoral dissertation. Universidad Nacional Autónoma de México, , Mexico.</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="2">
+<li>Ortega-Guerrero</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1992</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>161</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Paleomagnetismo, magnetoestratifia y paleoecología del Cuaternario tardío en el
+Lago de Chalco, Cuenca de México</td>
+</tr>
+<tr class="row-odd"><td>Publisher</td>
+<td>Universidad Nacional Autónoma de México</td>
+</tr>
+<tr class="row-even"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1172,6 +1840,155 @@ excavations at a Mississippian village, northeast</td>
 </tr>
 <tr class="row-odd"><td>Country</td>
 <td>Country where published</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Authored Report Example: Numbered series</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Huber, J. K. 2003. Results of a pollen and loss-on-ignition analysis of sediment from a mastodon pulp
+cavity, North Fork Canoe Creek, . Report 2003-1. James K. Huber Consulting, .</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="10">
+<li><ol class="first upperalpha" start="11">
+<li>Huber</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>2003</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>Results of a pollen and loss-on-ignition analysis of sediment from a
+mastodon pulp cavity, North Fork Canoe Creek,</td>
+</tr>
+<tr class="row-odd"><td>SeriesTitle</td>
+<td>Report</td>
+</tr>
+<tr class="row-even"><td>SeriesVolume</td>
+<td>2003-1</td>
+</tr>
+<tr class="row-odd"><td>Publisher</td>
+<td>James K. Huber Consulting</td>
+</tr>
+<tr class="row-even"><td>City</td>
+<td>Vinton</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Authored Report Example: Numbered series</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Daugherty, R. D., J. J. Flenniken, and J. M. Welch. 1987. A data recovery study of rockshelters (45-LE-222)
+in Lewis County, Washington. United States Department of Agriculture, Forest Service, Region. Studies in
+Cultural Resource Management 8. .</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td>R. D. Daugherty
+J. J. Flenniken
+J. M. Welch</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1987</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>A data recovery study of rockshelters (45-LE-222) in Lewis County, Washington</td>
+</tr>
+<tr class="row-odd"><td>SeriesTitle</td>
+<td>Studies in Cultural Resource Management</td>
+</tr>
+<tr class="row-even"><td>SeriesVolume</td>
+<td>8</td>
+</tr>
+<tr class="row-odd"><td>Publisher</td>
+<td>United States Department of Agriculture, Forest Service, Region</td>
+</tr>
+<tr class="row-even"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2"><strong>Authored Report Example: Report series is a description</strong></td>
+</tr>
+<tr class="row-even"><td colspan="2">Cannon, K. P. 1997. The analysis of a late Holocene bison skull from Fawn Creek, , and its implications for
+understanding the history and ecology of bison in the Intermountain West. Report prepared for The Department
+of Agriculture, United States Forest Service, Salmon-Challis National Forest, Salmon, Idaho. United States
+Department of Interior, National Park Service, Midwest Archeological Center, .</td>
+</tr>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="11">
+<li><ol class="first upperalpha" start="16">
+<li>Cannon</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Year</td>
+<td>1997</td>
+</tr>
+<tr class="row-odd"><td>Pages</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>BookTitle</td>
+<td>The analysis of a late Holocene bison skull from Fawn Creek, , and its implications
+for understanding the history and ecology of bison in the Intermountain West</td>
+</tr>
+<tr class="row-odd"><td>SeriesTitle</td>
+<td>Report prepared for The Department of Agriculture, United States Forest Service,
+Salmon-Challis National Forest, Salmon, Idaho</td>
+</tr>
+<tr class="row-even"><td>SeriesVolume</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Publisher</td>
+<td>United States Department of Interior, National Park Service, Archeological Center</td>
+</tr>
+<tr class="row-even"><td>City</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1292,18 +2109,28 @@ excavations at a Mississippian village, northeast</td>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="100%" />
+<col width="16%" />
+<col width="84%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>Other Example: Web site</strong></td>
+<tr class="row-odd"><td colspan="2"><strong>Other Example: Web site</strong></td>
 </tr>
-<tr class="row-even"><td>Stevens, P.F. 2007. Angiosperm Phylogeny Website. Version 8, June 2007. <a class="reference external" href="http://www.mobot.org/MOBOT/research/APweb/">http://www.mobot.org/MOBOT/research/APweb/</a></td>
+<tr class="row-even"><td colspan="2">Stevens, P.F. 2007. Angiosperm Phylogeny Website. Version 8, June 2007. <a class="reference external" href="http://www.mobot.org/MOBOT/research/APweb/">http://www.mobot.org/MOBOT/research/APweb/</a></td>
 </tr>
-<tr class="row-odd"><td>Authors           | P. F. Stevens</td>
+<tr class="row-odd"><td>Authors</td>
+<td><ol class="first last upperalpha simple" start="16">
+<li><ol class="first upperalpha" start="6">
+<li>Stevens</li>
+</ol>
+</li>
+</ol>
+</td>
 </tr>
-<tr class="row-even"><td>Year              | 2007</td>
+<tr class="row-even"><td>Year</td>
+<td>2007</td>
 </tr>
-<tr class="row-odd"><td>ArticleTitle      | Angiosperm Phylogeny Website. Version 8, June 2007. <a class="reference external" href="http://www.mobot.org/MOBOT/research/APweb/">http://www.mobot.org/MOBOT/research/APweb/</a></td>
+<tr class="row-odd"><td>ArticleTitle</td>
+<td>Angiosperm Phylogeny Website. Version 8, June 2007. <a class="reference external" href="http://www.mobot.org/MOBOT/research/APweb/">http://www.mobot.org/MOBOT/research/APweb/</a></td>
 </tr>
 </tbody>
 </table>
@@ -1334,110 +2161,71 @@ excavations at a Mississippian village, northeast</td>
 </div>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="neotoma_introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Publication Related Tables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#publicationauthors">PublicationAuthors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#publicationeditors">PublicationEditors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#publications">Publications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#publicationtypes">PublicationTypes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#legacy-publication">Legacy Publication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#journal-article">Journal Article</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#book-chapter">Book Chapter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#authored-book">Authored Book</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#edited-book">Edited Book</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#masters-thesis">Master’s Thesis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#doctoral-dissertation">Doctoral Dissertation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#authored-report">Authored Report</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#edited-report">Edited Report</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#other-authored-publication">Other Authored Publication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#other-edited-publication">Other Edited Publication</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Publication Related Tables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#publicationauthors">PublicationAuthors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#sql-example">SQL Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#publicationeditors">PublicationEditors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#publications">Publications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#publicationtypes">PublicationTypes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#legacy-publication">Legacy Publication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#journal-article">Journal Article</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#book-chapter">Book Chapter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#authored-book">Authored Book</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#edited-book">Edited Book</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#masters-thesis">Master’s Thesis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#doctoral-dissertation">Doctoral Dissertation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#authored-report">Authored Report</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#edited-report">Edited Report</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#other-authored-publication">Other Authored Publication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#other-edited-publication">Other Edited Publication</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tables_contacts.html" class="btn btn-neutral float-right" title="Contact and Individual Related Tables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tables_taxa.html" class="btn btn-neutral" title="Taxonomy Related Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/tables_publications.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2016, Eric Grimm, Simon Goring.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
-      
-      |
-      <a href="_sources/tables_publications.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

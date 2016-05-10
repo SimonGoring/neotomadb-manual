@@ -1,63 +1,22 @@
 Introduction
 ============
 
-Neotoma is a public database containing fossil data from the Holocene,
-Pleistocene, and Pliocene, or approximately the last 5.3 million years.
-The database stores associated physical data from fossil bearing
-deposits, for example sediment loss-on-ignition and geochemical data.
-The database also stores data from modern samples that are used to
-interpret fossil data.
+Neotoma is a public database containing fossil data from the Holocene, Pleistocene, and Pliocene, or approximately the last 5.3 million years.  The database stores associated physical data from fossil bearing deposits, for example sediment loss-on-ignition and geochemical data.  The database also stores data from modern samples that are used to interpret fossil data.
 
-The initial development of Neotoma is funded by a grant from the U.S.
-National Science Foundation Geoinformatics program. This grant is
-collaborative between University [1]_ and the Museum [2]_. It has five
-Principle Investigators, Russell W. Graham ( ), Eric C. Grimm ( ),
-Stephen T. Jackson ( of ), Allan C. Ashworth ( ), and John W. (Jack)
-Williams (). The database is served from the Center for Environmental
-Informatics at .
+The initial development of Neotoma was funded by a grant from the U.S. National Science Foundation Geoinformatics program. This grant is collaborative between Penn State University [1]_ and the Illinois State Museum [2]_. It has five Principle Investigators, Russell W. Graham, Eric C. Grimm, Stephen T. Jackson, Allan C. Ashworth, and John W. (Jack) Williams. The database is served from the Center for Environmental Informatics at Penn State University.
 
-Initially, data are being merged from four existing databases: the
-Global Pollen Database, FAUNMAP (a database of mammalian fauna), the
-North American Plant Macrofossil Database, and a fossil beetle database
-assembled by Allan Ashworth. The design of this database is such that
-many other kinds of fossil data can easily be incorporated in the
-future, for example, ostracodes, diatoms, chironmids, and freshwater
-mussels.
+Initially, data are being merged from four existing databases: the Global Pollen Database, FAUNMAP (a database of mammalian fauna), the North American Plant Macrofossil Database, and a fossil beetle database assembled by Allan Ashworth. The design of this database is such that many other kinds of fossil data can easily be incorporated in the future, for example, the addition of ostracode, diatom, chironmid, and freshwater mussel datasets.
 
-The existing databases were developed in the 1990’s and have not been
-updated structurally since. New data have been added, but the structures
-of these databases have not changed, despite significant advances in
-database and internet technology. Although structurally different, these
-databases contain similar kinds of data, and merging them was quite
-practical. The rationale for this merging was twofold: (1) to facilitate
-analyses of past biotic communities at the ecosystem level and (2) to
-reduce the overhead in maintaining and distributing several independent
-databases..
+The existing databases were developed in the 1990’s and have not been updated structurally since. New data have been added, but the structures of these databases have not changed, despite significant advances in database and internet technology. Although structurally different, these databases contain similar kinds of data, and merging them was quite practical. The rationale for this merging was twofold: (1) to facilitate analyses of past biotic communities at the ecosystem level and (2) to reduce the overhead in maintaining and distributing several independent databases..
 
-The new Neotoma database was initially designed by E. C. Grimm and
-implemented in Microsoft® Access®. This database will be ported to a
-higher end RDBMS for Internet distribution, but it will continue to be
-distributed as a standalone Access database for researchers who need
-access to the entire database.
+The new Neotoma database was initially designed by E. C. Grimm and implemented in Microsoft® Access®. This database will be ported to a higher end RDBMS for Internet distribution, but it will continue to be distributed as a standalone Access database for researchers who need access to the entire database.
 
 Whence Neotoma
 --------------
 
-In the original NSF proposal, this database was called a “Late Neogene
-Terrestrial Ecosystem Database.” At the time this proposal was written,
-the Neogene Period included the Miocene, Pliocene, Pleistocene, and
-Holocene epochs. However, a proposal before the International Commission
-on Stratigraphy would elevate the Quaternary to a System or Period
-following the Neogene and terminate the Neogene at the end of Pliocene.
-Because this proposal renders the Neogene description of this database
-obsolete, a new name was sought. Numerous names and companion acronyms
-were considered, but none engendered enthusiastic support. B. Brandon
-Curry proposed the name Neotoma, and this name struck a fancy. *Neotoma*
-is the genus for the packrat. Packrats are prodigious collectors of
-anything in their territory, and moreover they are collectors of fossil
-data. They collect plant macrofossils and bones, and pollen is preserved
-in their amberat—hardened, dried urine, which impregnates their middens
-and preserves them for millennia.
+In the original NSF proposal, this database was called a “Late Neogene Terrestrial Ecosystem Database.” At the time this proposal was written, the Neogene Period included the Miocene, Pliocene, Pleistocene, and Holocene epochs. However, a proposal before the International Commission on Stratigraphy would elevate the Quaternary to a System or Period following the Neogene and terminate the Neogene at the end of Pliocene.
+
+Because this proposal renders the Neogene description of this database obsolete, a new name was sought. Numerous names and companion acronyms were considered, but none engendered enthusiastic support. B. Brandon Curry proposed the name Neotoma, and this name struck a fancy. *Neotoma* is the genus for the packrat. Packrats are prodigious collectors of anything in their territory, and moreover they are collectors of fossil data. They collect plant macrofossils and bones, and pollen is preserved in their amberat—hardened, dried urine, which impregnates their middens and preserves them for millennia.
 
 Rationale
 ---------
@@ -156,65 +115,25 @@ interface, we can reduce the number of people necessary for
 community-wide database maintenance, and thereby help ensure their
 long-term sustainability and existence.
 
-1. .. rubric:: History of the Constituent Databases
-      :name: history-of-the-constituent-databases
+History of the Constituent Databases
+``````````````````````````````````````````````````
 
-   1. .. rubric:: Global Pollen Database
-         :name: global-pollen-database
+Global Pollen Database
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In an early effort, the Cooperative Holocene Mapping Project
-(COHMAP Members 1988, Wright et al. 1993) assembled pollen data in the
-1970s and 1980s to test climate models. Although data-model comparison
-was the principal objective of the COHMAP project, the synoptic analyses
-of the pollen data, particularly maps showing the constantly shifting
-ranges of species in response to climate change, were revelatory and led
-to much ecological insight (e.g. Webb 1981, 1987, 1988).
+In an early effort, the Cooperative Holocene Mapping Project (COHMAP Members 1988, Wright et al. 1993) assembled pollen data in the 1970s and 1980s to test climate models. Although data-model comparison was the principal objective of the COHMAP project, the synoptic analyses of the pollen data, particularly maps showing the constantly shifting ranges of species in response to climate change, were revelatory and led to much ecological insight (e.g. Webb 1981, 1987, 1988).
 
-The COHMAP pollen “database” consisted of a multiplicity of flat files
-with prescribed formats for data and chronologies. FORTRAN programs were
-written to read these files and to assemble data for particular
-analyses. Thompson Webb III managed the COHMAP pollen database at , but
-as the quantity of data increased, data management became increasingly
-cumbersome. Clearly, the data needed to be migrated to a relational
-database management system. Discussions with E. C. Grimm led to the
-initiation of the North American Pollen Database (NAPD) at the in 1990.
+The COHMAP pollen “database” consisted of a multiplicity of flat files with prescribed formats for data and chronologies. FORTRAN programs were written to read these files and to assemble data for particular analyses. Thompson Webb III managed the COHMAP pollen database at , but as the quantity of data increased, data management became increasingly cumbersome. Clearly, the data needed to be migrated to a relational database management system. Discussions with E. C. Grimm led to the initiation of the North American Pollen Database (NAPD) at the in 1990.
 
-At the same time in , the International Geological Correlation Project
-IGCP 158 was conducting a major collaborative synthesis of
-paleoecological data, primarily of pollen, and the need for a pollen
-database became painfully obvious. In the forward to the book resulting
-from this project (Berglund et al. 1996), J.L. de Beaulieu describes the
-role that this project had in launching the European Pollen Database. A
-workshop to develop a European Pollen Database (EPD) was held in in
-1989. North American representatives also attended, and the organizers
-of NAPD and EPD commenced a long-standing collaboration to develop
-compatible databases. NAPD and EPD held several joint workshops and
-developed the same data structure. Nevertheless, the two databases were
-independently established, partly because Internet capabilities were not
-yet sufficient to easily manage a merged database. The pollen databases
-were developed in Paradox, which at the time was the most powerful RDBMS
-readily available for the PC platform. NAPD and EPD established two
-important protocols: (1) the databases were relational and queryable and
-(2) they were publicly available. As the success the NAPD-EPD
-partnership escalated, working groups initiated pollen databases for
-other regions, including the Latin American Pollen Database (LAPD) in
-1994, the Pollen Database for and the Russian Far East (PDSRFE) in 1995,
-and the African Pollen Database (APD) in 1996. At its initial
-organizational workshop, LAPD opted to merge with NAPD, rather than
-develop a standalone database, and the Global Pollen Database was born.
-PDSRFE also followed this model. APD developed independently, but uses
-the exact table structure of GPD and EPD. Pollen database projects have
-also been initiated in other regions, and the GPD contains some of these
-data, including the Indo-Pacific Pollen Database and the Japanese Pollen
-Database.
+At the same time in , the International Geological Correlation Project IGCP 158 was conducting a major collaborative synthesis of paleoecological data, primarily of pollen, and the need for a pollen database became painfully obvious. In the forward to the book resulting from this project (Berglund et al. 1996), J.L. de Beaulieu describes the role that this project had in launching the European Pollen Database. A workshop to develop a European Pollen Database (EPD) was held in in 1989. North American representatives also attended, and the organizers of NAPD and EPD commenced a long-standing collaboration to develop
+compatible databases. NAPD and EPD held several joint workshops and developed the same data structure. Nevertheless, the two databases were independently established, partly because Internet capabilities were not yet sufficient to easily manage a merged database. The pollen databases were developed in Paradox, which at the time was the most powerful RDBMS readily available for the PC platform. NAPD and EPD established two important protocols: 
 
-The pollen databases contain data from the Holocene, Pleistocene, and
-Pliocene, although most data are from the last 20,000 years. Included
-are fossil data, mainly from cores and sections, and modern surface
-samples, which are essential for calibrating fossil data. NAPD data are
-not separate from the GPD, but rather NAPD is the North American subset
-of GPD. EPD has both public and restricted data—a concession that had to
-be made early on to assuage some contributors.
+	(1) the databases were relational and queryable
+	(2) they were publicly available. 
+
+As the success the NAPD-EPD partnership escalated, working groups initiated pollen databases for other regions, including the Latin American Pollen Database (LAPD) in 1994, the Pollen Database for and the Russian Far East (PDSRFE) in 1995, and the African Pollen Database (APD) in 1996. At its initial organizational workshop, LAPD opted to merge with NAPD, rather than develop a standalone database, and the Global Pollen Database was born. PDSRFE also followed this model. APD developed independently, but uses the exact table structure of GPD and EPD. Pollen database projects have also been initiated in other regions, and the GPD contains some of these data, including the Indo-Pacific Pollen Database and the Japanese Pollen Database.
+
+The pollen databases contain data from the Holocene, Pleistocene, and Pliocene, although most data are from the last 20,000 years. Included are fossil data, mainly from cores and sections, and modern surface samples, which are essential for calibrating fossil data. NAPD data are not separate from the GPD, but rather NAPD is the North American subset of GPD. EPD has both public and restricted data—a concession that had to be made early on to assuage some contributors.
 
 North American Plant Macrofossil Database
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -300,84 +219,35 @@ data are more commonly used for analysis.
 BEETLE
 ~~~~~~
 
-Many beetles have highly specific ecological and climatic requirements
-and are valuable indicators of past environments (Morgan et al. 1983,
-Ashworth 2001, 2004). They are one of the most diverse groups of
-organisms on earth, and of the insects, perhaps the most commonly
-preserved as fossils. Allan Ashworth has assembled a database of fossil
-beetles from . The data, which were recorded in Excel, contain 5523
-individual records of 2567 taxa from 199 sites and 165 publications.
-Metadata include site name, latitude and longitude, lithology of
-sediment, absolute age, and geological age. The basic data are similar
-to plant and mammal databases—lists of taxa from sites. The metadata
-have not been recorded to the extent of the other databases, especially
-chronological data, but Ashworth has resolved the taxonomic issues and
-has assembled the publications, so that the additional metadata can be
-easily pulled together.
+Many beetles have highly specific ecological and climatic requirements and are valuable indicators of past environments (Morgan et al. 1983, Ashworth 2001, 2004). They are one of the most diverse groups of organisms on earth, and of the insects, perhaps the most commonly preserved as fossils. Allan Ashworth has assembled a database of fossil beetles from . The data, which were recorded in Excel, contain 5523 individual records of 2567 taxa from 199 sites and 165 publications. Metadata include site name, latitude and longitude, lithology of sediment, absolute age, and geological age. The basic data are similar to plant and mammal databases—lists of taxa from sites. The metadata have not been recorded to the extent of the other databases, especially chronological data, but Ashworth has resolved the taxonomic issues and has assembled the publications, so that the additional metadata can be easily pulled together.
 
 Who Will Use Neotoma?
 ---------------------
 
-The existing databases have been used widely for a variety of studies.
-Because the databases have been available on-line, precise determination
-of how many publications have made use of them is difficult. In
-addition, the databases are widely used for instructional purposes.
-Below are examples of the kinds of people who have used these databases
-and who we expect will find the new, integrated database even more
-useful.
+The existing databases have been used widely for a variety of studies. Because the databases have been available on-line, precise determination of how many publications have made use of them is difficult. In addition, the databases are widely used for instructional purposes. Below are examples of the kinds of people who have used these databases and who we expect will find the new, integrated database even more useful.
 
--  **Paleoecologists** seeking to place a new record into a
-   regional/continental/global context (e.g., Bell and Mead 1998,
-   Czaplewski et al. 1999, Bell and Barnosky 2000, Newby et al. 2000,
-   Futyma and Miller 2001, Gavin et al. 2001, Czaplewski et al. 2002,
-   Schauffler and Jacobson 2002, Camill et al. 2003, Rosenberg et al.
-   2003, Willard et al. 2003, Pasenko and Schubert 2004, and many
-   others).
+	-  **Paleoecologists** seeking to place a new record into a regional/continental/global context (e.g., Bell and Mead 1998, Czaplewski et al. 1999, Bell and Barnosky 2000, Newby et al. 2000, Futyma and Miller 2001, Gavin et al. 2001, Czaplewski et al. 2002, Schauffler and Jacobson 2002, Camill et al. 2003, Rosenberg et al. 2003, Willard et al. 2003, Pasenko and Schubert 2004, and many others).
 
--  **Synoptic paleoecologists** interested in mapping regional to
-   sub-continental to global patterns of vegetation change (e.g.,
-   Jackson et al. 1997, Williams et al. 1998, Jackson et al. 2000,
-   Prentice et al. 2000, Thompson and Anderson 2000, Williams et al.
-   2000, Williams et al. 2001, Williams 2003, Webb et al. 2004, Williams
-   et al. 2004, Asselin and Payette 2005).
+	- **Synoptic paleoecologists** interested in mapping regional to sub-continental to global patterns of vegetation change (e.g., Jackson et al. 1997, Williams et al. 1998, Jackson et al. 2000, Prentice et al. 2000, Thompson and Anderson 2000, Williams et al. 2000, Williams et al. 2001, Williams 2003, Webb et al. 2004, Williams et al. 2004, Asselin and Payette 2005).
 
--  **Synoptic paleoclimatologists** building benchmark paleoclimatic
-   reconstructions for GCM evaluation (e.g., Bartlein et al. 1998,
-   Farrera et al. 1999, Guiot et al. 1999, Kohfeld and Harrison 2000,
-   CAPE Project Members 2001, Kageyama et al. 2001, Kaplan et al. 2003).
+	- **Synoptic paleoclimatologists** building benchmark paleoclimatic reconstructions for GCM evaluation (e.g., Bartlein et al. 1998, Farrera et al. 1999, Guiot et al. 1999, Kohfeld and Harrison 2000, CAPE Project Members 2001, Kageyama et al. 2001, Kaplan et al. 2003).
 
--  **Paleontologists** trying to understand the timing, patterns, and
-   causes of extinction events (e.g., Jackson and Weng 1999, Graham
-   2001, Barnosky et al. 2004, Martínez-Meyer et al. 2004, Wroe et al.
-   2004).
+	- **Paleontologists** trying to understand the timing, patterns, and causes of extinction events (e.g., Jackson and Weng 1999, Graham 2001, Barnosky et al. 2004, Martínez-Meyer et al. 2004, Wroe et al. 2004).
 
--  **Evolutionary biologists** mapping the genetic legacies of
-   Quaternary climatic variations (e.g., Petit et al. 1997, Fedorov
-   1999, Tremblay and Schoen 1999, Hewitt 2000, Comps et al. 2001, Good
-   and Sullivan 2001, Petit et al. 2002, Kropf et al. 2003, Lessa et al.
-   2003, Petit et al. 2003, Hewitt 2004, Lascoux et al. 2004, Petit et
-   al. 2004, Whorley et al. 2004, Runck and Cook 2005).
+	- **Evolutionary biologists** mapping the genetic legacies of Quaternary climatic variations (e.g., Petit et al. 1997, Fedorov 1999, Tremblay and Schoen 1999, Hewitt 2000, Comps et al. 2001, Good and Sullivan 2001, Petit et al. 2002, Kropf et al. 2003, Lessa et al. 2003, Petit et al. 2003, Hewitt 2004, Lascoux et al. 2004, Petit et al. 2004, Whorley et al. 2004, Runck and Cook 2005).
 
--  **Macroecologists** interested in temporal records of species
-   turnover and biodiversity and historical controls on modern patterns
-   of floristic diversity (e.g., Silvertown 1985, Qian and Ricklefs
-   2000, Brown et al. 2001, Haskell 2001).
+	- **Macroecologists** interested in temporal records of species turnover and biodiversity and historical controls on modern patterns of floristic diversity (e.g., Silvertown 1985, Qian and Ricklefs 2000, Brown et al. 2001, Haskell 2001).
 
--  **Archeologists** who are studying human subsistence patterns and
-   interactions with their environment (e.g., Grayson 2001, Grayson and
-   Meltzer 2002, Cannon and Meltzer 2004, Grayson in press).
+	- **Archeologists** who are studying human subsistence patterns and interactions with their environment (e.g., Grayson 2001, Grayson and Meltzer 2002, Cannon and Meltzer 2004, Grayson in press).
 
--  **Natural resource managers** who need to know historical ranges and
-   abundances of plants and animals for designing conservation and
-   management plans (e.g., Graham and Graham 1994, Cole et al. 1998,
-   Noss et al. 2000, Owen et al. 2000, Committee on Ungulate Management
-   in Yellowstone National Park 2002, Burns et al. 2003)
+	- **Natural resource managers** who need to know historical ranges and abundances of plants and animals for designing conservation and management plans (e.g., Graham and Graham 1994, Cole et al. 1998, Noss et al. 2000, Owen et al. 2000, Committee on Ungulate Management in Yellowstone National Park 2002, Burns et al. 2003)
 
--  **Scientists** trying to understand the potential response of plants,
-   animals, biomes, ecosystems, and biodiversity to global warming
-   (e.g., Bartlein et al. 1997, Davis et al. 2000, Barnosky et al. 2003,
-   Burns et al. 2003, Kaplan et al. 2003, Schmitz et al. 2003, Jackson
-   and Williams 2004, Martínez-Meyer et al. 2004)
+	- **Scientists** trying to understand the potential response of plants, animals, biomes, ecosystems, and biodiversity to global warming (e.g., Bartlein et al. 1997, Davis et al. 2000, Barnosky et al. 2003, Burns et al. 2003, Kaplan et al. 2003, Schmitz et al. 2003, Jackson and Williams 2004, Martínez-Meyer et al. 2004)
 
--  **Teachers** who use the databases for teaching purposes and class
-   exercises.
+	- **Teachers** who use the databases for teaching purposes and class exercises.
+
+.. [1]
+   Grant number 0622349
+
+.. [2]
+   Grant number 0622289

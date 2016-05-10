@@ -1,97 +1,170 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Introduction &mdash; neotoma 1.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/table_styling.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="neotoma 1.0 documentation" href="index.html" />
-    <link rel="next" title="Database Design Concepts" href="db_design_concepts.html" />
-    <link rel="prev" title="Neotoma Paleoecology Database" href="index.html" />
-   
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; neotoma 1.0 documentation</title>
+  
 
-  </head>
-  <body role="document">  
+  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/table_styling.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Database Design Concepts" href="db_design_concepts.html"/>
+        <link rel="prev" title="Neotoma Paleoecology Database" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> neotoma
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#whence-neotoma">Whence Neotoma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rationale">Rationale</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#history-of-the-constituent-databases">History of the Constituent Databases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#global-pollen-database">Global Pollen Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#north-american-plant-macrofossil-database">North American Plant Macrofossil Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#faunmap">FAUNMAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beetle">BEETLE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#who-will-use-neotoma">Who Will Use Neotoma?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">neotoma</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/neotoma_introduction.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>Neotoma is a public database containing fossil data from the Holocene,
-Pleistocene, and Pliocene, or approximately the last 5.3 million years.
-The database stores associated physical data from fossil bearing
-deposits, for example sediment loss-on-ignition and geochemical data.
-The database also stores data from modern samples that are used to
-interpret fossil data.</p>
-<p>The initial development of Neotoma is funded by a grant from the U.S.
-National Science Foundation Geoinformatics program. This grant is
-collaborative between University <a href="#id3"><span class="problematic" id="id4"><span id="id1"></span>[1]_</span></a> and the Museum <a href="#id5"><span class="problematic" id="id6"><span id="id2"></span>[2]_</span></a>. It has five
-Principle Investigators, Russell W. Graham ( ), Eric C. Grimm ( ),
-Stephen T. Jackson ( of ), Allan C. Ashworth ( ), and John W. (Jack)
-Williams (). The database is served from the Center for Environmental
-Informatics at .</p>
-<p>Initially, data are being merged from four existing databases: the
-Global Pollen Database, FAUNMAP (a database of mammalian fauna), the
-North American Plant Macrofossil Database, and a fossil beetle database
-assembled by Allan Ashworth. The design of this database is such that
-many other kinds of fossil data can easily be incorporated in the
-future, for example, ostracodes, diatoms, chironmids, and freshwater
-mussels.</p>
-<p>The existing databases were developed in the 1990’s and have not been
-updated structurally since. New data have been added, but the structures
-of these databases have not changed, despite significant advances in
-database and internet technology. Although structurally different, these
-databases contain similar kinds of data, and merging them was quite
-practical. The rationale for this merging was twofold: (1) to facilitate
-analyses of past biotic communities at the ecosystem level and (2) to
-reduce the overhead in maintaining and distributing several independent
-databases..</p>
-<p>The new Neotoma database was initially designed by E. C. Grimm and
-implemented in Microsoft® Access®. This database will be ported to a
-higher end RDBMS for Internet distribution, but it will continue to be
-distributed as a standalone Access database for researchers who need
-access to the entire database.</p>
+<p>Neotoma is a public database containing fossil data from the Holocene, Pleistocene, and Pliocene, or approximately the last 5.3 million years.  The database stores associated physical data from fossil bearing deposits, for example sediment loss-on-ignition and geochemical data.  The database also stores data from modern samples that are used to interpret fossil data.</p>
+<p>The initial development of Neotoma was funded by a grant from the U.S. National Science Foundation Geoinformatics program. This grant is collaborative between Penn State University <a class="footnote-reference" href="#id3" id="id1">[1]</a> and the Illinois State Museum <a class="footnote-reference" href="#id4" id="id2">[2]</a>. It has five Principle Investigators, Russell W. Graham, Eric C. Grimm, Stephen T. Jackson, Allan C. Ashworth, and John W. (Jack) Williams. The database is served from the Center for Environmental Informatics at Penn State University.</p>
+<p>Initially, data are being merged from four existing databases: the Global Pollen Database, FAUNMAP (a database of mammalian fauna), the North American Plant Macrofossil Database, and a fossil beetle database assembled by Allan Ashworth. The design of this database is such that many other kinds of fossil data can easily be incorporated in the future, for example, the addition of ostracode, diatom, chironmid, and freshwater mussel datasets.</p>
+<p>The existing databases were developed in the 1990’s and have not been updated structurally since. New data have been added, but the structures of these databases have not changed, despite significant advances in database and internet technology. Although structurally different, these databases contain similar kinds of data, and merging them was quite practical. The rationale for this merging was twofold: (1) to facilitate analyses of past biotic communities at the ecosystem level and (2) to reduce the overhead in maintaining and distributing several independent databases..</p>
+<p>The new Neotoma database was initially designed by E. C. Grimm and implemented in Microsoft® Access®. This database will be ported to a higher end RDBMS for Internet distribution, but it will continue to be distributed as a standalone Access database for researchers who need access to the entire database.</p>
 <div class="section" id="whence-neotoma">
 <h2>Whence Neotoma<a class="headerlink" href="#whence-neotoma" title="Permalink to this headline">¶</a></h2>
-<p>In the original NSF proposal, this database was called a “Late Neogene
-Terrestrial Ecosystem Database.” At the time this proposal was written,
-the Neogene Period included the Miocene, Pliocene, Pleistocene, and
-Holocene epochs. However, a proposal before the International Commission
-on Stratigraphy would elevate the Quaternary to a System or Period
-following the Neogene and terminate the Neogene at the end of Pliocene.
-Because this proposal renders the Neogene description of this database
-obsolete, a new name was sought. Numerous names and companion acronyms
-were considered, but none engendered enthusiastic support. B. Brandon
-Curry proposed the name Neotoma, and this name struck a fancy. <em>Neotoma</em>
-is the genus for the packrat. Packrats are prodigious collectors of
-anything in their territory, and moreover they are collectors of fossil
-data. They collect plant macrofossils and bones, and pollen is preserved
-in their amberat—hardened, dried urine, which impregnates their middens
-and preserves them for millennia.</p>
+<p>In the original NSF proposal, this database was called a “Late Neogene Terrestrial Ecosystem Database.” At the time this proposal was written, the Neogene Period included the Miocene, Pliocene, Pleistocene, and Holocene epochs. However, a proposal before the International Commission on Stratigraphy would elevate the Quaternary to a System or Period following the Neogene and terminate the Neogene at the end of Pliocene.</p>
+<p>Because this proposal renders the Neogene description of this database obsolete, a new name was sought. Numerous names and companion acronyms were considered, but none engendered enthusiastic support. B. Brandon Curry proposed the name Neotoma, and this name struck a fancy. <em>Neotoma</em> is the genus for the packrat. Packrats are prodigious collectors of anything in their territory, and moreover they are collectors of fossil data. They collect plant macrofossils and bones, and pollen is preserved in their amberat—hardened, dried urine, which impregnates their middens and preserves them for millennia.</p>
 </div>
 <div class="section" id="rationale">
 <h2>Rationale<a class="headerlink" href="#rationale" title="Permalink to this headline">¶</a></h2>
@@ -183,66 +256,25 @@ integrating these databases and by simplifying the contributor
 interface, we can reduce the number of people necessary for
 community-wide database maintenance, and thereby help ensure their
 long-term sustainability and existence.</p>
-<ol class="arabic">
-<li><p class="first rubric" id="history-of-the-constituent-databases">History of the Constituent Databases</p>
-<ol class="arabic">
-<li><p class="first rubric" id="global-pollen-database">Global Pollen Database</p>
-</li>
+<div class="section" id="history-of-the-constituent-databases">
+<h3>History of the Constituent Databases<a class="headerlink" href="#history-of-the-constituent-databases" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="global-pollen-database">
+<h4>Global Pollen Database<a class="headerlink" href="#global-pollen-database" title="Permalink to this headline">¶</a></h4>
+<p>In an early effort, the Cooperative Holocene Mapping Project (COHMAP&nbsp;Members 1988, Wright et al. 1993) assembled pollen data in the 1970s and 1980s to test climate models. Although data-model comparison was the principal objective of the COHMAP project, the synoptic analyses of the pollen data, particularly maps showing the constantly shifting ranges of species in response to climate change, were revelatory and led to much ecological insight (e.g. Webb 1981, 1987, 1988).</p>
+<p>The COHMAP pollen “database” consisted of a multiplicity of flat files with prescribed formats for data and chronologies. FORTRAN programs were written to read these files and to assemble data for particular analyses. Thompson Webb III managed the COHMAP pollen database at , but as the quantity of data increased, data management became increasingly cumbersome. Clearly, the data needed to be migrated to a relational database management system. Discussions with E. C. Grimm led to the initiation of the North American Pollen Database (NAPD) at the in 1990.</p>
+<p>At the same time in , the International Geological Correlation Project IGCP 158 was conducting a major collaborative synthesis of paleoecological data, primarily of pollen, and the need for a pollen database became painfully obvious. In the forward to the book resulting from this project (Berglund et al. 1996), J.L. de Beaulieu describes the role that this project had in launching the European Pollen Database. A workshop to develop a European Pollen Database (EPD) was held in in 1989. North American representatives also attended, and the organizers of NAPD and EPD commenced a long-standing collaboration to develop
+compatible databases. NAPD and EPD held several joint workshops and developed the same data structure. Nevertheless, the two databases were independently established, partly because Internet capabilities were not yet sufficient to easily manage a merged database. The pollen databases were developed in Paradox, which at the time was the most powerful RDBMS readily available for the PC platform. NAPD and EPD established two important protocols:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>the databases were relational and queryable</li>
+<li>they were publicly available.</li>
 </ol>
-</li>
-</ol>
-<p>In an early effort, the Cooperative Holocene Mapping Project
-(COHMAP&nbsp;Members 1988, Wright et al. 1993) assembled pollen data in the
-1970s and 1980s to test climate models. Although data-model comparison
-was the principal objective of the COHMAP project, the synoptic analyses
-of the pollen data, particularly maps showing the constantly shifting
-ranges of species in response to climate change, were revelatory and led
-to much ecological insight (e.g. Webb 1981, 1987, 1988).</p>
-<p>The COHMAP pollen “database” consisted of a multiplicity of flat files
-with prescribed formats for data and chronologies. FORTRAN programs were
-written to read these files and to assemble data for particular
-analyses. Thompson Webb III managed the COHMAP pollen database at , but
-as the quantity of data increased, data management became increasingly
-cumbersome. Clearly, the data needed to be migrated to a relational
-database management system. Discussions with E. C. Grimm led to the
-initiation of the North American Pollen Database (NAPD) at the in 1990.</p>
-<p>At the same time in , the International Geological Correlation Project
-IGCP 158 was conducting a major collaborative synthesis of
-paleoecological data, primarily of pollen, and the need for a pollen
-database became painfully obvious. In the forward to the book resulting
-from this project (Berglund et al. 1996), J.L. de Beaulieu describes the
-role that this project had in launching the European Pollen Database. A
-workshop to develop a European Pollen Database (EPD) was held in in
-1989. North American representatives also attended, and the organizers
-of NAPD and EPD commenced a long-standing collaboration to develop
-compatible databases. NAPD and EPD held several joint workshops and
-developed the same data structure. Nevertheless, the two databases were
-independently established, partly because Internet capabilities were not
-yet sufficient to easily manage a merged database. The pollen databases
-were developed in Paradox, which at the time was the most powerful RDBMS
-readily available for the PC platform. NAPD and EPD established two
-important protocols: (1) the databases were relational and queryable and
-(2) they were publicly available. As the success the NAPD-EPD
-partnership escalated, working groups initiated pollen databases for
-other regions, including the Latin American Pollen Database (LAPD) in
-1994, the Pollen Database for and the Russian Far East (PDSRFE) in 1995,
-and the African Pollen Database (APD) in 1996. At its initial
-organizational workshop, LAPD opted to merge with NAPD, rather than
-develop a standalone database, and the Global Pollen Database was born.
-PDSRFE also followed this model. APD developed independently, but uses
-the exact table structure of GPD and EPD. Pollen database projects have
-also been initiated in other regions, and the GPD contains some of these
-data, including the Indo-Pacific Pollen Database and the Japanese Pollen
-Database.</p>
-<p>The pollen databases contain data from the Holocene, Pleistocene, and
-Pliocene, although most data are from the last 20,000 years. Included
-are fossil data, mainly from cores and sections, and modern surface
-samples, which are essential for calibrating fossil data. NAPD data are
-not separate from the GPD, but rather NAPD is the North American subset
-of GPD. EPD has both public and restricted data—a concession that had to
-be made early on to assuage some contributors.</p>
+</div></blockquote>
+<p>As the success the NAPD-EPD partnership escalated, working groups initiated pollen databases for other regions, including the Latin American Pollen Database (LAPD) in 1994, the Pollen Database for and the Russian Far East (PDSRFE) in 1995, and the African Pollen Database (APD) in 1996. At its initial organizational workshop, LAPD opted to merge with NAPD, rather than develop a standalone database, and the Global Pollen Database was born. PDSRFE also followed this model. APD developed independently, but uses the exact table structure of GPD and EPD. Pollen database projects have also been initiated in other regions, and the GPD contains some of these data, including the Indo-Pacific Pollen Database and the Japanese Pollen Database.</p>
+<p>The pollen databases contain data from the Holocene, Pleistocene, and Pliocene, although most data are from the last 20,000 years. Included are fossil data, mainly from cores and sections, and modern surface samples, which are essential for calibrating fossil data. NAPD data are not separate from the GPD, but rather NAPD is the North American subset of GPD. EPD has both public and restricted data—a concession that had to be made early on to assuage some contributors.</p>
+</div>
 <div class="section" id="north-american-plant-macrofossil-database">
-<h3>North American Plant Macrofossil Database<a class="headerlink" href="#north-american-plant-macrofossil-database" title="Permalink to this headline">¶</a></h3>
+<h4>North American Plant Macrofossil Database<a class="headerlink" href="#north-american-plant-macrofossil-database" title="Permalink to this headline">¶</a></h4>
 <p>Plant macrofossils include plant organs generally visible to the naked
 eye, including seeds, fruits, leaves, needles, wood, bud scales, and
 megaspores. Synoptic-scale mapping of plant macrofossils from modern
@@ -273,7 +305,7 @@ quantitative measures of abundance. The database also includes surface
 samples, which are useful for interpretation of fossil data.</p>
 </div>
 <div class="section" id="faunmap">
-<h3>FAUNMAP<a class="headerlink" href="#faunmap" title="Permalink to this headline">¶</a></h3>
+<h4>FAUNMAP<a class="headerlink" href="#faunmap" title="Permalink to this headline">¶</a></h4>
 <p>R.W. Graham, E.L. Lundelius, Jr., and a group of Regional Collaborators
 organized a project to develop a database for late Quaternary faunal
 data from the , which the U.S. NSF funded in 1990. This project had a
@@ -316,154 +348,109 @@ contains a variety of quantitative measures of abundance, and presence
 data are more commonly used for analysis.</p>
 </div>
 <div class="section" id="beetle">
-<h3>BEETLE<a class="headerlink" href="#beetle" title="Permalink to this headline">¶</a></h3>
-<p>Many beetles have highly specific ecological and climatic requirements
-and are valuable indicators of past environments (Morgan et al. 1983,
-Ashworth 2001, 2004). They are one of the most diverse groups of
-organisms on earth, and of the insects, perhaps the most commonly
-preserved as fossils. Allan Ashworth has assembled a database of fossil
-beetles from . The data, which were recorded in Excel, contain 5523
-individual records of 2567 taxa from 199 sites and 165 publications.
-Metadata include site name, latitude and longitude, lithology of
-sediment, absolute age, and geological age. The basic data are similar
-to plant and mammal databases—lists of taxa from sites. The metadata
-have not been recorded to the extent of the other databases, especially
-chronological data, but Ashworth has resolved the taxonomic issues and
-has assembled the publications, so that the additional metadata can be
-easily pulled together.</p>
+<h4>BEETLE<a class="headerlink" href="#beetle" title="Permalink to this headline">¶</a></h4>
+<p>Many beetles have highly specific ecological and climatic requirements and are valuable indicators of past environments (Morgan et al. 1983, Ashworth 2001, 2004). They are one of the most diverse groups of organisms on earth, and of the insects, perhaps the most commonly preserved as fossils. Allan Ashworth has assembled a database of fossil beetles from . The data, which were recorded in Excel, contain 5523 individual records of 2567 taxa from 199 sites and 165 publications. Metadata include site name, latitude and longitude, lithology of sediment, absolute age, and geological age. The basic data are similar to plant and mammal databases—lists of taxa from sites. The metadata have not been recorded to the extent of the other databases, especially chronological data, but Ashworth has resolved the taxonomic issues and has assembled the publications, so that the additional metadata can be easily pulled together.</p>
+</div>
 </div>
 </div>
 <div class="section" id="who-will-use-neotoma">
 <h2>Who Will Use Neotoma?<a class="headerlink" href="#who-will-use-neotoma" title="Permalink to this headline">¶</a></h2>
-<p>The existing databases have been used widely for a variety of studies.
-Because the databases have been available on-line, precise determination
-of how many publications have made use of them is difficult. In
-addition, the databases are widely used for instructional purposes.
-Below are examples of the kinds of people who have used these databases
-and who we expect will find the new, integrated database even more
-useful.</p>
-<ul class="simple">
-<li><strong>Paleoecologists</strong> seeking to place a new record into a
-regional/continental/global context (e.g., Bell and Mead 1998,
-Czaplewski et al. 1999, Bell and Barnosky 2000, Newby et al. 2000,
-Futyma and Miller 2001, Gavin et al. 2001, Czaplewski et al. 2002,
-Schauffler and Jacobson 2002, Camill et al. 2003, Rosenberg et al.
-2003, Willard et al. 2003, Pasenko and Schubert 2004, and many
-others).</li>
-<li><strong>Synoptic paleoecologists</strong> interested in mapping regional to
-sub-continental to global patterns of vegetation change (e.g.,
-Jackson et al. 1997, Williams et al. 1998, Jackson et al. 2000,
-Prentice et al. 2000, Thompson and Anderson 2000, Williams et al.
-2000, Williams et al. 2001, Williams 2003, Webb et al. 2004, Williams
-et al. 2004, Asselin and Payette 2005).</li>
-<li><strong>Synoptic paleoclimatologists</strong> building benchmark paleoclimatic
-reconstructions for GCM evaluation (e.g., Bartlein et al. 1998,
-Farrera et al. 1999, Guiot et al. 1999, Kohfeld and Harrison 2000,
-CAPE&nbsp;Project&nbsp;Members 2001, Kageyama et al. 2001, Kaplan et al. 2003).</li>
-<li><strong>Paleontologists</strong> trying to understand the timing, patterns, and
-causes of extinction events (e.g., Jackson and Weng 1999, Graham
-2001, Barnosky et al. 2004, Martínez-Meyer et al. 2004, Wroe et al.
-2004).</li>
-<li><strong>Evolutionary biologists</strong> mapping the genetic legacies of
-Quaternary climatic variations (e.g., Petit et al. 1997, Fedorov
-1999, Tremblay and Schoen 1999, Hewitt 2000, Comps et al. 2001, Good
-and Sullivan 2001, Petit et al. 2002, Kropf et al. 2003, Lessa et al.
-2003, Petit et al. 2003, Hewitt 2004, Lascoux et al. 2004, Petit et
-al. 2004, Whorley et al. 2004, Runck and Cook 2005).</li>
-<li><strong>Macroecologists</strong> interested in temporal records of species
-turnover and biodiversity and historical controls on modern patterns
-of floristic diversity (e.g., Silvertown 1985, Qian and Ricklefs
-2000, Brown et al. 2001, Haskell 2001).</li>
-<li><strong>Archeologists</strong> who are studying human subsistence patterns and
-interactions with their environment (e.g., Grayson 2001, Grayson and
-Meltzer 2002, Cannon and Meltzer 2004, Grayson in press).</li>
-<li><strong>Natural resource managers</strong> who need to know historical ranges and
-abundances of plants and animals for designing conservation and
-management plans (e.g., Graham and Graham 1994, Cole et al. 1998,
-Noss et al. 2000, Owen et al. 2000, Committee on Ungulate Management
-in Yellowstone National Park 2002, Burns et al. 2003)</li>
-<li><strong>Scientists</strong> trying to understand the potential response of plants,
-animals, biomes, ecosystems, and biodiversity to global warming
-(e.g., Bartlein et al. 1997, Davis et al. 2000, Barnosky et al. 2003,
-Burns et al. 2003, Kaplan et al. 2003, Schmitz et al. 2003, Jackson
-and Williams 2004, Martínez-Meyer et al. 2004)</li>
-<li><strong>Teachers</strong> who use the databases for teaching purposes and class
-exercises.</li>
+<p>The existing databases have been used widely for a variety of studies. Because the databases have been available on-line, precise determination of how many publications have made use of them is difficult. In addition, the databases are widely used for instructional purposes. Below are examples of the kinds of people who have used these databases and who we expect will find the new, integrated database even more useful.</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Paleoecologists</strong> seeking to place a new record into a regional/continental/global context (e.g., Bell and Mead 1998, Czaplewski et al. 1999, Bell and Barnosky 2000, Newby et al. 2000, Futyma and Miller 2001, Gavin et al. 2001, Czaplewski et al. 2002, Schauffler and Jacobson 2002, Camill et al. 2003, Rosenberg et al. 2003, Willard et al. 2003, Pasenko and Schubert 2004, and many others).</li>
+<li><strong>Synoptic paleoecologists</strong> interested in mapping regional to sub-continental to global patterns of vegetation change (e.g., Jackson et al. 1997, Williams et al. 1998, Jackson et al. 2000, Prentice et al. 2000, Thompson and Anderson 2000, Williams et al. 2000, Williams et al. 2001, Williams 2003, Webb et al. 2004, Williams et al. 2004, Asselin and Payette 2005).</li>
+<li><strong>Synoptic paleoclimatologists</strong> building benchmark paleoclimatic reconstructions for GCM evaluation (e.g., Bartlein et al. 1998, Farrera et al. 1999, Guiot et al. 1999, Kohfeld and Harrison 2000, CAPE&nbsp;Project&nbsp;Members 2001, Kageyama et al. 2001, Kaplan et al. 2003).</li>
+<li><strong>Paleontologists</strong> trying to understand the timing, patterns, and causes of extinction events (e.g., Jackson and Weng 1999, Graham 2001, Barnosky et al. 2004, Martínez-Meyer et al. 2004, Wroe et al. 2004).</li>
+<li><strong>Evolutionary biologists</strong> mapping the genetic legacies of Quaternary climatic variations (e.g., Petit et al. 1997, Fedorov 1999, Tremblay and Schoen 1999, Hewitt 2000, Comps et al. 2001, Good and Sullivan 2001, Petit et al. 2002, Kropf et al. 2003, Lessa et al. 2003, Petit et al. 2003, Hewitt 2004, Lascoux et al. 2004, Petit et al. 2004, Whorley et al. 2004, Runck and Cook 2005).</li>
+<li><strong>Macroecologists</strong> interested in temporal records of species turnover and biodiversity and historical controls on modern patterns of floristic diversity (e.g., Silvertown 1985, Qian and Ricklefs 2000, Brown et al. 2001, Haskell 2001).</li>
+<li><strong>Archeologists</strong> who are studying human subsistence patterns and interactions with their environment (e.g., Grayson 2001, Grayson and Meltzer 2002, Cannon and Meltzer 2004, Grayson in press).</li>
+<li><strong>Natural resource managers</strong> who need to know historical ranges and abundances of plants and animals for designing conservation and management plans (e.g., Graham and Graham 1994, Cole et al. 1998, Noss et al. 2000, Owen et al. 2000, Committee on Ungulate Management in Yellowstone National Park 2002, Burns et al. 2003)</li>
+<li><strong>Scientists</strong> trying to understand the potential response of plants, animals, biomes, ecosystems, and biodiversity to global warming (e.g., Bartlein et al. 1997, Davis et al. 2000, Barnosky et al. 2003, Burns et al. 2003, Kaplan et al. 2003, Schmitz et al. 2003, Jackson and Williams 2004, Martínez-Meyer et al. 2004)</li>
+<li><strong>Teachers</strong> who use the databases for teaching purposes and class exercises.</li>
 </ul>
+</div></blockquote>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Grant number 0622349</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Grant number 0622289</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#whence-neotoma">Whence Neotoma</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#rationale">Rationale</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#north-american-plant-macrofossil-database">North American Plant Macrofossil Database</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#faunmap">FAUNMAP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#beetle">BEETLE</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#who-will-use-neotoma">Who Will Use Neotoma?</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="db_design_concepts.html">Database Design Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sql_quickly.html">SQL Quickly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neotoma_tables.html">Neotoma Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_chron.html">Chronology &amp; Age Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_dataset.html">Dataset &amp; Collection Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_samples.html">Sample Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_site.html">Site Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="db_design_concepts.html" class="btn btn-neutral float-right" title="Database Design Concepts" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Neotoma Paleoecology Database" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/neotoma_introduction.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric Grimm, Simon Goring.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2016, Eric Grimm, Simon Goring.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
-      
-      |
-      <a href="_sources/neotoma_introduction.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
