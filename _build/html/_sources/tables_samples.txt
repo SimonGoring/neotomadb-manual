@@ -570,10 +570,10 @@ This table stores the samples in Aggregate Datasets.
 +-------------------------------+-------+----------+---------------------+
 
 **AggregateDatasetID (Primary Key, Foreign Key)** 
-   An arbitrary Aggregate Dataset identification number. Field links to the :ref:`AggregateDatasets`__ table.
+  An arbitrary Aggregate Dataset identification number. Field links to the :ref:`AggregateDatasets` table.
 
 **SampleID (Primary Key, Foreign Key)**
-   Sample ID number. Field links to the :ref:`Samples`__ table.
+  Sample ID number. Field links to the :ref:`Samples` table.
 
 .. _FaciesTypes:
 

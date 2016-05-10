@@ -685,27 +685,17 @@ This table stores the lithologic descriptions of Collection Units.
   Description of the nature of the lower boundary of the lithologic unit, e.g. «gradual, over ca. 10 cm».
 
 **Description**
-  Description of the lithologic unit. These can be quite detailed, with Munsell color or Troels-Smith descriptions. Some
-examples:
+  Description of the lithologic unit. These can be quite detailed, with Munsell color or Troels-Smith descriptions. Some examples:
 
-    -  interbedded gray silt and peat
-
-    -  marly fine-detritus copropel
-
-    -  humified sedge and Sphagnum peat
-
-    -  sedge peat 5YR 5/4
-
-    -  gray sandy loam with mammoth and other animal bones
-
-    -  grey-green gyttja, oxidizing to gray-brown
-
-    -  Ag 3, Ga 1, medium gray, firm, elastic
-
-    -  nig3, strf0, elas2, sicc0; Th2 T12 Tb+
-
-    -  Ld°4, , Dg+, Dh+
-..
+  -  interbedded gray silt and peat
+  -  marly fine-detritus copropel
+  -  humified sedge and Sphagnum peat
+  -  sedge peat 5YR 5/4
+  -  gray sandy loam with mammoth and other animal bones
+  -  grey-green gyttja, oxidizing to gray-brown
+  -  Ag 3, Ga 1, medium gray, firm, elastic
+  -  nig3, strf0, elas2, sicc0; Th2 T12 Tb+
+  -  Ld°4, , Dg+, Dh+
 
 .. _Projects:
 
@@ -714,7 +704,7 @@ Projects
 
 This table stores a list of database projects that have supplied data to Neotoma. These include the databases that were merged in the initial development of Neotoma as well as other independent projects that continue to assemble data for a particular region or data type. Some of these projects have developed relational databases, whereas others have compiled data in flat files. This table is referenced by the :ref:`DatasetSubmissions` table.
 
-+-----------------------+----------------+------+------------+
++------------------------------------------------------------+
 | **Table: Projects**                                        |
 +-----------------------+----------------+------+------------+
 | ProjectID             | Long Integer   | PK   |            |

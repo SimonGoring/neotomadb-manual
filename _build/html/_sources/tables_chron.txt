@@ -9,16 +9,13 @@ AgeTypes
 Lookup table of Age Types or units. This table is referenced by the
 :ref:`Chronologies` and :ref:`Geochronology` tables.
 
-.. table::
-  :column-alignment: left center center
-
-  +-----------------------+----------------+------+
-  | Field Name            | Variable Type  | Key  |
-  +=======================+================+======+
-  | AgeTypeID             | int            | PK   |
-  +-----------------------+----------------+------+
-  | AgeType               | nvarchar(64)   |      |
-  +-----------------------+----------------+------+
++-----------------------+----------------+------+
+| Field Name            | Variable Type  | Key  |
++=======================+================+======+
+| AgeTypeID             | int            | PK   |
++-----------------------+----------------+------+
+| AgeType               | nvarchar(64)   |      |
++-----------------------+----------------+------+
 
 
 **AgeTypeID (Primary Key)**

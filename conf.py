@@ -45,9 +45,9 @@ import os
 extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'sphinxcontrib.programoutput',
-    'cloud_sptheme.ext.table_styling'
+    'sphinx.ext.todo'
+    #'sphinxcontrib.programoutput',
+    #'cloud_sptheme.ext.table_styling',
     #'sphinxcontrib.fulltoc'
 ]
 

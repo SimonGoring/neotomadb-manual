@@ -28,8 +28,6 @@
   
 
   
-    <link rel="stylesheet" href="_static/table_styling.css" type="text/css" />
-  
 
   
     <link rel="top" title="neotoma 1.0 documentation" href="index.html"/>
@@ -120,7 +118,6 @@
 <li class="toctree-l1"><a class="reference internal" href="tables_taxa.html">Taxonomy Related Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables_contacts.html">Contact and Individual Related Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tables_publications.html">Publication Related Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references_cited.html">References Cited</a></li>
 </ul>
 
@@ -1208,13 +1205,13 @@ Analysis Unit Name, Dataset Type, and Preparation Methods are listed.</p>
 </table>
 <dl class="docutils">
 <dt><strong>AggregateDatasetID (Primary Key, Foreign Key)</strong></dt>
-<dd>An arbitrary Aggregate Dataset identification number. Field links to the <a href="#id13"><span class="problematic" id="id14">:ref:`AggregateDatasets`__</span></a> table.</dd>
+<dd>An arbitrary Aggregate Dataset identification number. Field links to the <a class="reference internal" href="tables_dataset.html#aggregatedatasets"><span>AggregateDatasets</span></a> table.</dd>
 <dt><strong>SampleID (Primary Key, Foreign Key)</strong></dt>
-<dd>Sample ID number. Field links to the <a href="#id15"><span class="problematic" id="id16">:ref:`Samples`__</span></a> table.</dd>
+<dd>Sample ID number. Field links to the <a class="reference internal" href="#samples"><span>Samples</span></a> table.</dd>
 </dl>
 </div>
 <div class="section" id="faciestypes">
-<span id="id17"></span><h2>FaciesTypes<a class="headerlink" href="#faciestypes" title="Permalink to this headline">¶</a></h2>
+<span id="id13"></span><h2>FaciesTypes<a class="headerlink" href="#faciestypes" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Facies Types. Table is referenced by the <a class="reference internal" href="#analysisunits"><span>AnalysisUnits</span></a> table.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1246,7 +1243,7 @@ Analysis Unit Name, Dataset Type, and Preparation Methods are listed.</p>
 </dl>
 </div>
 <div class="section" id="keywords">
-<span id="id18"></span><h2>Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h2>
 <p>Lookup table of Keywords referenced by the <a class="reference internal" href="#samplekeywords"><span>SampleKeywords</span></a> table. The table provides a means to identify samples sharing a common attribute. For example, the
 keyword «modern sample» identifies modern surface samples in the database. These samples include individual surface samples, as well as core tops. Although not implemented, a «pre-European settlement» keyword would be a means to identify samples just predating European settlement.</p>
 <table border="1" class="docutils">
