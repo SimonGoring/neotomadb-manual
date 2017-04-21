@@ -10,28 +10,26 @@ The following SQL example lists the number of sites by GeoPoliticalID (the name 
 
 .. code-block:: sql
 	:linenos:
-
 	SELECT
-		COUNT(sites.SiteName),
-		gpu.GeoPoliticalName,
-		gpu.GeoPoliticalUnit
+	    COUNT(sites.SiteName),
+	    gpu.GeoPoliticalName,
+	    gpu.GeoPoliticalUnit
 	FROM
-		(
-			SELECT
-				*
-			FROM
-				GeoPoliticalUnits
-			WHERE
-				geopoliticalunits.GeoPoliticalUnit = "country"
-		) AS gpu
+	    (
+	        SELECT
+	        	*
+	        FROM
+	        	GeoPoliticalUnits
+	        WHERE
+	        	geopoliticalunits.GeoPoliticalUnit = "country"
+	        ) AS gpu
 	INNER JOIN (
-		Sites
-		INNER JOIN SiteGeoPolitical ON Sites.SiteID = SiteGeoPolitical.SiteID
+	    Sites INNER JOIN 
+	    	SiteGeoPolitical ON Sites.SiteID = SiteGeoPolitical.SiteID
 	) ON gpu.GeoPoliticalID = SiteGeoPolitical.GeoPoliticalID
 	GROUP BY
-		gpu.GeoPoliticalID,
-		gpu.GeoPoliticalUnit;
-
+	        gpu.GeoPoliticalID,
+	        gpu.GeoPoliticalUnit;
 
 Table Keys
 ~~~~~~~~~~~
